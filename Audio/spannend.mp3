@@ -1,0 +1,2281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0063)https://freesound.org/search/?q=&s=created+desc&f=&page=2#sound -->
+<html xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        
+        <meta name="description" content="Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?">
+        <meta name="keywords" content="free, sound">
+        <link rel="stylesheet" type="text/css" href="./spannend_files/all.css">
+        <!--[if IE 6]><link rel="stylesheet" type="text/css" href="/media/css/ie6.css?v=2810" /><![endif]-->
+        <link rel="icon" href="https://freesound.org/favicon.ico">
+        <link rel="apple-touch-icon" sizes="180x180" href="https://freesound.org/apple-touch-icon.png">
+        <link rel="manifest" href="https://freesound.org/site.webmanifest">
+        <link rel="mask-icon" href="https://freesound.org/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#00aba9">
+        <meta name="theme-color" content="#ffffff">
+        <title>Freesound - sound search</title>
+        <script type="text/javascript" async="" src="./spannend_files/ga.js.Download"></script><script src="./spannend_files/jquery-1.5.2.min.js.Download" type="text/javascript"></script>
+        <script src="./spannend_files/jquery-ui-1.8.11.custom.min.js.Download" type="text/javascript"></script>
+        <script src="./spannend_files/jquery.cookie.js.Download" type="text/javascript"></script>
+        <script src="./spannend_files/swfobject.js.Download" type="text/javascript"></script>
+        <script src="./spannend_files/jquery.watermarkinput.js.Download" type="text/javascript"></script>
+        <script type="text/javascript">
+            var isLoggedIn = false;
+            var loginUrl = "/home/login/?next=/search/";
+            $(document).ready(function() {
+                 $("#search input[name=q]").Watermark("search sounds");
+            });
+            function clearWatermark(){
+			   $.Watermark.HideAll()
+			   return true
+			}
+        </script>
+        <script src="./spannend_files/freesound.js.Download" type="text/javascript"></script>
+    	<script src="./spannend_files/ajax_utils.js.Download" type="text/javascript"></script>
+        <!-- next couple of lines are used for the HTML player -->
+        <link href="./spannend_files/css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="./spannend_files/player.css">
+        <script src="./spannend_files/soundmanager2.js.Download"></script>
+        <script type="text/javascript" src="./spannend_files/player.js.Download"></script>
+        <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-86270-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+        
+
+        
+
+    </head>
+
+    <body id="" onload="" onunload="">
+
+        
+
+        <div id="header">
+            <div id="account_nav">
+                
+                    <a href="https://freesound.org/home/register/">Register</a>
+                    <a href="https://freesound.org/home/login/?next=/search/">Log In</a>
+                
+                <a href="https://freesound.org/home/upload/" id="upload_button"></a>
+            </div>
+
+            <a href="https://freesound.org/" id="logo"></a>
+
+            <div id="search">
+                <form method="get" onsubmit="return clearWatermark()" action="https://freesound.org/search/">
+                    <fieldset>
+                       <input type="text" name="q" value="" size="30" style="color: rgb(170, 170, 170);">
+                       <input type="submit" value="" id="search_submit">
+                    </fieldset>
+                </form>
+            </div>
+
+            <ul id="site_nav">
+                
+                <li class="active_tab"><a href="https://freesound.org/browse/" id="site_nav_sounds"><span class="site_nav_icon"></span>Sounds</a></li>
+                <li class=""><a href="https://freesound.org/forum/" id="site_nav_forums"><span class="site_nav_icon"></span>Forums</a></li>
+                <li class=""><a href="https://freesound.org/people/" id="site_nav_people"><span class="site_nav_icon"></span>People</a></li>
+                <li class=""><a href="https://freesound.org/help/faq/" id="site_nav_help"><span class="site_nav_icon"></span>Help</a></li>
+
+            </ul>
+        </div>
+
+        <div id="wrapper">
+            <div id="container">
+
+            
+
+            
+<div id="content_full"> <!-- START of Content area -->
+
+
+<form id="search_form" method="get" onsubmit="return addAdvancedSearchOptionsFilters()" action="https://freesound.org/search/">
+    <fieldset>
+
+       <input id="query_input" type="text" name="q" value="" size="30">
+       <input id="filter_query" type="hidden" name="f" value="" size="30">
+       
+       <select name="s">
+            
+            <option value="score desc">Automatic by relevance</option>
+            
+            <option value="duration desc">Duration (long first)</option>
+            
+            <option value="duration asc">Duration (short first)</option>
+            
+            <option value="created desc" selected="selected">Date added (newest first)</option>
+            
+            <option value="created asc">Date added (oldest first)</option>
+            
+            <option value="num_downloads desc">Downloads (most first)</option>
+            
+            <option value="num_downloads asc">Downloads (least first)</option>
+            
+            <option value="avg_rating desc">Rating (highest first)</option>
+            
+            <option value="avg_rating asc">Rating (lowest first)</option>
+            
+       </select>
+
+       <input type="submit" value="search" id="search_submit">
+
+       <script type="text/javascript">
+
+    function showAdvancedSearchOptions()
+    {
+        $("#advanced_search_hidden").val(1);
+        $("#enableShowButton").hide();
+        $("#advanced_search_options").show('blind', {}, 500, function() {});
+
+    }
+
+    function hideAdvancedSearchOptions()
+    {
+        $("#advanced_search_hidden").val(0);
+        $("#advanced_search_options").hide('blind', {}, 500, function() {});
+        $("#enableShowButton").show();
+    }
+
+    function set_hidden_grouping_value(){
+        if ($("#grouping_geotagged").is(':checked')){
+            $("#grouping_geotagged_hidden").val("1")
+        }else{
+            $("#grouping_geotagged_hidden").val("")
+        }
+    }
+
+</script>
+
+
+<div id="advanced_search_options" class="advanced_search_options" style="display:none">
+<input id="advanced_search_hidden" type="hidden" name="advanced" value="0">
+
+<div style="margin-top:8px;"></div>Search in:&nbsp;
+<label><input type="checkbox" name="a_tag" value="1"> Tags</label>&nbsp;&nbsp;
+<label><input type="checkbox" name="a_filename" value="1"> File names</label>&nbsp;&nbsp;
+<label><input type="checkbox" name="a_description" value="1"> Descriptions</label>&nbsp;&nbsp;
+<label><input type="checkbox" name="a_packname" value="1"> Pack names</label>&nbsp;&nbsp;
+<label><input type="checkbox" name="a_soundid" value="1"> Sound Ids</label>&nbsp;&nbsp;
+<label><input type="checkbox" name="a_username" value="1"> User names</label>
+<span class="advanced_search_indication">(if none is selected, all will be used)</span>
+<br>
+
+Duration between <input class="inputtext" id="filter_duration_min" value="0" size="6"> <label for="filter_duration_min">(min)</label>
+and <input class="inputtext" id="filter_duration_max" value="*" size="6"> <label for="filter_duration_max">(max)</label> seconds<br>
+<input id="filter_is_geotagged" type="checkbox" value="1"> <label for="filter_is_geotagged">Only geotagged sounds</label><br>
+<input id="grouping_geotagged" type="checkbox" onchange="set_hidden_grouping_value()" checked=""> <label for="grouping_geotagged">Group sounds by pack</label>
+<input id="grouping_geotagged_hidden" type="hidden" name="g" value="1">
+
+<br>
+<span class="advanced_search_options_button"><a style="cursor:pointer;" onclick="hideAdvancedSearchOptions();">Hide advanced search options</a></span>
+</div>
+
+<span id="enableShowButton" class="advanced_search_options_button">
+    <div style="margin-top:4px;"></div>
+    <a style="cursor:pointer;" onclick="showAdvancedSearchOptions();">Show advanced search options</a>
+</span>
+
+
+        <br>
+
+    </fieldset>
+</form>
+
+
+<p id="filter_query_display">
+
+
+
+</p>
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        // Fill advanced search fields that were passen on the f parameter
+        // Duration
+
+        if (getFilterValue("duration","min") == "")
+            $("#filter_duration_min").val("0");
+        else
+            $("#filter_duration_min").val(getFilterValue("duration","min"));
+
+        if (getFilterValue("duration","max") == "")
+            $("#filter_duration_max").val("*");
+        else
+            $("#filter_duration_max").val(getFilterValue("duration","max"));
+
+        // Geotagged
+        if (getFilterValue("is_geotagged")==1)
+               $("#filter_is_geotagged").attr('checked','checked')
+
+        // Extract terms from the query search box and highlight any of their occurrences in the descriptions
+        terms = document.getElementById("query_input").value.split(" ");
+
+        for(var i=0;i<terms.length;i++)
+        {
+        	term = terms[i];
+        	re = RegExp(term,"i"); // i for case-insensative
+
+        	descriptions = document.getElementsByClassName("description");
+        	for (var j=0;j<descriptions.length;j++)
+        	{
+        		descriptions[j].innerHTML = descriptions[j].innerHTML.replace(re,"<b>"+term+"</b>");
+        	}
+        }
+
+    });
+
+    function addAdvancedSearchOptionsFilters()
+    {
+
+        // Remove existing previously existing advanced options filters (will be replaced by current ones)
+        existing_duration_filter = "duration:[" + getFilterValue("duration","min") + " TO " + getFilterValue("duration","max") + "]"
+        removeFilter(existing_duration_filter)
+        removeFilter("is_geotagged:1")
+
+        // if advanced options is activated add all updated filters
+        if ($("#advanced_search_hidden").val() == 1)
+        {
+
+            // Create and add new filter with all the advanced options
+            filter = ""
+
+            // Duration filter
+            duration_min = parseFloat($("#filter_duration_min").val())
+            duration_max = parseFloat($("#filter_duration_max").val())
+
+            if ((duration_min >= 0.0) || (duration_max >= 0.0))
+            {
+                duration_filter = ""
+
+                if ((duration_min >= 0.0) && (duration_max >= 0.0)) // Both min and max have been set
+                {
+                    if (duration_max < duration_min)
+                    {
+                        // interchange values if duration_min > duration_max
+                        duration_aux = duration_min
+                        duration_min = duration_max
+                        duration_max = duration_aux
+                    }
+
+                    duration_filter = "duration:[" + duration_min + " TO " + duration_max + "]"
+
+                }
+                else if (duration_min >= 0.0) // Only minimum has been set
+                {
+                    duration_filter = "duration:[" + duration_min + " TO *]"
+                }
+                else if (duration_max >= 0.0) // Only maximum has been set
+                {
+                    duration_filter = "duration:[* TO " + duration_max + "]"
+                }
+
+                filter = filter + duration_filter
+            }
+
+            // Is geotagged filter
+            if ($("#filter_is_geotagged").attr('checked')){
+                if (filter != "")
+                    filter = filter + " "
+                filter = filter + "is_geotagged:1"
+            }
+
+               // Update general filter with the advanced options filter
+            value = $("#filter_query").val();
+            if (value != "")
+                $("#filter_query").val(value + " " + filter);
+            else
+                $("#filter_query").val(filter);
+
+        }
+
+        return true
+    }
+
+    // Return the value of a filter given its name
+    // If filter has a range, optional "range" parameter must be set to "min or "max"
+    function getFilterValue(name, range)
+    {
+        if (!range) { range = "min"};
+
+        var value = $("#filter_query").val();
+        position_name = value.search(name)
+        position_value = value.search(name) + (name + ":").length
+        if (value.search((name + ":")) != -1)
+        {
+            if (value[position_value] == "[") // Is range (with spaces)
+            {
+                aux_value = value.substring(position_value + 1)
+                position_end = position_value + aux_value.search("]") + 2
+
+                range_string = value.substring(position_value + 1, position_end -1) // Without [ ]
+                parts = range_string.split(" ")
+                if (range == "min")
+                    return parts[0]
+                else if (range == "max")
+                    return parts[2]
+            }
+            else if (value[position_value] == "\"") // Is string (with spaces)
+            {
+                aux_value = value.substring(position_value + 1)
+                position_end = position_value + aux_value.search("\"") + 2
+                return value.substring(position_value, position_end)
+
+            }
+            else // Is number or normal text (without spaces)
+            {
+                aux_value = value.substring(position_value + 1)
+                if (aux_value.search(" ") != -1)
+                    position_end = position_value + aux_value.search(" ") + 1
+                else
+                    position_end = value.length
+
+                return value.substring(position_value, position_end)
+            }
+        }
+        else
+        {
+            return ""
+        }
+    }
+
+    // Remove a filter given the full tag ex: type:aiff, pack:"pack name"
+    function removeFilter(tag)
+    {
+        var value = $("#filter_query").val();
+        var cleaned = $.trim(value.replace(tag + " ", "").replace(tag, ""));
+        $("#filter_query").val(cleaned);
+    }
+
+</script>
+
+
+    
+    <div id="sidebar" style="float:right">
+        
+            <h3>licenses</h3>
+            
+ <ul>
+     <li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20license:%22Attribution%22">Attribution</a> (172820)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20license:%22Attribution+Noncommercial%22">Attribution Noncommercial</a> (59609)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20license:%22Creative+Commons+0%22">Creative Commons 0</a> (229326)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20license:%22Sampling%2B%22">Sampling+</a> (11800)</li>
+</ul>
+
+
+
+        
+
+        
+            <h3>tags</h3>
+            
+
+<p class="search-tagcloud">
+    <span class="facet_item" style="font-size:0.834482758621em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22ambiance%22">ambiance</a></span> <span class="facet_item" style="font-size:1.41724137931em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22ambience%22">ambience</a></span> <span class="facet_item" style="font-size:1.59655172414em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22ambient%22">ambient</a></span> <span class="facet_item" style="font-size:0.968965517241em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22atmosphere%22">atmosphere</a></span> <span class="facet_item" style="font-size:1.3724137931em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22bass%22">bass</a></span> <span class="facet_item" style="font-size:1.01379310345em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22beat%22">beat</a></span> <span class="facet_item" style="font-size:1.82068965517em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22drum%22">drum</a></span> <span class="facet_item" style="font-size:1.05862068966em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22drums%22">drums</a></span> <span class="facet_item" style="font-size:1.23793103448em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22effect%22">effect</a></span> <span class="facet_item" style="font-size:1.46206896552em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22electronic%22">electronic</a></span> <span class="facet_item" style="font-size:1.91034482759em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22field-recording%22">field-recording</a></span> <span class="facet_item" style="font-size:0.924137931034em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22fx%22">fx</a></span> <span class="facet_item" style="font-size:0.789655172414em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22game%22">game</a></span> <span class="facet_item" style="font-size:0.879310344828em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22hit%22">hit</a></span> <span class="facet_item" style="font-size:1.73103448276em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22loop%22">loop</a></span> <span class="facet_item" style="font-size:1.28275862069em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22metal%22">metal</a></span> <span class="facet_item" style="font-size:2.0em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22multisample%22">multisample</a></span> <span class="facet_item" style="font-size:1.14827586207em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22music%22">music</a></span> <span class="facet_item" style="font-size:1.10344827586em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22nature%22">nature</a></span> <span class="facet_item" style="font-size:1.68620689655em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22noise%22">noise</a></span> <span class="facet_item" style="font-size:1.64137931034em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22percussion%22">percussion</a></span> <span class="facet_item" style="font-size:0.744827586207em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22sample%22">sample</a></span> <span class="facet_item" style="font-size:0.7em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22sfx%22">sfx</a></span> <span class="facet_item" style="font-size:1.95517241379em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22single-note%22">single-note</a></span> <span class="facet_item" style="font-size:1.50689655172em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22sound%22">sound</a></span> <span class="facet_item" style="font-size:1.19310344828em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22soundscape%22">soundscape</a></span> <span class="facet_item" style="font-size:1.77586206897em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22synth%22">synth</a></span> <span class="facet_item" style="font-size:1.86551724138em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22synthesizer%22">synthesizer</a></span> <span class="facet_item" style="font-size:1.55172413793em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22voice%22">voice</a></span> <span class="facet_item" style="font-size:1.3275862069em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20tag:%22water%22">water</a></span> 
+</p>
+
+
+        
+
+        
+            <h3>type</h3>
+            
+ <ul>
+     <li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20type:%22aiff%22">aiff</a> (51824)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20type:%22flac%22">flac</a> (22114)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20type:%22m4a%22">m4a</a> (3317)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20type:%22mp3%22">mp3</a> (42060)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20type:%22ogg%22">ogg</a> (4508)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20type:%22wav%22">wav</a> (349731)</li>
+</ul>
+
+
+
+        
+
+        
+            <h3>samplerate</h3>
+            
+ <ul>
+     <li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20samplerate:%2216000%22">16000</a> (1380)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20samplerate:%2222050%22">22050</a> (3523)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20samplerate:%2244100%22">44100</a> (325878)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20samplerate:%2248000%22">48000</a> (118222)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20samplerate:%2296000%22">96000</a> (19083)</li>
+</ul>
+
+
+
+        
+
+        
+            <h3>bitdepth</h3>
+            
+ <ul>
+     <li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20bitdepth:%2216%22">16</a> (238726)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20bitdepth:%2224%22">24</a> (156017)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20bitdepth:%2232%22">32</a> (27486)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20bitdepth:%228%22">8</a> (797)</li>
+</ul>
+
+
+
+        
+
+        
+            <h3>bitrate</h3>
+            
+ <ul>
+     <li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20bitrate:%221378%22">1378</a> (102355)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20bitrate:%221411%22">1411</a> (26878)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20bitrate:%221500%22">1500</a> (21097)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20bitrate:%222250%22">2250</a> (26882)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20bitrate:%22689%22">689</a> (29960)</li>
+</ul>
+
+
+
+        
+
+
+        
+            <h3>channels</h3>
+            
+ <ul>
+     <li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20channels:%221%22">1</a> (141598)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20channels:%222%22">2</a> (330945)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20channels:%223%22">3</a> (97)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20channels:%224%22">4</a> (251)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20channels:%226%22">6</a> (567)</li>
+</ul>
+
+
+
+        
+
+        
+            <h3>packs</h3>
+            
+ <ul>
+     <li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20grouping_pack:%2214157_CompMusic-IITM-Mridangam-Stroke-Dataset-B%22">CompMusic-IITM-Mridangam-Stroke-Dataset-B</a> (1325)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20grouping_pack:%2214159_CompMusic-IITM-Mridangam-Stroke-Dataset-C%22">CompMusic-IITM-Mridangam-Stroke-Dataset-C</a> (1129)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20grouping_pack:%2214160_CompMusic-IITM-Mridangam-Stroke-Dataset-C%23%22">CompMusic-IITM-Mridangam-Stroke-Dataset-C#</a> (1197)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20grouping_pack:%2214161_CompMusic-IITM-Mridangam-Stroke-Dataset-D%22">CompMusic-IITM-Mridangam-Stroke-Dataset-D</a> (916)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20grouping_pack:%2214163_CompMusic-IITM-Mridangam-Stroke-Dataset-D%23%22">CompMusic-IITM-Mridangam-Stroke-Dataset-D#</a> (1495)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20grouping_pack:%2214164_CompMusic-IITM-Mridangam-Stroke-Dataset-E%22">CompMusic-IITM-Mridangam-Stroke-Dataset-E</a> (1100)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20grouping_pack:%2214826_Greek%22">Greek</a> (807)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20grouping_pack:%2217318_Fender+Chroma+Polaris+-+Storm+Drum%22">Fender Chroma Polaris - Storm Drum</a> (784)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20grouping_pack:%2220227_Clarinet+single+notes+%28played+badly%29%22">Clarinet single notes (played badly)</a> (858)</li><li class="facet_item"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20grouping_pack:%223340_random%22">random</a> (1597)</li>
+</ul>
+
+
+
+        
+
+        
+            <h3>users</h3>
+            
+
+<p class="search-tagcloud">
+    <span class="facet_item" style="font-size:1.86551724138em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22akshaylaya%22">akshaylaya</a></span> <span class="facet_item" style="font-size:1.23793103448em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22alienxxx%22">alienxxx</a></span> <span class="facet_item" style="font-size:1.46206896552em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22craigsmith%22">craigsmith</a></span> <span class="facet_item" style="font-size:1.50689655172em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22deleted_user_2195044%22">deleted_user_2195044</a></span> <span class="facet_item" style="font-size:1.59655172414em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22dobroide%22">dobroide</a></span> <span class="facet_item" style="font-size:0.924137931034em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22erh%22">erh</a></span> <span class="facet_item" style="font-size:1.68620689655em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22erokia%22">erokia</a></span> <span class="facet_item" style="font-size:1.05862068966em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22freed%22">freed</a></span> <span class="facet_item" style="font-size:0.744827586207em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22hanstimm%22">hanstimm</a></span> <span class="facet_item" style="font-size:0.968965517241em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22jalastram%22">jalastram</a></span> <span class="facet_item" style="font-size:1.19310344828em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22joao_janz%22">joao_janz</a></span> <span class="facet_item" style="font-size:1.91034482759em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22jovica%22">jovica</a></span> <span class="facet_item" style="font-size:1.41724137931em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22klankbeeld%22">klankbeeld</a></span> <span class="facet_item" style="font-size:1.73103448276em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22kyles%22">kyles</a></span> <span class="facet_item" style="font-size:0.834482758621em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22lg%22">lg</a></span> <span class="facet_item" style="font-size:0.7em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22littlerobotsoundfactory%22">littlerobotsoundfactory</a></span> <span class="facet_item" style="font-size:2.0em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22modularsamples%22">modularsamples</a></span> <span class="facet_item" style="font-size:1.14827586207em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22mogigrumbles%22">mogigrumbles</a></span> <span class="facet_item" style="font-size:1.95517241379em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22mtg%22">mtg</a></span> <span class="facet_item" style="font-size:1.77586206897em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22noisecollector%22">noisecollector</a></span> <span class="facet_item" style="font-size:1.3275862069em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22phonosupf%22">phonosupf</a></span> <span class="facet_item" style="font-size:0.879310344828em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22proyectosonidosias%22">proyectosonidosias</a></span> <span class="facet_item" style="font-size:1.82068965517em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22quartertone%22">quartertone</a></span> <span class="facet_item" style="font-size:0.789655172414em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22qubodup%22">qubodup</a></span> <span class="facet_item" style="font-size:1.10344827586em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22robinhood76%22">robinhood76</a></span> <span class="facet_item" style="font-size:1.55172413793em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22samulis%22">samulis</a></span> <span class="facet_item" style="font-size:1.01379310345em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22sandyrb%22">sandyrb</a></span> <span class="facet_item" style="font-size:1.28275862069em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22thecityrings%22">thecityrings</a></span> <span class="facet_item" style="font-size:1.64137931034em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22tim.kahn%22">tim.kahn</a></span> <span class="facet_item" style="font-size:1.3724137931em"><a href="https://freesound.org/search/?g=1&amp;q=&amp;f=%20username:%22timbre%22">timbre</a></span> 
+</p>
+
+
+        
+
+    </div>
+
+        
+            <div class="search_paginator">
+                <ul class="pagination"><li class="previous-page"><a href="https://freesound.org/search/?q=&amp;s=created+desc&amp;f=&amp;page=1#sound" title="Previous Page">previous</a></li><li class="next-page"><a href="https://freesound.org/search/?q=&amp;s=created+desc&amp;f=&amp;page=3#sound" title="Next Page">next</a></li><li class="other-page"><a href="https://freesound.org/search/?q=&amp;s=created+desc&amp;f=&amp;page=1#sound" title="Page 1">1</a></li><li class="current-page">2</li><li class="other-page"><a href="https://freesound.org/search/?q=&amp;s=created+desc&amp;f=&amp;page=3#sound" title="Page 3">3</a></li><li class="other-page"><a href="https://freesound.org/search/?q=&amp;s=created+desc&amp;f=&amp;page=4#sound" title="Page 4">4</a></li><li class="other-page"><a href="https://freesound.org/search/?q=&amp;s=created+desc&amp;f=&amp;page=5#sound" title="Page 5">5</a></li><li class="other-page"><a href="https://freesound.org/search/?q=&amp;s=created+desc&amp;f=&amp;page=6#sound" title="Page 6">6</a></li><li class="other-page"><a href="https://freesound.org/search/?q=&amp;s=created+desc&amp;f=&amp;page=7#sound" title="Page 7">7</a></li><li class="dots">...</li><li class="last-page"><a href="https://freesound.org/search/?q=&amp;s=created+desc&amp;f=&amp;page=10347#sound" title="Last Page">10347</a></li><p class="number_of_results">
+            
+                &nbsp;|&nbsp; 473555 sounds
+            
+        </p></ul>
+
+
+            </div>
+
+            
+                
+
+
+
+
+
+
+
+<div class="sample_player_small" id="541501">
+
+    
+
+    <div class="sample_player ">
+        <div class="small_player">
+            <div class="player small">
+    <div class="metadata">
+        <a class="mp3_file" href="https://freesound.org/data/previews/541/541501_12050817-lq.mp3" title="mp3 file">Long Buzzer.mp3 - mp3 version</a>
+<a class="ogg_file" href="https://freesound.org/data/previews/541/541501_12050817-lq.ogg" title="ogg file">Long Buzzer.mp3 - ogg version</a>
+<a class="waveform" href="https://freesound.org/data/displays/541/541501_12050817_wave_M.png" title="waveform file">Long Buzzer.mp3 - waveform</a>
+<a class="spectrum" href="https://freesound.org/data/displays/541/541501_12050817_spec_M.jpg" title="spectrogram file">Long Buzzer.mp3 - spectrogram</a>
+<span class="duration" title="duration in seconds">2480.32</span>
+
+    </div>
+<div class="controls">                     <a href="javascript:void(0)" title="play / pause" class="toggle play">play / pause</a>                     <a href="javascript:void(0)" title="loop" class="toggle loop">loop</a>                 </div>                 <div class="background" style="background-image: url(&quot;/data/displays/541/541501_12050817_wave_M.png&quot;); background-size: contain; background-repeat: no-repeat;"></div>                 <div class="loading-progress" style="display: none;"></div>                 <div class="position-indicator"></div>                 <div class="time-indicator-container"><div class="time-indicator">-00:02</div></div></div>
+
+        </div><!-- .small_player -->
+
+        <div class="sound_title">
+            <div class="sound_filename">
+               <a class="title" href="https://freesound.org/people/scott0642/sounds/541501/" title="Long Buzzer.mp3">Long Buzzer.mp3</a>
+            </div><!-- .sound_filename -->
+            <div class="sound_stars">
+               <ul class="star-rating">
+    <li class="current-rating" style="width:0%;">Currently /5 Stars.</li>
+    
+</ul>
+            </div><!-- .sound_stars -->
+
+            <div class="sound_description">
+                <p class="description"><b></b>A ~2 second buzzer for use in whatever you may want.</p>
+            </div><!-- .sound_description -->
+
+            <div class="sound_tags">
+
+                <ul class="tags">
+                    
+                        <li><a href="https://freesound.org/browse/tags/Buzzer/">Buzzer</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/seconds/">seconds</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/2/">2</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/long/">long</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/buzz/">buzz</a></li>
+                    
+                </ul>
+                <br style="clear: both;">
+
+            </div><!-- .sound_tags -->
+
+            <div id="bookmark_form_541501" class="bookmark_form"></div> <!-- to be filled dynamically with ajax -->
+
+            
+
+          </div><!-- .sound_title -->
+    </div><!-- .sample_player -->
+
+    <div class="sample_information ">
+        <a class="user" href="https://freesound.org/people/scott0642/">scott0642</a><br>
+        <span class="date">October 29th, 2020</span><br>
+        <span class="download_count"><a href="https://freesound.org/people/scott0642/sounds/541501/downloaders/">1 download</a></span><br>
+        <a class="comments" href="https://freesound.org/people/scott0642/sounds/541501/#comments">0 comments</a>
+
+        <div class="sound_attributes">
+
+            
+
+            
+            <a class="similar" rel="nofollow" href="https://freesound.org/people/scott0642/sounds/541501/similar/">
+                <img src="./spannend_files/headphone--plus.png" width="16" height="16" alt="Similar" title="Similar Sounds">
+            </a>
+            
+            
+            
+            
+            <!-- license icons -->
+            
+            
+                <img class="cc_license" src="./spannend_files/nolaw.png" width="16" height="16" alt="Public Domain license" title="This sound is public domain.">
+            
+            
+            
+            <!-- /license icons -->
+
+        </div><!-- .sound_attributes -->
+    </div><!-- .sample_information -->
+</div><!-- .sample_player_small -->
+
+
+
+
+
+
+                
+            
+                
+
+
+
+
+
+
+
+<div class="sample_player_small" id="541500">
+
+    
+
+    <div class="sample_player ">
+        <div class="small_player">
+            <div class="player small">
+    <div class="metadata">
+        <a class="mp3_file" href="https://freesound.org/data/previews/541/541500_11095365-lq.mp3" title="mp3 file">rubber gloves - mp3 version</a>
+<a class="ogg_file" href="https://freesound.org/data/previews/541/541500_11095365-lq.ogg" title="ogg file">rubber gloves - ogg version</a>
+<a class="waveform" href="https://freesound.org/data/displays/541/541500_11095365_wave_M.png" title="waveform file">rubber gloves - waveform</a>
+<a class="spectrum" href="https://freesound.org/data/displays/541/541500_11095365_spec_M.jpg" title="spectrogram file">rubber gloves - spectrogram</a>
+<span class="duration" title="duration in seconds">19263.4</span>
+
+    </div>
+<div class="controls">                     <a href="javascript:void(0)" title="play / pause" class="play toggle">play / pause</a>                     <a href="javascript:void(0)" title="loop" class="toggle loop">loop</a>                 </div>                 <div class="background" style="background-image: url(&quot;/data/displays/541/541500_11095365_wave_M.png&quot;); background-size: contain; background-repeat: no-repeat;"></div>                                  <div class="position-indicator" style="left: 100.294%;"></div>                 <div class="time-indicator-container"><div class="time-indicator">-00:00</div></div></div>
+
+        </div><!-- .small_player -->
+
+        <div class="sound_title">
+            <div class="sound_filename">
+               <a class="title" href="https://freesound.org/people/samo003/sounds/541500/" title="rubber gloves">rubber gloves</a>
+            </div><!-- .sound_filename -->
+            <div class="sound_stars">
+               <ul class="star-rating">
+    <li class="current-rating" style="width:0%;">Currently /5 Stars.</li>
+    
+</ul>
+            </div><!-- .sound_stars -->
+
+            <div class="sound_description">
+                <p class="description"><b></b>Thank you for downloading ... You can buy me coffee here: paypal.me/dostalsamo</p>
+            </div><!-- .sound_description -->
+
+            <div class="sound_tags">
+
+                <ul class="tags">
+                    
+                        <li><a href="https://freesound.org/browse/tags/rubber-gloves/">rubber-gloves</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/bathroom/">bathroom</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/gloves/">gloves</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/kitchen/">kitchen</a></li>
+                    
+                </ul>
+                <br style="clear: both;">
+
+            </div><!-- .sound_tags -->
+
+            <div id="bookmark_form_541500" class="bookmark_form"></div> <!-- to be filled dynamically with ajax -->
+
+            
+
+          </div><!-- .sound_title -->
+    </div><!-- .sample_player -->
+
+    <div class="sample_information ">
+        <a class="user" href="https://freesound.org/people/samo003/">samo003</a><br>
+        <span class="date">October 29th, 2020</span><br>
+        <span class="download_count"><a href="https://freesound.org/people/samo003/sounds/541500/downloaders/">0 downloads</a></span><br>
+        <a class="comments" href="https://freesound.org/people/samo003/sounds/541500/#comments">0 comments</a>
+
+        <div class="sound_attributes">
+
+            
+
+            
+            <a class="similar" rel="nofollow" href="https://freesound.org/people/samo003/sounds/541500/similar/">
+                <img src="./spannend_files/headphone--plus.png" width="16" height="16" alt="Similar" title="Similar Sounds">
+            </a>
+            
+            
+            
+            
+            <a class="geotag" href="https://freesound.org/people/samo003/sounds/541500/geotag/">
+                <img src="./spannend_files/geotag.png" width="16" height="16" alt="Geotagged" title="This sound has a geotag">
+            </a>
+            
+            <!-- license icons -->
+            
+            
+                <img class="cc_license" src="./spannend_files/nolaw.png" width="16" height="16" alt="Public Domain license" title="This sound is public domain.">
+            
+            
+            
+            <!-- /license icons -->
+
+        </div><!-- .sound_attributes -->
+    </div><!-- .sample_information -->
+</div><!-- .sample_player_small -->
+
+
+
+
+
+
+                
+            
+                
+
+
+
+
+
+
+
+<div class="sample_player_small" id="541499">
+
+    
+
+    <div class="sample_player ">
+        <div class="small_player">
+            <div class="player small">
+    <div class="metadata">
+        <a class="mp3_file" href="https://freesound.org/data/previews/541/541499_3025423-lq.mp3" title="mp3 file">Bonus, power up - ukulele sound - mp3 version</a>
+<a class="ogg_file" href="https://freesound.org/data/previews/541/541499_3025423-lq.ogg" title="ogg file">Bonus, power up - ukulele sound - ogg version</a>
+<a class="waveform" href="https://freesound.org/data/displays/541/541499_3025423_wave_M.png" title="waveform file">Bonus, power up - ukulele sound - waveform</a>
+<a class="spectrum" href="https://freesound.org/data/displays/541/541499_3025423_spec_M.jpg" title="spectrogram file">Bonus, power up - ukulele sound - spectrogram</a>
+<span class="duration" title="duration in seconds">1930.45</span>
+
+    </div>
+<div class="controls">                     <a href="javascript:void(0)" title="play / pause" class="toggle play">play / pause</a>                     <a href="javascript:void(0)" title="loop" class="toggle loop">loop</a>                 </div>                 <div class="background" style="background-image: url(&quot;/data/displays/541/541499_3025423_wave_M.png&quot;); background-size: contain; background-repeat: no-repeat;"></div>                 <div class="loading-progress" style="display: none;"></div>                 <div class="position-indicator"></div>                 <div class="time-indicator-container"><div class="time-indicator">-00:01</div></div></div>
+
+        </div><!-- .small_player -->
+
+        <div class="sound_title">
+            <div class="sound_filename">
+               <a class="title" href="https://freesound.org/people/Tetoszka/sounds/541499/" title="Bonus, power up - ukulele sound">Bonus, power up - ukulel...</a>
+            </div><!-- .sound_filename -->
+            <div class="sound_stars">
+               <ul class="star-rating">
+    <li class="current-rating" style="width:0%;">Currently /5 Stars.</li>
+    
+</ul>
+            </div><!-- .sound_stars -->
+
+            <div class="sound_description">
+                <p class="description"><b></b>This is a modified sound recorded from my ukulele. I was recording with the A2 litle phone. :) The file ...</p>
+            </div><!-- .sound_description -->
+
+            <div class="sound_tags">
+
+                <ul class="tags">
+                    
+                        <li><a href="https://freesound.org/browse/tags/powerup/">powerup</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/sfx/">sfx</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/bonus/">bonus</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/science-fiction/">science-fiction</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/fantasy/">fantasy</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/game/">game</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/digital/">digital</a></li>
+                    
+                </ul>
+                <br style="clear: both;">
+
+            </div><!-- .sound_tags -->
+
+            <div id="bookmark_form_541499" class="bookmark_form"></div> <!-- to be filled dynamically with ajax -->
+
+            
+
+          </div><!-- .sound_title -->
+    </div><!-- .sample_player -->
+
+    <div class="sample_information ">
+        <a class="user" href="https://freesound.org/people/Tetoszka/">Tetoszka</a><br>
+        <span class="date">October 29th, 2020</span><br>
+        <span class="download_count"><a href="https://freesound.org/people/Tetoszka/sounds/541499/downloaders/">8 downloads</a></span><br>
+        <a class="comments" href="https://freesound.org/people/Tetoszka/sounds/541499/#comments">0 comments</a>
+
+        <div class="sound_attributes">
+
+            
+
+            
+            <a class="similar" rel="nofollow" href="https://freesound.org/people/Tetoszka/sounds/541499/similar/">
+                <img src="./spannend_files/headphone--plus.png" width="16" height="16" alt="Similar" title="Similar Sounds">
+            </a>
+            
+            
+            
+            
+            <a class="geotag" href="https://freesound.org/people/Tetoszka/sounds/541499/geotag/">
+                <img src="./spannend_files/geotag.png" width="16" height="16" alt="Geotagged" title="This sound has a geotag">
+            </a>
+            
+            <!-- license icons -->
+            
+            
+                <img class="cc_license" src="./spannend_files/nolaw.png" width="16" height="16" alt="Public Domain license" title="This sound is public domain.">
+            
+            
+            
+            <!-- /license icons -->
+
+        </div><!-- .sound_attributes -->
+    </div><!-- .sample_information -->
+</div><!-- .sample_player_small -->
+
+
+
+
+
+
+                
+            
+                
+
+
+
+
+
+
+
+<div class="sample_player_small" id="541498">
+
+    
+
+    <div class="sample_player ">
+        <div class="small_player">
+            <div class="player small">
+    <div class="metadata">
+        <a class="mp3_file" href="https://freesound.org/data/previews/541/541498_9497060-lq.mp3" title="mp3 file">MSfxP9 - 91_2 - (One Shot) - mp3 version</a>
+<a class="ogg_file" href="https://freesound.org/data/previews/541/541498_9497060-lq.ogg" title="ogg file">MSfxP9 - 91_2 - (One Shot) - ogg version</a>
+<a class="waveform" href="https://freesound.org/data/displays/541/541498_9497060_wave_M.png" title="waveform file">MSfxP9 - 91_2 - (One Shot) - waveform</a>
+<a class="spectrum" href="https://freesound.org/data/displays/541/541498_9497060_spec_M.jpg" title="spectrogram file">MSfxP9 - 91_2 - (One Shot) - spectrogram</a>
+<span class="duration" title="duration in seconds">1583.51</span>
+
+    </div>
+<div class="controls">                     <a href="javascript:void(0)" title="play / pause" class="toggle play">play / pause</a>                     <a href="javascript:void(0)" title="loop" class="toggle loop">loop</a>                 </div>                 <div class="background" style="background-image: url(&quot;/data/displays/541/541498_9497060_wave_M.png&quot;); background-size: contain; background-repeat: no-repeat;"></div>                 <div class="loading-progress" style="display: none;"></div>                 <div class="position-indicator"></div>                 <div class="time-indicator-container"><div class="time-indicator">-00:01</div></div></div>
+
+        </div><!-- .small_player -->
+
+        <div class="sound_title">
+            <div class="sound_filename">
+               <a class="title" href="https://freesound.org/people/Erokia/sounds/541498/" title="MSfxP9 - 91_2 - (One Shot)">MSfxP9 - 91_2 - (One Shot)</a>
+            </div><!-- .sound_filename -->
+            <div class="sound_stars">
+               <ul class="star-rating">
+    <li class="current-rating" style="width:0%;">Currently /5 Stars.</li>
+    
+</ul>
+            </div><!-- .sound_stars -->
+
+            <div class="sound_description">
+                <p class="description"><b></b>This sound or sounds was created through the help of VST's, time shifting, parametric EQ, cutting, sampling, layering and many ...</p>
+            </div><!-- .sound_description -->
+
+            <div class="sound_tags">
+
+                <ul class="tags">
+                    
+                        <li><a href="https://freesound.org/browse/tags/shot/">shot</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/ambiance/">ambiance</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/one/">one</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/ambient/">ambient</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/vst/">vst</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/electronic/">electronic</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/shapes/">shapes</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/sharper/">sharper</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/electronica/">electronica</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/delay/">delay</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/pad/">pad</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/synth/">synth</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/music/">music</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/piano/">piano</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/roll/">roll</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/modulation/">modulation</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/envelope/">envelope</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/effect/">effect</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/studio/">studio</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/drums/">drums</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/fl/">fl</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/sound/">sound</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/filter/">filter</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/reverb/">reverb</a></li>
+                    
+                </ul>
+                <br style="clear: both;">
+
+            </div><!-- .sound_tags -->
+
+            <div id="bookmark_form_541498" class="bookmark_form"></div> <!-- to be filled dynamically with ajax -->
+
+            
+
+          </div><!-- .sound_title -->
+    </div><!-- .sample_player -->
+
+    <div class="sample_information ">
+        <a class="user" href="https://freesound.org/people/Erokia/">Erokia</a><br>
+        <span class="date">October 29th, 2020</span><br>
+        <span class="download_count"><a href="https://freesound.org/people/Erokia/sounds/541498/downloaders/">20 downloads</a></span><br>
+        <a class="comments" href="https://freesound.org/people/Erokia/sounds/541498/#comments">1 comment</a>
+
+        <div class="sound_attributes">
+
+            
+
+            
+            <a class="similar" rel="nofollow" href="https://freesound.org/people/Erokia/sounds/541498/similar/">
+                <img src="./spannend_files/headphone--plus.png" width="16" height="16" alt="Similar" title="Similar Sounds">
+            </a>
+            
+            
+            <a class="pack" href="https://freesound.org/people/Erokia/packs/30329/">
+                <img src="./spannend_files/folder-open-document-music.png" width="16" height="16" alt="Pack" title="This sound belongs to the pack: Erokia - MSfxp9 Sounds (Pack 9)">
+            </a>
+            
+            
+            
+            <!-- license icons -->
+            
+            
+            
+            
+                <img class="cc_license" src="./spannend_files/bync.png" height="16" alt="Creative Commons Attribution Non-Commercial license" title="This sound is licensed under the Creative Commons Attribution Non-Commercial license.">
+            
+            <!-- /license icons -->
+
+        </div><!-- .sound_attributes -->
+    </div><!-- .sample_information -->
+</div><!-- .sample_player_small -->
+
+
+
+
+
+
+                
+                        <div class="sample_more_search_results"><img src="./spannend_files/plus.png" alt=""> <a href="https://freesound.org/search/?q=&amp;f=grouping_pack:%2230329_Erokia%20-%20MSfxp9%20Sounds%20(Pack%209)%22%20&amp;s=%22created%20desc%22&amp;g=1&amp;advanced=&amp;a_tag=&amp;a_filename=&amp;a_description=&amp;a_packname=&amp;a_soundid=&amp;a_username=">16 more results</a> in the same pack "Erokia - MSfxp9 Sounds (Pack 9)"</div>
+                
+            
+                
+
+
+
+
+
+
+
+<div class="sample_player_small" id="541497">
+
+    
+
+    <div class="sample_player ">
+        <div class="small_player">
+            <div class="player small">
+    <div class="metadata">
+        <a class="mp3_file" href="https://freesound.org/data/previews/541/541497_2061858-lq.mp3" title="mp3 file">Sharpie Edding pencil on paper sound effect - mp3 version</a>
+<a class="ogg_file" href="https://freesound.org/data/previews/541/541497_2061858-lq.ogg" title="ogg file">Sharpie Edding pencil on paper sound effect - ogg version</a>
+<a class="waveform" href="https://freesound.org/data/displays/541/541497_2061858_wave_M.png" title="waveform file">Sharpie Edding pencil on paper sound effect - waveform</a>
+<a class="spectrum" href="https://freesound.org/data/displays/541/541497_2061858_spec_M.jpg" title="spectrogram file">Sharpie Edding pencil on paper sound effect - spectrogram</a>
+<span class="duration" title="duration in seconds">29893.1</span>
+
+    </div>
+<div class="controls">                     <a href="javascript:void(0)" title="play / pause" class="toggle play">play / pause</a>                     <a href="javascript:void(0)" title="loop" class="toggle loop">loop</a>                 </div>                 <div class="background" style="background-image: url(&quot;/data/displays/541/541497_2061858_wave_M.png&quot;); background-size: contain; background-repeat: no-repeat;"></div>                 <div class="loading-progress" style="display: none;"></div>                 <div class="position-indicator"></div>                 <div class="time-indicator-container"><div class="time-indicator">-00:29</div></div></div>
+
+        </div><!-- .small_player -->
+
+        <div class="sound_title">
+            <div class="sound_filename">
+               <a class="title" href="https://freesound.org/people/Garuda1982/sounds/541497/" title="Sharpie Edding pencil on paper sound effect">Sharpie Edding pencil on...</a>
+            </div><!-- .sound_filename -->
+            <div class="sound_stars">
+               <ul class="star-rating">
+    <li class="current-rating" style="width:0%;">Currently /5 Stars.</li>
+    
+</ul>
+            </div><!-- .sound_stars -->
+
+            <div class="sound_description">
+                <p class="description"><b></b>Sharpie Edding pencil on paper sound effect recorded with zoom f4 and audio technica 4022. All sound are free. But ...</p>
+            </div><!-- .sound_description -->
+
+            <div class="sound_tags">
+
+                <ul class="tags">
+                    
+                        <li><a href="https://freesound.org/browse/tags/pencil/">pencil</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/draw/">draw</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/picture/">picture</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/blackboard/">blackboard</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/lines/">lines</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/arts/">arts</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/sharpie/">sharpie</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/drawing/">drawing</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/edding/">edding</a></li>
+                    
+                </ul>
+                <br style="clear: both;">
+
+            </div><!-- .sound_tags -->
+
+            <div id="bookmark_form_541497" class="bookmark_form"></div> <!-- to be filled dynamically with ajax -->
+
+            
+
+          </div><!-- .sound_title -->
+    </div><!-- .sample_player -->
+
+    <div class="sample_information ">
+        <a class="user" href="https://freesound.org/people/Garuda1982/">Garuda1982</a><br>
+        <span class="date">October 29th, 2020</span><br>
+        <span class="download_count"><a href="https://freesound.org/people/Garuda1982/sounds/541497/downloaders/">2 downloads</a></span><br>
+        <a class="comments" href="https://freesound.org/people/Garuda1982/sounds/541497/#comments">0 comments</a>
+
+        <div class="sound_attributes">
+
+            
+
+            
+            <a class="similar" rel="nofollow" href="https://freesound.org/people/Garuda1982/sounds/541497/similar/">
+                <img src="./spannend_files/headphone--plus.png" width="16" height="16" alt="Similar" title="Similar Sounds">
+            </a>
+            
+            
+            
+            
+            <!-- license icons -->
+            
+            
+            
+                <img class="cc_license" src="./spannend_files/by.png" width="16" height="16" alt="Creative Commons Attribution license" title="This sound is licensed under the Creative Commons Attribution license.">
+            
+            
+            <!-- /license icons -->
+
+        </div><!-- .sound_attributes -->
+    </div><!-- .sample_information -->
+</div><!-- .sample_player_small -->
+
+
+
+
+
+
+                
+            
+                
+
+
+
+
+
+
+
+<div class="sample_player_small" id="541496">
+
+    
+
+    <div class="sample_player ">
+        <div class="small_player">
+            <div class="player small">
+    <div class="metadata">
+        <a class="mp3_file" href="https://freesound.org/data/previews/541/541496_2061858-lq.mp3" title="mp3 file">velcro pull sound effect - mp3 version</a>
+<a class="ogg_file" href="https://freesound.org/data/previews/541/541496_2061858-lq.ogg" title="ogg file">velcro pull sound effect - ogg version</a>
+<a class="waveform" href="https://freesound.org/data/displays/541/541496_2061858_wave_M.png" title="waveform file">velcro pull sound effect - waveform</a>
+<a class="spectrum" href="https://freesound.org/data/displays/541/541496_2061858_spec_M.jpg" title="spectrogram file">velcro pull sound effect - spectrogram</a>
+<span class="duration" title="duration in seconds">23410.6</span>
+
+    </div>
+<div class="controls">                     <a href="javascript:void(0)" title="play / pause" class="toggle play">play / pause</a>                     <a href="javascript:void(0)" title="loop" class="toggle loop">loop</a>                 </div>                 <div class="background" style="background-image: url(&quot;/data/displays/541/541496_2061858_wave_M.png&quot;); background-size: contain; background-repeat: no-repeat;"></div>                 <div class="loading-progress" style="display: none;"></div>                 <div class="position-indicator"></div>                 <div class="time-indicator-container"><div class="time-indicator">-00:23</div></div></div>
+
+        </div><!-- .small_player -->
+
+        <div class="sound_title">
+            <div class="sound_filename">
+               <a class="title" href="https://freesound.org/people/Garuda1982/sounds/541496/" title="velcro pull sound effect">velcro pull sound effect</a>
+            </div><!-- .sound_filename -->
+            <div class="sound_stars">
+               <ul class="star-rating">
+    <li class="current-rating" style="width:0%;">Currently /5 Stars.</li>
+    
+</ul>
+            </div><!-- .sound_stars -->
+
+            <div class="sound_description">
+                <p class="description"><b></b>velcro sound effect recorded with zoom f4 and audio technica 4022 All sound are free. But if you like to ...</p>
+            </div><!-- .sound_description -->
+
+            <div class="sound_tags">
+
+                <ul class="tags">
+                    
+                        <li><a href="https://freesound.org/browse/tags/pull/">pull</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/off/">off</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/fabric/">fabric</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/tear/">tear</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/rip/">rip</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/velcro/">velcro</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/put/">put</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/tearing/">tearing</a></li>
+                    
+                </ul>
+                <br style="clear: both;">
+
+            </div><!-- .sound_tags -->
+
+            <div id="bookmark_form_541496" class="bookmark_form"></div> <!-- to be filled dynamically with ajax -->
+
+            
+
+          </div><!-- .sound_title -->
+    </div><!-- .sample_player -->
+
+    <div class="sample_information ">
+        <a class="user" href="https://freesound.org/people/Garuda1982/">Garuda1982</a><br>
+        <span class="date">October 29th, 2020</span><br>
+        <span class="download_count"><a href="https://freesound.org/people/Garuda1982/sounds/541496/downloaders/">2 downloads</a></span><br>
+        <a class="comments" href="https://freesound.org/people/Garuda1982/sounds/541496/#comments">0 comments</a>
+
+        <div class="sound_attributes">
+
+            
+
+            
+            <a class="similar" rel="nofollow" href="https://freesound.org/people/Garuda1982/sounds/541496/similar/">
+                <img src="./spannend_files/headphone--plus.png" width="16" height="16" alt="Similar" title="Similar Sounds">
+            </a>
+            
+            
+            
+            
+            <!-- license icons -->
+            
+            
+            
+                <img class="cc_license" src="./spannend_files/by.png" width="16" height="16" alt="Creative Commons Attribution license" title="This sound is licensed under the Creative Commons Attribution license.">
+            
+            
+            <!-- /license icons -->
+
+        </div><!-- .sound_attributes -->
+    </div><!-- .sample_information -->
+</div><!-- .sample_player_small -->
+
+
+
+
+
+
+                
+            
+                
+
+
+
+
+
+
+
+<div class="sample_player_small" id="541495">
+
+    
+
+    <div class="sample_player ">
+        <div class="small_player">
+            <div class="player small">
+    <div class="metadata">
+        <a class="mp3_file" href="https://freesound.org/data/previews/541/541495_1015240-lq.mp3" title="mp3 file">like domestic video-tape noise.flac - mp3 version</a>
+<a class="ogg_file" href="https://freesound.org/data/previews/541/541495_1015240-lq.ogg" title="ogg file">like domestic video-tape noise.flac - ogg version</a>
+<a class="waveform" href="https://freesound.org/data/displays/541/541495_1015240_wave_M.png" title="waveform file">like domestic video-tape noise.flac - waveform</a>
+<a class="spectrum" href="https://freesound.org/data/displays/541/541495_1015240_spec_M.jpg" title="spectrogram file">like domestic video-tape noise.flac - spectrogram</a>
+<span class="duration" title="duration in seconds">75217.8</span>
+
+    </div>
+<div class="controls">                     <a href="javascript:void(0)" title="play / pause" class="toggle play">play / pause</a>                     <a href="javascript:void(0)" title="loop" class="toggle loop">loop</a>                 </div>                 <div class="background" style="background-image: url(&quot;/data/displays/541/541495_1015240_wave_M.png&quot;); background-size: contain; background-repeat: no-repeat;"></div>                 <div class="loading-progress" style="display: none;"></div>                 <div class="position-indicator"></div>                 <div class="time-indicator-container"><div class="time-indicator">-01:15</div></div></div>
+
+        </div><!-- .small_player -->
+
+        <div class="sound_title">
+            <div class="sound_filename">
+               <a class="title" href="https://freesound.org/people/Timbre/sounds/541495/" title="like domestic video-tape noise.flac">like domestic video-tape...</a>
+            </div><!-- .sound_filename -->
+            <div class="sound_stars">
+               <ul class="star-rating">
+    <li class="current-rating" style="width:0%;">Currently /5 Stars.</li>
+    
+</ul>
+            </div><!-- .sound_stars -->
+
+            <div class="sound_description">
+                <p class="description"><b></b>Synthesised hiss noise similar to a VHS cassette,</p>
+            </div><!-- .sound_description -->
+
+            <div class="sound_tags">
+
+                <ul class="tags">
+                    
+                        <li><a href="https://freesound.org/browse/tags/noise/">noise</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/vintage/">vintage</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/lo-fi/">lo-fi</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/VHS/">VHS</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/video/">video</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/retro/">retro</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/hiss/">hiss</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/tape/">tape</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/cassette/">cassette</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/old/">old</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/analogue/">analogue</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/electronic/">electronic</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/analog/">analog</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/soft/">soft</a></li>
+                    
+                </ul>
+                <br style="clear: both;">
+
+            </div><!-- .sound_tags -->
+
+            <div id="bookmark_form_541495" class="bookmark_form"></div> <!-- to be filled dynamically with ajax -->
+
+            
+
+          </div><!-- .sound_title -->
+    </div><!-- .sample_player -->
+
+    <div class="sample_information ">
+        <a class="user" href="https://freesound.org/people/Timbre/">Timbre</a><br>
+        <span class="date">October 29th, 2020</span><br>
+        <span class="download_count"><a href="https://freesound.org/people/Timbre/sounds/541495/downloaders/">15 downloads</a></span><br>
+        <a class="comments" href="https://freesound.org/people/Timbre/sounds/541495/#comments">0 comments</a>
+
+        <div class="sound_attributes">
+
+            
+
+            
+            <a class="similar" rel="nofollow" href="https://freesound.org/people/Timbre/sounds/541495/similar/">
+                <img src="./spannend_files/headphone--plus.png" width="16" height="16" alt="Similar" title="Similar Sounds">
+            </a>
+            
+            
+            <a class="pack" href="https://freesound.org/people/Timbre/packs/28335/">
+                <img src="./spannend_files/folder-open-document-music.png" width="16" height="16" alt="Pack" title="This sound belongs to the pack: straight-to-video">
+            </a>
+            
+            
+            
+            <!-- license icons -->
+            
+            
+            
+            
+                <img class="cc_license" src="./spannend_files/bync.png" height="16" alt="Creative Commons Attribution Non-Commercial license" title="This sound is licensed under the Creative Commons Attribution Non-Commercial license.">
+            
+            <!-- /license icons -->
+
+        </div><!-- .sound_attributes -->
+    </div><!-- .sample_information -->
+</div><!-- .sample_player_small -->
+
+
+
+
+
+
+                
+                        <div class="sample_more_search_results"><img src="./spannend_files/plus.png" alt=""> <a href="https://freesound.org/search/?q=&amp;f=grouping_pack:%2228335_straight-to-video%22%20&amp;s=%22created%20desc%22&amp;g=1&amp;advanced=&amp;a_tag=&amp;a_filename=&amp;a_description=&amp;a_packname=&amp;a_soundid=&amp;a_username=">3 more results</a> in the same pack "straight-to-video"</div>
+                
+            
+                
+
+
+
+
+
+
+
+<div class="sample_player_small" id="541494">
+
+    
+
+    <div class="sample_player ">
+        <div class="small_player">
+            <div class="player small">
+    <div class="metadata">
+        <a class="mp3_file" href="https://freesound.org/data/previews/541/541494_10002830-lq.mp3" title="mp3 file">201007_0447-junakuulutus.WAV - mp3 version</a>
+<a class="ogg_file" href="https://freesound.org/data/previews/541/541494_10002830-lq.ogg" title="ogg file">201007_0447-junakuulutus.WAV - ogg version</a>
+<a class="waveform" href="https://freesound.org/data/displays/541/541494_10002830_wave_M.png" title="waveform file">201007_0447-junakuulutus.WAV - waveform</a>
+<a class="spectrum" href="https://freesound.org/data/displays/541/541494_10002830_spec_M.jpg" title="spectrogram file">201007_0447-junakuulutus.WAV - spectrogram</a>
+<span class="duration" title="duration in seconds">126414.0</span>
+
+    </div>
+<div class="controls">                     <a href="javascript:void(0)" title="play / pause" class="toggle play">play / pause</a>                     <a href="javascript:void(0)" title="loop" class="toggle loop">loop</a>                 </div>                 <div class="background" style="background-image: url(&quot;/data/displays/541/541494_10002830_wave_M.png&quot;); background-size: contain; background-repeat: no-repeat;"></div>                 <div class="loading-progress" style="display: none;"></div>                 <div class="position-indicator"></div>                 <div class="time-indicator-container"><div class="time-indicator">-02:06</div></div></div>
+
+        </div><!-- .small_player -->
+
+        <div class="sound_title">
+            <div class="sound_filename">
+               <a class="title" href="https://freesound.org/people/visanoronen/sounds/541494/" title="201007_0447-junakuulutus.WAV">201007_0447-junakuulutus...</a>
+            </div><!-- .sound_filename -->
+            <div class="sound_stars">
+               <ul class="star-rating">
+    <li class="current-rating" style="width:0%;">Currently /5 Stars.</li>
+    
+</ul>
+            </div><!-- .sound_stars -->
+
+            <div class="sound_description">
+                <p class="description"><b></b>Announcement on a train from Amsterdam to Frankfurt. The announcement includes corona travelling information. Recorded in the afternoon on Wednesday, ...</p>
+            </div><!-- .sound_description -->
+
+            <div class="sound_tags">
+
+                <ul class="tags">
+                    
+                        <li><a href="https://freesound.org/browse/tags/announcement/">announcement</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/corona/">corona</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/train/">train</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/coronavirus/">coronavirus</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/Utrecht/">Utrecht</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/Frankfurt/">Frankfurt</a></li>
+                    
+                </ul>
+                <br style="clear: both;">
+
+            </div><!-- .sound_tags -->
+
+            <div id="bookmark_form_541494" class="bookmark_form"></div> <!-- to be filled dynamically with ajax -->
+
+            
+
+          </div><!-- .sound_title -->
+    </div><!-- .sample_player -->
+
+    <div class="sample_information ">
+        <a class="user" href="https://freesound.org/people/visanoronen/">visanoronen</a><br>
+        <span class="date">October 29th, 2020</span><br>
+        <span class="download_count"><a href="https://freesound.org/people/visanoronen/sounds/541494/downloaders/">0 downloads</a></span><br>
+        <a class="comments" href="https://freesound.org/people/visanoronen/sounds/541494/#comments">0 comments</a>
+
+        <div class="sound_attributes">
+
+            
+
+            
+            <a class="similar" rel="nofollow" href="https://freesound.org/people/visanoronen/sounds/541494/similar/">
+                <img src="./spannend_files/headphone--plus.png" width="16" height="16" alt="Similar" title="Similar Sounds">
+            </a>
+            
+            
+            
+            
+            <a class="geotag" href="https://freesound.org/people/visanoronen/sounds/541494/geotag/">
+                <img src="./spannend_files/geotag.png" width="16" height="16" alt="Geotagged" title="This sound has a geotag">
+            </a>
+            
+            <!-- license icons -->
+            
+            
+                <img class="cc_license" src="./spannend_files/nolaw.png" width="16" height="16" alt="Public Domain license" title="This sound is public domain.">
+            
+            
+            
+            <!-- /license icons -->
+
+        </div><!-- .sound_attributes -->
+    </div><!-- .sample_information -->
+</div><!-- .sample_player_small -->
+
+
+
+
+
+
+                
+            
+                
+
+
+
+
+
+
+
+<div class="sample_player_small" id="541493">
+
+    
+
+    <div class="sample_player ">
+        <div class="small_player">
+            <div class="player small">
+    <div class="metadata">
+        <a class="mp3_file" href="https://freesound.org/data/previews/541/541493_10147508-lq.mp3" title="mp3 file">Minimal animation e-music fragment.wav - mp3 version</a>
+<a class="ogg_file" href="https://freesound.org/data/previews/541/541493_10147508-lq.ogg" title="ogg file">Minimal animation e-music fragment.wav - ogg version</a>
+<a class="waveform" href="https://freesound.org/data/displays/541/541493_10147508_wave_M.png" title="waveform file">Minimal animation e-music fragment.wav - waveform</a>
+<a class="spectrum" href="https://freesound.org/data/displays/541/541493_10147508_spec_M.jpg" title="spectrogram file">Minimal animation e-music fragment.wav - spectrogram</a>
+<span class="duration" title="duration in seconds">109490.0</span>
+
+    </div>
+<div class="controls">                     <a href="javascript:void(0)" title="play / pause" class="toggle play">play / pause</a>                     <a href="javascript:void(0)" title="loop" class="toggle loop">loop</a>                 </div>                 <div class="background" style="background-image: url(&quot;/data/displays/541/541493_10147508_wave_M.png&quot;); background-size: contain; background-repeat: no-repeat;"></div>                 <div class="loading-progress" style="display: none;"></div>                 <div class="position-indicator"></div>                 <div class="time-indicator-container"><div class="time-indicator">-01:49</div></div></div>
+
+        </div><!-- .small_player -->
+
+        <div class="sound_title">
+            <div class="sound_filename">
+               <a class="title" href="https://freesound.org/people/Clacksberg/sounds/541493/" title="Minimal animation e-music fragment.wav">Minimal animation e-musi...</a>
+            </div><!-- .sound_filename -->
+            <div class="sound_stars">
+               <ul class="star-rating">
+    <li class="current-rating" style="width:0%;">Currently /5 Stars.</li>
+    
+</ul>
+            </div><!-- .sound_stars -->
+
+            <div class="sound_description">
+                <p class="description"><b></b>Synth/Arpeggiator minimal animation music. Retro(ish) like chip tune.</p>
+            </div><!-- .sound_description -->
+
+            <div class="sound_tags">
+
+                <ul class="tags">
+                    
+                        <li><a href="https://freesound.org/browse/tags/Arpeggiator/">Arpeggiator</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/music/">music</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/animation/">animation</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/electronic/">electronic</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/Minimal/">Minimal</a></li>
+                    
+                </ul>
+                <br style="clear: both;">
+
+            </div><!-- .sound_tags -->
+
+            <div id="bookmark_form_541493" class="bookmark_form"></div> <!-- to be filled dynamically with ajax -->
+
+            
+
+          </div><!-- .sound_title -->
+    </div><!-- .sample_player -->
+
+    <div class="sample_information ">
+        <a class="user" href="https://freesound.org/people/Clacksberg/">Clacksberg</a><br>
+        <span class="date">October 29th, 2020</span><br>
+        <span class="download_count"><a href="https://freesound.org/people/Clacksberg/sounds/541493/downloaders/">1 download</a></span><br>
+        <a class="comments" href="https://freesound.org/people/Clacksberg/sounds/541493/#comments">0 comments</a>
+
+        <div class="sound_attributes">
+
+            
+
+            
+            <a class="similar" rel="nofollow" href="https://freesound.org/people/Clacksberg/sounds/541493/similar/">
+                <img src="./spannend_files/headphone--plus.png" width="16" height="16" alt="Similar" title="Similar Sounds">
+            </a>
+            
+            
+            
+            
+            <!-- license icons -->
+            
+            
+                <img class="cc_license" src="./spannend_files/nolaw.png" width="16" height="16" alt="Public Domain license" title="This sound is public domain.">
+            
+            
+            
+            <!-- /license icons -->
+
+        </div><!-- .sound_attributes -->
+    </div><!-- .sample_information -->
+</div><!-- .sample_player_small -->
+
+
+
+
+
+
+                
+            
+                
+
+
+
+
+
+
+
+<div class="sample_player_small" id="541492">
+
+    
+
+    <div class="sample_player ">
+        <div class="small_player">
+            <div class="player small">
+    <div class="metadata">
+        <a class="mp3_file" href="https://freesound.org/data/previews/541/541492_2200015-lq.mp3" title="mp3 file">Knocking_Wooden_Door.wav - mp3 version</a>
+<a class="ogg_file" href="https://freesound.org/data/previews/541/541492_2200015-lq.ogg" title="ogg file">Knocking_Wooden_Door.wav - ogg version</a>
+<a class="waveform" href="https://freesound.org/data/displays/541/541492_2200015_wave_M.png" title="waveform file">Knocking_Wooden_Door.wav - waveform</a>
+<a class="spectrum" href="https://freesound.org/data/displays/541/541492_2200015_spec_M.jpg" title="spectrogram file">Knocking_Wooden_Door.wav - spectrogram</a>
+<span class="duration" title="duration in seconds">1592.9</span>
+
+    </div>
+<div class="controls">                     <a href="javascript:void(0)" title="play / pause" class="toggle play">play / pause</a>                     <a href="javascript:void(0)" title="loop" class="toggle loop">loop</a>                 </div>                 <div class="background" style="background-image: url(&quot;/data/displays/541/541492_2200015_wave_M.png&quot;); background-size: contain; background-repeat: no-repeat;"></div>                 <div class="loading-progress" style="display: none;"></div>                 <div class="position-indicator"></div>                 <div class="time-indicator-container"><div class="time-indicator">-00:01</div></div></div>
+
+        </div><!-- .small_player -->
+
+        <div class="sound_title">
+            <div class="sound_filename">
+               <a class="title" href="https://freesound.org/people/Islabonita/sounds/541492/" title="Knocking_Wooden_Door.wav">Knocking_Wooden_Door.wav</a>
+            </div><!-- .sound_filename -->
+            <div class="sound_stars">
+               <ul class="star-rating">
+    <li class="current-rating" style="width:0%;">Currently /5 Stars.</li>
+    
+</ul>
+            </div><!-- .sound_stars -->
+
+            <div class="sound_description">
+                <p class="description"><b></b>Moderate/soft knocking on a wooden door</p>
+            </div><!-- .sound_description -->
+
+            <div class="sound_tags">
+
+                <ul class="tags">
+                    
+                        <li><a href="https://freesound.org/browse/tags/wooden/">wooden</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/knock/">knock</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/wood/">wood</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/knocking/">knocking</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/door/">door</a></li>
+                    
+                </ul>
+                <br style="clear: both;">
+
+            </div><!-- .sound_tags -->
+
+            <div id="bookmark_form_541492" class="bookmark_form"></div> <!-- to be filled dynamically with ajax -->
+
+            
+
+          </div><!-- .sound_title -->
+    </div><!-- .sample_player -->
+
+    <div class="sample_information ">
+        <a class="user" href="https://freesound.org/people/Islabonita/">Islabonita</a><br>
+        <span class="date">October 29th, 2020</span><br>
+        <span class="download_count"><a href="https://freesound.org/people/Islabonita/sounds/541492/downloaders/">13 downloads</a></span><br>
+        <a class="comments" href="https://freesound.org/people/Islabonita/sounds/541492/#comments">0 comments</a>
+
+        <div class="sound_attributes">
+
+            
+
+            
+            <a class="similar" rel="nofollow" href="https://freesound.org/people/Islabonita/sounds/541492/similar/">
+                <img src="./spannend_files/headphone--plus.png" width="16" height="16" alt="Similar" title="Similar Sounds">
+            </a>
+            
+            
+            
+            
+            <!-- license icons -->
+            
+            
+                <img class="cc_license" src="./spannend_files/nolaw.png" width="16" height="16" alt="Public Domain license" title="This sound is public domain.">
+            
+            
+            
+            <!-- /license icons -->
+
+        </div><!-- .sound_attributes -->
+    </div><!-- .sample_information -->
+</div><!-- .sample_player_small -->
+
+
+
+
+
+
+                
+            
+                
+
+
+
+
+
+
+
+<div class="sample_player_small" id="541491">
+
+    
+
+    <div class="sample_player ">
+        <div class="small_player">
+            <div class="player small">
+    <div class="metadata">
+        <a class="mp3_file" href="https://freesound.org/data/previews/541/541491_10002830-lq.mp3" title="mp3 file">201006_0430-kellot.WAV - mp3 version</a>
+<a class="ogg_file" href="https://freesound.org/data/previews/541/541491_10002830-lq.ogg" title="ogg file">201006_0430-kellot.WAV - ogg version</a>
+<a class="waveform" href="https://freesound.org/data/displays/541/541491_10002830_wave_M.png" title="waveform file">201006_0430-kellot.WAV - waveform</a>
+<a class="spectrum" href="https://freesound.org/data/displays/541/541491_10002830_spec_M.jpg" title="spectrogram file">201006_0430-kellot.WAV - spectrogram</a>
+<span class="duration" title="duration in seconds">64046.3</span>
+
+    </div>
+<div class="controls">                     <a href="javascript:void(0)" title="play / pause" class="toggle play">play / pause</a>                     <a href="javascript:void(0)" title="loop" class="toggle loop">loop</a>                 </div>                 <div class="background" style="background-image: url(&quot;/data/displays/541/541491_10002830_wave_M.png&quot;); background-size: contain; background-repeat: no-repeat;"></div>                 <div class="loading-progress" style="display: none;"></div>                 <div class="position-indicator"></div>                 <div class="time-indicator-container"><div class="time-indicator">-01:04</div></div></div>
+
+        </div><!-- .small_player -->
+
+        <div class="sound_title">
+            <div class="sound_filename">
+               <a class="title" href="https://freesound.org/people/visanoronen/sounds/541491/" title="201006_0430-kellot.WAV">201006_0430-kellot.WAV</a>
+            </div><!-- .sound_filename -->
+            <div class="sound_stars">
+               <ul class="star-rating">
+    <li class="current-rating" style="width:0%;">Currently /5 Stars.</li>
+    
+</ul>
+            </div><!-- .sound_stars -->
+
+            <div class="sound_description">
+                <p class="description"><b></b>The bell is ringing at the Large Church Breda (Grote Kerk Breda). Recorded on Torenstraat next to the church at ...</p>
+            </div><!-- .sound_description -->
+
+            <div class="sound_tags">
+
+                <ul class="tags">
+                    
+                        <li><a href="https://freesound.org/browse/tags/breda/">breda</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/ring/">ring</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/church/">church</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/bell/">bell</a></li>
+                    
+                </ul>
+                <br style="clear: both;">
+
+            </div><!-- .sound_tags -->
+
+            <div id="bookmark_form_541491" class="bookmark_form"></div> <!-- to be filled dynamically with ajax -->
+
+            
+
+          </div><!-- .sound_title -->
+    </div><!-- .sample_player -->
+
+    <div class="sample_information ">
+        <a class="user" href="https://freesound.org/people/visanoronen/">visanoronen</a><br>
+        <span class="date">October 29th, 2020</span><br>
+        <span class="download_count"><a href="https://freesound.org/people/visanoronen/sounds/541491/downloaders/">0 downloads</a></span><br>
+        <a class="comments" href="https://freesound.org/people/visanoronen/sounds/541491/#comments">0 comments</a>
+
+        <div class="sound_attributes">
+
+            
+
+            
+            <a class="similar" rel="nofollow" href="https://freesound.org/people/visanoronen/sounds/541491/similar/">
+                <img src="./spannend_files/headphone--plus.png" width="16" height="16" alt="Similar" title="Similar Sounds">
+            </a>
+            
+            
+            
+            
+            <a class="geotag" href="https://freesound.org/people/visanoronen/sounds/541491/geotag/">
+                <img src="./spannend_files/geotag.png" width="16" height="16" alt="Geotagged" title="This sound has a geotag">
+            </a>
+            
+            <!-- license icons -->
+            
+            
+                <img class="cc_license" src="./spannend_files/nolaw.png" width="16" height="16" alt="Public Domain license" title="This sound is public domain.">
+            
+            
+            
+            <!-- /license icons -->
+
+        </div><!-- .sound_attributes -->
+    </div><!-- .sample_information -->
+</div><!-- .sample_player_small -->
+
+
+
+
+
+
+                
+            
+                
+
+
+
+
+
+
+
+<div class="sample_player_small" id="541490">
+
+    
+
+    <div class="sample_player ">
+        <div class="small_player">
+            <div class="player small">
+    <div class="metadata">
+        <a class="mp3_file" href="https://freesound.org/data/previews/541/541490_1015240-lq.mp3" title="mp3 file">nine-nine yards (it's so free) remix of BaDoink's Freesound #541413.flac - mp3 version</a>
+<a class="ogg_file" href="https://freesound.org/data/previews/541/541490_1015240-lq.ogg" title="ogg file">nine-nine yards (it's so free) remix of BaDoink's Freesound #541413.flac - ogg version</a>
+<a class="waveform" href="https://freesound.org/data/displays/541/541490_1015240_wave_M.png" title="waveform file">nine-nine yards (it's so free) remix of BaDoink's Freesound #541413.flac - waveform</a>
+<a class="spectrum" href="https://freesound.org/data/displays/541/541490_1015240_spec_M.jpg" title="spectrogram file">nine-nine yards (it's so free) remix of BaDoink's Freesound #541413.flac - spectrogram</a>
+<span class="duration" title="duration in seconds">68315.6</span>
+
+    </div>
+<div class="controls">                     <a href="javascript:void(0)" title="play / pause" class="toggle play">play / pause</a>                     <a href="javascript:void(0)" title="loop" class="toggle loop">loop</a>                 </div>                 <div class="background" style="background-image: url(&quot;/data/displays/541/541490_1015240_wave_M.png&quot;); background-size: contain; background-repeat: no-repeat;"></div>                 <div class="loading-progress" style="display: none;"></div>                 <div class="position-indicator"></div>                 <div class="time-indicator-container"><div class="time-indicator">-01:08</div></div></div>
+
+        </div><!-- .small_player -->
+
+        <div class="sound_title">
+            <div class="sound_filename">
+               <a class="title" href="https://freesound.org/people/Timbre/sounds/541490/" title="nine-nine yards (it&#39;s so free) remix of BaDoink&#39;s Freesound #541413.flac">nine-nine yards (it's so...</a>
+            </div><!-- .sound_filename -->
+            <div class="sound_stars">
+               <ul class="star-rating">
+    <li class="current-rating" style="width:0%;">Currently /5 Stars.</li>
+    
+</ul>
+            </div><!-- .sound_stars -->
+
+            <div class="sound_description">
+                <p class="description"><b></b>LOUD loopable remix of excerpt of BaDoink's Freesound #541413</p>
+            </div><!-- .sound_description -->
+
+            <div class="sound_tags">
+
+                <ul class="tags">
+                    
+                        <li><a href="https://freesound.org/browse/tags/remix/">remix</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/drums/">drums</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/grains/">grains</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/loop/">loop</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/BaDoink/">BaDoink</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/beat/">beat</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/electronic/">electronic</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/loud/">loud</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/spatial/">spatial</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/541413/">541413</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/loopable/">loopable</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/granular/">granular</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/music/">music</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/processed/">processed</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/rhythm/">rhythm</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/rock/">rock</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/weird/">weird</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/pareidolia/">pareidolia</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/binaural/">binaural</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/stretched/">stretched</a></li>
+                    
+                </ul>
+                <br style="clear: both;">
+
+            </div><!-- .sound_tags -->
+
+            <div id="bookmark_form_541490" class="bookmark_form"></div> <!-- to be filled dynamically with ajax -->
+
+            
+
+          </div><!-- .sound_title -->
+    </div><!-- .sample_player -->
+
+    <div class="sample_information ">
+        <a class="user" href="https://freesound.org/people/Timbre/">Timbre</a><br>
+        <span class="date">October 29th, 2020</span><br>
+        <span class="download_count"><a href="https://freesound.org/people/Timbre/sounds/541490/downloaders/">5 downloads</a></span><br>
+        <a class="comments" href="https://freesound.org/people/Timbre/sounds/541490/#comments">0 comments</a>
+
+        <div class="sound_attributes">
+
+            
+
+            
+            <a class="similar" rel="nofollow" href="https://freesound.org/people/Timbre/sounds/541490/similar/">
+                <img src="./spannend_files/headphone--plus.png" width="16" height="16" alt="Similar" title="Similar Sounds">
+            </a>
+            
+            
+            <a class="pack" href="https://freesound.org/people/Timbre/packs/13681/">
+                <img src="./spannend_files/folder-open-document-music.png" width="16" height="16" alt="Pack" title="This sound belongs to the pack: Spinning in 3D (binaural)">
+            </a>
+            
+            
+             <a class="remixes" href="https://freesound.org/people/Timbre/sounds/541490/remixes/">
+                <img src="./spannend_files/remixes.png" width="16" height="16" alt="Remixes" title="This sound has remixes">
+            </a>
+            
+            
+            <!-- license icons -->
+            
+            
+            
+            
+                <img class="cc_license" src="./spannend_files/bync.png" height="16" alt="Creative Commons Attribution Non-Commercial license" title="This sound is licensed under the Creative Commons Attribution Non-Commercial license.">
+            
+            <!-- /license icons -->
+
+        </div><!-- .sound_attributes -->
+    </div><!-- .sample_information -->
+</div><!-- .sample_player_small -->
+
+
+
+
+
+
+                
+                        <div class="sample_more_search_results"><img src="./spannend_files/plus.png" alt=""> <a href="https://freesound.org/search/?q=&amp;f=grouping_pack:%2213681_Spinning%20in%203D%20(binaural)%22%20&amp;s=%22created%20desc%22&amp;g=1&amp;advanced=&amp;a_tag=&amp;a_filename=&amp;a_description=&amp;a_packname=&amp;a_soundid=&amp;a_username=">32 more results</a> in the same pack "Spinning in 3D (binaural)"</div>
+                
+            
+                
+
+
+
+
+
+
+
+<div class="sample_player_small" id="541489">
+
+    
+
+    <div class="sample_player ">
+        <div class="small_player">
+            <div class="player small">
+    <div class="metadata">
+        <a class="mp3_file" href="https://freesound.org/data/previews/541/541489_4148675-lq.mp3" title="mp3 file">Moving and Tossing around bits of charcoal - mp3 version</a>
+<a class="ogg_file" href="https://freesound.org/data/previews/541/541489_4148675-lq.ogg" title="ogg file">Moving and Tossing around bits of charcoal - ogg version</a>
+<a class="waveform" href="https://freesound.org/data/displays/541/541489_4148675_wave_M.png" title="waveform file">Moving and Tossing around bits of charcoal - waveform</a>
+<a class="spectrum" href="https://freesound.org/data/displays/541/541489_4148675_spec_M.jpg" title="spectrogram file">Moving and Tossing around bits of charcoal - spectrogram</a>
+<span class="duration" title="duration in seconds">58746.5</span>
+
+    </div>
+<div class="controls">                     <a href="javascript:void(0)" title="play / pause" class="toggle play">play / pause</a>                     <a href="javascript:void(0)" title="loop" class="toggle loop">loop</a>                 </div>                 <div class="background" style="background-image: url(&quot;/data/displays/541/541489_4148675_wave_M.png&quot;); background-size: contain; background-repeat: no-repeat;"></div>                 <div class="loading-progress" style="display: none;"></div>                 <div class="position-indicator"></div>                 <div class="time-indicator-container"><div class="time-indicator">-00:58</div></div></div>
+
+        </div><!-- .small_player -->
+
+        <div class="sound_title">
+            <div class="sound_filename">
+               <a class="title" href="https://freesound.org/people/Tyronm123/sounds/541489/" title="Moving and Tossing around bits of charcoal">Moving and Tossing aroun...</a>
+            </div><!-- .sound_filename -->
+            <div class="sound_stars">
+               <ul class="star-rating">
+    <li class="current-rating" style="width:0%;">Currently /5 Stars.</li>
+    
+</ul>
+            </div><!-- .sound_stars -->
+
+            <div class="sound_description">
+                <p class="description"><b></b>I saw there's a distinct lack of charcoal movement/hitting sounds. Recorded with an iPhone 6.</p>
+            </div><!-- .sound_description -->
+
+            <div class="sound_tags">
+
+                <ul class="tags">
+                    
+                        <li><a href="https://freesound.org/browse/tags/charcoal/">charcoal</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/move/">move</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/hit/">hit</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/throw/">throw</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/toss/">toss</a></li>
+                    
+                </ul>
+                <br style="clear: both;">
+
+            </div><!-- .sound_tags -->
+
+            <div id="bookmark_form_541489" class="bookmark_form"></div> <!-- to be filled dynamically with ajax -->
+
+            
+
+          </div><!-- .sound_title -->
+    </div><!-- .sample_player -->
+
+    <div class="sample_information ">
+        <a class="user" href="https://freesound.org/people/Tyronm123/">Tyronm123</a><br>
+        <span class="date">October 29th, 2020</span><br>
+        <span class="download_count"><a href="https://freesound.org/people/Tyronm123/sounds/541489/downloaders/">0 downloads</a></span><br>
+        <a class="comments" href="https://freesound.org/people/Tyronm123/sounds/541489/#comments">0 comments</a>
+
+        <div class="sound_attributes">
+
+            
+
+            
+            <a class="similar" rel="nofollow" href="https://freesound.org/people/Tyronm123/sounds/541489/similar/">
+                <img src="./spannend_files/headphone--plus.png" width="16" height="16" alt="Similar" title="Similar Sounds">
+            </a>
+            
+            
+            
+            
+            <!-- license icons -->
+            
+            
+            
+                <img class="cc_license" src="./spannend_files/by.png" width="16" height="16" alt="Creative Commons Attribution license" title="This sound is licensed under the Creative Commons Attribution license.">
+            
+            
+            <!-- /license icons -->
+
+        </div><!-- .sound_attributes -->
+    </div><!-- .sample_information -->
+</div><!-- .sample_player_small -->
+
+
+
+
+
+
+                
+            
+                
+
+
+
+
+
+
+
+<div class="sample_player_small" id="541488">
+
+    
+
+    <div class="sample_player ">
+        <div class="small_player">
+            <div class="player small">
+    <div class="metadata">
+        <a class="mp3_file" href="https://freesound.org/data/previews/541/541488_11157357-lq.mp3" title="mp3 file">Tram_Oslo -  - Output - Stereo Out.wav - mp3 version</a>
+<a class="ogg_file" href="https://freesound.org/data/previews/541/541488_11157357-lq.ogg" title="ogg file">Tram_Oslo -  - Output - Stereo Out.wav - ogg version</a>
+<a class="waveform" href="https://freesound.org/data/displays/541/541488_11157357_wave_M.png" title="waveform file">Tram_Oslo -  - Output - Stereo Out.wav - waveform</a>
+<a class="spectrum" href="https://freesound.org/data/displays/541/541488_11157357_spec_M.jpg" title="spectrogram file">Tram_Oslo -  - Output - Stereo Out.wav - spectrogram</a>
+<span class="duration" title="duration in seconds">175141.0</span>
+
+    </div>
+<div class="controls">                     <a href="javascript:void(0)" title="play / pause" class="toggle play">play / pause</a>                     <a href="javascript:void(0)" title="loop" class="toggle loop">loop</a>                 </div>                 <div class="background" style="background-image: url(&quot;/data/displays/541/541488_11157357_wave_M.png&quot;); background-size: contain; background-repeat: no-repeat;"></div>                 <div class="loading-progress" style="display: none;"></div>                 <div class="position-indicator"></div>                 <div class="time-indicator-container"><div class="time-indicator">-02:55</div></div></div>
+
+        </div><!-- .small_player -->
+
+        <div class="sound_title">
+            <div class="sound_filename">
+               <a class="title" href="https://freesound.org/people/Lydmakeren/sounds/541488/" title="Tram_Oslo -  - Output - Stereo Out.wav">Tram_Oslo -  - Output - ...</a>
+            </div><!-- .sound_filename -->
+            <div class="sound_stars">
+               <ul class="star-rating">
+    <li class="current-rating" style="width:0%;">Currently /5 Stars.</li>
+    
+</ul>
+            </div><!-- .sound_stars -->
+
+            <div class="sound_description">
+                <p class="description"><b></b>Tram in Oslo</p>
+            </div><!-- .sound_description -->
+
+            <div class="sound_tags">
+
+                <ul class="tags">
+                    
+                        <li><a href="https://freesound.org/browse/tags/field-recording/">field-recording</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/metro/">metro</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/Tram/">Tram</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/ambience/">ambience</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/train/">train</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/subway/">subway</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/underground/">underground</a></li>
+                    
+                </ul>
+                <br style="clear: both;">
+
+            </div><!-- .sound_tags -->
+
+            <div id="bookmark_form_541488" class="bookmark_form"></div> <!-- to be filled dynamically with ajax -->
+
+            
+
+          </div><!-- .sound_title -->
+    </div><!-- .sample_player -->
+
+    <div class="sample_information ">
+        <a class="user" href="https://freesound.org/people/Lydmakeren/">Lydmakeren</a><br>
+        <span class="date">October 29th, 2020</span><br>
+        <span class="download_count"><a href="https://freesound.org/people/Lydmakeren/sounds/541488/downloaders/">0 downloads</a></span><br>
+        <a class="comments" href="https://freesound.org/people/Lydmakeren/sounds/541488/#comments">0 comments</a>
+
+        <div class="sound_attributes">
+
+            
+
+            
+            <a class="similar" rel="nofollow" href="https://freesound.org/people/Lydmakeren/sounds/541488/similar/">
+                <img src="./spannend_files/headphone--plus.png" width="16" height="16" alt="Similar" title="Similar Sounds">
+            </a>
+            
+            
+            
+            
+            <!-- license icons -->
+            
+            
+                <img class="cc_license" src="./spannend_files/nolaw.png" width="16" height="16" alt="Public Domain license" title="This sound is public domain.">
+            
+            
+            
+            <!-- /license icons -->
+
+        </div><!-- .sound_attributes -->
+    </div><!-- .sample_information -->
+</div><!-- .sample_player_small -->
+
+
+
+
+
+
+                
+            
+                
+
+
+
+
+
+
+
+<div class="sample_player_small" id="541487">
+
+    
+
+    <div class="sample_player ">
+        <div class="small_player">
+            <div class="player small">
+    <div class="metadata">
+        <a class="mp3_file" href="https://freesound.org/data/previews/541/541487_11861866-lq.mp3" title="mp3 file">Atmosphere 11 - mp3 version</a>
+<a class="ogg_file" href="https://freesound.org/data/previews/541/541487_11861866-lq.ogg" title="ogg file">Atmosphere 11 - ogg version</a>
+<a class="waveform" href="https://freesound.org/data/displays/541/541487_11861866_wave_M.png" title="waveform file">Atmosphere 11 - waveform</a>
+<a class="spectrum" href="https://freesound.org/data/displays/541/541487_11861866_spec_M.jpg" title="spectrogram file">Atmosphere 11 - spectrogram</a>
+<span class="duration" title="duration in seconds">80027.2</span>
+
+    </div>
+<div class="controls">                     <a href="javascript:void(0)" title="play / pause" class="play toggle-alt on">play / pause</a>                     <a href="javascript:void(0)" title="loop" class="toggle loop">loop</a>                 </div>                 <div class="background" style="background-image: url(&quot;/data/displays/541/541487_11861866_wave_M.png&quot;); background-size: contain; background-repeat: no-repeat;"></div>                                  <div class="position-indicator" style="left: 26.1805%;"></div>                 <div class="time-indicator-container"><div class="time-indicator">-00:59</div></div></div>
+
+        </div><!-- .small_player -->
+
+        <div class="sound_title">
+            <div class="sound_filename">
+               <a class="title" href="https://freesound.org/people/DaveJf/sounds/541487/" title="Atmosphere 11">Atmosphere 11</a>
+            </div><!-- .sound_filename -->
+            <div class="sound_stars">
+               <ul class="star-rating">
+    <li class="current-rating" style="width:55%;">Currently /5 Stars.</li>
+    
+</ul>
+            </div><!-- .sound_stars -->
+
+            <div class="sound_description">
+                <p class="description"><b></b>This And Other. Ableton Live</p>
+            </div><!-- .sound_description -->
+
+            <div class="sound_tags">
+
+                <ul class="tags">
+                    
+                        <li><a href="https://freesound.org/browse/tags/Atmosphere/">Atmosphere</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/Bell/">Bell</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/Cinematic/">Cinematic</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/Dark/">Dark</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/Pad/">Pad</a></li>
+                    
+                        <li><a href="https://freesound.org/browse/tags/Ambient/">Ambient</a></li>
+                    
+                </ul>
+                <br style="clear: both;">
+
+            </div><!-- .sound_tags -->
+
+            <div id="bookmark_form_541487" class="bookmark_form"></div> <!-- to be filled dynamically with ajax -->
+
+            
+
+          </div><!-- .sound_title -->
+    </div><!-- .sample_player -->
+
+    <div class="sample_information ">
+        <a class="user" href="https://freesound.org/people/DaveJf/">DaveJf</a><br>
+        <span class="date">October 29th, 2020</span><br>
+        <span class="download_count"><a href="https://freesound.org/people/DaveJf/sounds/541487/downloaders/">19 downloads</a></span><br>
+        <a class="comments" href="https://freesound.org/people/DaveJf/sounds/541487/#comments">0 comments</a>
+
+        <div class="sound_attributes">
+
+            
+
+            
+            <a class="similar" rel="nofollow" href="https://freesound.org/people/DaveJf/sounds/541487/similar/">
+                <img src="./spannend_files/headphone--plus.png" width="16" height="16" alt="Similar" title="Similar Sounds">
+            </a>
+            
+            
+            <a class="pack" href="https://freesound.org/people/DaveJf/packs/30132/">
+                <img src="./spannend_files/folder-open-document-music.png" width="16" height="16" alt="Pack" title="This sound belongs to the pack: Atmospheres">
+            </a>
+            
+            
+            
+            <!-- license icons -->
+            
+            
+                <img class="cc_license" src="./spannend_files/nolaw.png" width="16" height="16" alt="Public Domain license" title="This sound is public domain.">
+            
+            
+            
+            <!-- /license icons -->
+
+        </div><!-- .sound_attributes -->
+    </div><!-- .sample_information -->
+</div><!-- .sample_player_small -->
+
+
+
+
+
+
+                
+                        <div class="sample_more_search_results"><img src="./spannend_files/plus.png" alt=""> <a href="https://freesound.org/search/?q=&amp;f=grouping_pack:%2230132_Atmospheres%22%20&amp;s=%22created%20desc%22&amp;g=1&amp;advanced=&amp;a_tag=&amp;a_filename=&amp;a_description=&amp;a_packname=&amp;a_soundid=&amp;a_username=">10 more results</a> in the same pack "Atmospheres"</div>
+                
+            
+
+            <div class="search_paginator">
+                <ul class="pagination"><li class="previous-page"><a href="https://freesound.org/search/?q=&amp;s=created+desc&amp;f=&amp;page=1#sound" title="Previous Page">previous</a></li><li class="next-page"><a href="https://freesound.org/search/?q=&amp;s=created+desc&amp;f=&amp;page=3#sound" title="Next Page">next</a></li><li class="other-page"><a href="https://freesound.org/search/?q=&amp;s=created+desc&amp;f=&amp;page=1#sound" title="Page 1">1</a></li><li class="current-page">2</li><li class="other-page"><a href="https://freesound.org/search/?q=&amp;s=created+desc&amp;f=&amp;page=3#sound" title="Page 3">3</a></li><li class="other-page"><a href="https://freesound.org/search/?q=&amp;s=created+desc&amp;f=&amp;page=4#sound" title="Page 4">4</a></li><li class="other-page"><a href="https://freesound.org/search/?q=&amp;s=created+desc&amp;f=&amp;page=5#sound" title="Page 5">5</a></li><li class="other-page"><a href="https://freesound.org/search/?q=&amp;s=created+desc&amp;f=&amp;page=6#sound" title="Page 6">6</a></li><li class="other-page"><a href="https://freesound.org/search/?q=&amp;s=created+desc&amp;f=&amp;page=7#sound" title="Page 7">7</a></li><li class="dots">...</li><li class="last-page"><a href="https://freesound.org/search/?q=&amp;s=created+desc&amp;f=&amp;page=10347#sound" title="Last Page">10347</a></li><p class="number_of_results">
+            
+                &nbsp;|&nbsp; 473555 sounds
+            
+        </p></ul>
+
+
+            </div>
+        
+
+
+    
+
+
+
+</div> <!-- END of Content area -->
+
+<br class="clear">
+
+
+
+            </div>
+        </div>
+
+        <div id="footer_wrapper">
+            <div id="footer">
+                <div id="cookie-bar">
+                    <div style="float:left">
+                        <p>
+                            We use cookies to ensure you get the best experience on our website. By browsing our site you agree to our use of cookies.
+                            <br>
+                            For more information check out our <a href="https://freesound.org/help/cookies_policy">cookies policy</a>.
+                        </p>
+                    </div>
+                    <div style="float:right; margin-top:10px;margin-right:10px;">
+                        <button id="cookie-accept">Ok</button>
+                    </div>
+                    <br class="clear">
+
+                </div>
+                <div id="footer_links">
+                    <a href="https://freesound.org/help/developers/">Developers</a>
+                    <a href="https://blog.freesound.org/">Blog</a>
+                    <a href="https://freesound.org/help/about/">About</a>
+                    
+                    <a href="https://freesound.org/help/tos_web/">Terms of use</a>
+                </div>
+                <div id="footer_credits">
+                    Design by <a href="http://www.pixelshell.com/">Pixelshell</a>. Code by <a href="https://www.upf.edu/web/mtg">MTG (UPF)</a>. Some Rights Reserved.
+                </div>
+            </div>
+        </div>
+
+        <div id="fsmodal" class="modal"></div>
+    
+
+</body></html>
