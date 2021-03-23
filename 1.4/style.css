@@ -34,7 +34,7 @@ video {
 }
 
 .Mynav {
-    background-color: gray;
+    background-color: lightgray;
     overflow: hidden;
 }
 
@@ -75,7 +75,7 @@ img {
 /* Farbe der Navigation wenn man drüber fährt*/
 
 .Mynav a:hover {
-    background-color: blueviolet;
+    background-color: lightskyblue;
     color: black;
 }
 
@@ -83,7 +83,7 @@ img {
 /* Aktuelle Navigation (Link) hervorheben*/
 
 .Mynav a.active {
-    background-color: blueviolet;
+    background-color: lightskyblue;
     color: white;
 }
 
@@ -92,17 +92,17 @@ img {
 
 #KontaktÜberschrift {
     text-align: left;
-    color: blueviolet;
+    color: grey;
 }
 
 
 /* Kontaktformular anhand des Box Modells */
 
 form {
-    background-color: grey;
+    background-color: lightgray;
     width: 370px;
     padding: 20px;
-    border: 1px solid gray;
+    border: 1px solid lightgray;
 }
 
 label {
@@ -144,7 +144,7 @@ h3 {
 }
 
 a {
-    color: blueviolet;
+    color: lightseagreen;
 }
 
 
@@ -156,7 +156,7 @@ div.slideintext {
 
 div.slideintext>p {
     transition: color 3s ease-in;
-    color: blueviolet;
+    color: blue;
     animation-duration: 2s;
     animation-name: slidein;
 }
@@ -227,10 +227,10 @@ div.slideintext>p {
         height: 100px;
     }
     form {
-        background-color: grey;
-        width: 325px;
+        background-color: lightgray;
+        width: 300px;
         padding: 9px;
-        border: 1x solid gray;
+        border: 1x solid lightgray;
     }
 }
 
