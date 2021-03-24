@@ -35,6 +35,8 @@ video {
 .Mynav {
     background-color: lightgray;
     overflow: hidden;
+    margin-top: -8px;
+    margin-left: -8px;
 }
 
 img {
