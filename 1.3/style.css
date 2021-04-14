@@ -35,12 +35,21 @@ video {
 
 .Mynav {
     background-color: lightgray;
-    overflow: hidden;
     margin-top: -8px;
     margin-left: -8px;
     overflow: hidden;
     position: sticky;
     top: 0;
+}
+
+#logo1 {
+    width: 40px;
+    height: 40px;
+}
+
+#logo2 {
+    width: 40px;
+    height: 35px;
 }
 
 img {
@@ -71,12 +80,25 @@ img {
     font-size: 21px;
 }
 
+.secondNav a {
+    float: right;
+    text-align: right;
+    padding: 10px 12px;
+    border-bottom: 5px;
+    text-decoration: none;
+    font-size: 21px;
+}
+
 
 /* Farbe der Navigation wenn man drüber fährt*/
 
 .Mynav a:hover {
     background-color: lightskyblue;
     color: black;
+}
+
+.secondNav a:hover {
+    background-color: lightgray;
 }
 
 
