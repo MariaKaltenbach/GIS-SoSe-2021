@@ -38,9 +38,14 @@ video {
     overflow: hidden;
 }
 
-#Panorama {
-    width: 1150px;
-    height: 300px;
+#logo1 {
+    width: 40px;
+    height: 40px;
+}
+
+#logo2 {
+    width: 40px;
+    height: 35px;
 }
 
 img {
@@ -71,12 +76,25 @@ img {
     font-size: 21px;
 }
 
+.secondNav a {
+    float: right;
+    text-align: right;
+    padding: 10px 12px;
+    border-bottom: 5px;
+    text-decoration: none;
+    font-size: 21px;
+}
+
 
 /* Farbe der Navigation wenn man drüber fährt*/
 
 .Mynav a:hover {
     background-color: lightskyblue;
     color: black;
+}
+
+.secondNav a:hover {
+    background-color: lightgray;
 }
 
 
@@ -186,10 +204,6 @@ div.slideintext>p {
         width: 450px;
         height: 300px;
     }
-    #Panorama {
-        width: 750px;
-        height: 200px;
-    }
 }
 
 @media only screen and (max-width: 600px) {
@@ -222,15 +236,20 @@ div.slideintext>p {
         width: 400px;
         height: 200px;
     }
-    #Panorama {
-        width: 350px;
-        height: 100px;
-    }
     form {
         background-color: lightgray;
         width: 300px;
         padding: 9px;
         border: 1x solid lightgray;
+        font-size: 12px;
+    }
+    #logo1 {
+        width: 30px;
+        height: 30px;
+    }
+    #logo2 {
+        width: 30px;
+        height: 25px;
     }
 }
 
