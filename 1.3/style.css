@@ -3,7 +3,7 @@ Body {
     background: url("../Bilder/bg.png");
     font-family: sans-serif;
     width: 800px;
-    justify-content: center;
+    /*justify-content: center;*/
     text-align: center;
 }
 
@@ -41,6 +41,12 @@ video {
     overflow: hidden;
     position: sticky;
     top: 0;
+}
+
+.secondNav {
+    overflow: hidden;
+    position: sticky;
+    top: 50px;
 }
 
 #logo1 {
