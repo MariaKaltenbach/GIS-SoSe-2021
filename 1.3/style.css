@@ -5,6 +5,8 @@ Body {
     width: 800px;
     /*justify-content: center;*/
     text-align: center;
+    margin-top: 0;
+    margin-left: 0;
     margin: 0 auto;
 }
 
@@ -37,8 +39,6 @@ video {
 
 .Mynav {
     background-color: lightgray;
-    margin-top: -8px;
-    margin-left: -8px;
     overflow: hidden;
     position: sticky;
     top: 0;
