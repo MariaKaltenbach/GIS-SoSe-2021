@@ -1,139 +1,82 @@
 "use strict";
 // Aufgabe 1 a 
-/*
-let x: number = 27;
-let y: number = 8;
-let z: number = -1;
-function min(x: number, y: number, z: number): void {
-    if (x < y && x < z) {
-        console.log(x);
+let x2 = 27;
+let y2 = 8;
+let z2 = -1;
+function min(x2, y2, z2) {
+    if (x2 < y2 && x1 < z2) {
+        console.log(x1);
     }
-   
-    else if (y < z && y < x) {
-        console.log(y);
+    else if (y2 < z2 && y1 < x2) {
+        console.log(y1);
     }
-    else if (z < x &&  z < y) {
-        console.log(z);
+    else if (z2 < x2 && z2 < y2) {
+        console.log(z2);
     }
 }
-min(x, y, z);
-
-
-// Aufgabe 1 b
-let n: number = 1;
-function isEven(n: number): void {
-    if (0 % n  == 0) {
+min(x2, y2, z2);
+// Aufgabe 1 b 
+let n1 = 50;
+function isEven(n1) {
+    if (0 % n1 == 0) {
         console.log(true);
     }
-    else if ( 1 % n == 0) {
-        isEven(n - 2);
+    else if (1 % n1 == 0) {
+        isEven(n1 - 2);
         console.log(false);
     }
-    
 }
-isEven(n);
-
-// Aufgabe 1 c
-
+isEven(n1);
+// Aufgabe 1 c 
 class Student {
-
-    name: string;
-    studiengang: string;
-    semester: number;
-    matrikelnummer: number;
-    alter: number;
-
-
-    constructor(name: string, alter: number, matrikelnummer: number, studiengang: string, semester: number) {
+    constructor(name, alter, matrikelnummer, studiengang, semester) {
         this.name = name;
         this.alter = alter;
         this.matrikelnummer = matrikelnummer;
         this.studiengang = studiengang;
         this.semester = semester;
-
     }
-    showInfo(): void {
-
-
+    showInfo() {
         console.log(this.name + "," + this.alter + "," + this.matrikelnummer + "," + this.studiengang + "," + this.semester);
-
     }
 }
-let student1: Student = new Student ("Larissa", 23, 235462, "Medien Informatik", 3);
-let student2: Student = new Student("Leon", 19, 235367, "Medienkonzeption", 1);
-let student3: Student = new Student("Kai", 26, 235262, "Online Medien", 5);
-
-
+let student1 = new Student("Larissa", 23, 235462, "Medien Informatik", 3);
+let student2 = new Student("Leon", 19, 235367, "Medienkonzeption", 1);
+let student3 = new Student("Kai", 26, 235262, "Online Medien", 5);
 student1.showInfo();
 student2.showInfo();
 student3.showInfo();
-
-*/
-/*
 // Aufgabe 2 a
-
-
-    function backwards(a: number[]): number[] {
-        let ruckgabe: number[] = [0];
-
-        for (let zaehler: number = 0; a.length - 1 > zaehler; zaehler++) {
-
-            ruckgabe.push(a[a.length - zaehler + 1]);
-
-        }
-
-        return ruckgabe;
-
+function backwards(a) {
+    let ruckgabe = [0];
+    for (let zaehler = 0; a.length - 1 > zaehler; zaehler++) {
+        ruckgabe.push(a[a.length - zaehler + 1]);
     }
-
-
-    function join(a: number[], werte: number[]): number[] {
-
-
-        for (let zaehler: number = 0; werte.length - 1 > zaehler; zaehler++) {
-
-            a.push(werte[zaehler]);
-
-        }
-
-        return a;
-
+    return ruckgabe;
+}
+function join(a, werte) {
+    for (let zaehler = 0; werte.length - 1 > zaehler; zaehler++) {
+        a.push(werte[zaehler]);
     }
-
-
-    function split(a: number[], links: number, rechts: number): number[] {
-
-       
-       let ruckgabe: number[];
-
-       ruckgabe = a;
-     //  if (links < 0 || rechts > a.length) { return [99]  ; }
-
-       for (let zaehler: number = links + 1; rechts - 1 < zaehler; zaehler++) {
-
-            //ruckgabe.push(a[zaehler]);
-
-        }
-
-       return ruckgabe;
+    return a;
+}
+function split(a, links, rechts) {
+    let ruckgabe;
+    ruckgabe = a;
+    //  if (links < 0 || rechts > a.length) { return [99]  ; }
+    for (let zaehler = links + 1; rechts - 1 < zaehler; zaehler++) {
+        //ruckgabe.push(a[zaehler]);
     }
-
-    let arr: number[] = [5, 42, 17, 2018, -10, 60, -10010];
-    let arrBack: number[] = backwards(arr);
-    console.log(arr);
-    console.log(arrBack);
-    console.log(join(arr, [15, 9001, -440]));
-   // console.log(join([123, 666, -911], arr, [15, 9001, -440, 1024])); // Bonus b)
-    arr = split(arr, 0, 4);
-    console.log(arr);
-   // console.log(split(arr, 1, 2));
-  //  console.log(split(arr, 2, 0));     // Bonus c)
-  //  console.log(split(arr, -1, 2));    // Bonus c)
-   // console.log(split(arr, 0, 7));     // Bonus c)
-
-
- }
-*/
+    return ruckgabe;
+}
+let arr = [5, 42, 17, 2018, -10, 60, -10010];
+let arrBack = backwards(arr);
+console.log(arr);
+console.log(arrBack);
+console.log(join(arr, [15, 9001, -440]));
+arr = split(arr, 0, 4);
+console.log(arr);
+// console.log(split(arr, 1, 2));
 // Aufgabe 3 a 
 let canvas = document.getElementById("myFirstCanvas");
 let context = canvas.getContext("2d");

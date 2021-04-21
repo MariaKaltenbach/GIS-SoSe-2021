@@ -19,7 +19,7 @@ min(x2, y2, z2);
 
 
 // Aufgabe 1 b 
-let n1: number = 1;
+let n1: number = 50;
 function isEven(n1: number): void {
     if (0 % n1 == 0) {
         console.log(true);
