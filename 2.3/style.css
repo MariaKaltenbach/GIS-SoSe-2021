@@ -1,0 +1,77 @@
+body {
+    background-color: lightblue;
+    text-align: center;
+}
+
+h1 {
+    font-family: sans-serif;
+    color: palevioletred;
+}
+
+h2 {
+    font-family: sans-serif;
+    color: grey;
+}
+
+ul,
+li,
+p {
+    list-style: none;
+    font-size: 22px;
+}
+
+.Preisliste {
+    background-color: lightcyan;
+    margin-left: 950px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: palevioletred;
+}
+
+div.Absätze {
+    display: block;
+}
+
+div.GroßerAbsatz {
+    margin-top: 50px;
+}
+
+label {
+    font-size: 18px;
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1023px) {
+    p {
+        font-size: 19px;
+    }
+    .Preisliste {
+        margin-left: 550px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    div.Auswahlmöglichkeiten {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    p,
+    ul,
+    li {
+        font-size: 18px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    .Preisliste {
+        margin-left: 190px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    label {
+        font: 14px;
+    }
+}

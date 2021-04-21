@@ -1,7 +1,7 @@
 console.log("Hallo Welt!");
 
 // Aufgabe 1
-/*
+
 function a1(): void {
     let x: string = "Alles";
     console.log();
@@ -16,6 +16,7 @@ function func1(x: string ): void {
 function func2(x: string): void {
     console.log(x + " " + "Gute!");
 }
+
 // Aufgabe 2
 function a2(): void {
     let i: number = 9;
@@ -30,45 +31,45 @@ a2();
 // Aufgabe 4
 let x: string = "Hallo";
 console.log(x);
-func1(x);
+function1(x);
 console.log(x);
-func2();
-func3();
+function2();
+function3();
 console.log(x);
-function func1(y: string): void {
+function function1(y: string): void {
     y = "Bla";
     console.log(y);
 }
-function func2(): void {
+function function2(): void {
     let x: string = "Blubb";
     console.log(x);
 }
-function func3(): void {
+function function3(): void {
     x = "Test";
 }
-*/
-/*
-//Aufgabe 5 a
-let x: number = 6;
-let y: number = 3;
 
-function multiply(x: number, y: number): void {
-    let z: number = x * y;
-    console.log(z);
+
+//Aufgabe 5 a
+let x1: number = 6;
+let y1: number = 3;
+
+function multiply(x1: number, y1: number): void {
+    let z1: number = x1 * y1;
+    console.log(z1);
 }
-multiply(x, y);
+multiply(x1, y1);
 
 
 //Aufgabe 5 b
-function max(x: number, y: number): void {
-    if (x < y) {
-        console.log(y);
+function max(x1: number, y1: number): void {
+    if (x1 < y1) {
+        console.log(y1);
     }
     else {
-        console.log(x);
+        console.log(x1);
     }
 }
-max(x, y);
+max(x1, y1);
 
 //Aufgabe 5 c
 function schleife(): void {
@@ -85,7 +86,7 @@ schleife();
 //Aufgabe 5 d
 function getRandom(): void {
     for (let i: number = 0; i < 10; i++) {
-        var random = Math.floor(Math.random() * 100) + 1;
+        var random: number = Math.floor(Math.random() * 100) + 1;
         console.log(random);
     }
 }
@@ -119,10 +120,10 @@ function leapyears(): void {
     }
 }
 leapyears();
-*/
+
 
 // Aufgabe 6 a
-/*
+
 function string(): void {
     let s: string = "";
     while (s.length < 7) {
@@ -164,7 +165,7 @@ function fizzBuzz(): void {
     }
 }
 fizzBuzz();
- */
+ 
 
 // Aufagbe 6 d
 
