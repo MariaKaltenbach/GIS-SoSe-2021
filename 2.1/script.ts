@@ -18,6 +18,8 @@ function func2(x: string): void {
     console.log(x + " " + "Gute!");
 }
 //debugger -> in Zeile 3 wird die variable x ausgegeben "Alles" danach wird function finc1 aufgerufen mit ausgabe "Alles Klar?" zurück in function a1 wird function func 2 aufgarufen und "Alles Gute!" ausgegeben wieder zurück in a1 wird dann "Alles Logo!" ausgegeben.
+
+
 // Aufgabe 2
 //zähler variable i wird auf 9 gesetzte, solagne i größer als 0 soll auf der konsole die zähler variable ausgegeben werdrn also i und dann um 1 gesenkt werden, dann wird i überschrieben mit der niedrigeren zhal, bis die bedingung i größer als 0 also i = 0 nicht mher erfüllt ist. Es wird 9, 8, 7, 6, 5, 4, 3, 2, 1 ausgegeben 
 function a2(): void {
@@ -138,6 +140,7 @@ function string(): void {
     }
 }
 string();
+
 // Aufageb 6 b
 function fizz(): void {
     for (let i: number = 0; i < 100; i++) {
