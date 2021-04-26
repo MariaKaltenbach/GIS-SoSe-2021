@@ -1,4 +1,15 @@
 // Aufgabe 1 a 
+let path: string = window.location.pathname;
+let page: string = path.split("/").pop();
+
+
+let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("myFirstCanvas");
+let context: CanvasRenderingContext2D = canvas.getContext("2d");
+
+
+context.lineWidth = 3; 
+
+if (page == "index.html") {
 
 let x2: number = 27;
 let y2: number = 8;
@@ -130,11 +141,7 @@ console.log(arr);
 
 // Aufgabe 3 a 
 
-let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("myFirstCanvas");
-let context: CanvasRenderingContext2D = canvas.getContext("2d");
 
-
-context.lineWidth = 3;
 context.fillStyle = "green";
 context.fillRect(0, 200, 500, 150);
 context.strokeRect(0, 200, 500, 150); //Wiese
@@ -193,5 +200,45 @@ context.fill();
 context.strokeStyle = "lightgreen";
 context.stroke();
 
+ }
 
 
+if (page == "aufgabe3.html") {
+//Aufgabe 3 b
+
+interface Rechteck {
+    breite: number;
+    hoehe: number;
+    x: number;
+    y: number;
+}
+
+
+//Aufgabe 3 c
+
+let rechteck1: Rechteck = { breite: 30, hoehe: 40, x: 300, y: 300 };
+
+context.strokeRect(rechteck1.x, rechteck1.y, rechteck1.breite, rechteck1.hoehe);
+
+context.fillRect(rechteck1.x, rechteck1.y, rechteck1.breite, rechteck1.hoehe);
+
+function createRect(): Rechteck {
+    
+    let rechteck1: Rechteck = { breite: Math.random() * 50 + 50, hoehe: Math.random() * 50 + 50, x: Math.random() * 50 + 50, y: Math.random() * 50 + 50 };
+
+    return rechteck1;
+}
+
+drawRect(createRect());
+
+//Aufgabe 3 d
+
+function drawRect(_rechteck1: Rechteck): void {
+
+
+    context.strokeRect(_rechteck1.x, _rechteck1.y, _rechteck1.breite, _rechteck1.hoehe);
+
+    context.fillRect(_rechteck1.x, _rechteck1.y, _rechteck1.breite, _rechteck1.hoehe);
+
+}
+ }
