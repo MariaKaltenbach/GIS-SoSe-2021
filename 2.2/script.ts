@@ -1,12 +1,10 @@
 // Aufgabe 1 a 
-let path: string = window.location.pathname;
-let page: string = path.split("/").pop();
-
 
 let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("myFirstCanvas");
 let context: CanvasRenderingContext2D = canvas.getContext("2d");
 
-
+let path: string = window.location.pathname;
+let page: string = path.split("/").pop();
 context.lineWidth = 3; 
 
 if (page == "index.html") {
