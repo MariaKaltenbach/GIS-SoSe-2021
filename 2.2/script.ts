@@ -3,11 +3,9 @@
 let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("myFirstCanvas");
 let context: CanvasRenderingContext2D = canvas.getContext("2d");
 
-let path: string = window.location.pathname;
-let page: string = path.split("/").pop();
+
 context.lineWidth = 3; 
 
-if (page == "index.html") {
 
 let x2: number = 27;
 let y2: number = 8;
@@ -198,10 +196,9 @@ context.fill();
 context.strokeStyle = "lightgreen";
 context.stroke();
 
- }
 
 
-if (page == "aufgabe3.html") {
+
 //Aufgabe 3 b
 
 interface Rechteck {
@@ -239,4 +236,4 @@ function drawRect(_rechteck1: Rechteck): void {
     context.fillRect(_rechteck1.x, _rechteck1.y, _rechteck1.breite, _rechteck1.hoehe);
 
 }
- }
+ 
