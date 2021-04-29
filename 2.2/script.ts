@@ -1,4 +1,5 @@
 // Aufgabe 1 a 
+//html Seiten trennen -> code für zwei verschiedene seiten in einer script.ts datei
 let path: string = window.location.pathname;
 let page: string = path.split("/").pop();
 
@@ -128,14 +129,14 @@ if (page == "index.html") {
         return ruckgabe;
     }
 
-    let arr: number[] = [5, 42, 17, 2018, -10, 60, -10010];
-    let arrBack: number[] = backwards(arr);
-    console.log(arr);
-    console.log(arrBack);
-    console.log(join(arr, [15, 9001, -440]));
+    let array: number[] = [5, 42, 17, 2018, -10, 60, -10010];
+    let arrayBack: number[] = backwards(array);
+    console.log(array);
+    console.log(arrayBack);
+    console.log(join(array, [15, 9001, -440]));
 
-    arr = split(arr, 0, 4);
-    console.log(arr);
+    array = split(array, 0, 4);
+    console.log(array);
     // console.log(split(arr, 1, 2));
 
 
@@ -201,12 +202,13 @@ if (page == "index.html") {
     context.stroke();
 
 }
+
 if (page == "aufgabe3.html") {
     //Aufgabe 3 b
 
     interface Rechteck {
         breite: number;
-        hoehe: number;
+        höhe: number;
         x: number;
         y: number;
     }
@@ -216,15 +218,15 @@ if (page == "aufgabe3.html") {
     context.fillStyle = "lightblue";
 
 
-    let rechteck1: Rechteck = { breite: 30, hoehe: 40, x: 300, y: 300 };
+    let rechteck1: Rechteck = { breite: 30, höhe: 40, x: 300, y: 300 };
 
-    context.strokeRect(rechteck1.x, rechteck1.y, rechteck1.breite, rechteck1.hoehe);
+    context.strokeRect(rechteck1.x, rechteck1.y, rechteck1.breite, rechteck1.höhe);
 
-    context.fillRect(rechteck1.x, rechteck1.y, rechteck1.breite, rechteck1.hoehe);
+    context.fillRect(rechteck1.x, rechteck1.y, rechteck1.breite, rechteck1.höhe);
 
     function createRect(): Rechteck {
 
-        let rechteck1: Rechteck = { breite: Math.random() * 50 + 50, hoehe: Math.random() * 50 + 50, x: Math.random() * 50 + 50, y: Math.random() * 50 + 50 };
+        let rechteck1: Rechteck = { breite: Math.random() * 50 + 50, höhe: Math.random() * 50 + 50, x: Math.random() * 50 + 50, y: Math.random() * 50 + 50 };
 
         return rechteck1;
     }
@@ -236,9 +238,9 @@ if (page == "aufgabe3.html") {
     function drawRect(_rechteck1: Rechteck): void {
 
 
-        context.strokeRect(_rechteck1.x, _rechteck1.y, _rechteck1.breite, _rechteck1.hoehe);
+        context.strokeRect(_rechteck1.x, _rechteck1.y, _rechteck1.breite, _rechteck1.höhe);
 
-        context.fillRect(_rechteck1.x, _rechteck1.y, _rechteck1.breite, _rechteck1.hoehe);
+        context.fillRect(_rechteck1.x, _rechteck1.y, _rechteck1.breite, _rechteck1.höhe);
 
     }
 
