@@ -1,10 +1,14 @@
 // Aufgabe 1 a 
+let path: string = window.location.pathname;
+let page: string = path.split("/").pop();
+
 
 let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("myFirstCanvas");
 let context: CanvasRenderingContext2D = canvas.getContext("2d");
 
 
 context.lineWidth = 3; 
+
 
 
 let x2: number = 27;
@@ -196,9 +200,7 @@ context.fill();
 context.strokeStyle = "lightgreen";
 context.stroke();
 
-
-
-
+ 
 //Aufgabe 3 b
 
 interface Rechteck {
