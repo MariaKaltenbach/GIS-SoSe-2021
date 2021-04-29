@@ -152,4 +152,12 @@ function drawRect(_rechteck1) {
     context.strokeRect(_rechteck1.x, _rechteck1.y, _rechteck1.breite, _rechteck1.hoehe);
     context.fillRect(_rechteck1.x, _rechteck1.y, _rechteck1.breite, _rechteck1.hoehe);
 }
+//Aufgabe 3 e
+let rechteck = [];
+rechteck.push(createRect());
+rechteck.push(createRect());
+rechteck.push(createRect());
+for (let i = 0; i < rechteck.length; i++) {
+    drawRect(rechteck[i]);
+}
 //# sourceMappingURL=script.js.map

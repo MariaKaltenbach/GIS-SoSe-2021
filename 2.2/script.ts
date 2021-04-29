@@ -7,7 +7,7 @@ let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("myFi
 let context: CanvasRenderingContext2D = canvas.getContext("2d");
 
 
-context.lineWidth = 3; 
+context.lineWidth = 3;
 
 
 
@@ -136,8 +136,8 @@ console.log(join(arr, [15, 9001, -440]));
 
 arr = split(arr, 0, 4);
 console.log(arr);
-   // console.log(split(arr, 1, 2));
-  
+// console.log(split(arr, 1, 2));
+
 
 // Aufgabe 3 a 
 
@@ -200,7 +200,7 @@ context.fill();
 context.strokeStyle = "lightgreen";
 context.stroke();
 
- 
+
 //Aufgabe 3 b
 
 interface Rechteck {
@@ -220,7 +220,7 @@ context.strokeRect(rechteck1.x, rechteck1.y, rechteck1.breite, rechteck1.hoehe);
 context.fillRect(rechteck1.x, rechteck1.y, rechteck1.breite, rechteck1.hoehe);
 
 function createRect(): Rechteck {
-    
+
     let rechteck1: Rechteck = { breite: Math.random() * 50 + 50, hoehe: Math.random() * 50 + 50, x: Math.random() * 50 + 50, y: Math.random() * 50 + 50 };
 
     return rechteck1;
@@ -238,4 +238,15 @@ function drawRect(_rechteck1: Rechteck): void {
     context.fillRect(_rechteck1.x, _rechteck1.y, _rechteck1.breite, _rechteck1.hoehe);
 
 }
- 
+
+//Aufgabe 3 e
+
+let rechteck: Rechteck[] = [];
+rechteck.push(createRect());
+rechteck.push(createRect());
+rechteck.push(createRect());
+
+
+for (let i: number = 0; i < rechteck.length; i++) {
+    drawRect(rechteck[i]);
+}
