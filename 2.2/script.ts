@@ -75,67 +75,47 @@ student1.showInfo();
 student2.showInfo();
 student3.showInfo();
 
+//aufgabe 2 b
 
+function join(...arrs: number[][]): number[] {
+    let join: number[] = [];
+    //forEach -> führt eine übergebene Funktion für jedes Element eines Arrays aus
+    //join.push fügt das Element hinter das array 
+    arrs.forEach(arr => arr.forEach(elem => join.push(elem)));
+    return join;
+}
+
+//Aufgabe 2 c
+function split(arr: number[], index1: number, index2: number): number[] {
+    let split: number[] = [];
+    if (index1 >= 0 && index2 < arr.length && index1 < index2) {
+        for (let i: number = index1; i <= index2; i++) {
+            split.push(arr[i]);
+        }
+    } 
+    return split;
+}
+
+//Code aus den Materialien
+let arr: number[] = [5, 42, 17, 2018, -10, 60, -10010];
+let arrayBack: number[] = backwards(arr);
+console.log(arr);
+console.log(arrayBack);
+console.log(join(arr, [15, 9001, -440]));
+
+arr = split(arr, 0, 4);
+console.log(arr); 
+console.log(split(arr, 1, 2));
 
 // Aufgabe 2 a
 
-
-function backwards(a: number[]): number[] {
-    let ruckgabe: number[] = [0];
-
-    for (let zaehler: number = 0; a.length - 1 > zaehler; zaehler++) {
-
-        ruckgabe.push(a[a.length - zaehler + 1]);
-
+function backwards(arr: number[]): number[] {
+        let backwards: number[] = [];
+        for (let i: number = arr.length - 1; i >= 0; i--) {
+            backwards.push(arr[i]);
+        }
+        return backwards;
     }
-
-    return ruckgabe;
-
-}
-
-
-function join(a: number[], werte: number[]): number[] {
-
-
-    for (let zaehler: number = 0; werte.length - 1 > zaehler; zaehler++) {
-
-        a.push(werte[zaehler]);
-
-    }
-
-    return a;
-
-}
-
-
-function split(a: number[], links: number, rechts: number): number[] {
-
-
-    let ruckgabe: number[];
-
-    ruckgabe = a;
-    //  if (links < 0 || rechts > a.length) { return [99]  ; }
-
-    for (let zaehler: number = links + 1; rechts - 1 < zaehler; zaehler++) {
-
-        //ruckgabe.push(a[zaehler]);
-
-    }
-
-    return ruckgabe;
-}
-
-let array: number[] = [5, 42, 17, 2018, -10, 60, -10010];
-let arrayBack: number[] = backwards(array);
-console.log(array);
-console.log(arrayBack);
-console.log(join(array, [15, 9001, -440]));
-
-array = split(array, 0, 4);
-console.log(array);
-// console.log(split(arr, 1, 2));
-
-
 // Aufgabe 3 a 
 
 

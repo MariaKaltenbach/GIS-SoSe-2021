@@ -49,37 +49,41 @@ let student3 = new Student("Kai", 26, 235262, "Online Medien", 5);
 student1.showInfo();
 student2.showInfo();
 student3.showInfo();
-// Aufgabe 2 a
-function backwards(a) {
-    let ruckgabe = [0];
-    for (let zaehler = 0; a.length - 1 > zaehler; zaehler++) {
-        ruckgabe.push(a[a.length - zaehler + 1]);
-    }
-    return ruckgabe;
+//aufgabe 2 b
+function join(...arrs) {
+    let join = [];
+    //forEach -> führt eine übergebene Funktion für jedes Element eines Arrays aus
+    //join.push fügt das Element hinter das array 
+    arrs.forEach(arr => arr.forEach(elem => join.push(elem)));
+    return join;
 }
-function join(a, werte) {
-    for (let zaehler = 0; werte.length - 1 > zaehler; zaehler++) {
-        a.push(werte[zaehler]);
+//Aufgabe 2 c
+function split(arr, index1, index2) {
+    let split = [];
+    if (index1 >= 0 && index2 < arr.length && index1 < index2) {
+        for (let i = index1; i <= index2; i++) {
+            split.push(arr[i]);
+        }
     }
-    return a;
+    return split;
 }
-function split(a, links, rechts) {
-    let ruckgabe;
-    ruckgabe = a;
-    //  if (links < 0 || rechts > a.length) { return [99]  ; }
-    for (let zaehler = links + 1; rechts - 1 < zaehler; zaehler++) {
-        //ruckgabe.push(a[zaehler]);
-    }
-    return ruckgabe;
-}
-let array = [5, 42, 17, 2018, -10, 60, -10010];
-let arrayBack = backwards(array);
-console.log(array);
+//Code aus den Materialien
+let arr = [5, 42, 17, 2018, -10, 60, -10010];
+let arrayBack = backwards(arr);
+console.log(arr);
 console.log(arrayBack);
-console.log(join(array, [15, 9001, -440]));
-array = split(array, 0, 4);
-console.log(array);
-// console.log(split(arr, 1, 2));
+console.log(join(arr, [15, 9001, -440]));
+arr = split(arr, 0, 4);
+console.log(arr);
+console.log(split(arr, 1, 2));
+// Aufgabe 2 a
+function backwards(arr) {
+    let backwards = [];
+    for (let i = arr.length - 1; i >= 0; i--) {
+        backwards.push(arr[i]);
+    }
+    return backwards;
+}
 // Aufgabe 3 a 
 context.fillStyle = "green";
 context.fillRect(0, 200, 500, 150);
