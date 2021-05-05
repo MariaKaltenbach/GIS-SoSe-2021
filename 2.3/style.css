@@ -13,6 +13,13 @@ h2 {
     color: grey;
 }
 
+a {
+    font-size: 20px;
+    font-family: sans-serif;
+    color: black;
+    text-decoration: none;
+}
+
 ul,
 li,
 p {
@@ -38,6 +45,10 @@ div.GroßerAbsatz {
 
 label {
     font-size: 18px;
+}
+
+canvas {
+    margin-left: 300px;
 }
 
 @media only screen and (min-width: 601px) and (max-width: 1023px) {
