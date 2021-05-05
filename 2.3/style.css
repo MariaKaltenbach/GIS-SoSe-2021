@@ -47,8 +47,18 @@ label {
     font-size: 18px;
 }
 
-canvas {
+.canvasWaffel {
     margin-left: 300px;
+}
+
+.canvasStreusel {
+    margin-left: 280px;
+    margin-top: 90px;
+}
+
+.canvasEiskugel {
+    margin-left: 310px;
+    margin-top: 100px;
 }
 
 @media only screen and (min-width: 601px) and (max-width: 1023px) {

@@ -1,4 +1,31 @@
 
+//path variable angelegt -> damit ich mit einer if abfrage prüfen kann auf welcher seite ich bin, damit 
+//man die komponeneten einzeln auf verschiedenen seiten auswählen kann
+let path: string = window.location.pathname;
+let page: string = path.split("/").pop();
+
+
+// Aufgabe 1 woche 3
+if (page == "aufgabe1.html") {
+    let buttons: HTMLCollectionOf<HTMLButtonElement> = document.getElementsByTagName("button");
+    buttons[0].addEventListener("click", makeNew);
+    buttons[1].addEventListener("click", reset);
+    function makeNew(_e: Event): void {
+        let div: HTMLDivElement = document.createElement("div");
+        div.style.backgroundColor = "black";
+        div.style.height = "50px";
+        div.style.width = "50px";
+        div.style.marginLeft = (Math.random() * 200).toString() + "px";
+        document.getElementById("fillThis")?.appendChild(div);
+    }
+    function reset(_e: Event): void {
+        let parent: HTMLDivElement = <HTMLDivElement>document.getElementById("fillThis");
+        parent.innerHTML = "";
+    }
+}
+
+// Aufagabe 2 und 3 
+
 //region Interface (Interface für alle drei Auswahlmöglichkeiten angelegt)
 interface Lebensmittel {
 
@@ -7,6 +34,8 @@ interface Lebensmittel {
     name: string;
     farbe: string;
 }
+
+
 //(Listen für alles angelegt)
 interface LebensmittelListe {
 
@@ -15,18 +44,11 @@ interface LebensmittelListe {
     streuselListe: Lebensmittel[];
 }
 
-
-
 let waffelVariation: Lebensmittel[];
 let eiskugelVariation: Lebensmittel[];
 let streuselVariation: Lebensmittel[];
 
-let path: string = window.location.pathname;
-let page: string = path.split("/").pop();
 
-
-
-//region Canvas
 //mit Canvas zeichnen
 
 let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("myEiscreme");
@@ -40,6 +62,7 @@ if (page == "Waffel.html") {
     context.moveTo(50, 200);
     context.lineTo(150, 600);
     context.lineTo(250, 200);
+    context.fill();
     context.closePath();
     context.stroke();
 
@@ -107,50 +130,47 @@ let waffel: HTMLSelectElement = <HTMLSelectElement>document.getElementById("waff
 let eiskugel: HTMLSelectElement = <HTMLSelectElement>document.getElementById("eiskugel");
 let streusel: HTMLSelectElement = <HTMLSelectElement>document.getElementById("streusel");
 
-
-for (let i: number = 0; i < waffelVariation.length; i++) {
-    let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
-    newOptionElement.innerText = waffelVariation[i].name;
-    newOptionElement.setAttribute("value", waffelVariation[i].name);
-    waffel.appendChild(newOptionElement);
-}
-
-
+//for-Schleife um die Daten ausgeben zu lassen
 
 for (let i: number = 0; i < eiskugelVariation.length; i++) {
     let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
     newOptionElement.innerText = eiskugelVariation[i].name;
-    newOptionElement.setAttribute("value", eiskugelVariation[i].name + "_valueTag");
     eiskugel.appendChild(newOptionElement);
 }
 
+
+
+for (let i: number = 0; i < waffelVariation.length; i++) {
+    let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
+    newOptionElement.innerText = waffelVariation[i].name;
+    waffel.appendChild(newOptionElement);
+}
 
 
 
 for (let i: number = 0; i < streuselVariation.length; i++) {
     let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
     newOptionElement.innerText = streuselVariation[i].name;
-    newOptionElement.setAttribute("value", streuselVariation[i].name + "_valueTag");
     streusel.appendChild(newOptionElement);
 }
 
 
-waffel.addEventListener("change", waffelVariationenChanged);
+waffel.addEventListener("change", waffelVariationChanged);
 
-function waffelVariationenChanged(_e: Event): void {
+function waffelVariationChanged(_e: Event): void {
     console.log((<HTMLOptionElement>_e.target).value);
 }
 
 
-eiskugel.addEventListener("change", eiskugelVariationenChanged);
+eiskugel.addEventListener("change", eiskugelVariationChanged);
 
-function eiskugelVariationenChanged(_e: Event): void {
+function eiskugelVariationChanged(_e: Event): void {
     console.log((<HTMLOptionElement>_e.target).value);
 }
 
 
-streusel.addEventListener("change", streuselVariationenChanged);
+streusel.addEventListener("change", streuselVariationChanged);
 
-function streuselVariationenChanged(_e: Event): void {
+function streuselVariationChanged(_e: Event): void {
     console.log((<HTMLOptionElement>_e.target).value);
 }

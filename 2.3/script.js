@@ -1,10 +1,29 @@
 "use strict";
+//path variable angelegt -> damit ich mit einer if abfrage prüfen kann auf welcher seite ich bin, damit 
+//man die komponeneten einzeln auf verschiedenen seiten auswählen kann
+let path = window.location.pathname;
+let page = path.split("/").pop();
+// Aufgabe 1 woche 3
+if (page == "aufgabe1.html") {
+    let buttons = document.getElementsByTagName("button");
+    buttons[0].addEventListener("click", makeNew);
+    buttons[1].addEventListener("click", reset);
+    function makeNew(_e) {
+        let div = document.createElement("div");
+        div.style.backgroundColor = "black";
+        div.style.height = "50px";
+        div.style.width = "50px";
+        div.style.marginLeft = (Math.random() * 200).toString() + "px";
+        document.getElementById("fillThis")?.appendChild(div);
+    }
+    function reset(_e) {
+        let parent = document.getElementById("fillThis");
+        parent.innerHTML = "";
+    }
+}
 let waffelVariation;
 let eiskugelVariation;
 let streuselVariation;
-let path = window.location.pathname;
-let page = path.split("/").pop();
-//region Canvas
 //mit Canvas zeichnen
 let canvas = document.getElementById("myEiscreme");
 let context = canvas.getContext("2d");
@@ -14,6 +33,7 @@ if (page == "Waffel.html") {
     context.moveTo(50, 200);
     context.lineTo(150, 600);
     context.lineTo(250, 200);
+    context.fill();
     context.closePath();
     context.stroke();
 }
@@ -65,34 +85,32 @@ if (page == "Eiskugel.html") {
 let waffel = document.getElementById("waffel");
 let eiskugel = document.getElementById("eiskugel");
 let streusel = document.getElementById("streusel");
-for (let i = 0; i < waffelVariation.length; i++) {
-    let newOptionElement = document.createElement("OPTION");
-    newOptionElement.innerText = waffelVariation[i].name;
-    newOptionElement.setAttribute("value", waffelVariation[i].name);
-    waffel.appendChild(newOptionElement);
-}
+//for-Schleife um die Daten ausgeben zu lassen
 for (let i = 0; i < eiskugelVariation.length; i++) {
     let newOptionElement = document.createElement("OPTION");
     newOptionElement.innerText = eiskugelVariation[i].name;
-    newOptionElement.setAttribute("value", eiskugelVariation[i].name + "_valueTag");
     eiskugel.appendChild(newOptionElement);
+}
+for (let i = 0; i < waffelVariation.length; i++) {
+    let newOptionElement = document.createElement("OPTION");
+    newOptionElement.innerText = waffelVariation[i].name;
+    waffel.appendChild(newOptionElement);
 }
 for (let i = 0; i < streuselVariation.length; i++) {
     let newOptionElement = document.createElement("OPTION");
     newOptionElement.innerText = streuselVariation[i].name;
-    newOptionElement.setAttribute("value", streuselVariation[i].name + "_valueTag");
     streusel.appendChild(newOptionElement);
 }
-waffel.addEventListener("change", waffelVariationenChanged);
-function waffelVariationenChanged(_e) {
+waffel.addEventListener("change", waffelVariationChanged);
+function waffelVariationChanged(_e) {
     console.log(_e.target.value);
 }
-eiskugel.addEventListener("change", eiskugelVariationenChanged);
-function eiskugelVariationenChanged(_e) {
+eiskugel.addEventListener("change", eiskugelVariationChanged);
+function eiskugelVariationChanged(_e) {
     console.log(_e.target.value);
 }
-streusel.addEventListener("change", streuselVariationenChanged);
-function streuselVariationenChanged(_e) {
+streusel.addEventListener("change", streuselVariationChanged);
+function streuselVariationChanged(_e) {
     console.log(_e.target.value);
 }
 //# sourceMappingURL=script.js.map
