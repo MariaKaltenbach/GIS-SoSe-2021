@@ -1,15 +1,22 @@
 "use strict";
 // Aufgabe 1 a 
-let canvas = document.getElementById("myFirstCanvas");
-let context = canvas.getContext("2d");
+/*
+
+let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("myFirstCanvas");
+let context: CanvasRenderingContext2D = canvas.getContext("2d");
+
+
 context.lineWidth = 3;
-let x2 = 27;
-let y2 = 8;
-let z2 = -1;
-function min(x2, y2, z2) {
+
+
+let x2: number = 27;
+let y2: number = 8;
+let z2: number = -1;
+function min(x2: number, y2: number, z2: number): void {
     if (x2 < y2 && x1 < z2) {
         console.log(x1);
     }
+
     else if (y2 < z2 && y1 < x2) {
         console.log(y1);
     }
@@ -18,9 +25,11 @@ function min(x2, y2, z2) {
     }
 }
 min(x2, y2, z2);
-// Aufgabe 1 b 
-let n1 = 50;
-function isEven(n1) {
+
+
+// Aufgabe 1 b
+let n1: number = 50;
+function isEven(n1: number): void {
     if (0 % n1 == 0) {
         console.log(true);
     }
@@ -28,69 +37,97 @@ function isEven(n1) {
         isEven(n1 - 2);
         console.log(false);
     }
+
 }
 isEven(n1);
-// Aufgabe 1 c 
+
+// Aufgabe 1 c
+
 class Student {
-    constructor(name, alter, matrikelnummer, studiengang, semester) {
+
+    name: string;
+    studiengang: string;
+    semester: number;
+    matrikelnummer: number;
+    alter: number;
+
+
+    constructor(name: string, alter: number, matrikelnummer: number, studiengang: string, semester: number) {
         this.name = name;
         this.alter = alter;
         this.matrikelnummer = matrikelnummer;
         this.studiengang = studiengang;
         this.semester = semester;
+
     }
-    showInfo() {
+    showInfo(): void {
+
+
         console.log(this.name + "," + this.alter + "," + this.matrikelnummer + "," + this.studiengang + "," + this.semester);
+
     }
 }
-let student1 = new Student("Larissa", 23, 235462, "Medien Informatik", 3);
-let student2 = new Student("Leon", 19, 235367, "Medienkonzeption", 1);
-let student3 = new Student("Kai", 26, 235262, "Online Medien", 5);
+let student1: Student = new Student("Larissa", 23, 235462, "Medien Informatik", 3);
+let student2: Student = new Student("Leon", 19, 235367, "Medienkonzeption", 1);
+let student3: Student = new Student("Kai", 26, 235262, "Online Medien", 5);
+
+
 student1.showInfo();
 student2.showInfo();
 student3.showInfo();
+
 //aufgabe 2 b
-function join(...arrs) {
-    let join = [];
+
+function join(...arrs: number[][]): number[] {
+    let join: number[] = [];
     //forEach -> führt eine übergebene Funktion für jedes Element eines Arrays aus
-    //join.push fügt das Element hinter das array 
+    //join.push fügt das Element hinter das array
     arrs.forEach(arr => arr.forEach(elem => join.push(elem)));
     return join;
 }
+
 //Aufgabe 2 c
-function split(arr, index1, index2) {
-    let split = [];
+function split(arr: number[], index1: number, index2: number): number[] {
+    let split: number[] = [];
     if (index1 >= 0 && index2 < arr.length && index1 < index2) {
-        for (let i = index1; i <= index2; i++) {
+        for (let i: number = index1; i <= index2; i++) {
             split.push(arr[i]);
         }
     }
     return split;
 }
+
 //Code aus den Materialien
-let arr = [5, 42, 17, 2018, -10, 60, -10010];
-let arrayBack = backwards(arr);
+let arr: number[] = [5, 42, 17, 2018, -10, 60, -10010];
+let arrayBack: number[] = backwards(arr);
 console.log(arr);
 console.log(arrayBack);
 console.log(join(arr, [15, 9001, -440]));
+
 arr = split(arr, 0, 4);
 console.log(arr);
 console.log(split(arr, 1, 2));
+
 // Aufgabe 2 a
-function backwards(arr) {
-    let backwards = [];
-    for (let i = arr.length - 1; i >= 0; i--) {
-        backwards.push(arr[i]);
+
+function backwards(arr: number[]): number[] {
+        let backwards: number[] = [];
+        for (let i: number = arr.length - 1; i >= 0; i--) {
+            backwards.push(arr[i]);
+        }
+        return backwards;
     }
-    return backwards;
-}
-// Aufgabe 3 a 
+// Aufgabe 3 a
+
+
 context.fillStyle = "green";
 context.fillRect(0, 200, 500, 150);
 context.strokeRect(0, 200, 500, 150); //Wiese
+
+
 context.fillStyle = "lightblue";
 context.fillRect(0, 0, 500, 200);
-context.strokeRect(0, 0, 500, 200); //Himmel
+context.strokeRect(0, 0, 500, 200);  //Himmel
 //cloud
 context.beginPath();
 context.moveTo(170, 80);
@@ -140,27 +177,59 @@ context.fillStyle = "green";
 context.fill();
 context.strokeStyle = "lightgreen";
 context.stroke();
+
+
+
+//Aufgabe 3 b
+
+interface Rechteck {
+    breite: number;
+    höhe: number;
+    x: number;
+    y: number;
+}
+
+
 //Aufgabe 3 c
 context.fillStyle = "lightblue";
-let rechteck1 = { breite: 30, höhe: 40, x: 300, y: 300 };
+
+
+let rechteck1: Rechteck = { breite: 30, höhe: 40, x: 300, y: 300 };
+
 context.strokeRect(rechteck1.x, rechteck1.y, rechteck1.breite, rechteck1.höhe);
+
 context.fillRect(rechteck1.x, rechteck1.y, rechteck1.breite, rechteck1.höhe);
-function createRect() {
-    let rechteck1 = { breite: Math.random() * 50 + 50, höhe: Math.random() * 50 + 50, x: Math.random() * 50 + 50, y: Math.random() * 50 + 50 };
+
+function createRect(): Rechteck {
+
+    let rechteck1: Rechteck = { breite: Math.random() * 50 + 50, höhe: Math.random() * 50 + 50, x: Math.random() * 50 + 50, y: Math.random() * 50 + 50 };
+
     return rechteck1;
 }
+
 drawRect(createRect());
+
 //Aufgabe 3 d
-function drawRect(_rechteck1) {
+
+function drawRect(_rechteck1: Rechteck): void {
+
+
     context.strokeRect(_rechteck1.x, _rechteck1.y, _rechteck1.breite, _rechteck1.höhe);
+
     context.fillRect(_rechteck1.x, _rechteck1.y, _rechteck1.breite, _rechteck1.höhe);
+
 }
+
 //Aufgabe 3 e
-let rechteck = [];
+
+let rechteck: Rechteck[] = [];
 rechteck.push(createRect());
 rechteck.push(createRect());
 rechteck.push(createRect());
-for (let i = 0; i < rechteck.length; i++) {
+
+
+for (let i: number = 0; i < rechteck.length; i++) {
     drawRect(rechteck[i]);
 }
+*/ 
 //# sourceMappingURL=script.js.map

@@ -1,5 +1,5 @@
 // Aufgabe 1 a 
-
+/*
 
 let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("myFirstCanvas");
 let context: CanvasRenderingContext2D = canvas.getContext("2d");
@@ -230,3 +230,4 @@ rechteck.push(createRect());
 for (let i: number = 0; i < rechteck.length; i++) {
     drawRect(rechteck[i]);
 }
+*/
