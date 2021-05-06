@@ -73,13 +73,22 @@ label {
     div.Auswahlmöglichkeiten {
         font-size: 18px;
     }
+    .canvasWaffel {
+        margin-left: 240px;
+    }
+    .canvasEiskugel {
+        margin-left: 240px;
+    }
+    .canvasStreusel {
+        margin-left: 240px;
+    }
 }
 
 @media only screen and (max-width: 600px) {
     p,
     ul,
     li {
-        font-size: 18px;
+        font-size: 16px;
     }
     h1 {
         font-size: 24px;
@@ -88,11 +97,20 @@ label {
         font-size: 20px;
     }
     .Preisliste {
-        margin-left: 190px;
+        margin-left: 150px;
         padding-top: 5px;
         padding-bottom: 5px;
     }
     label {
         font: 14px;
+    }
+    .canvasEiskugel {
+        margin-left: 30px;
+    }
+    .canvasWaffel {
+        margin-left: 30px;
+    }
+    .canvasStreusel {
+        margin-left: 30px;
     }
 }
