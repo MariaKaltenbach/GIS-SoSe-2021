@@ -4,27 +4,6 @@ let path: string = window.location.pathname;
 let page: string = path.split("/").pop();
 
 
-// Aufgabe 1 woche 3
-if (page == "aufgabe1.html") {
-    let buttons: HTMLCollectionOf<HTMLButtonElement> = document.getElementsByTagName("button");
-    buttons[0].addEventListener("click", makeNew);
-    buttons[1].addEventListener("click", reset);
-    function makeNew(_e: Event): void {
-        let div: HTMLDivElement = document.createElement("div");
-        div.style.backgroundColor = "black";
-        div.style.height = "50px";
-        div.style.width = "50px";
-        div.style.marginLeft = (Math.random() * 200).toString() + "px";
-        document.getElementById("fillThis")?.appendChild(div);
-    }
-    function reset(_e: Event): void {
-        let parent: HTMLDivElement = <HTMLDivElement>document.getElementById("fillThis");
-        parent.innerHTML = "";
-    }
-
-
-}
-
 // Aufagabe 2 und 3 
 
 namespace Eisladen {
