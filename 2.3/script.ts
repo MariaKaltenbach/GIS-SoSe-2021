@@ -61,16 +61,14 @@ namespace Eisladen {
         
     //Auswahlmöglichkeiten aus data.js laden 
 
-    //for-Schleife um die Daten asu data.ts ausgeben 
+    //for-Schleife um die Daten aus data.ts ausgeben 
 
         let waffelSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("waffel");
-
-        for (let i: number = 0; i < waffelVariation.length; i++) {
+        for (let i: number = 0; i < streuselVariation.length; i++) {
             let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
             newOptionElement.innerText = waffelVariation[i].name;
             newOptionElement.setAttribute("value", waffelVariation[i].name);
             waffelSelect.appendChild(newOptionElement);
-
         }
         //Eventlistener ändert die Auswahl
         waffelSelect.addEventListener("change", waffelVariationChanged);
@@ -123,7 +121,7 @@ namespace Eisladen {
 
     //Auswahlmöglichkeiten aus data.js laden 
 
-    //for-Schleife um die Daten asu data.ts ausgeben 
+    //for-Schleife um die Daten aus data.ts ausgeben 
 
         let streuselSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("streusel");
 

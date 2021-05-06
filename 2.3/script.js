@@ -37,9 +37,9 @@ var Eisladen;
         context.closePath();
         context.stroke();
         //Auswahlmöglichkeiten aus data.js laden 
-        //for-Schleife um die Daten asu data.ts ausgeben 
+        //for-Schleife um die Daten aus data.ts ausgeben 
         let waffelSelect = document.getElementById("waffel");
-        for (let i = 0; i < Eisladen.waffelVariation.length; i++) {
+        for (let i = 0; i < Eisladen.streuselVariation.length; i++) {
             let newOptionElement = document.createElement("OPTION");
             newOptionElement.innerText = Eisladen.waffelVariation[i].name;
             newOptionElement.setAttribute("value", Eisladen.waffelVariation[i].name);
@@ -85,7 +85,7 @@ var Eisladen;
         context.closePath();
         context.stroke();
         //Auswahlmöglichkeiten aus data.js laden 
-        //for-Schleife um die Daten asu data.ts ausgeben 
+        //for-Schleife um die Daten aus data.ts ausgeben 
         let streuselSelect = document.getElementById("streusel");
         for (let i = 0; i < Eisladen.streuselVariation.length; i++) {
             let newOptionElement = document.createElement("OPTION");
