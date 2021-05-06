@@ -23,7 +23,6 @@ if (page == "aufgabe1.html") {
     }
 
 
-
 }
 
 // Aufagabe 2 und 3 
@@ -39,11 +38,7 @@ namespace Eisladen {
         farbe: string;
     }
 
-    let waffelVariation: Lebensmittel[];
-    let eiskugelVariation: Lebensmittel[];
-    let streuselVariation: Lebensmittel[];
 
-  
 
     //mit Canvas zeichnen
 
@@ -51,6 +46,7 @@ namespace Eisladen {
     let context: CanvasRenderingContext2D = <CanvasRenderingContext2D>canvas.getContext("2d");
 
     context.lineWidth = 3;
+
 
     if (page == "Waffel.html") {
 
@@ -62,7 +58,22 @@ namespace Eisladen {
         context.closePath();
         context.stroke();
 
+        
+    //Auswahlmöglichkeiten aus data.js laden 
 
+    //for-Schleife um die Daten asu data.ts ausgeben 
+
+        let waffelSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("waffel");
+
+        for (let i: number = 0; i < waffelVariation.length; i++) {
+            let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
+            newOptionElement.innerText = waffelVariation[i].name;
+            newOptionElement.setAttribute("value", waffelVariation[i].name);
+            waffelSelect.appendChild(newOptionElement);
+
+        }
+        //Eventlistener ändert die Auswahl
+        waffelSelect.addEventListener("change", waffelVariationChanged);
     }
 
     if (page == "Streusel.html") {
@@ -108,6 +119,23 @@ namespace Eisladen {
         context.lineTo(210, 180);
         context.closePath();
         context.stroke();
+
+
+    //Auswahlmöglichkeiten aus data.js laden 
+
+    //for-Schleife um die Daten asu data.ts ausgeben 
+
+        let streuselSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("streusel");
+
+        for (let i: number = 0; i < streuselVariation.length; i++) {
+            let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
+            newOptionElement.innerText = streuselVariation[i].name;
+            newOptionElement.setAttribute("value", streuselVariation[i].name);
+            streuselSelect.appendChild(newOptionElement);
+        }
+        //Eventlistener ändert die Auswahl
+        streuselSelect.addEventListener("change", streuselVariationChanged);
+
     }
 
 
@@ -118,48 +146,29 @@ namespace Eisladen {
         context.closePath();
         context.fill();
         context.stroke();
-    }
 
 
     //Auswahlmöglichkeiten aus data.js laden 
 
-    let eiskugelSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("eiskugel");
-    let waffelSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("waffel");
-    let streuselSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("streusel");
+    //for-Schleife um die Daten asu data.ts ausgeben 
 
-    //for-Schleife um die Daten ausgeben zu lassen
-   
 
-    for (let i: number = 0; i < eiskugelVariation.length; i++) {
-        let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
-        newOptionElement.innerText = eiskugelVariation[i].name;
-        eiskugelSelect.appendChild(newOptionElement);
+        let eiskugelSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("eiskugel");
 
+        for (let i: number = 0; i < eiskugelVariation.length; i++) {
+            let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
+            newOptionElement.innerText = eiskugelVariation[i].name;
+            newOptionElement.setAttribute("value", eiskugelVariation[i].name);
+            eiskugelSelect.appendChild(newOptionElement);
+
+        }
+
+        //Eventlistener ändert die Auswahl
+        eiskugelSelect.addEventListener("change", eiskugelVariationChanged);
     }
 
 
-
-    for (let i: number = 0; i < waffelVariation.length; i++) {
-        let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
-        newOptionElement.innerText = waffelVariation[i].name;
-        waffelSelect.appendChild(newOptionElement);
-        
-    }
-
-
-
-    for (let i: number = 0; i < streuselVariation.length; i++) {
-        let newOptionElement: HTMLOptionElement = <HTMLOptionElement>document.createElement("OPTION");
-        newOptionElement.innerText = streuselVariation[i].name;
-        streuselSelect.appendChild(newOptionElement);
-    }
-
-
-
-    waffelSelect.addEventListener("change", waffelVariationChanged);
-    eiskugelSelect.addEventListener("change", eiskugelVariationChanged);
-    streuselSelect.addEventListener("change", streuselVariationChanged);
-
+//Eventlistner angelegt
 
     function waffelVariationChanged(_e: Event): void {
         console.log((<HTMLOptionElement>_e.target).value);
@@ -177,9 +186,5 @@ namespace Eisladen {
         console.log((<HTMLOptionElement>_e.target).value);
 
     }
-
-
-
-      
 
 }

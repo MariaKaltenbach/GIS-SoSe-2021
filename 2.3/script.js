@@ -24,9 +24,6 @@ if (page == "aufgabe1.html") {
 // Aufagabe 2 und 3 
 var Eisladen;
 (function (Eisladen) {
-    let waffelVariation;
-    let eiskugelVariation;
-    let streuselVariation;
     //mit Canvas zeichnen
     let canvas = document.getElementById("myEiscreme");
     let context = canvas.getContext("2d");
@@ -39,6 +36,17 @@ var Eisladen;
         context.fill();
         context.closePath();
         context.stroke();
+        //Auswahlmöglichkeiten aus data.js laden 
+        //for-Schleife um die Daten asu data.ts ausgeben 
+        let waffelSelect = document.getElementById("waffel");
+        for (let i = 0; i < Eisladen.waffelVariation.length; i++) {
+            let newOptionElement = document.createElement("OPTION");
+            newOptionElement.innerText = Eisladen.waffelVariation[i].name;
+            newOptionElement.setAttribute("value", Eisladen.waffelVariation[i].name);
+            waffelSelect.appendChild(newOptionElement);
+        }
+        //Eventlistener ändert die Auswahl
+        waffelSelect.addEventListener("change", waffelVariationChanged);
     }
     if (page == "Streusel.html") {
         context.beginPath();
@@ -76,6 +84,17 @@ var Eisladen;
         context.lineTo(210, 180);
         context.closePath();
         context.stroke();
+        //Auswahlmöglichkeiten aus data.js laden 
+        //for-Schleife um die Daten asu data.ts ausgeben 
+        let streuselSelect = document.getElementById("streusel");
+        for (let i = 0; i < Eisladen.streuselVariation.length; i++) {
+            let newOptionElement = document.createElement("OPTION");
+            newOptionElement.innerText = Eisladen.streuselVariation[i].name;
+            newOptionElement.setAttribute("value", Eisladen.streuselVariation[i].name);
+            streuselSelect.appendChild(newOptionElement);
+        }
+        //Eventlistener ändert die Auswahl
+        streuselSelect.addEventListener("change", streuselVariationChanged);
     }
     if (page == "Eiskugel.html") {
         context.beginPath();
@@ -83,30 +102,19 @@ var Eisladen;
         context.closePath();
         context.fill();
         context.stroke();
+        //Auswahlmöglichkeiten aus data.js laden 
+        //for-Schleife um die Daten asu data.ts ausgeben 
+        let eiskugelSelect = document.getElementById("eiskugel");
+        for (let i = 0; i < Eisladen.eiskugelVariation.length; i++) {
+            let newOptionElement = document.createElement("OPTION");
+            newOptionElement.innerText = Eisladen.eiskugelVariation[i].name;
+            newOptionElement.setAttribute("value", Eisladen.eiskugelVariation[i].name);
+            eiskugelSelect.appendChild(newOptionElement);
+        }
+        //Eventlistener ändert die Auswahl
+        eiskugelSelect.addEventListener("change", eiskugelVariationChanged);
     }
-    //Auswahlmöglichkeiten aus data.js laden 
-    let eiskugelSelect = document.getElementById("eiskugel");
-    let waffelSelect = document.getElementById("waffel");
-    let streuselSelect = document.getElementById("streusel");
-    //for-Schleife um die Daten ausgeben zu lassen
-    for (let i = 0; i < eiskugelVariation.length; i++) {
-        let newOptionElement = document.createElement("OPTION");
-        newOptionElement.innerText = eiskugelVariation[i].name;
-        eiskugelSelect.appendChild(newOptionElement);
-    }
-    for (let i = 0; i < waffelVariation.length; i++) {
-        let newOptionElement = document.createElement("OPTION");
-        newOptionElement.innerText = waffelVariation[i].name;
-        waffelSelect.appendChild(newOptionElement);
-    }
-    for (let i = 0; i < streuselVariation.length; i++) {
-        let newOptionElement = document.createElement("OPTION");
-        newOptionElement.innerText = streuselVariation[i].name;
-        streuselSelect.appendChild(newOptionElement);
-    }
-    waffelSelect.addEventListener("change", waffelVariationChanged);
-    eiskugelSelect.addEventListener("change", eiskugelVariationChanged);
-    streuselSelect.addEventListener("change", streuselVariationChanged);
+    //Eventlistner angelegt
     function waffelVariationChanged(_e) {
         console.log(_e.target.value);
     }
