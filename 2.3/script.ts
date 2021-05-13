@@ -1,4 +1,4 @@
-//path variable angelegt -> damit ich mit einer if abfrage prüfen kann auf welcher seite ich bin, damit 
+/*//path variable angelegt -> damit ich mit einer if abfrage prüfen kann auf welcher seite ich bin, damit 
 //man die komponeneten einzeln auf verschiedenen seiten auswählen kann
 let path: string = window.location.pathname;
 let page: string = path.split("/").pop();
@@ -165,3 +165,4 @@ namespace Eisladen {
     }
 
 }
+*/

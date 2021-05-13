@@ -1,4 +1,4 @@
-namespace Eisladen {
+/*namespace Eisladen {
     export let waffelVariation: Lebensmittel[] = [
         { geschmack: "Schokolade", preis: 0.70, name: "Schokowaffel", farbe: "black" },
         { geschmack: "Vanille", preis: 0.70, name: "Vanillewaffel", farbe: "beige" },
@@ -18,3 +18,4 @@ namespace Eisladen {
         { geschmack: "Weißeschokolade", preis: 0.20, name: "Weißeschokostreusel", farbe: "white" }
     ]; 
 }
+*/
