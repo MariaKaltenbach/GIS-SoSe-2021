@@ -6,9 +6,9 @@ namespace Eisladen {
         { geschmack: "Erdbeere", preis: 1.20, name: "Erdbeereis", farbe: "pink" }
     ];
 
-   /* let myEiskugel: Lebensmittel[] = eiskugelVariation;
+    let myEiskugel: Lebensmittel[] = eiskugelVariation;
     let myJSON1: string = JSON.stringify(myEiskugel);
-    console.log(myJSON1);*/
+    console.log(myJSON1);
 
     export let waffelVariation: Lebensmittel[] = [
         { geschmack: "Schokolade", preis: 0.70, name: "Schokowaffel", farbe: "black" },
@@ -16,9 +16,9 @@ namespace Eisladen {
         { geschmack: "Haselnuss", preis: 0.70, name: "Haselnusswaffel", farbe: "brown" }
     ];
 
-   /* let myWaffel: Lebensmittel[] = waffelVariation;
+    let myWaffel: Lebensmittel[] = waffelVariation;
     let myJSON: string = JSON.stringify(myWaffel);
-    console.log(myJSON);*/
+    console.log(myJSON);
 
 
 
@@ -28,7 +28,8 @@ namespace Eisladen {
         { geschmack: "Weißeschokolade", preis: 0.20, name: "Weißeschokostreusel", farbe: "white" }
     ];
 
-    /*let myStreusel: Lebensmittel[] = streuselVariation;
+    let myStreusel: Lebensmittel[] = streuselVariation;
     let myJSON2: string = JSON.stringify(myStreusel);
-    console.log(myJSON2);*/
+    console.log(myJSON2);
+
 }

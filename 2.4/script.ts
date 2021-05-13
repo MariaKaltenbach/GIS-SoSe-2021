@@ -17,8 +17,7 @@ namespace Eisladen {
     }
 
 
-
-
+   
     //mit Canvas zeichnen
 
     let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("myEiscreme");
@@ -28,15 +27,10 @@ namespace Eisladen {
 
 
 
-    
-
-    
-
     if (page == "Ergebnis.html") {
         icecream(localStorage.getItem("eiskugelFarbe"), 0, 0);  //Ergebnis der Eiscreme wird ausgegeben
-        cone(localStorage.getItem("waffelFarbe"), 0, 0);  //Ergenis der Eiscreme wird ausgegeben
-        sprinkles(localStorage.getItem("streuselFarbe"), 0, 0);  //Ergenbis der eiscreme wird ausgegeben
-
+        cone(localStorage.getItem("waffelFarbe"), 0, 0);  //Ergenis der Waffel wird ausgegeben
+        sprinkles(localStorage.getItem("streuselFarbe"), 0, 0);  //Ergenbis der Streusel wird ausgegeben
 
     }
     let waffelSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("waffel");
@@ -100,7 +94,8 @@ namespace Eisladen {
 
         //Eventlistener ändert die Auswahl
         streuselSelect.addEventListener("change", streuselVariationChanged);
-
+        icecream(localStorage.getItem("eiskugelFarbe"), 320, -7);
+    
 
     }
 
@@ -151,15 +146,14 @@ namespace Eisladen {
             eiskugelSelect.appendChild(newOptionElement);
 
         }
-
         //Eventlistener ändert die Auswahl
+        eiskugelSelect.addEventListener("change", eiskugelVariationChanged);
+        cone(localStorage.getItem("waffelFarbe"), 250, -250);
 
     }
-    eiskugelSelect.addEventListener("change", eiskugelVariationChanged);
 
 
-    //region Change Events (namen der auswahlmöglichkeiten ausgeben lassen und events damit man diese ändern kann)
-
+    //Change Events (namen der auswahlmöglichkeiten ausgeben lassen und events damit man diese ändern kann)
     function waffelVariationChanged(_e: Event): void {
         console.log((<HTMLOptionElement>_e.target).value);
         localStorage.setItem("waffelFarbe", (<HTMLOptionElement>_e.target).value);
@@ -178,6 +172,7 @@ namespace Eisladen {
         streuselNeuZeichnen();
     }
 
+    //daten über local storrage speichern
     if (localStorage.getItem("waffelFarbe") == null) {
 
         localStorage.setItem("waffelFarbe", waffelVariation[0].farbe);
@@ -200,6 +195,8 @@ namespace Eisladen {
     }
     streuselSelect.value = localStorage.getItem("streuselFarbe");
 
+
+    //canvas auf den jeweiligen seiten in bestimmter position zeichnen lassen und farbe speichern
     function waffelNeuZeichnen(): void {
 
         cone(localStorage.getItem("waffelFarbe"), 0, 0);
@@ -219,7 +216,7 @@ namespace Eisladen {
     }
 
     //Eiskugel zeichnen Ergebnisseite
-    // x und y Koordinaten um die Position auf dern index.html seite verändern zu können
+    // x und y Koordinaten um die Position auf den auswahlseiten verändern zu können
     //color String damit sich die Farbe bei der auswahl ändert
     function icecream(_colorString: string, _x: number, _y: number): void {
 
