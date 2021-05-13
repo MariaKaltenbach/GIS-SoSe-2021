@@ -17,9 +17,7 @@ namespace Eisladen {
     }
 
 
-   
     //mit Canvas zeichnen
-
     let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("myEiscreme");
     let context: CanvasRenderingContext2D = <CanvasRenderingContext2D>canvas.getContext("2d");
 
@@ -94,8 +92,8 @@ namespace Eisladen {
 
         //Eventlistener ändert die Auswahl
         streuselSelect.addEventListener("change", streuselVariationChanged);
-        icecream(localStorage.getItem("eiskugelFarbe"), 320, -7);
-    
+        icecream(localStorage.getItem("eiskugelFarbe"), 300, 100);
+        cone(localStorage.getItem("waffelFarbe"), 40, 100);
 
     }
 

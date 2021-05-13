@@ -63,7 +63,8 @@ var Eisladen;
         }
         //Eventlistener ändert die Auswahl
         streuselSelect.addEventListener("change", streuselVariationChanged);
-        icecream(localStorage.getItem("eiskugelFarbe"), 320, -7);
+        icecream(localStorage.getItem("eiskugelFarbe"), 300, 100);
+        cone(localStorage.getItem("waffelFarbe"), 40, 100);
     }
     if (page == "Waffel.html") {
         //Waffel mit canvas zeichnen lassen
