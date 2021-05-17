@@ -46,6 +46,14 @@ a:link {
     text-decoration: none;
 }
 
+.canvasStreusel {
+    margin-top: 100px;
+}
+
+.canvasEiskugel {
+    margin-top: 100px;
+}
+
 @media only screen and (min-width: 601px) and (max-width: 1023px) {
     p {
         font-size: 19px;
