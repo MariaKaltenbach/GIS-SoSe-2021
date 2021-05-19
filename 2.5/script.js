@@ -9,16 +9,14 @@ var Eisladen;
     let waffelVariation;
     let eiskugelVariation;
     let streuselVariation;
-    //reghion JSON (Daten aus der Json laden)
-    jsonLaden("data.json");
     //mit Canvas zeichnen
     let canvas = document.getElementById("myEiscreme");
     let context = canvas.getContext("2d");
     context.lineWidth = 3;
     if (page == "ergebnis.html") {
-        icecream(localStorage.getItem("eiskugelFarbe"), 0, 0); //Ergebnis der Eiscreme wird ausgegeben
-        cone(localStorage.getItem("waffelFarbe"), 0, 0); //Ergenis der Waffel wird ausgegeben
-        sprinkles(localStorage.getItem("streuselFarbe"), 0, 0); //Ergenbis der Streusel wird ausgegeben
+        eiskugelZeichnen(localStorage.getItem("eiskugelFarbe"), 0, 0); //Ergebnis der Eiscreme wird ausgegeben
+        waffelZeichnen(localStorage.getItem("waffelFarbe"), 0, 0); //Ergenis der Waffel wird ausgegeben
+        streuselZeichnen(localStorage.getItem("streuselFarbe"), 0, 0); //Ergenbis der Streusel wird ausgegeben
         serverAnfrage("https://gis-communication.herokuapp.com");
     }
     function seitenAufbau() {
@@ -71,8 +69,8 @@ var Eisladen;
             }
             //Eventlistener ändert die Auswahl
             streuselSelect.addEventListener("change", streuselVariationChanged);
-            icecream(localStorage.getItem("eiskugelFarbe"), 300, 100);
-            cone(localStorage.getItem("waffelFarbe"), 40, 100);
+            eiskugelZeichnen(localStorage.getItem("eiskugelFarbe"), 300, 100);
+            waffelZeichnen(localStorage.getItem("waffelFarbe"), 40, 100);
         }
         if (page == "waffel.html") {
             //Waffel mit canvas zeichnen lassen
@@ -109,7 +107,7 @@ var Eisladen;
             }
             //Eventlistener ändert die Auswahl
             eiskugelSelect.addEventListener("change", eiskugelVariationChanged);
-            cone(localStorage.getItem("waffelFarbe"), 250, -250);
+            waffelZeichnen(localStorage.getItem("waffelFarbe"), 250, -250);
         }
         //Change Events (namen der auswahlmöglichkeiten ausgeben lassen und events damit man diese ändern kann)
         function waffelVariationChanged(_e) {
@@ -142,19 +140,19 @@ var Eisladen;
         streuselSelect.value = localStorage.getItem("streuselFarbe");
         //canvas auf den jeweiligen seiten in bestimmter position zeichnen lassen und farbe speichern
         function waffelNeuZeichnen() {
-            cone(localStorage.getItem("waffelFarbe"), 0, 0);
+            waffelZeichnen(localStorage.getItem("waffelFarbe"), 0, 0);
         }
         function eiskugelNeuZeichnen() {
-            icecream(localStorage.getItem("eiskugelFarbe"), 0, 0);
+            eiskugelZeichnen(localStorage.getItem("eiskugelFarbe"), 0, 0);
         }
         function streuselNeuZeichnen() {
-            sprinkles(localStorage.getItem("streuselFarbe"), 0, 0);
+            streuselZeichnen(localStorage.getItem("streuselFarbe"), 0, 0);
         }
     }
     //Eiskugel zeichnen Ergebnisseite
     // x und y Koordinaten um die Position auf den auswahlseiten verändern zu können
     //color String damit sich die Farbe bei der auswahl ändert
-    function icecream(_colorString, _x, _y) {
+    function eiskugelZeichnen(_colorString, _x, _y) {
         context.beginPath();
         context.fillStyle = _colorString;
         context.strokeStyle = _colorString;
@@ -164,7 +162,7 @@ var Eisladen;
         context.stroke();
     }
     // Waffel zeichnen Ergebnisseite
-    function cone(_colorString, _x, _y) {
+    function waffelZeichnen(_colorString, _x, _y) {
         context.beginPath();
         context.fillStyle = _colorString;
         context.strokeStyle = _colorString;
@@ -176,7 +174,7 @@ var Eisladen;
         context.stroke();
     }
     //streusel zeichnen Ergebnisseite
-    function sprinkles(_colorString, _x, _y) {
+    function streuselZeichnen(_colorString, _x, _y) {
         context.beginPath();
         context.fillStyle = _colorString;
         context.strokeStyle = _colorString;
@@ -215,6 +213,8 @@ var Eisladen;
         context.closePath();
         context.stroke();
     }
+    //reghion JSON (Daten aus der Json laden)
+    jsonLaden("data.json");
     async function jsonLaden(_url) {
         let response = await fetch(_url);
         let data = await response.json();

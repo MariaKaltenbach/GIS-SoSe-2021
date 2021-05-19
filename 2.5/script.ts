@@ -5,56 +5,53 @@ let page: string = path.split("/").pop();
 
 namespace Eisladen {
 
+//region Interface (Interface für alle drei Auswahlmöglichkeiten angelegt)
+export interface Lebensmittel {
+
+    geschmack: string;
+    preis: number;
+    name: string;
+    farbe: string;
+}
 
 
-    //region Interface (Interface für alle drei Auswahlmöglichkeiten angelegt)
-    export interface Lebensmittel {
+//(Listen für alles angelegt)
+interface LebensmittelListe {
 
-        geschmack: string;
-        preis: number;
-        name: string;
-        farbe: string;
-    }
+    waffelListe: Lebensmittel[];
+    eiskugelListe: Lebensmittel[];
+    streuselListe: Lebensmittel[];
+}
+
+//(Interface für Server Antwort)
+interface ServerMessage {
+    message: string;
+    error: string;
+}
+//regionend
+
+let waffelVariation: Lebensmittel[];
+let eiskugelVariation: Lebensmittel[];
+let streuselVariation: Lebensmittel[];
 
 
-    //(Listen für alles angelegt)
-    interface LebensmittelListe {
+//mit Canvas zeichnen
+let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("myEiscreme");
+let context: CanvasRenderingContext2D = <CanvasRenderingContext2D>canvas.getContext("2d");
 
-        waffelListe: Lebensmittel[];
-        eiskugelListe: Lebensmittel[];
-        streuselListe: Lebensmittel[];
-    }
-
-    //(Interface für Server Antwort)
-    interface ServerMessage {
-        message: string;
-        error: string;
-    }
-    //regionend
-
-    let waffelVariation: Lebensmittel[];
-    let eiskugelVariation: Lebensmittel[];
-    let streuselVariation: Lebensmittel[];
-
-    //reghion JSON (Daten aus der Json laden)
-    jsonLaden("data.json");
-    //mit Canvas zeichnen
-    let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("myEiscreme");
-    let context: CanvasRenderingContext2D = <CanvasRenderingContext2D>canvas.getContext("2d");
-
-    context.lineWidth = 3;
+context.lineWidth = 3;
 
 
 
-    if (page == "ergebnis.html") {
-        icecream(localStorage.getItem("eiskugelFarbe"), 0, 0);  //Ergebnis der Eiscreme wird ausgegeben
-        cone(localStorage.getItem("waffelFarbe"), 0, 0);  //Ergenis der Waffel wird ausgegeben
-        sprinkles(localStorage.getItem("streuselFarbe"), 0, 0);  //Ergenbis der Streusel wird ausgegeben
+if (page == "ergebnis.html") {
+    eiskugelZeichnen(localStorage.getItem("eiskugelFarbe"), 0, 0);  //Ergebnis der Eiscreme wird ausgegeben
+    waffelZeichnen(localStorage.getItem("waffelFarbe"), 0, 0);  //Ergenis der Waffel wird ausgegeben
+    streuselZeichnen(localStorage.getItem("streuselFarbe"), 0, 0);  //Ergenbis der Streusel wird ausgegeben
 
-        serverAnfrage("https://gis-communication.herokuapp.com");
-    }
+    serverAnfrage("https://gis-communication.herokuapp.com");
+}
 
-    function seitenAufbau(): void {
+function seitenAufbau(): void {
 
 
     let waffelSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("waffel");
@@ -118,8 +115,8 @@ namespace Eisladen {
 
         //Eventlistener ändert die Auswahl
         streuselSelect.addEventListener("change", streuselVariationChanged);
-        icecream(localStorage.getItem("eiskugelFarbe"), 300, 100);
-        cone(localStorage.getItem("waffelFarbe"), 40, 100);
+        eiskugelZeichnen(localStorage.getItem("eiskugelFarbe"), 300, 100);
+        waffelZeichnen(localStorage.getItem("waffelFarbe"), 40, 100);
 
     }
 
@@ -172,7 +169,7 @@ namespace Eisladen {
         }
         //Eventlistener ändert die Auswahl
         eiskugelSelect.addEventListener("change", eiskugelVariationChanged);
-        cone(localStorage.getItem("waffelFarbe"), 250, -250);
+        waffelZeichnen(localStorage.getItem("waffelFarbe"), 250, -250);
 
     }
 
@@ -224,135 +221,137 @@ namespace Eisladen {
     //canvas auf den jeweiligen seiten in bestimmter position zeichnen lassen und farbe speichern
     function waffelNeuZeichnen(): void {
 
-        cone(localStorage.getItem("waffelFarbe"), 0, 0);
+        waffelZeichnen(localStorage.getItem("waffelFarbe"), 0, 0);
 
     }
 
     function eiskugelNeuZeichnen(): void {
 
-        icecream(localStorage.getItem("eiskugelFarbe"), 0, 0);
+        eiskugelZeichnen(localStorage.getItem("eiskugelFarbe"), 0, 0);
 
     }
 
     function streuselNeuZeichnen(): void {
 
-        sprinkles(localStorage.getItem("streuselFarbe"), 0, 0);
+        streuselZeichnen(localStorage.getItem("streuselFarbe"), 0, 0);
 
     }
 }
-    //Eiskugel zeichnen Ergebnisseite
-    // x und y Koordinaten um die Position auf den auswahlseiten verändern zu können
-    //color String damit sich die Farbe bei der auswahl ändert
-    function icecream(_colorString: string, _x: number, _y: number): void {
+//Eiskugel zeichnen Ergebnisseite
+// x und y Koordinaten um die Position auf den auswahlseiten verändern zu können
+//color String damit sich die Farbe bei der auswahl ändert
+function eiskugelZeichnen(_colorString: string, _x: number, _y: number): void {
 
-        context.beginPath();
-        context.fillStyle = _colorString;
-        context.strokeStyle = _colorString;
-        context.arc(150 + _x, 130 + _y, 120, 0, 2 * Math.PI);
-        context.closePath();
-        context.fill();
-        context.stroke();
+    context.beginPath();
+    context.fillStyle = _colorString;
+    context.strokeStyle = _colorString;
+    context.arc(150 + _x, 130 + _y, 120, 0, 2 * Math.PI);
+    context.closePath();
+    context.fill();
+    context.stroke();
 
+}
+
+
+
+// Waffel zeichnen Ergebnisseite
+function waffelZeichnen(_colorString: string, _x: number, _y: number): void {
+
+    context.beginPath();
+    context.fillStyle = _colorString;
+    context.strokeStyle = _colorString;
+    context.moveTo(50 + _x, 200 + _y);
+    context.lineTo(150 + _x, 600 + _y);
+    context.lineTo(250 + _x, 200 + _y);
+    context.closePath();
+    context.fill();
+    context.stroke();
+
+}
+
+
+//streusel zeichnen Ergebnisseite
+function streuselZeichnen(_colorString: string, _x: number, _y: number): void {
+    context.beginPath();
+    context.fillStyle = _colorString;
+    context.strokeStyle = _colorString;
+    context.moveTo(80, 140);
+    context.lineTo(100, 150);
+    context.closePath();
+    context.stroke();
+
+    context.beginPath();
+    context.moveTo(170, 140);
+    context.lineTo(150, 150);
+    context.closePath();
+    context.stroke();
+
+    context.beginPath();
+    context.moveTo(230, 100);
+    context.lineTo(210, 110);
+    context.closePath();
+    context.stroke();
+
+    context.beginPath();
+    context.moveTo(180, 60);
+    context.lineTo(190, 80);
+    context.closePath();
+    context.stroke();
+
+    context.beginPath();
+    context.moveTo(130, 100);
+    context.lineTo(100, 100);
+    context.closePath();
+    context.stroke();
+
+    context.beginPath();
+    context.moveTo(100, 60);
+    context.lineTo(130, 40);
+    context.closePath();
+    context.stroke();
+
+    context.beginPath();
+    context.moveTo(190, 160);
+    context.lineTo(210, 180);
+    context.closePath();
+    context.stroke();
+}
+
+
+//reghion JSON (Daten aus der Json laden)
+jsonLaden("data.json");
+async function jsonLaden(_url: RequestInfo): Promise<void> {
+    let response: Response = await fetch(_url);
+    let data: LebensmittelListe = await response.json();
+    waffelVariation = data.waffelListe;
+    eiskugelVariation = data.eiskugelListe;
+    streuselVariation = data.streuselListe;
+
+    //erst laden wenn die Seite aufgabeut ist
+    seitenAufbau();
+}
+
+//regionend
+
+//region Server anfrage 
+async function serverAnfrage(_url: string): Promise<void> {
+
+    let query: URLSearchParams = new URLSearchParams(localStorage);
+    _url = _url + "?" + query.toString();
+    let response: Response = await fetch(_url);
+    let serverNachricht: ServerMessage = await response.json();
+    let serverAntwort: HTMLElement = document.getElementById("serverAntwort");
+    let text: HTMLParagraphElement = document.createElement("p");
+
+    if (serverNachricht.message !== undefined) {
+        text.innerText = serverNachricht.message;
     }
 
-
-
-    // Waffel zeichnen Ergebnisseite
-    function cone(_colorString: string, _x: number, _y: number): void {
-
-        context.beginPath();
-        context.fillStyle = _colorString;
-        context.strokeStyle = _colorString;
-        context.moveTo(50 + _x, 200 + _y);
-        context.lineTo(150 + _x, 600 + _y);
-        context.lineTo(250 + _x, 200 + _y);
-        context.closePath();
-        context.fill();
-        context.stroke();
-
+    if (serverNachricht.error !== undefined) {
+        text.setAttribute("style", "color:red");
+        text.innerText = serverNachricht.error;
     }
-
-
-    //streusel zeichnen Ergebnisseite
-    function sprinkles(_colorString: string, _x: number, _y: number): void {
-        context.beginPath();
-        context.fillStyle = _colorString;
-        context.strokeStyle = _colorString;
-        context.moveTo(80, 140);
-        context.lineTo(100, 150);
-        context.closePath();
-        context.stroke();
-
-        context.beginPath();
-        context.moveTo(170, 140);
-        context.lineTo(150, 150);
-        context.closePath();
-        context.stroke();
-
-        context.beginPath();
-        context.moveTo(230, 100);
-        context.lineTo(210, 110);
-        context.closePath();
-        context.stroke();
-
-        context.beginPath();
-        context.moveTo(180, 60);
-        context.lineTo(190, 80);
-        context.closePath();
-        context.stroke();
-
-        context.beginPath();
-        context.moveTo(130, 100);
-        context.lineTo(100, 100);
-        context.closePath();
-        context.stroke();
-
-        context.beginPath();
-        context.moveTo(100, 60);
-        context.lineTo(130, 40);
-        context.closePath();
-        context.stroke();
-
-        context.beginPath();
-        context.moveTo(190, 160);
-        context.lineTo(210, 180);
-        context.closePath();
-        context.stroke();
-    }
-
-
-    async function jsonLaden(_url: RequestInfo): Promise<void> {
-        let response: Response = await fetch(_url);
-        let data: LebensmittelListe = await response.json();
-        waffelVariation = data.waffelListe;
-        eiskugelVariation = data.eiskugelListe;
-        streuselVariation = data.streuselListe;
-
-        //erst laden wenn die Seite aufgabeut ist
-        seitenAufbau();
-    }
-
-    //regionend
-
-    //region Server anfrage 
-    async function serverAnfrage(_url: string): Promise<void> {
-
-        let query: URLSearchParams = new URLSearchParams(localStorage);
-        _url = _url + "?" + query.toString();
-        let response: Response = await fetch(_url);
-        let serverNachricht: ServerMessage = await response.json();
-        let serverAntwort: HTMLElement = document.getElementById("serverAntwort");
-        let text: HTMLParagraphElement = document.createElement("p");
-
-        if (serverNachricht.message !== undefined) {
-            text.innerText = serverNachricht.message;
-        }
-
-        if (serverNachricht.error !== undefined) {
-            text.setAttribute("style", "color:red");
-            text.innerText = serverNachricht.error;
-        }
-        serverAntwort.appendChild(text);
-    }
+    serverAntwort.appendChild(text);
+}
     //regionend
 }

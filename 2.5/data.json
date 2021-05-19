@@ -1,9 +1,9 @@
   {
 
       "waffelListe": [
-          { "geschmack": "Schokolade", "preis": 0.70, "name": "Schokowaffel", "farbe": "black" },
+          { "geschmack": "Schokolade", "preis": 0.70, "name": "Schokowaffel", "farbe": "brown" },
           { "geschmack": "Vanille", "preis": 0.70, "name": "Vanillewaffel", "farbe": "beige" },
-          { "geschmack": "Haselnuss", "preis": 0.70, "name": "Haselnusswaffel", "farbe": "brown" }
+          { "geschmack": "Haselnuss", "preis": 0.70, "name": "Haselnusswaffel", "farbe": "grey" }
 
       ],
       "eiskugelListe": [
