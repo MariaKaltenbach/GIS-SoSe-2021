@@ -1,4 +1,4 @@
-namespace Eisladen {
+/*namespace Eisladen {
    
     export let eiskugelVariation: Lebensmittel[] = [
         { geschmack: "Schokolade", preis: 1.20, name: "Schokoeis", farbe: "brown" },
@@ -33,3 +33,4 @@ namespace Eisladen {
     console.log(myJSON2);
 
 }
+*/
