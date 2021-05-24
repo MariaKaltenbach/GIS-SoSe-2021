@@ -1,0 +1,22 @@
+{
+    "name": "gissose2021",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node 3.1/script.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MariaKaltenbach/GIS-SoSe-2021.git"
+    },
+    "author": "KaltenbachMaria",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/MariaKaltenbach/GIS-SoSe-2021/issues"
+    },
+    "homepage": "https://github.com/MariaKaltenbach/GIS-SoSe-2021#readme",
+    "dependencies": {
+        "@types/node": "^15.6.0"
+    }
+}
