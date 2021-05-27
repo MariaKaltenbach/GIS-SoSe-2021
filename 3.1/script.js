@@ -38,15 +38,15 @@ var P_3_1Server;
         _response.end();
     }
     let senden = document.querySelector("button");
-    senden.addEventListener("click", datenSenden);
-    async function datenSenden(_event) {
-        console.log("Formular senden");
+    senden.addEventListener("click", sendData);
+    async function sendData(_event) {
         let formData = new FormData(form);
         let query = new URLSearchParams(formData);
-        url = url + "?" + query.toString;
-        let response = await fetch(url);
+        let response = await fetch(url + "?" + query.toString());
         let responseText = await response.text();
+        await fetch("index.html?" + MediaQueryList.toString());
         alert(responseText);
+        console.log(query);
     }
 })(P_3_1Server = exports.P_3_1Server || (exports.P_3_1Server = {}));
 //# sourceMappingURL=script.js.map

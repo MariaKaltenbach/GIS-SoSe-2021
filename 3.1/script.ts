@@ -43,16 +43,17 @@ export namespace P_3_1Server {
         _response.end();
     }
     let senden: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button");
-    senden.addEventListener("click", datenSenden);
+    senden.addEventListener("click", sendData);
 
-    async function datenSenden(_event: Event): Promise<void> {
-        console.log("Formular senden");
+    async function sendData(_event: Event): Promise<void> {
         let formData: FormData = new FormData(form);
-        let query: URLSearchParams = new URLSearchParams(<any>formData);
-        url = url + "?" + query.toString;
-        let response: Response = await fetch(url);
-        let responseText: string = await response.text();
+        let query: URLSearchParams = new URLSearchParams(<undefined>formData);
+        let response: Response = await fetch(url + "?" + query.toString());
+        let responseText: String = await response.text();
+        await fetch("index.html?" + MediaQueryList.toString());
         alert(responseText);
+        console.log(query);
+
     }
 
 
