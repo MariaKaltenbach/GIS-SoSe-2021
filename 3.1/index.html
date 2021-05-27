@@ -4,22 +4,42 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Formular</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="script.js" defer></script>
+
 </head>
 
 <body>
     <div class="container">
-        <form action="https://gis-example.herokuapp.com " method="GET">
-            <label for="fname">First name:</label><br />
-            <input type="text" name="fname" /><br />
-            <label for="fname">Last name:</label><br />
-            <input type="text" name="lname" /><br />
-            <label for="lname">Age:</label><br />
-            <input type="number" /><br /><br />
+        <h1 id="kontakt"> Füllen Sie dieses Kontaktformular aus:</h1>
+        <form action="https://gissose2021.herokuapp.com/" id="formular-form" method="get">
 
-            <button type="submit">Abschicken</button>
-        </form>
+            <label for="fname">Vorname:</label>
+            <div class="zeilenUmsprung"> </div>
+            <input type="text" name="fname" />
+            <div class="zeilenUmsprung"> </div>
+
+            <label for="fname">Nachname:</label>
+            <div class="zeilenUmsprung"> </div>
+
+            <input type="text" name="lname" />
+            <div class="zeilenUmsprung"> </div>
+
+            <label for="lname">Alter:</label>
+            <div class="zeilenUmsprung"> </div>
+
+            <input type="number" />
+            <div class="zeilenUmsprung"> </div>
+
+            <label for="fname">Mail-Adresse:</label>
+            <div class="zeilenUmsprung"> </div>
+
+            <input type="text" name="eadresse" />
+            <div class="zeilenUmsprung"> </div>
+
+
+            <button type="submit">Abschicken</button> </form>
     </div>
 </body>
 

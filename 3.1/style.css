@@ -1,0 +1,25 @@
+Body {
+    background-color: grey;
+}
+
+button {
+    border-radius: 3px 3px 3px 3px;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    border-top: none;
+}
+
+input {
+    width: 200px;
+    height: 30px;
+}
+
+.container,
+button {
+    text-align: center;
+}
+
+.zeilenUmsprung {
+    margin-top: 25px;
+}
