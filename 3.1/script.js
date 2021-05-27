@@ -2,12 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.P_3_1Server = void 0;
 const Http = require("http");
-//import * as Url from "url";
 var P_3_1Server;
 (function (P_3_1Server) {
-    //let url: string = "https://gissose2021.herokuapp.com/";
+    let url = "https://gissose2021.herokuapp.com/";
     //let url: string = "http://localhost:8100";
-    //let form: HTMLFormElement;
+    let form;
     //"Startng Server" wird auf der console ausgegeben
     console.log("Starting server");
     //enviroment mit der Angabe der Portnummer von Heroku
@@ -37,6 +36,17 @@ var P_3_1Server;
         console.log(_request.url);
         //antwort wird beendet
         _response.end();
+    }
+    let senden = document.querySelector("button");
+    senden.addEventListener("click", datenSenden);
+    async function datenSenden(_event) {
+        console.log("Formular senden");
+        let formData = new FormData(form);
+        let query = new URLSearchParams(formData);
+        url = url + "?" + query.toString;
+        let response = await fetch(url);
+        let responseText = await response.text();
+        alert(responseText);
     }
 })(P_3_1Server = exports.P_3_1Server || (exports.P_3_1Server = {}));
 //# sourceMappingURL=script.js.map

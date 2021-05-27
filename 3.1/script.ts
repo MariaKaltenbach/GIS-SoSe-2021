@@ -1,11 +1,10 @@
 import * as Http from "http";
-//import * as Url from "url";
 
 export namespace P_3_1Server {
 
-    //let url: string = "https://gissose2021.herokuapp.com/";
+    let url: string = "https://gissose2021.herokuapp.com/";
     //let url: string = "http://localhost:8100";
-    //let form: HTMLFormElement;
+    let form: HTMLFormElement;
 
     //"Startng Server" wird auf der console ausgegeben
     console.log("Starting server");
@@ -43,8 +42,18 @@ export namespace P_3_1Server {
         //antwort wird beendet
         _response.end();
     }
+    let senden: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button");
+    senden.addEventListener("click", datenSenden);
 
-
+    async function datenSenden(_event: Event): Promise<void> {
+        console.log("Formular senden");
+        let formData: FormData = new FormData(form);
+        let query: URLSearchParams = new URLSearchParams(<any>formData);
+        url = url + "?" + query.toString;
+        let response: Response = await fetch(url);
+        let responseText: string = await response.text();
+        alert(responseText);
+    }
 
 
 
