@@ -2,8 +2,8 @@ import * as Http from "http";
 
 export namespace P_3_1Server {
 
-    let url: string = "https://gissose2021.herokuapp.com/";
-    //let url: string = "http://localhost:8100";
+    //nlet url: string = "https://gissose2021.herokuapp.com/";
+    let url: string = "http://localhost:8100";
     let form: HTMLFormElement;
 
     //"Startng Server" wird auf der console ausgegeben

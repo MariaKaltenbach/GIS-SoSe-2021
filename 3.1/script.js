@@ -4,8 +4,8 @@ exports.P_3_1Server = void 0;
 const Http = require("http");
 var P_3_1Server;
 (function (P_3_1Server) {
-    let url = "https://gissose2021.herokuapp.com/";
-    //let url: string = "http://localhost:8100";
+    //nlet url: string = "https://gissose2021.herokuapp.com/";
+    let url = "http://localhost:8100";
     let form;
     //"Startng Server" wird auf der console ausgegeben
     console.log("Starting server");
