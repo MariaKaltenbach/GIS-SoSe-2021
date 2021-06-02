@@ -2,8 +2,7 @@ let form: HTMLFormElement;
 export namespace P_3_1Server {
 
     let url: string = "https://gissose2021.herokuapp.com/";
-    //let url: string = "http://localhost:8100";
-
+   
 
     async function sendData(_event: Event): Promise<void> {
         let formData: FormData = new FormData(form);
@@ -13,7 +12,7 @@ export namespace P_3_1Server {
         await fetch("index.html?" + MediaQueryList.toString());
         console.log(query);
 
-        let rueckgabe: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("serverAntwort");
+        let rueckgabe: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("serverausgabe");
         rueckgabe.innerText = responseText;
 
     }

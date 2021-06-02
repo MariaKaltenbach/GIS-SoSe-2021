@@ -6,49 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Formular</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <script src="server/script.js" defer></script>
+    <script src="script.js" defer></script>
 
 
 </head>
 
 <body>
 
-    <h1>Füllen Sie das Kontaktformular aus:</h1>
-    <div class="container">
-        <form id="formular-form" method="get">
 
+    <form>
 
-            <label>Vorname:</label>
-            <br>
+        <h1>Füllen Sie das Kontaktformular aus:</h1>
 
-            <input type="text" name="vname" />
-            <br>
-            <br>
+        <label>Vorname:</label>
+        <br>
 
-            <label>Nachname:</label>
-            <br>
-            <input type="text" name="nname" />
-            <br>
-            <br>
+        <input type="text" name="vname" />
+        <br>
+        <br>
 
-            <label>Alter:</label>
-            <br>
-            <input type="number" />
-            <br>
-            <br>
+        <label>Nachname:</label>
+        <br>
+        <input type="text" name="nname" />
+        <br>
+        <br>
 
-            <label>Mail-Adresse:</label>
-            <br>
-            <input type="text" name="email" />
-            <br>
-            <br>
+        <label>Alter:</label>
+        <br>
+        <input type="number" />
+        <br>
+        <br>
 
-            <button type="submit">Abschicken</button> </form>
+        <label>Mail-Adresse:</label>
+        <br>
+        <input type="text" name="email" />
+        <br>
+        <br>
 
-        <p> Antwort</p>
-        <p id="serverAntwort"></p>
+        <button type="submit">Abschicken</button>
 
-    </div>
+        <p> Antwort:</p>
+        <p id="serverausgabe"></p>
+    </form>
 </body>
 
 </html>

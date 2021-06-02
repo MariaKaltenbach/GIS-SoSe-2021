@@ -1,5 +1,7 @@
 Body {
     background-color: grey;
+    text-align: center;
+    font-size: 20px;
 }
 
 button {
@@ -19,16 +21,6 @@ h1 {
 input {
     width: 200px;
     height: 30px;
-}
-
-.container {
-    text-align: center;
-    font-size: 20px;
-}
-
-.serverAntwort {
-    font-size: 13px;
-    color: blueviolet;
 }
 
 @media only screen and (min-width: 601px) and (max-width: 1023px) {

@@ -5,7 +5,6 @@ let form;
 var P_3_1Server;
 (function (P_3_1Server) {
     let url = "https://gissose2021.herokuapp.com/";
-    //let url: string = "http://localhost:8100";
     async function sendData(_event) {
         let formData = new FormData(form);
         let query = new URLSearchParams(formData);
@@ -13,7 +12,7 @@ var P_3_1Server;
         let responseText = await response.text();
         await fetch("index.html?" + MediaQueryList.toString());
         console.log(query);
-        let rueckgabe = document.getElementById("serverAntwort");
+        let rueckgabe = document.getElementById("serverausgabe");
         rueckgabe.innerText = responseText;
     }
     let senden = document.querySelector("button");
