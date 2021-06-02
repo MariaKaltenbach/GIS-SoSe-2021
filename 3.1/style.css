@@ -26,6 +26,11 @@ input {
     font-size: 20px;
 }
 
+.serverAntwort {
+    font-size: 13px;
+    color: blueviolet;
+}
+
 @media only screen and (min-width: 601px) and (max-width: 1023px) {
     input {
         width: 170px;

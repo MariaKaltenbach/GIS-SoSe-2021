@@ -16,7 +16,7 @@
         "url": "https://github.com/MariaKaltenbach/GIS-SoSe-2021/issues"
     },
     "homepage": "https://github.com/MariaKaltenbach/GIS-SoSe-2021#readme",
-    "dependencies": {
+    "devDependencies": {
         "@types/node": "^15.6.0"
     }
 }

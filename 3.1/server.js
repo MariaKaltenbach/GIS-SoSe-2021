@@ -29,7 +29,7 @@ var P_3_1Server;
         _response.setHeader("Access-Control-Allow-Origin", "*");
         //die Url der anfrage mit der antwort wird angezeigt
         _response.write(_request.url);
-        //und aud der console ausgegeben
+        //und aud der console des servers ausgegeben
         console.log(_request.url);
         //antwort wird beendet
         _response.end();
