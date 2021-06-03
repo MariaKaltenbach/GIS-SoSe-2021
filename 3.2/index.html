@@ -1,55 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Formular</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <script src="script.js" defer></script>
-
-
+    <link rel="stylesheet" href="style.css">
+    <title>Formular</title>
 </head>
 
 <body>
+    <header>
+        <h1>Kontaktformular</h1>
+    </header>
+    <form action="https://gissose2021.herokuapp.com/" method="GET">
+
+        <label for="fname">Vorname:</label><br>
+        <input type="text" id="fname" name="fname"><br><br>
+        <label for="lname">Nachname:</label><br>
+        <input type="text" id="lname" name="lname"><br><br>
+        <label for="adress">Adresse:</label><br>
+        <input type="text" id="adress" name="adress"><br><br>
+        <label for="mail">Mail:</label><br>
+        <input type="text" id="mail" name="mail"><br><br>
 
 
-    <h1>Füllen Sie das Kontaktformular aus:</h1>
-    <div class="container">
+        <button id="jsonButton" type="button">Json</button>
+        <button id="htmlButton" type="button">HTML</button>
 
-
-        <label>Vorname:</label>
-        <br>
-
-        <input type="text" name="vname" />
-        <br>
-        <br>
-
-        <label>Nachname:</label>
-        <br>
-        <input type="text" name="nname" />
-        <br>
-        <br>
-
-        <label>Alter:</label>
-        <br>
-        <input type="number" />
-        <br>
-        <br>
-
-        <label>Mail-Adresse:</label>
-        <br>
-        <input type="text" name="email" />
-        <br>
-        <br>
-
-        <button type="submit">Abschicken</button> </form>
-        <br>
-        <button id="JSONButton" type="button" id="button">Json</button>
-        <button id="HTMLButton" type="button" id="button">HTML</button>
-
-        <p id="serverausgabe" p>
-    </div>
+    </form>
+    <p id="serverAntwort"></p>
 </body>
 
 </html>
