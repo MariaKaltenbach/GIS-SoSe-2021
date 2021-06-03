@@ -5,49 +5,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formular</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+
     <script src="script.js" defer></script>
-
-
+    <link rel="stylesheet" href="style.css">
+    <title>Abgabe 3.1</title>
 </head>
 
 <body>
-    <form id="formular-form" method="get">
+    <header>
+        <h1>Kontaktformular</h1>
+    </header>
+    <form>
+        <label for="fname">Vorname:</label><br>
+        <input type="text" id="fname" name="fname"><br><br>
+        <label for="lname">Nachname:</label><br>
+        <input type="text" id="lname" name="lname"><br><br>
+        <label for="adress">Adresse:</label><br>
+        <input type="text" id="adress" name="adress"><br><br>
+        <label for="mail">Mail:</label><br>
+        <input type="text" id="mail" name="mail"><br><br>
 
 
-        <h1>Füllen Sie das Kontaktformular aus:</h1>
-
-        <label>Vorname:</label>
-        <br>
-
-        <input type="text" name="vname" />
-        <br>
-        <br>
-
-        <label>Nachname:</label>
-        <br>
-        <input type="text" name="nname" />
-        <br>
-        <br>
-
-        <label>Alter:</label>
-        <br>
-        <input type="number" />
-        <br>
-        <br>
-
-        <label>Mail-Adresse:</label>
-        <br>
-        <input type="text" name="email" />
-        <br>
-        <br>
-
-        <button type="submit">Abschicken</button>
-
-
-        <p> Ihre Eingaben</p>
-        <p id="serverausgabe"></p>
+        <button id="Abschicken" type="button">Abschicken</button>
     </form>
 </body>
 

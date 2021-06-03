@@ -28,9 +28,6 @@ input {
         width: 170px;
         height: 30px;
     }
-    .container {
-        font-size: 25px;
-    }
     h1 {
         font-size: 30px;
         text-align: center;
@@ -45,14 +42,13 @@ input {
         width: 160px;
         height: 20px;
     }
-    .container {
-        font-size: 15px;
-    }
-    h1 {
-        font-size: 25px;
-        text-align: center;
-    }
-    button {
-        font-size: 12px;
-    }
+}
+
+h1 {
+    font-size: 25px;
+    text-align: center;
+}
+
+button {
+    font-size: 12px;
 }
