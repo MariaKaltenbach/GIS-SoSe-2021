@@ -17,9 +17,9 @@ namespace P_3_1Server {
         let response: Response = await fetch(_url);
         let responseText: string = await response.text();
         console.log(responseText);
-        let para: HTMLParagraphElement = document.createElement("p");
-        para.innerText = _url;
-        document.body.appendChild(para);
+        let text: HTMLParagraphElement = document.createElement("p");
+        text.innerText = _url;
+        document.body.appendChild(text);
         
         
 

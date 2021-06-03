@@ -16,9 +16,9 @@ var P_3_1Server;
         let response = await fetch(_url);
         let responseText = await response.text();
         console.log(responseText);
-        let para = document.createElement("p");
-        para.innerText = _url;
-        document.body.appendChild(para);
+        let text = document.createElement("p");
+        text.innerText = _url;
+        document.body.appendChild(text);
     }
     document.querySelector("#Abschicken").addEventListener("click", sendData);
 })(P_3_1Server || (P_3_1Server = {}));
