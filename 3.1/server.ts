@@ -1,4 +1,4 @@
-import * as Http from "http";
+/*import * as Http from "http";
 
 export namespace P_3_1Server {
     console.log("Starting server"); //Starting server wird ausgegeben
@@ -24,4 +24,4 @@ export namespace P_3_1Server {
         _response.write(_request.url); //Die Url vom Request wird in die Response geschrieben
         _response.end(); //Die Response wird beendet
     }
-}
+}*/

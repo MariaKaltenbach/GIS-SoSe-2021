@@ -1,25 +1,30 @@
 "use strict";
-var P_3_1Server;
-(function (P_3_1Server) {
-    async function sendData() {
-        let formData = new FormData(document.forms[0]);
+/*namespace P_3_1Server {
+
+    async function sendData(): Promise<void> {
+        let formData: FormData = new FormData(document.forms[0]);
         console.log(": " + formData.get("name"));
         for (let entry of formData) {
             console.log(entry);
             console.log("name: " + entry[0]);
             console.log("value: " + entry[1]);
         }
-        let query = new URLSearchParams(formData);
-        let _url = "https://gissose2021.herokuapp.com/";
-        _url = _url + "?" + query.toString();
-        console.log(_url);
-        let response = await fetch(_url);
-        let responseText = await response.text();
+        
+        let query: URLSearchParams = new URLSearchParams(<undefined>formData);
+        let url: RequestInfo = "https://gissose2021.herokuapp.com/";
+        url = url + "?" + query.toString();
+        console.log(url);
+        let response: Response = await fetch(url);
+        let responseText: string = await response.text();
         console.log(responseText);
-        let text = document.createElement("p");
-        text.innerText = _url;
-        document.body.appendChild(text);
+        let text: HTMLParagraphElement = document.createElement("p"); //text feld wird erstellt
+        text.innerText = url; //in dem erstellten textfeld soll sie url angezeigt werden
+        document.body.appendChild(text); //document body wird der text angehängt
+        
+
     }
+    
     document.querySelector("#Abschicken").addEventListener("click", sendData);
-})(P_3_1Server || (P_3_1Server = {}));
+    
+}*/ 
 //# sourceMappingURL=script.js.map

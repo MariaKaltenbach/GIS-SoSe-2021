@@ -1,5 +1,4 @@
-
-namespace P_3_1Server {
+/*namespace P_3_1Server {
 
     async function sendData(): Promise<void> {
         let formData: FormData = new FormData(document.forms[0]);
@@ -11,20 +10,19 @@ namespace P_3_1Server {
         }
         
         let query: URLSearchParams = new URLSearchParams(<undefined>formData);
-        let _url: RequestInfo = "https://gissose2021.herokuapp.com/";                                    
-        _url = _url + "?" + query.toString();
-        console.log(_url);
-        let response: Response = await fetch(_url);
+        let url: RequestInfo = "https://gissose2021.herokuapp.com/";                                    
+        url = url + "?" + query.toString();
+        console.log(url);
+        let response: Response = await fetch(url);
         let responseText: string = await response.text();
         console.log(responseText);
-        let text: HTMLParagraphElement = document.createElement("p");
-        text.innerText = _url;
-        document.body.appendChild(text);
-        
+        let text: HTMLParagraphElement = document.createElement("p"); //text feld wird erstellt
+        text.innerText = url; //in dem erstellten textfeld soll sie url angezeigt werden 
+        document.body.appendChild(text); //document body wird der text angehängt
         
 
     }
     
     document.querySelector("#Abschicken").addEventListener("click", sendData);
     
-}
+}*/
