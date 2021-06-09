@@ -1,37 +1,28 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
     <title>Formular</title>
 </head>
 
 <body>
-    <header>
-        <h1>Kontaktformular</h1>
-    </header>
-    <form action="https://gissose2021.herokuapp.com/" method="GET">
-
-        <label for="fname">Vorname:</label><br>
-        <input type="text" id="fname" name="fname"><br><br>
-        <label for="lname">Nachname:</label><br>
-        <input type="text" id="lname" name="lname"><br><br>
-        <label for="age">Alter:</label><br>
-        <input type="number" id="age" name="age"><br><br>
-        <label for="mail">Mail:</label><br>
-        <input type="text" id="mail" name="mail"><br><br>
-
-
-        <button id="jsonButton" type="button">Json</button>
-        <button id="htmlButton" type="button">HTML</button>
+    <h1>Kontaktformular</h1>
+    <form>
+        <input type="text" name="Vorname" placeholder="Vorname"><br><br>
+        <input type="text" name="Nachname" placeholder="Nachname"><br><br>
+        <input type="number" name="Alter" placeholder="Alter"><br><br>
+        <input type="mail" name="E-mail" placeholder="E-Mail"><br><br>
+        <button type="button" id="htmlButton">HTML</button>
+        <button type="button" id="jsonButton">JSON</button>
+        <p id="serverAntwort"></p>
 
     </form>
-    <p id="serverAntwort"></p>
+
 </body>
 
 </html>
