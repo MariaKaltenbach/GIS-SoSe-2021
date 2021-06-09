@@ -24,21 +24,20 @@ export namespace P_3_1Server {
         _response.setHeader("Access-Control-Allow-Origin", "*"); 
         _response.write(_request.url); 
 
-        if (_request.url) {                                                     
-            let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-            let pathname: string = <string>url.pathname;                         //variable pathname anlegen um prüfen zu können wo wir uns befinden
-            if (pathname == "/json") {                                           //wenn wir json button klicken dann soll folgendes passieren 
-                let jsonString: string = JSON.stringify(url.query);             //die url in einen json sting umwandeln 
-                console.log(jsonString);                                        //auf console ausgebenb lassen 
-                _response.write(jsonString);
+        if (_request.url) {
+            let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true); //umwandeln in assoziatives Array, um Daten später rauszulesen 
+            let pfad: string = <string>url.pathname; //pathname der Url in String speichern
+            if (pfad == "/html") { //um hier Überprüdung machn zu können, ob welchen path man gegenagen ist 
+                for (let key in url.query) {
+                    _response.write(key + ":" + url.query [key] + "<br/>"); 
+                }  
             }
-        else if (pathname == "/html") {                                         //wenn wir html button klicken dann soll folgendes passieren 
-            for (let key in url.query) {
-                _response.write (key + ":" + url.query[key] + "<br/>");         
-                       
+            else if (pfad == "/json") { //um hier Überprüdung machn zu können, welchen path man gegangen ist 
+                let jsonString: string = JSON.stringify(url.query); 
+                console.log(jsonString); //in Konsole
+                _response.write(jsonString); //Anwort, die zurückkommt   
             }
         }
-    }
-        _response.end();
+        _response.end(); //Antwort fertig und zurückschicken 
     }
 }
