@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "node 3.2/server.js"
+        "start": "node 3.4/server.js remote"
     },
     "repository": {
         "type": "git",
@@ -18,5 +18,9 @@
     "homepage": "https://github.com/MariaKaltenbach/GIS-SoSe-2021#readme",
     "devDependencies": {
         "@types/node": "^15.6.0"
+    },
+    "dependencies": {
+        "@types/mongodb": "^3.6.17",
+        "mongodb": "^3.6.9"
     }
 }

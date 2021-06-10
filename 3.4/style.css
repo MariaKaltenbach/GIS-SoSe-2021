@@ -1,0 +1,51 @@
+Body {
+    background-color: grey;
+    text-align: center;
+}
+
+button {
+    border-radius: 3px 3px 3px 3px;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    border-top: none;
+    text-align: center;
+}
+
+h1 {
+    font-size: 30px;
+    text-align: center;
+}
+
+input {
+    width: 200px;
+    height: 30px;
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1023px) {
+    input {
+        width: 170px;
+        height: 30px;
+    }
+    h1 {
+        font-size: 30px;
+        text-align: center;
+    }
+    button {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    input {
+        width: 160px;
+        height: 20px;
+    }
+    h1 {
+        font-size: 25px;
+        text-align: center;
+    }
+    button {
+        font-size: 12px;
+    }
+}
