@@ -6,7 +6,9 @@ namespace Aufgabe3_2 {
 
     async function htmlLaden(): Promise<void> {
         let daten: FormData = new FormData(document.forms[0]);
-        let url: RequestInfo = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
+        //let url: RequestInfo = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
+        let url: RequestInfo = "https://gis-example.herokuapp.com"; //herokuapp link einfügen als url variable 
+
         //let url: RequestInfo = "http://localhost:8100"; 
         url += "/html";
         let query: URLSearchParams = new URLSearchParams(<any>daten);
@@ -23,7 +25,9 @@ namespace Aufgabe3_2 {
 
     async function jsonLaden(): Promise<void> {
         let daten: FormData = new FormData(document.forms[0]);
-        let url: RequestInfo = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
+        //let url: RequestInfo = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
+        let url: RequestInfo = "https://gis-example.herokuapp.com"; //herokuapp link einfügen als url variable 
+
         //let url: RequestInfo = "http://localhost:8100"; 
         url += "/json";
         let query: URLSearchParams = new URLSearchParams(<any>daten);

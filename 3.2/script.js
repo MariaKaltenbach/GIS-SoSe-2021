@@ -4,7 +4,8 @@ var Aufgabe3_2;
     let serverResponse = document.getElementById("serverAntwort");
     async function htmlLaden() {
         let daten = new FormData(document.forms[0]);
-        let url = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
+        //let url: RequestInfo = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
+        let url = "https://gis-example.herokuapp.com"; //herokuapp link einfügen als url variable 
         //let url: RequestInfo = "http://localhost:8100"; 
         url += "/html";
         let query = new URLSearchParams(daten);
@@ -17,7 +18,8 @@ var Aufgabe3_2;
     htmlButton.addEventListener("click", htmlLaden); //eventlistener wir aktiviert und htmlLaden funktion wird aufgerufen wenn man den htmlButton clickt
     async function jsonLaden() {
         let daten = new FormData(document.forms[0]);
-        let url = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
+        //let url: RequestInfo = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
+        let url = "https://gis-example.herokuapp.com"; //herokuapp link einfügen als url variable 
         //let url: RequestInfo = "http://localhost:8100"; 
         url += "/json";
         let query = new URLSearchParams(daten);
