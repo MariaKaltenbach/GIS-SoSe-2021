@@ -5,8 +5,8 @@ var Aufgabe3_2;
     async function htmlLaden() {
         let daten = new FormData(document.forms[0]);
         //let url: RequestInfo = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
-        let url = "https://gis-example.herokuapp.com"; //herokuapp link einfügen als url variable 
-        //let url: RequestInfo = "http://localhost:8100"; 
+        //let url: RequestInfo = "https://gis-example.herokuapp.com"; //herokuapp link einfügen als url variable 
+        let url = "http://localhost:8100";
         url += "/html";
         let query = new URLSearchParams(daten);
         url = url + "?" + query.toString(); //herokuapp url mit entsandenem url zusammenfügen
@@ -19,8 +19,8 @@ var Aufgabe3_2;
     async function jsonLaden() {
         let daten = new FormData(document.forms[0]);
         //let url: RequestInfo = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
-        let url = "https://gis-example.herokuapp.com"; //herokuapp link einfügen als url variable 
-        //let url: RequestInfo = "http://localhost:8100"; 
+        //let url: RequestInfo = "https://gis-example.herokuapp.com"; //herokuapp link einfügen als url variable 
+        let url = "http://localhost:8100";
         url += "/json";
         let query = new URLSearchParams(daten);
         url = url + "?" + query.toString(); //herokuapp url mit entsandenem url zusammenfügen

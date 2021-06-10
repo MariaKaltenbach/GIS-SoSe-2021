@@ -21,7 +21,6 @@ var P_3_1Server;
         console.log(_request.url);
         _response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
-        _response.write(_request.url);
         if (_request.url) {
             let url = Url.parse(_request.url, true); //umwandeln in assoziatives Array, um Daten später rauszulesen 
             let pfad = url.pathname; //pathname der Url in String speichern
