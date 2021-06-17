@@ -1,8 +1,10 @@
 import * as Http from "http";
 import * as Url from "url";
-// import * as Mongo from "mongodb";
+import * as Mongo from "mongodb";
+import { ParsedUrlQuery } from "querystring";
 
-export namespace P_3_1Server {
+export namespace Aufgabe3_4 {
+
     console.log("Starting server");
     let port: number = Number(process.env.PORT);
     if (!port)
@@ -17,6 +19,33 @@ export namespace P_3_1Server {
         console.log("Listening");
     }
 
+    interface User {
+        password: string;
+        benutzername: string;
+        alter: number;
+        email: string;
+    }
+
+    let databaseUrl: string = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+    // let databaseUrl: string = "mongodb://localhost:27017";
+    let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
+    let data: Mongo.Collection;
+    let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(databaseUrl, options);
+
+    let result: User[];
+
+    async function connecttoDatabase(): Promise<void> {
+        await mongoClient.connect();   //warten bis der Mongo client sich mit der datenban verbunden hat
+        console.log(`Datenbank mit Url verbunden: ${databaseUrl}`); //wenn dies erfolgreich war wird das ausgegeben
+        data = mongoClient.db("Test").collection("Students");
+        let cursor: Mongo.Cursor = data.find();
+        result = await cursor.toArray();
+        console.log(result);
+
+    }
+    connecttoDatabase();
+
+
 
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
         console.log("I hear voices!");
@@ -25,19 +54,26 @@ export namespace P_3_1Server {
         _response.setHeader("Access-Control-Allow-Origin", "*");
 
 
-        if (_request.url) {
-            let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-            let pfad: string = <string>url.pathname;
-            if (pfad == "/json") {
-                let jsonString: string = JSON.stringify(url.query);
-                console.log(jsonString);
-                _response.write(jsonString);
-            }
+        let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
+        console.log(url);
+
+        if (url.pathname == "/safeData") {
+            _response.setHeader("content-type", "text/html; charset=utf-8");
+            speichertDaten(url.query);
+
         }
-        _response.end();
+
+        if (url.pathname == "/getData") {
+            _response.setHeader("content-type", "text/html; charset=utf-8");
+            _response.write(JSON.stringify(result));
+
+        }
+
+        _response.end(); //Antwort fertig und zurückschicken 
     }
-    // let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
-    // await mongoClient.connect();
-    // let orders: Mongo.Collection = mongoClient.db("Test").collection("Students");
-    // orders.insert({ ...});
+
+    function speichertDaten(_query: ParsedUrlQuery): void {
+        data.insertOne(_query);
+    }
+
 }
