@@ -9,27 +9,20 @@ var Aufgabe3_4;
         query = new URLSearchParams(daten);
         url = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
         // url = "http://localhost:8100";
-        url += "/safeData" + "?" + query.toString;
-        let response = await fetch(url); //auf url warten
-        let responseText = await response.text();
-        serverResponse.innerHTML = responseText; //server antwort auf der Html seite aufgeben lassen 
-        console.log(serverResponse);
+        url += "/safeData" + "?" + query.toString();
+        await fetch(url);
     }
     let sendData = document.getElementById("sendData");
     sendData.addEventListener("click", saveData); //eventlistener wir aktiviert und htmlLaden funktion wird aufgerufen wenn man den htmlButton clickt
     async function getData() {
-        url += "/getData" + "?";
+        let daten = new FormData(document.forms[0]);
+        query = new URLSearchParams(daten);
+        url = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
+        // url = "http://localhost:8100";
+        url = daten + "/getData";
         let response = await fetch(url); //auf url warten
-        let jsonObjekt = await response.json(); //json okject erstellen
-        console.log(jsonObjekt); //json string in console ausgeben lassen 
-        let serverAusgabe = "";
-        for (let i in jsonObjekt) {
-            serverAusgabe += "Email:" + jsonObjekt[i].email;
-            serverAusgabe += "Benutzername:" + jsonObjekt[i].benutzername;
-            serverAusgabe += "Alter:" + jsonObjekt[i].alter;
-            serverAusgabe += "Passwort:" + jsonObjekt[i].password;
-        }
-        serverResponse.innerHTML = serverAusgabe;
+        let responseText = await response.text(); //json okject erstellen
+        serverResponse.innerHTML = responseText;
     }
     let pullData = document.getElementById("getData");
     pullData.addEventListener("click", getData);

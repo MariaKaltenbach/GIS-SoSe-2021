@@ -17,12 +17,12 @@ var Aufgabe3_4;
     function handleListen() {
         console.log("Listening");
     }
-    let databaseUrl = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+    let databaseUrl = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"; //mondoDB String um mit db zu connecten 
     // let databaseUrl: string = "mongodb://localhost:27017";
     let options = { useNewUrlParser: true, useUnifiedTopology: true };
-    let data;
-    let mongoClient = new Mongo.MongoClient(databaseUrl, options);
-    let result;
+    let data; //Mongo collections angelegt
+    let mongoClient = new Mongo.MongoClient(databaseUrl, options); //mongo client angelegt
+    let result; //ergenbis in User interface form ausgeben lassen
     async function connecttoDatabase() {
         await mongoClient.connect(); //warten bis der Mongo client sich mit der datenban verbunden hat
         console.log(`Datenbank mit Url verbunden: ${databaseUrl}`); //wenn dies erfolgreich war wird das ausgegeben
@@ -32,25 +32,23 @@ var Aufgabe3_4;
         console.log(result);
     }
     connecttoDatabase();
-    function handleRequest(_request, _response) {
+    async function handleRequest(_request, _response) {
         console.log("I hear voices!");
         console.log(_request.url);
         _response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
         let url = Url.parse(_request.url, true);
         console.log(url);
-        if (url.pathname == "/safeData") {
-            _response.setHeader("content-type", "text/html; charset=utf-8");
-            speichertDaten(url.query);
+        if (_request.url) {
+            let url = Url.parse(_request.url, true);
+            if (url.pathname == "/safeData") {
+                data.insertOne(url.query); //wenn man daten speichenr klickt dann werden die daten eingefügt
+            }
+            if (url.pathname == "/getData") {
+                _response.write(JSON.stringify(await (data.find().toArray()))); //wenn man daten anfordert werden die daten gesucht und in jason string gewandelt
+            }
+            _response.end();
         }
-        if (url.pathname == "/getData") {
-            _response.setHeader("content-type", "text/html; charset=utf-8");
-            _response.write(JSON.stringify(result));
-        }
-        _response.end(); //Antwort fertig und zurückschicken 
-    }
-    function speichertDaten(_query) {
-        data.insertOne(_query);
     }
 })(Aufgabe3_4 = exports.Aufgabe3_4 || (exports.Aufgabe3_4 = {}));
 //# sourceMappingURL=server.js.map
