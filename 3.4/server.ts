@@ -27,28 +27,28 @@ export namespace Aufgabe3_4 {
 
     let result: User[]; //ergenbis in User interface form ausgeben lassen
 
-    async function safe(_url: string, _eingabe: User): Promise <string> {
+    async function safe(_url: string, _eingabe: User): Promise<string> {
         await mongoClient.connect();
-    
+
         let infos: Mongo.Collection = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
-        infos.insertOne (_eingabe); //eingegebene Daten in DB speichern
+        infos.insertOne(_eingabe); //eingegebene Daten in DB speichern
         let serverResponse: string = "Daten wurden gespeichert";
         return serverResponse;
     }
-    
-    async function get(_url: string): Promise <User[]> { 
-        let options: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
+
+    async function get(_url: string): Promise<User[]> {
+        let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect(); //wartet bis man mit mongoclient verbunden ist 
-    
+
         let infos: Mongo.Collection = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
-        let cursor: Mongo.Cursor = infos.find (); //datenbvank wirfd durchsucht 
+        let cursor: Mongo.Cursor = infos.find(); //datenbvank wirfd durchsucht 
         result = await cursor.toArray(); //datenbank wird ausgelesen
         return result;
-    
+
     }
-    
-    
+
+
 
     async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
         console.log("I hear voices!");
@@ -60,7 +60,7 @@ export namespace Aufgabe3_4 {
 
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-            let eingabe: User = { benutzername: url.query.benutzername + "", email: url.query.email + "", password: url.query.password + "" };
+            let eingabe: User = { email: url.query.email + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
 
             if (url.pathname == "/safeData") {
                 let daten: string = await safe(databaseUrl, eingabe); //wartet bis die function die die daen speichert fertig ist
@@ -69,13 +69,15 @@ export namespace Aufgabe3_4 {
             else if (url.pathname == "/getData") {
                 let antwort: User[] = await get(databaseUrl); //wartet bis die function die die daten bekommt fertig ist
                 console.log(antwort);
-                _response.write(JSON.stringify(antwort));             }
-
-
+                _response.write(JSON.stringify(antwort));
             }
-        
+        }
+
+
+
         _response.end();
 
-        }
-        
     }
+
+
+}
