@@ -20,7 +20,7 @@ var Aufgabe3_4;
     let result; //ergenbis in User interface form ausgeben lassen
     async function safe(_url, _eingabe) {
         await mongoClient.connect();
-        let infos = mongoClient.db("Students").collection("Test"); //meine collection wird aufgerufen
+        let infos = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
         infos.insertOne(_eingabe); //eingegebene Daten in DB speichern
         let serverResponse = "Daten wurden gespeichert";
         return serverResponse;
@@ -29,7 +29,7 @@ var Aufgabe3_4;
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect(); //wartet bis man mit mongoclient verbunden ist 
-        let infos = mongoClient.db("Students").collection("Test"); //meine collection wird aufgerufen
+        let infos = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
         let cursor = infos.find(); //datenbvank wirfd durchsucht 
         result = await cursor.toArray(); //datenbank wird ausgelesen
         return result;

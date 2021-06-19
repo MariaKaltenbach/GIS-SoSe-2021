@@ -30,7 +30,7 @@ export namespace Aufgabe3_4 {
     async function safe(_url: string, _eingabe: User): Promise <string> {
         await mongoClient.connect();
     
-        let infos: Mongo.Collection = mongoClient.db("Students").collection("Test"); //meine collection wird aufgerufen
+        let infos: Mongo.Collection = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
         infos.insertOne (_eingabe); //eingegebene Daten in DB speichern
         let serverResponse: string = "Daten wurden gespeichert";
         return serverResponse;
@@ -41,7 +41,7 @@ export namespace Aufgabe3_4 {
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect(); //wartet bis man mit mongoclient verbunden ist 
     
-        let infos: Mongo.Collection = mongoClient.db("Students").collection("Test"); //meine collection wird aufgerufen
+        let infos: Mongo.Collection = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
         let cursor: Mongo.Cursor = infos.find (); //datenbvank wirfd durchsucht 
         result = await cursor.toArray(); //datenbank wird ausgelesen
         return result;
