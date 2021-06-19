@@ -21,7 +21,6 @@ export namespace Aufgabe3_4 {
     interface User {
         password: string;
         benutzername: string;
-        alter: number;
         email: string;
     } //Interface für user angelegt
 
@@ -33,20 +32,19 @@ export namespace Aufgabe3_4 {
 
     let result: User[]; //ergenbis in User interface form ausgeben lassen
 
-    async function connecttoDatabase(): Promise<void> {
-        await mongoClient.connect();   //warten bis der Mongo client sich mit der datenban verbunden hat
+    async function connecttoDatabase(_url: String): Promise< User[]> {
+        await mongoClient.connect();   //warten bis der Mongo client sich mit der datenbank verbunden hat
         console.log(`Datenbank mit Url verbunden: ${databaseUrl}`); //wenn dies erfolgreich war wird das ausgegeben
-        data = mongoClient.db("Test").collection("Students"); 
-        let cursor: Mongo.Cursor = data.find();
-        result = await cursor.toArray();
+        data = mongoClient.db("Test").collection("Students");
+        let cursor: Mongo.Cursor = data.find();  //daten in der db finden
+        result = await cursor.toArray(); //gibt array zurück
         console.log(result);
 
     }
-    connecttoDatabase();
 
 
 
-    async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise <void> {
+    async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
         console.log("I hear voices!");
         console.log(_request.url);
         _response.setHeader("content-type", "text/html; charset=utf-8");
@@ -58,16 +56,28 @@ export namespace Aufgabe3_4 {
 
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
+            let eingabe: User = { benutzername: url.query.benutzername + "", email: url.query.email + "", password: url.query.password + "" };
 
             if (url.pathname == "/safeData") {
-                data.insertOne(url.query);  //wenn man daten speichenr klickt dann werden die daten eingefügt
+                let daten: string = await safe(databaseUrl, eingabe); //
+                _response.write(daten);  
             }
             if (url.pathname == "/getData") {
-                _response.write(JSON.stringify(await(data.find().toArray()))); //wenn man daten anfordert werden die daten gesucht und in jason string gewandelt
+                let antwort: User[] = await connecttoDatabase(databaseUrl);
+                console.log(antwort);
+                _response.write(JSON.stringify(antwort)); //wenn Daten abgeschickt sind und in DB speichern            }
+
+                _response.end();
             }
 
-            _response.end(); 
-        }
+            async function safe(_url: string, _eingabe: User): Promise<string> {
 
-      
-     } }
+                data = mongoClient.db("Test").collection("Students");
+                data.insertOne(_eingabe); //eingegebene Daten in DB speichern
+                let antwort: string = "Daten wurden gespeichert";
+                return antwort;
+            }
+
+
+        }
+    }

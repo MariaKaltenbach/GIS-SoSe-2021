@@ -23,15 +23,14 @@ var Aufgabe3_4;
     let data; //Mongo collections angelegt
     let mongoClient = new Mongo.MongoClient(databaseUrl, options); //mongo client angelegt
     let result; //ergenbis in User interface form ausgeben lassen
-    async function connecttoDatabase() {
-        await mongoClient.connect(); //warten bis der Mongo client sich mit der datenban verbunden hat
+    async function connecttoDatabase(_url) {
+        await mongoClient.connect(); //warten bis der Mongo client sich mit der datenbank verbunden hat
         console.log(`Datenbank mit Url verbunden: ${databaseUrl}`); //wenn dies erfolgreich war wird das ausgegeben
         data = mongoClient.db("Test").collection("Students");
-        let cursor = data.find();
-        result = await cursor.toArray();
+        let cursor = data.find(); //daten in der db finden
+        result = await cursor.toArray(); //gibt array zurück
         console.log(result);
     }
-    connecttoDatabase();
     async function handleRequest(_request, _response) {
         console.log("I hear voices!");
         console.log(_request.url);
@@ -41,13 +40,23 @@ var Aufgabe3_4;
         console.log(url);
         if (_request.url) {
             let url = Url.parse(_request.url, true);
+            let eingabe = { benutzername: url.query.benutzername + "", email: url.query.email + "", password: url.query.password + "" };
             if (url.pathname == "/safeData") {
-                data.insertOne(url.query); //wenn man daten speichenr klickt dann werden die daten eingefügt
+                let daten = await safe(databaseUrl, eingabe); //
+                _response.write(daten);
             }
             if (url.pathname == "/getData") {
-                _response.write(JSON.stringify(await (data.find().toArray()))); //wenn man daten anfordert werden die daten gesucht und in jason string gewandelt
+                let antwort = await connecttoDatabase(databaseUrl);
+                console.log(antwort);
+                _response.write(JSON.stringify(antwort)); //wenn Daten abgeschickt sind und in DB speichern            }
+                _response.end();
             }
-            _response.end();
+            async function safe(_url, _eingabe) {
+                data = mongoClient.db("Test").collection("Students");
+                data.insertOne(_eingabe); //eingegebene Daten in DB speichern
+                let antwort = "Daten wurden gespeichert";
+                return antwort;
+            }
         }
     }
 })(Aufgabe3_4 = exports.Aufgabe3_4 || (exports.Aufgabe3_4 = {}));
