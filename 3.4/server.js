@@ -12,52 +12,47 @@ var Aufgabe3_4;
         port = 8100;
     let server = Http.createServer();
     server.addListener("request", handleRequest);
-    server.addListener("listening", handleListen);
     server.listen(port);
-    function handleListen() {
-        console.log("Listening");
-    }
     let databaseUrl = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"; //mondoDB String um mit db zu connecten 
     // let databaseUrl: string = "mongodb://localhost:27017";
     let options = { useNewUrlParser: true, useUnifiedTopology: true };
-    let data; //Mongo collections angelegt
     let mongoClient = new Mongo.MongoClient(databaseUrl, options); //mongo client angelegt
     let result; //ergenbis in User interface form ausgeben lassen
-    async function connecttoDatabase(_url) {
-        await mongoClient.connect(); //warten bis der Mongo client sich mit der datenbank verbunden hat
-        console.log(`Datenbank mit Url verbunden: ${databaseUrl}`); //wenn dies erfolgreich war wird das ausgegeben
-        data = mongoClient.db("Test").collection("Students");
-        let cursor = data.find(); //daten in der db finden
-        result = await cursor.toArray(); //gibt array zurück
-        console.log(result);
+    async function safe(_url, _eingabe) {
+        await mongoClient.connect();
+        let infos = mongoClient.db("Students").collection("Test"); //meine collection wird aufgerufen
+        infos.insertOne(_eingabe); //eingegebene Daten in DB speichern
+        let serverResponse = "Daten wurden gespeichert";
+        return serverResponse;
+    }
+    async function get(_url) {
+        let options = { useNewUrlParser: true, useUnifiedTopology: true };
+        let mongoClient = new Mongo.MongoClient(_url, options);
+        await mongoClient.connect(); //wartet bis man mit mongoclient verbunden ist 
+        let infos = mongoClient.db("Students").collection("Test"); //meine collection wird aufgerufen
+        let cursor = infos.find(); //datenbvank wirfd durchsucht 
+        result = await cursor.toArray(); //datenbank wird ausgelesen
+        return result;
     }
     async function handleRequest(_request, _response) {
         console.log("I hear voices!");
         console.log(_request.url);
         _response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
-        let url = Url.parse(_request.url, true);
-        console.log(url);
         if (_request.url) {
             let url = Url.parse(_request.url, true);
             let eingabe = { benutzername: url.query.benutzername + "", email: url.query.email + "", password: url.query.password + "" };
             if (url.pathname == "/safeData") {
-                let daten = await safe(databaseUrl, eingabe); //
+                let daten = await safe(databaseUrl, eingabe); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);
             }
-            if (url.pathname == "/getData") {
-                let antwort = await connecttoDatabase(databaseUrl);
+            else if (url.pathname == "/getData") {
+                let antwort = await get(databaseUrl); //wartet bis die function die die daten bekommt fertig ist
                 console.log(antwort);
-                _response.write(JSON.stringify(antwort)); //wenn Daten abgeschickt sind und in DB speichern            }
-                _response.end();
-            }
-            async function safe(_url, _eingabe) {
-                data = mongoClient.db("Test").collection("Students");
-                data.insertOne(_eingabe); //eingegebene Daten in DB speichern
-                let antwort = "Daten wurden gespeichert";
-                return antwort;
+                _response.write(JSON.stringify(antwort));
             }
         }
+        _response.end();
     }
 })(Aufgabe3_4 = exports.Aufgabe3_4 || (exports.Aufgabe3_4 = {}));
 //# sourceMappingURL=server.js.map
