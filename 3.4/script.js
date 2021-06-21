@@ -21,7 +21,7 @@ var Aufgabe3_4;
         query = new URLSearchParams(daten);
         url = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
         // url = "http://localhost:8100";
-        url = daten + "/getData";
+        url += "/getData";
         url = url + "?" + query.toString(); //Url in String umwandeln
         let response = await fetch(url); //auf url warten
         let responseText = await response.text(); //json okject erstellen

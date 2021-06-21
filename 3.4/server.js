@@ -41,7 +41,7 @@ var Aufgabe3_4;
         _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
             let url = Url.parse(_request.url, true);
-            let eingabe = { benutzername: url.query.benutzername + "", email: url.query.email + "", password: url.query.password + "" };
+            let eingabe = { email: url.query.email + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
             if (url.pathname == "/safeData") {
                 let daten = await safe(databaseUrl, eingabe); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);
