@@ -1,0 +1,69 @@
+.loginSeite {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background: url("../Bilder/loginBackground.jpg");
+}
+
+.ÜberschriftLogin {
+    margin-left: 600px;
+    margin-top: 150px;
+    text-align: center;
+}
+
+form,
+p {
+    margin-left: 800px;
+    font-size: 17px;
+}
+
+input {
+    width: 200px;
+    height: 25px;
+}
+
+button {
+    width: 100px;
+    margin-left: 50px;
+}
+
+.Navigation {
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+}
+
+.Navigation a {
+    float: right;
+    color: black;
+    text-align: right;
+    padding: 10px 12px;
+    border-bottom: 5px;
+    text-decoration: none;
+    font-size: 21px;
+}
+
+.Navigation a:hover {
+    background-color: lightslategrey;
+    color: black;
+}
+
+.Navigation a.active {
+    background-color: lightslategrey;
+    color: black;
+}
+
+.grammInput {
+    width: 70px;
+}
+
+.zubereitungsSchritte {
+    width: 600px;
+    height: 400px;
+}
+
+#veröffentlichen {
+    margin-left: 220px;
+}
+
+.rezeptErstellen {
+    margin-left: 150px;
+}
