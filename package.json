@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "node Modulprüfung/server.js remote"
+        "start": "node 3.4/server.js remote"
     },
     "repository": {
         "type": "git",
