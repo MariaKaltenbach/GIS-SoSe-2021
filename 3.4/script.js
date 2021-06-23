@@ -19,7 +19,7 @@ var Aufgabe3_4;
     async function getData() {
         let daten = new FormData(document.forms[0]);
         query = new URLSearchParams(daten);
-        url = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
+        url = "https://gissose2021.herokuapp.com"; //herokuapnpm p link einfügen als url variable 
         // url = "http://localhost:8100";
         url += "/getData";
         url = url + "?" + query.toString(); //Url in String umwandeln

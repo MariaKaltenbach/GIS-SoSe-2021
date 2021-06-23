@@ -27,6 +27,8 @@ export namespace Aufgabe3_4 {
 
     let result: User[]; //ergenbis in User interface form ausgeben lassen
 
+
+    
     async function safe(_url: string, _eingabe: User): Promise<string> {
         await mongoClient.connect();
 
@@ -35,6 +37,8 @@ export namespace Aufgabe3_4 {
         let serverResponse: string = "Daten wurden gespeichert";
         return serverResponse;
     }
+
+
 
     async function get(_url: string): Promise<User[]> {
         let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
