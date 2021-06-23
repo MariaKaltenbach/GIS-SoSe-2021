@@ -1,0 +1,26 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background: url("../Bilder/loginBackground.jpg");
+}
+
+.ÜberschriftLogin {
+    margin-left: 600px;
+    margin-top: 150px;
+    text-align: center;
+}
+
+form,
+p {
+    margin-left: 800px;
+    font-size: 17px;
+}
+
+input {
+    width: 200px;
+    height: 25px;
+}
+
+button {
+    width: 100px;
+    margin-left: 50px;
+}
