@@ -17,8 +17,8 @@ var Modulprüfung;
     async function userRegistration() {
         let form = new FormData(document.forms[0]);
         let query = new URLSearchParams(form);
-        // let serverUrl: string = "https://gissose2021.herokuapp.com";
-        let serverUrl = "http://localhost:8100"; //server verbinden
+        let serverUrl = "https://gissose2021.herokuapp.com";
+        // let serverUrl: string = "http://localhost:8100";                //server verbinden
         serverUrl += "/registration" + "?" + query.toString;
         let response = await fetch(serverUrl); //auf url warten
         let responseText = await response.text(); //json okject erstellen
@@ -30,8 +30,8 @@ var Modulprüfung;
     async function userLogin() {
         let form = new FormData(document.forms[0]);
         let query = new URLSearchParams(form);
-        // let serverUrl: string = "https://gissose2021.herokuapp.com";
-        let serverUrl = "http://localhost:8100"; //server verbinden
+        let serverUrl = "https://gissose2021.herokuapp.com";
+        // let serverUrl: string = "http://localhost:8100";                //server verbinden
         serverUrl += "/login" + query.toString;
         console.log("User wird eingeloggt.");
     }

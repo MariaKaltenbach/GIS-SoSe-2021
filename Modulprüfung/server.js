@@ -6,8 +6,7 @@ const Url = require("url");
 const Mongo = require("mongodb");
 var Modulprüfung;
 (function (Modulprüfung) {
-    // let databaseUrl: string = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-    let databaseUrl = "mongodb://localhost:27017";
+    let databaseUrl = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
     //Beispielserver code aus der Praktikumsaufgabe 3.1 (FELIX: Kurs "GIS (für MIB und OMB)") START
     console.log("Server wird gestartet!"); //wird ausgegeben, wenn der server angestellt wird 
     let port = Number(process.env.PORT);
