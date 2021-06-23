@@ -18,10 +18,10 @@ namespace Modulprüfung {
 
     async function userRegistration(): Promise<void> {
         let form: FormData = new FormData(document.forms[0]);
-        let query: URLSearchParams = new URLSearchParams(<undefined>form);
-        let serverUrl: string = "https://gissose2021.herokuapp.com";
-        // let serverUrl: string = "http://localhost:8100";                //server verbinden
-        serverUrl += "/registration" + query.toString;
+        let query: URLSearchParams = new URLSearchParams(<any>form);
+        // let serverUrl: string = "https://gissose2021.herokuapp.com";
+        let serverUrl: string = "http://localhost:8100";                //server verbinden
+        serverUrl += "/registration" + "?" + query.toString;
         let response: Response = await fetch(serverUrl);  //auf url warten
         let responseText: string = await response.text(); //json okject erstellen
         console.log(responseText);
@@ -34,14 +34,16 @@ namespace Modulprüfung {
 
     async function userLogin(): Promise<void> {
 
-        // let form: FormData = new FormData(document.forms[0]);
-        // let query: URLSearchParams = new URLSearchParams(<undefined>form);
-        // serverUrl = "https://gissose2021.herokuapp.com";
+        let form: FormData = new FormData(document.forms[0]);
+        let query: URLSearchParams = new URLSearchParams(<undefined>form);
+        // let serverUrl: string = "https://gissose2021.herokuapp.com";
         let serverUrl: string = "http://localhost:8100";                //server verbinden
-        serverUrl += "/login";
+        serverUrl += "/login" + query.toString;
 
 
         console.log("User wird eingeloggt.");
+
+        
     }
 
     let saveRecepie: HTMLButtonElement = <HTMLButtonElement>document.getElementById("veröffentlichen"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
