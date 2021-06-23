@@ -7,7 +7,7 @@ namespace Aufgabe3_4 {
 
     async function saveData(): Promise<void> {
         let daten: FormData = new FormData(document.forms[0]);
-        query = new URLSearchParams(<undefined>daten);
+        query = new URLSearchParams(<any>daten);
         url = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
         //  url = "http://localhost:8100";
         url += "/safeData" + "?" + query.toString(); 
@@ -16,13 +16,13 @@ namespace Aufgabe3_4 {
         console.log(responseText);
     }
     let sendData: HTMLButtonElement = <HTMLButtonElement>document.getElementById("sendData");
-    sendData.addEventListener("click", saveData); //eventlistener wir aktiviert und htmlLaden funktion wird aufgerufen wenn man den htmlButton clickt
+    sendData.addEventListener("click", saveData);  //eventlistener wir aktiviert und htmlLaden funktion wird aufgerufen wenn man den htmlButton clickt
 
 
 
     async function getData(): Promise<void> {
         let daten: FormData = new FormData(document.forms[0]);
-        query = new URLSearchParams(<undefined>daten);
+        query = new URLSearchParams(<any>daten);
         url = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
         // url = "http://localhost:8100";
         url += "/getData";
