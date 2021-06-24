@@ -7,10 +7,6 @@ const Mongo = require("mongodb");
 var Modulprüfung;
 (function (Modulprüfung) {
     let databaseUrl = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-    // interface Recepies {
-    //     zutat: string;
-    //     zuebreitung: string;
-    // }
     //Beispielserver code aus der Praktikumsaufgabe 3.1 (FELIX: Kurs "GIS (für MIB und OMB)") START
     console.log("Server wird gestartet!"); //wird ausgegeben, wenn der server angestellt wird 
     let port = Number(process.env.PORT);
@@ -26,6 +22,13 @@ var Modulprüfung;
         let orders = mongoClient.db("Test").collection("Students");
         orders.insert(_user);
         let response = "Erfolgreich Registriert!";
+        return response;
+    }
+    async function safeRecepie(_url, _rezept) {
+        await mongoClient.connect();
+        let orders = mongoClient.db("Test").collection("Rezepte");
+        orders.insert(_rezept);
+        let response = "Rezept wurde erfolgreich erstellt!";
         return response;
     }
     // let result: Recepies[]; //ergenbis in User interface form ausgeben lassen
@@ -44,11 +47,17 @@ var Modulprüfung;
         _response.setHeader("Access-Control-Allow-Origin", "*"); //header wird festgelegt
         if (_request.url) {
             let url = Url.parse(_request.url, true);
-            let input = { mail: url.query.mail + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
+            let inputUser = { mail: url.query.mail + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
+            let inputRezept = { gramm: url.query.gramm + "", zutat: url.query.zutat + "", zubereitung: url.query.zubereitung + "" };
             if (url.pathname == "/registration") {
-                let daten = await registration(databaseUrl, input); //wartet bis die function die die daen speichert fertig ist
+                let daten = await registration(databaseUrl, inputUser); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);
                 console.log("Registriert");
+            }
+            else if (url.pathname == "/safeRecepie") {
+                let daten = await safeRecepie(databaseUrl, inputRezept); //wartet bis die function die die daen speichert fertig ist
+                _response.write(daten);
+                console.log("Rezept gespeichert!");
             }
             // else if (url.pathname == "/login") {
             //     console.log("Eingeloggt");

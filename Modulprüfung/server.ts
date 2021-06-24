@@ -13,10 +13,11 @@ export namespace Modulprüfung {
         password: string;
     }
 
-    // interface Recepies {
-    //     zutat: string;
-    //     zuebreitung: string;
-    // }
+    interface Recepie {
+        gramm: string;
+        zutat: string;
+        zubereitung: string;
+    }
 
 
 
@@ -49,7 +50,14 @@ export namespace Modulprüfung {
         return response;
     }
 
+    async function safeRecepie(_url: string, _rezept: Recepie): Promise<string> {
 
+        await mongoClient.connect();
+        let orders: Mongo.Collection = mongoClient.db("Test").collection("Rezepte");
+        orders.insert(_rezept);
+        let response: string = "Rezept wurde erfolgreich erstellt!";
+        return response;
+    }
 
 
 
@@ -78,12 +86,17 @@ export namespace Modulprüfung {
 
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-            let input: User = { mail: url.query.mail + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
-
+            let inputUser: User = { mail: url.query.mail + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
+            let inputRezept: Recepie = {gramm: url.query.gramm + "", zutat: url.query.zutat + "", zubereitung: url.query.zubereitung + "" };
             if (url.pathname == "/registration") {
-                let daten: string = await registration(databaseUrl, input); //wartet bis die function die die daen speichert fertig ist
+                let daten: string = await registration(databaseUrl, inputUser); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);
                 console.log("Registriert");
+            }
+            else if (url.pathname == "/safeRecepie") {
+                let daten: string = await safeRecepie(databaseUrl, inputRezept); //wartet bis die function die die daen speichert fertig ist
+                _response.write(daten);
+                console.log("Rezept gespeichert!");
             }
             // else if (url.pathname == "/login") {
             //     console.log("Eingeloggt");
