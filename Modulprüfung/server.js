@@ -17,7 +17,7 @@ var Modulprüfung;
     server.listen(port);
     let options = { useNewUrlParser: true, useUnifiedTopology: true };
     let mongoClient = new Mongo.MongoClient(databaseUrl, options); //mongo client angelegt
-    async function safe(_url, _eingabe) {
+    async function safeRegistration(_url, _eingabe) {
         await mongoClient.connect();
         let infos = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
         infos.insertOne(_eingabe); //eingegebene Daten in DB speichern
@@ -31,16 +31,15 @@ var Modulprüfung;
         let response = "Rezept wurde erfolgreich erstellt!";
         return response;
     }
-    // let result: Recepies[]; //ergenbis in User interface form ausgeben lassen
-    // async function getAllRecepies(_url: string): Promise<Recepies[]> {
-    //     let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
-    //     let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
-    //     await mongoClient.connect(); //wartet bis man mit mongoclient verbunden ist 
-    //     let infos: Mongo.Collection = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
-    //     let cursor: Mongo.Cursor = infos.find(); //datenbvank wirfd durchsucht 
-    //     result = await cursor.toArray(); //datenbank wird ausgelesen
-    //     return result;
-    // }
+    async function getAllRecepies(_url) {
+        let options = { useNewUrlParser: true, useUnifiedTopology: true };
+        let mongoClient = new Mongo.MongoClient(_url, options);
+        await mongoClient.connect();
+        let infos = mongoClient.db("Test").collection("Rezepte"); //eigene neue Collection aufrufen
+        let cursor = infos.find(); //Suche der gesamten DB aber spezielle ist auch möglich mit .find({name: "..."})
+        let ergebnis = await cursor.toArray(); //auslesen der kompletten DB
+        return ergebnis;
+    }
     async function handleRequest(_request, _response) {
         console.log("Anfrage genehmigt!");
         _response.setHeader("content-type", "text/html; charset=utf-8"); //header wird festgelegt
@@ -49,7 +48,7 @@ var Modulprüfung;
             let url = Url.parse(_request.url, true);
             let eingabe = { email: url.query.email + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
             if (url.pathname == "/safeRegistration") {
-                let daten = await safe(databaseUrl, eingabe); //wartet bis die function die die daen speichert fertig ist
+                let daten = await safeRegistration(databaseUrl, eingabe); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);
             }
             else if (url.pathname == "/safeRecepie") {
@@ -57,6 +56,11 @@ var Modulprüfung;
                 let daten = await safeRecepie(databaseUrl, inputRezept); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);
                 console.log("Rezept gespeichert!");
+            }
+            else if (url.pathname == "/getAllRecepies") {
+                let response = await getAllRecepies(databaseUrl);
+                console.log(response);
+                _response.write(JSON.stringify(response)); //wenn Daten abgeschickt sind und in DB speichern
             }
             // else if (url.pathname == "/login") {
             //     console.log("Eingeloggt");

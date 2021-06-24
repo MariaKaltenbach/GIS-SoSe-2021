@@ -70,27 +70,27 @@ namespace Modulprüfung {
 
 
 
-    // let serverResponse: HTMLDivElement = <HTMLDivElement>document.getElementById("serverAntwort");
+    let serverResponse: HTMLDivElement = <HTMLDivElement>document.getElementById("serverAntwort");
 
 
 
 
     // //////////////////////////////////////////////
-    // let getRecepie: HTMLButtonElement = <HTMLButtonElement>document.getElementById("getData");
-    // getRecepie.addEventListener("click", getRecepies);
+    let getRecepie: HTMLButtonElement = <HTMLButtonElement>document.getElementById("getData");
+    getRecepie.addEventListener("click", getRecepies);
 
-    // async function getRecepies(): Promise<void> {
-    //     let daten: FormData = new FormData(document.forms[0]);
-    //     let query: URLSearchParams = new URLSearchParams(<any>daten);
-    //     let serverUrl: string = "https://gissose2021.herokuapp.com"; //herokuapnpm p link einfügen als url variable 
-    //     // url = "http://localhost:8100";
-    //     serverUrl += "/getAllRecepies";
-    //     serverUrl = serverUrl + "?" + query.toString(); //Url in String umwandeln
-    //     let response: Response = await fetch(serverUrl);  //auf url warten
-    //     let responseText: string = await response.text(); //json okject erstellen
-    //     serverResponse.innerHTML = responseText;
+    async function getRecepies(): Promise<void> {
+        let daten: FormData = new FormData(document.forms[0]);
+        let query: URLSearchParams = new URLSearchParams(<any>daten);
+        let serverUrl: string = "https://gissose2021.herokuapp.com"; //herokuapnpm p link einfügen als url variable 
+        // url = "http://localhost:8100";
+        serverUrl += "/getAllRecepies";
+        serverUrl = serverUrl + "?" + query.toString(); //Url in String umwandeln
+        let response: Response = await fetch(serverUrl);  //auf url warten
+        let responseText: string = await response.text(); //json okject erstellen
+        serverResponse.innerHTML = responseText;
 
-    // }
+    }
 
 
 

@@ -38,11 +38,8 @@ export namespace Modulprüfung {
     let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(databaseUrl, options); //mongo client angelegt
 
 
-
-
-
    
-    async function safe(_url: string, _eingabe: User): Promise<string> {
+    async function safeRegistration(_url: string, _eingabe: User): Promise<string> {
         await mongoClient.connect();
 
         let infos: Mongo.Collection = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
@@ -63,21 +60,19 @@ export namespace Modulprüfung {
 
 
 
-    // let result: Recepies[]; //ergenbis in User interface form ausgeben lassen
 
-
-    // async function getAllRecepies(_url: string): Promise<Recepies[]> {
-    //     let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
-    //     let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
-    //     await mongoClient.connect(); //wartet bis man mit mongoclient verbunden ist 
-
-    //     let infos: Mongo.Collection = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
-    //     let cursor: Mongo.Cursor = infos.find(); //datenbvank wirfd durchsucht 
-    //     result = await cursor.toArray(); //datenbank wird ausgelesen
-    //     return result;
-
-    // }
-
+    async function getAllRecepies(_url: string): Promise <Recepie[]> { //bekommt Interface Array zurück
+        let options: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
+        let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
+        await mongoClient.connect();
+    
+        let infos: Mongo.Collection = mongoClient.db("Test").collection("Rezepte"); //eigene neue Collection aufrufen
+        let cursor: Mongo.Cursor = infos.find (); //Suche der gesamten DB aber spezielle ist auch möglich mit .find({name: "..."})
+        let ergebnis: Recepie[] = await cursor.toArray(); //auslesen der kompletten DB
+        return ergebnis;
+    
+    }
+    
 
 
 
@@ -92,7 +87,7 @@ export namespace Modulprüfung {
             let eingabe: User = { email: url.query.email + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
 
             if (url.pathname == "/safeRegistration") {
-                let daten: string = await safe(databaseUrl, eingabe); //wartet bis die function die die daen speichert fertig ist
+                let daten: string = await safeRegistration(databaseUrl, eingabe); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);
             }
             else if (url.pathname == "/safeRecepie") {
@@ -100,6 +95,11 @@ export namespace Modulprüfung {
                 let daten: string = await safeRecepie(databaseUrl, inputRezept); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);
                 console.log("Rezept gespeichert!");
+            }
+            else if (url.pathname == "/getAllRecepies") {
+                let response: Recepie[] = await getAllRecepies(databaseUrl);
+                console.log(response);
+                _response.write(JSON.stringify(response)); //wenn Daten abgeschickt sind und in DB speichern
             }
             // else if (url.pathname == "/login") {
             //     console.log("Eingeloggt");

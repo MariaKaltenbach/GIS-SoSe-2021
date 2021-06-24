@@ -48,21 +48,21 @@ var Modulprüfung;
     //     serverUrl += "/login" + query.toString;
     //     console.log("User wird eingeloggt.");
     // }
-    // let serverResponse: HTMLDivElement = <HTMLDivElement>document.getElementById("serverAntwort");
+    let serverResponse = document.getElementById("serverAntwort");
     // //////////////////////////////////////////////
-    // let getRecepie: HTMLButtonElement = <HTMLButtonElement>document.getElementById("getData");
-    // getRecepie.addEventListener("click", getRecepies);
-    // async function getRecepies(): Promise<void> {
-    //     let daten: FormData = new FormData(document.forms[0]);
-    //     let query: URLSearchParams = new URLSearchParams(<any>daten);
-    //     let serverUrl: string = "https://gissose2021.herokuapp.com"; //herokuapnpm p link einfügen als url variable 
-    //     // url = "http://localhost:8100";
-    //     serverUrl += "/getAllRecepies";
-    //     serverUrl = serverUrl + "?" + query.toString(); //Url in String umwandeln
-    //     let response: Response = await fetch(serverUrl);  //auf url warten
-    //     let responseText: string = await response.text(); //json okject erstellen
-    //     serverResponse.innerHTML = responseText;
-    // }
+    let getRecepie = document.getElementById("getData");
+    getRecepie.addEventListener("click", getRecepies);
+    async function getRecepies() {
+        let daten = new FormData(document.forms[0]);
+        let query = new URLSearchParams(daten);
+        let serverUrl = "https://gissose2021.herokuapp.com"; //herokuapnpm p link einfügen als url variable 
+        // url = "http://localhost:8100";
+        serverUrl += "/getAllRecepies";
+        serverUrl = serverUrl + "?" + query.toString(); //Url in String umwandeln
+        let response = await fetch(serverUrl); //auf url warten
+        let responseText = await response.text(); //json okject erstellen
+        serverResponse.innerHTML = responseText;
+    }
     // ////////////////////////////////////////////////////////////////////
     // let saveRecepie: HTMLButtonElement = <HTMLButtonElement>document.getElementById("veröffentlichen"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
     // saveRecepie.addEventListener("click", publishRecepie);                          //eventlistener für Rezept veröffentlichung 
