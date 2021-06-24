@@ -13,6 +13,13 @@ export namespace Modulprüfung {
         password: string;
     }
 
+    // interface Recepies {
+    //     zutat: string;
+    //     zuebreitung: string;
+    // }
+
+
+
     //Beispielserver code aus der Praktikumsaufgabe 3.1 (FELIX: Kurs "GIS (für MIB und OMB)") START
     console.log("Server wird gestartet!");          //wird ausgegeben, wenn der server angestellt wird 
     let port: number = Number(process.env.PORT);
@@ -23,8 +30,14 @@ export namespace Modulprüfung {
     server.addListener("request", handleRequest);   //eventListener wird erstellt um die Function handleRequest bei einer Anfrage an den server aufzurufen
     server.listen(port);
 
+
+
+
     let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
     let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(databaseUrl, options); //mongo client angelegt
+
+
+
 
 
     async function registration(_url: string, _user: User): Promise<string> {
@@ -35,6 +48,27 @@ export namespace Modulprüfung {
         let response: string = "Erfolgreich Registriert!";
         return response;
     }
+
+
+
+
+
+    // let result: Recepies[]; //ergenbis in User interface form ausgeben lassen
+
+
+    // async function getAllRecepies(_url: string): Promise<Recepies[]> {
+    //     let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
+    //     let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
+    //     await mongoClient.connect(); //wartet bis man mit mongoclient verbunden ist 
+
+    //     let infos: Mongo.Collection = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
+    //     let cursor: Mongo.Cursor = infos.find(); //datenbvank wirfd durchsucht 
+    //     result = await cursor.toArray(); //datenbank wird ausgelesen
+    //     return result;
+
+    // }
+
+
 
 
     async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
@@ -51,9 +85,14 @@ export namespace Modulprüfung {
                 _response.write(daten);
                 console.log("Registriert");
             }
-            else if (url.pathname == "/login") {
-                console.log("Eingeloggt");
-            }
+            // else if (url.pathname == "/login") {
+            //     console.log("Eingeloggt");
+            // }
+            // // else if (url.pathname == "/getAllRecepies") {
+            // //     let antwort: Recepies[] = await getAllRecepies(databaseUrl); //wartet bis die function die die daten bekommt fertig ist
+            // //     console.log(antwort);
+            //     _response.write(JSON.stringify(antwort));
+            // }
         }
 
         _response.end();                                                    //anfrage wird beendet

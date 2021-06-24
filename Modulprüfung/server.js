@@ -7,6 +7,10 @@ const Mongo = require("mongodb");
 var Modulprüfung;
 (function (Modulprüfung) {
     let databaseUrl = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+    // interface Recepies {
+    //     zutat: string;
+    //     zuebreitung: string;
+    // }
     //Beispielserver code aus der Praktikumsaufgabe 3.1 (FELIX: Kurs "GIS (für MIB und OMB)") START
     console.log("Server wird gestartet!"); //wird ausgegeben, wenn der server angestellt wird 
     let port = Number(process.env.PORT);
@@ -24,6 +28,16 @@ var Modulprüfung;
         let response = "Erfolgreich Registriert!";
         return response;
     }
+    // let result: Recepies[]; //ergenbis in User interface form ausgeben lassen
+    // async function getAllRecepies(_url: string): Promise<Recepies[]> {
+    //     let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
+    //     let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
+    //     await mongoClient.connect(); //wartet bis man mit mongoclient verbunden ist 
+    //     let infos: Mongo.Collection = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
+    //     let cursor: Mongo.Cursor = infos.find(); //datenbvank wirfd durchsucht 
+    //     result = await cursor.toArray(); //datenbank wird ausgelesen
+    //     return result;
+    // }
     async function handleRequest(_request, _response) {
         console.log("Anfrage genehmigt!");
         _response.setHeader("content-type", "text/html; charset=utf-8"); //header wird festgelegt
@@ -36,9 +50,14 @@ var Modulprüfung;
                 _response.write(daten);
                 console.log("Registriert");
             }
-            else if (url.pathname == "/login") {
-                console.log("Eingeloggt");
-            }
+            // else if (url.pathname == "/login") {
+            //     console.log("Eingeloggt");
+            // }
+            // // else if (url.pathname == "/getAllRecepies") {
+            // //     let antwort: Recepies[] = await getAllRecepies(databaseUrl); //wartet bis die function die die daten bekommt fertig ist
+            // //     console.log(antwort);
+            //     _response.write(JSON.stringify(antwort));
+            // }
         }
         _response.end(); //anfrage wird beendet
     }
