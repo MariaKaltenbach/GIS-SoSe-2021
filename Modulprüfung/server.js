@@ -35,7 +35,7 @@ var Modulprüfung;
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        let infos = mongoClient.db("Test").collection("Rezepte"); //eigene neue Collection aufrufen
+        let infos = mongoClient.db("Test").collection("Students"); //eigene neue Collection aufrufen
         let cursor = infos.find(); //Suche der gesamten DB aber spezielle ist auch möglich mit .find({name: "..."})
         let ergebnis = await cursor.toArray(); //auslesen der kompletten DB
         return ergebnis;
