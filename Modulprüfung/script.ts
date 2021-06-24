@@ -31,9 +31,9 @@ namespace Modulprüfung {
 
 
     let safeRecepie: HTMLButtonElement = <HTMLButtonElement>document.getElementById("veröffentlichen"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
-    safeRecepie.addEventListener("click", safeRecepies);                           //eventlistener für Registration
+    safeRecepie.addEventListener("click", saveRecepies);                           //eventlistener für Registration
 
-    async function safeRecepies(): Promise<void> {
+    async function saveRecepies(): Promise<void> {
         let form: FormData = new FormData(document.forms[0]);
         let query: URLSearchParams = new URLSearchParams(<any>form);
         let serverUrl: string = "https://gissose2021.herokuapp.com";

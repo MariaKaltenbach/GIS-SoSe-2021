@@ -47,14 +47,14 @@ var Modulprüfung;
         _response.setHeader("Access-Control-Allow-Origin", "*"); //header wird festgelegt
         if (_request.url) {
             let url = Url.parse(_request.url, true);
-            let inputUser = { mail: url.query.mail + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
-            let inputRezept = { gramm: url.query.gramm + "", zutat: url.query.zutat + "", zubereitung: url.query.zubereitung + "" };
             if (url.pathname == "/registration") {
+                let inputUser = { mail: url.query.mail + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
                 let daten = await registration(databaseUrl, inputUser); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);
                 console.log("Registriert");
             }
             else if (url.pathname == "/safeRecepie") {
+                let inputRezept = { gramm: url.query.gramm + "", zutat: url.query.zutat + "", zubereitung: url.query.zubereitung + "" };
                 let daten = await safeRecepie(databaseUrl, inputRezept); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);
                 console.log("Rezept gespeichert!");

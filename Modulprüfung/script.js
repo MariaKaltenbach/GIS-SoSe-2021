@@ -26,8 +26,8 @@ var Modulprüfung;
         console.log("User wird angelegt.");
     }
     let safeRecepie = document.getElementById("veröffentlichen"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
-    safeRecepie.addEventListener("click", safeRecepies); //eventlistener für Registration
-    async function safeRecepies() {
+    safeRecepie.addEventListener("click", saveRecepies); //eventlistener für Registration
+    async function saveRecepies() {
         let form = new FormData(document.forms[0]);
         let query = new URLSearchParams(form);
         let serverUrl = "https://gissose2021.herokuapp.com";
