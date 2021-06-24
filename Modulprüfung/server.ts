@@ -8,10 +8,10 @@ export namespace Modulprüfung {
     // let databaseUrl: string = "mongodb://localhost:27017";
 
     interface User {
-        mail: string;
-        benutzername: string;
         password: string;
-    }
+        benutzername: string;
+        email: string;
+    } //Interface für user angelegt
 
     interface Recepie {
         gramm: string;
@@ -41,14 +41,16 @@ export namespace Modulprüfung {
 
 
 
-    async function registration(_url: string, _user: User): Promise<string> {
-
+   
+    async function safe(_url: string, _eingabe: User): Promise<string> {
         await mongoClient.connect();
-        let orders: Mongo.Collection = mongoClient.db("Test").collection("Students");
-        orders.insert(_user);
-        let response: string = "Erfolgreich Registriert!";
-        return response;
+
+        let infos: Mongo.Collection = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
+        infos.insertOne(_eingabe); //eingegebene Daten in DB speichern
+        let serverResponse: string = "Daten wurden gespeichert";
+        return serverResponse;
     }
+
 
     async function safeRecepie(_url: string, _rezept: Recepie): Promise<string> {
 
@@ -87,12 +89,11 @@ export namespace Modulprüfung {
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
             
-            if (url.pathname == "/registration") {
-                let inputUser: User = { mail: url.query.mail + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
+            let eingabe: User = { email: url.query.email + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
 
-                let daten: string = await registration(databaseUrl, inputUser); //wartet bis die function die die daen speichert fertig ist
+            if (url.pathname == "/safeRegistration") {
+                let daten: string = await safe(databaseUrl, eingabe); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);
-                console.log("Registriert");
             }
             else if (url.pathname == "/safeRecepie") {
                 let inputRezept: Recepie = {gramm: url.query.gramm + "", zutat: url.query.zutat + "", zubereitung: url.query.zubereitung + "" };

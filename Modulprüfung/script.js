@@ -13,13 +13,13 @@ var Modulprüfung;
      }
  */
     let saveRegistration = document.getElementById("registration"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
-    saveRegistration.addEventListener("click", userRegistration); //eventlistener für Registration
-    async function userRegistration() {
+    saveRegistration.addEventListener("click", safeRegistration); //eventlistener für Registration
+    async function safeRegistration() {
         let form = new FormData(document.forms[0]);
         let query = new URLSearchParams(form);
         let serverUrl = "https://gissose2021.herokuapp.com";
         // let serverUrl: string = "http://localhost:8100";                //server verbinden
-        serverUrl += "/registration" + "?" + query.toString;
+        serverUrl += "/safeRegistration" + "?" + query.toString;
         let response = await fetch(serverUrl); //auf url warten
         let responseText = await response.text(); //json okject erstellen
         console.log(responseText);

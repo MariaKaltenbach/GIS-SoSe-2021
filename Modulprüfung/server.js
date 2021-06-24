@@ -17,12 +17,12 @@ var Modulprüfung;
     server.listen(port);
     let options = { useNewUrlParser: true, useUnifiedTopology: true };
     let mongoClient = new Mongo.MongoClient(databaseUrl, options); //mongo client angelegt
-    async function registration(_url, _user) {
+    async function safe(_url, _eingabe) {
         await mongoClient.connect();
-        let orders = mongoClient.db("Test").collection("Students");
-        orders.insert(_user);
-        let response = "Erfolgreich Registriert!";
-        return response;
+        let infos = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
+        infos.insertOne(_eingabe); //eingegebene Daten in DB speichern
+        let serverResponse = "Daten wurden gespeichert";
+        return serverResponse;
     }
     async function safeRecepie(_url, _rezept) {
         await mongoClient.connect();
@@ -47,11 +47,10 @@ var Modulprüfung;
         _response.setHeader("Access-Control-Allow-Origin", "*"); //header wird festgelegt
         if (_request.url) {
             let url = Url.parse(_request.url, true);
-            if (url.pathname == "/registration") {
-                let inputUser = { mail: url.query.mail + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
-                let daten = await registration(databaseUrl, inputUser); //wartet bis die function die die daen speichert fertig ist
+            let eingabe = { email: url.query.email + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
+            if (url.pathname == "/safeRegistration") {
+                let daten = await safe(databaseUrl, eingabe); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);
-                console.log("Registriert");
             }
             else if (url.pathname == "/safeRecepie") {
                 let inputRezept = { gramm: url.query.gramm + "", zutat: url.query.zutat + "", zubereitung: url.query.zubereitung + "" };

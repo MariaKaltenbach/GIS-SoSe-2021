@@ -14,20 +14,22 @@ namespace Modulprüfung {
  */
 
     let saveRegistration: HTMLButtonElement = <HTMLButtonElement>document.getElementById("registration"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
-    saveRegistration.addEventListener("click", userRegistration);                           //eventlistener für Registration
+    saveRegistration.addEventListener("click", safeRegistration);                           //eventlistener für Registration
 
-    async function userRegistration(): Promise<void> {
+    async function safeRegistration(): Promise<void> {
         let form: FormData = new FormData(document.forms[0]);
         let query: URLSearchParams = new URLSearchParams(<any>form);
         let serverUrl: string = "https://gissose2021.herokuapp.com";
         // let serverUrl: string = "http://localhost:8100";                //server verbinden
-        serverUrl += "/registration" + "?" + query.toString;
+        serverUrl += "/safeRegistration" + "?" + query.toString;
         let response: Response = await fetch(serverUrl);  //auf url warten
         let responseText: string = await response.text(); //json okject erstellen
         console.log(responseText);
         console.log("User wird angelegt.");
 
     }
+   
+   
 
 
     let safeRecepie: HTMLButtonElement = <HTMLButtonElement>document.getElementById("veröffentlichen"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
