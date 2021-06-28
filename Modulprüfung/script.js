@@ -19,7 +19,8 @@ var Modulprüfung;
         let query = new URLSearchParams(form);
         let serverUrl = "https://gissose2021.herokuapp.com";
         // let serverUrl: string = "http://localhost:8100";                //server verbinden
-        serverUrl += "/safeRegistration" + "?" + query.toString;
+        serverUrl += "/safeRegistration";
+        serverUrl = serverUrl + "?" + query.toString;
         let response = await fetch(serverUrl); //auf url warten
         let responseText = await response.text(); //json okject erstellen
         console.log(responseText);
@@ -32,7 +33,8 @@ var Modulprüfung;
         let query = new URLSearchParams(form);
         let serverUrl = "https://gissose2021.herokuapp.com";
         // let serverUrl: string = "http://localhost:8100";                //server verbinden
-        serverUrl += "/safeRecepie" + "?" + query.toString;
+        serverUrl += "/safeRecepie",
+            serverUrl = serverUrl + "?" + query.toString;
         let response = await fetch(serverUrl); //auf url warten
         let responseText = await response.text(); //json okject erstellen
         console.log(responseText);

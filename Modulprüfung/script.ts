@@ -21,7 +21,8 @@ namespace Modulprüfung {
         let query: URLSearchParams = new URLSearchParams(<any>form);
         let serverUrl: string = "https://gissose2021.herokuapp.com";
         // let serverUrl: string = "http://localhost:8100";                //server verbinden
-        serverUrl += "/safeRegistration" + "?" + query.toString;
+        serverUrl += "/safeRegistration";
+        serverUrl = serverUrl + "?" + query.toString;
         let response: Response = await fetch(serverUrl);  //auf url warten
         let responseText: string = await response.text(); //json okject erstellen
         console.log(responseText);
@@ -40,7 +41,8 @@ namespace Modulprüfung {
         let query: URLSearchParams = new URLSearchParams(<any>form);
         let serverUrl: string = "https://gissose2021.herokuapp.com";
         // let serverUrl: string = "http://localhost:8100";                //server verbinden
-        serverUrl += "/safeRecepie" + "?" + query.toString;
+        serverUrl += "/safeRecepie",
+        serverUrl = serverUrl + "?" + query.toString;
         let response: Response = await fetch(serverUrl);  //auf url warten
         let responseText: string = await response.text(); //json okject erstellen
         console.log(responseText);
