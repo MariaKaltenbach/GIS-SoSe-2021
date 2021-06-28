@@ -64,14 +64,6 @@ var Modulprüfung;
                 console.log(response);
                 _response.write(JSON.stringify(response)); //wenn Daten abgeschickt sind und in DB speichern
             }
-            // else if (url.pathname == "/login") {
-            //     console.log("Eingeloggt");
-            // }
-            // // else if (url.pathname == "/getAllRecepies") {
-            // //     let antwort: Recepies[] = await getAllRecepies(databaseUrl); //wartet bis die function die die daten bekommt fertig ist
-            // //     console.log(antwort);
-            //     _response.write(JSON.stringify(antwort));
-            // }
         }
         _response.end(); //anfrage wird beendet
     }

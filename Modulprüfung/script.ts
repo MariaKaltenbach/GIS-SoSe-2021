@@ -1,17 +1,5 @@
 namespace Modulprüfung {
 
-    /* interface User {
-         mail: string;
-         benutzername: string;
-         password: string;
-     }*/
-
-    /* interface Rezept {
-         gramm: string;
-         zutat: string;
-         zubereitungsschritte: string;
-     }
- */
 
     let saveRegistration: HTMLButtonElement = <HTMLButtonElement>document.getElementById("registration"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
     saveRegistration.addEventListener("click", safeRegistration);                           //eventlistener für Registration
@@ -70,11 +58,7 @@ namespace Modulprüfung {
     // }
 
 
-
-
     let serverResponse: HTMLDivElement = <HTMLDivElement>document.getElementById("serverAntwort");
-
-
 
 
     // //////////////////////////////////////////////
@@ -98,14 +82,4 @@ namespace Modulprüfung {
 
 
 
-    // ////////////////////////////////////////////////////////////////////
-    // let saveRecepie: HTMLButtonElement = <HTMLButtonElement>document.getElementById("veröffentlichen"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
-    // saveRecepie.addEventListener("click", publishRecepie);                          //eventlistener für Rezept veröffentlichung 
-
-    // //Rezept wird veröffentlicht 
-    // async function publishRecepie(): Promise<void> {
-    //     // let form: FormData = new FormData(document.forms[0]);
-    //     // let query: URLSearchParams = new URLSearchParams(<undefined>form);
-    //     console.log("Rezept wurde veröffentlicht.");
-    // }
 }
