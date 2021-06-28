@@ -6,7 +6,8 @@ const Url = require("url");
 const Mongo = require("mongodb");
 var Modulprüfung;
 (function (Modulprüfung) {
-    let databaseUrl = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+    // let databaseUrl: string = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+    let databaseUrl = "mongodb://localhost:27017";
     //Beispielserver code aus der Praktikumsaufgabe 3.1 (FELIX: Kurs "GIS (für MIB und OMB)") START
     console.log("Server wird gestartet!"); //wird ausgegeben, wenn der server angestellt wird 
     let port = Number(process.env.PORT);
@@ -35,7 +36,7 @@ var Modulprüfung;
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        let infos = mongoClient.db("Test").collection("Students"); //eigene neue Collection aufrufen
+        let infos = mongoClient.db("Test").collection("Rezepte"); //eigene neue Collection aufrufen
         let cursor = infos.find(); //Suche der gesamten DB aber spezielle ist auch möglich mit .find({name: "..."})
         let ergebnis = await cursor.toArray(); //auslesen der kompletten DB
         return ergebnis;
@@ -52,7 +53,7 @@ var Modulprüfung;
                 _response.write(daten);
             }
             else if (url.pathname == "/safeRecepie") {
-                let inputRezept = { gramm: url.query.gramm + "", zutat: url.query.zutat + "", zubereitung: url.query.zubereitung + "" };
+                let inputRezept = { gramm: url.query.Gramm + "", zutat2: url.query.Zutat + "", zutat1: url.query.Zutat + "", zubereitung: url.query.Zubereitung + "" };
                 let daten = await safeRecepie(databaseUrl, inputRezept); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);
                 console.log("Rezept gespeichert!");

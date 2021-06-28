@@ -4,8 +4,8 @@ import * as Mongo from "mongodb";
 
 export namespace Modulprüfung {
 
-    let databaseUrl: string = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-    // let databaseUrl: string = "mongodb://localhost:27017";
+    // let databaseUrl: string = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+    let databaseUrl: string = "mongodb://localhost:27017";
 
     interface User {
         password: string;
@@ -15,7 +15,8 @@ export namespace Modulprüfung {
 
     interface Recepie {
         gramm: string;
-        zutat: string;
+        zutat1: string;
+        zutat2: string;
         zubereitung: string;
     }
 
@@ -66,7 +67,7 @@ export namespace Modulprüfung {
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
     
-        let infos: Mongo.Collection = mongoClient.db("Test").collection("Students"); //eigene neue Collection aufrufen
+        let infos: Mongo.Collection = mongoClient.db("Test").collection("Rezepte"); //eigene neue Collection aufrufen
         let cursor: Mongo.Cursor = infos.find (); //Suche der gesamten DB aber spezielle ist auch möglich mit .find({name: "..."})
         let ergebnis: Recepie[] = await cursor.toArray(); //auslesen der kompletten DB
         return ergebnis;
@@ -91,7 +92,7 @@ export namespace Modulprüfung {
                 _response.write(daten);
             }
             else if (url.pathname == "/safeRecepie") {
-                let inputRezept: Recepie = {gramm: url.query.gramm + "", zutat: url.query.zutat + "", zubereitung: url.query.zubereitung + "" };
+                let inputRezept: Recepie = {gramm: url.query.Gramm + "", zutat2: url.query.Zutat + "", zutat1: url.query.Zutat + "", zubereitung: url.query.Zubereitung + "" };
                 let daten: string = await safeRecepie(databaseUrl, inputRezept); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);
                 console.log("Rezept gespeichert!");
