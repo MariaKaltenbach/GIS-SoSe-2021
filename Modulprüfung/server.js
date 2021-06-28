@@ -6,8 +6,7 @@ const Url = require("url");
 const Mongo = require("mongodb");
 var Modulprüfung;
 (function (Modulprüfung) {
-    // let databaseUrl: string = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-    let databaseUrl = "mongodb://localhost:27017";
+    let databaseUrl = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
     //Beispielserver code aus der Praktikumsaufgabe 3.1 (FELIX: Kurs "GIS (für MIB und OMB)") START
     console.log("Server wird gestartet!"); //wird ausgegeben, wenn der server angestellt wird 
     let port = Number(process.env.PORT);
@@ -16,16 +15,18 @@ var Modulprüfung;
     let server = Http.createServer(); //server wird erstellt
     server.addListener("request", handleRequest); //eventListener wird erstellt um die Function handleRequest bei einer Anfrage an den server aufzurufen
     server.listen(port);
-    let options = { useNewUrlParser: true, useUnifiedTopology: true };
-    let mongoClient = new Mongo.MongoClient(databaseUrl, options); //mongo client angelegt
-    async function safeRegistration(_url, _eingabe) {
+    async function safeRegistration(_url, _user) {
+        let options = { useNewUrlParser: true, useUnifiedTopology: true };
+        let mongoClient = new Mongo.MongoClient(databaseUrl, options); //mongo client angelegt
         await mongoClient.connect();
         let infos = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
-        infos.insertOne(_eingabe); //eingegebene Daten in DB speichern
+        infos.insertOne(_user); //eingegebene Daten in DB speichern
         let serverResponse = "Daten wurden gespeichert";
         return serverResponse;
     }
     async function safeRecepie(_url, _rezept) {
+        let options = { useNewUrlParser: true, useUnifiedTopology: true };
+        let mongoClient = new Mongo.MongoClient(databaseUrl, options); //mongo client angelegt
         await mongoClient.connect();
         let orders = mongoClient.db("Test").collection("Rezepte");
         orders.insert(_rezept);
@@ -48,12 +49,12 @@ var Modulprüfung;
         if (_request.url) {
             let url = Url.parse(_request.url, true);
             let eingabe = { email: url.query.email + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
+            let inputRezept = { gramm: url.query.Gramm + "", zutat2: url.query.Zutat + "", zutat1: url.query.Zutat + "", zubereitung: url.query.Zubereitung + "" };
             if (url.pathname == "/safeRegistration") {
                 let daten = await safeRegistration(databaseUrl, eingabe); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);
             }
             else if (url.pathname == "/safeRecepie") {
-                let inputRezept = { gramm: url.query.Gramm + "", zutat2: url.query.Zutat + "", zutat1: url.query.Zutat + "", zubereitung: url.query.Zubereitung + "" };
                 let daten = await safeRecepie(databaseUrl, inputRezept); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);
                 console.log("Rezept gespeichert!");

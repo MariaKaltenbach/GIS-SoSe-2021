@@ -4,8 +4,8 @@ import * as Mongo from "mongodb";
 
 export namespace Modulprüfung {
 
-    // let databaseUrl: string = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-    let databaseUrl: string = "mongodb://localhost:27017";
+    let databaseUrl: string = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+    // let databaseUrl: string = "mongodb://localhost:27017";
 
     interface User {
         password: string;
@@ -35,23 +35,22 @@ export namespace Modulprüfung {
 
 
 
-    let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
-    let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(databaseUrl, options); //mongo client angelegt
-
-
    
-    async function safeRegistration(_url: string, _eingabe: User): Promise<string> {
+    async function safeRegistration(_url: string, _user: User): Promise<string> {
+        let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
+        let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(databaseUrl, options); //mongo client angelegt
         await mongoClient.connect();
 
         let infos: Mongo.Collection = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
-        infos.insertOne(_eingabe); //eingegebene Daten in DB speichern
+        infos.insertOne (_user); //eingegebene Daten in DB speichern
         let serverResponse: string = "Daten wurden gespeichert";
         return serverResponse;
     }
 
 
     async function safeRecepie(_url: string, _rezept: Recepie): Promise<string> {
-
+        let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
+        let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(databaseUrl, options); //mongo client angelegt
         await mongoClient.connect();
         let orders: Mongo.Collection = mongoClient.db("Test").collection("Rezepte");
         orders.insert(_rezept);
@@ -86,13 +85,13 @@ export namespace Modulprüfung {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
             
             let eingabe: User = { email: url.query.email + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
+            let inputRezept: Recepie = {gramm: url.query.Gramm + "", zutat2: url.query.Zutat + "", zutat1: url.query.Zutat + "", zubereitung: url.query.Zubereitung + "" };
 
             if (url.pathname == "/safeRegistration") {
                 let daten: string = await safeRegistration(databaseUrl, eingabe); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);
             }
             else if (url.pathname == "/safeRecepie") {
-                let inputRezept: Recepie = {gramm: url.query.Gramm + "", zutat2: url.query.Zutat + "", zutat1: url.query.Zutat + "", zubereitung: url.query.Zubereitung + "" };
                 let daten: string = await safeRecepie(databaseUrl, inputRezept); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);
                 console.log("Rezept gespeichert!");
