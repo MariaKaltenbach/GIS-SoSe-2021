@@ -7,7 +7,7 @@ namespace Modulprüfung {
     async function safeRegistration(): Promise<void> {
         let form: FormData = new FormData(document.forms[0]);
         let query: URLSearchParams = new URLSearchParams(<any>form);
-        let serverUrl: string = "https://gissose2dbs021.herokuapp.com";
+        let serverUrl: string = "https://gissose2021.herokuapp.com";
         // let serverUrl: string = "http://localhost:8100";                //server verbinden
         serverUrl += "/safeRegistration";
         serverUrl = serverUrl + "?" + query.toString;

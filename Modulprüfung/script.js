@@ -6,8 +6,8 @@ var Modulprüfung;
     async function safeRegistration() {
         let form = new FormData(document.forms[0]);
         let query = new URLSearchParams(form);
-        let serverUrl = "https://gissose2dbs021.herokuapp.com";
-        // let serverUrl: string = "http://localhost:8100";                //server verbinden
+        // let serverUrl: string = "https://gissose2dbs021.herokuapp.com";
+        let serverUrl = "http://localhost:8100"; //server verbinden
         serverUrl += "/safeRegistration";
         serverUrl = serverUrl + "?" + query.toString;
         let response = await fetch(serverUrl); //auf url warten
@@ -61,8 +61,8 @@ var Modulprüfung;
     async function getRecepies() {
         let daten = new FormData(document.forms[0]);
         let query = new URLSearchParams(daten);
-        let serverUrl = "https://gissose2021.herokuapp.com"; //herokuapnpm p link einfügen als url variable 
-        // let serverUrl: string = "http://localhost:8100";
+        // let serverUrl: string = "https://gissose2021.herokuapp.com"; //herokuapnpm p link einfügen als url variable 
+        let serverUrl = "http://localhost:8100";
         serverUrl += "/getAllRecepies";
         serverUrl = serverUrl + "?" + query.toString(); //Url in String umwandeln
         let response = await fetch(serverUrl); //auf url warten

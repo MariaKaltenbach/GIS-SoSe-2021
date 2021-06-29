@@ -6,7 +6,8 @@ const Url = require("url");
 const Mongo = require("mongodb");
 var Modulprüfung;
 (function (Modulprüfung) {
-    let databaseUrl = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+    // let databaseUrl: string = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+    let databaseUrl = "mongodb://localhost:27017";
     // interface Recepie {
     //     gramm: string;
     //     zutat1: string;
