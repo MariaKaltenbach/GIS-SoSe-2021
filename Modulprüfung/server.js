@@ -45,7 +45,7 @@ var Modulprüfung;
         if (_request.url) {
             let url = Url.parse(_request.url, true);
             let eingabe = { email: url.query.email + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
-            let inputRezept = { gramm: url.query.Gramm + "", zutat2: url.query.Zutat + "", zutat1: url.query.Zutat + "", zubereitung: url.query.Zubereitung + "" };
+            let inputRezept = { zutat10: url.query.Zutat + "", zutat9: url.query.Zutat + "", zutat8: url.query.Zutat + "", zutat7: url.query.Zutat + "", zutat6: url.query.Zutat + "", zutat5: url.query.Zutat + "", zutat4: url.query.Zutat + "", zutat3: url.query.Zutat + "", zutat2: url.query.Zutat + "", zutat1: url.query.Zutat + "", zubereitung: url.query.Zubereitung + "" };
             if (url.pathname == "/safeRegistration") {
                 let daten = await safeRegistration(databaseUrl, eingabe); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);

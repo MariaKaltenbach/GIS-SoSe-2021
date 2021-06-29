@@ -14,9 +14,16 @@ export namespace Modulprüfung {
     } //Interface für user angelegt
     
     interface Recepie {
-        gramm: string;
         zutat1: string;
         zutat2: string;
+        zutat3: string;
+        zutat4: string;
+        zutat5: string;
+        zutat6: string;
+        zutat7: string;
+        zutat8: string;
+        zutat9: string;
+        zutat10: string;
         zubereitung: string;
     }
 
@@ -83,7 +90,8 @@ export namespace Modulprüfung {
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
             
-            let eingabe: User = { email: url.query.email + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };            let inputRezept: Recepie = {gramm: url.query.Gramm + "", zutat2: url.query.Zutat + "", zutat1: url.query.Zutat + "", zubereitung: url.query.Zubereitung + "" };
+            let eingabe: User = { email: url.query.email + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };            
+            let inputRezept: Recepie = {zutat10: url.query.Zutat + "", zutat9: url.query.Zutat + "", zutat8: url.query.Zutat + "",  zutat7: url.query.Zutat + "",  zutat6: url.query.Zutat + "", zutat5: url.query.Zutat + "",  zutat4: url.query.Zutat + "",  zutat3: url.query.Zutat + "",  zutat2: url.query.Zutat + "", zutat1: url.query.Zutat + "", zubereitung: url.query.Zubereitung + "" };
 
             if (url.pathname == "/safeRegistration") {
                 let daten: string = await safeRegistration(databaseUrl, eingabe); //wartet bis die function die die daen speichert fertig ist
