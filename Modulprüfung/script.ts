@@ -7,7 +7,7 @@ namespace Modulprüfung {
     async function safeRegistration(): Promise<void> {
         let form: FormData = new FormData(document.forms[0]);
         let query: URLSearchParams = new URLSearchParams(<any>form);
-        let serverUrl: string = "https://gissose2021.herokuapp.com";
+        let serverUrl: string = "https://gissose2dbs021.herokuapp.com";
         // let serverUrl: string = "http://localhost:8100";                //server verbinden
         serverUrl += "/safeRegistration";
         serverUrl = serverUrl + "?" + query.toString;
@@ -19,7 +19,7 @@ namespace Modulprüfung {
     }
    
    
-
+/*
 
     let safeRecepie: HTMLButtonElement = <HTMLButtonElement>document.getElementById("veröffentlichen"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
     safeRecepie.addEventListener("click", saveRecepies);                           //eventlistener für Registration
@@ -27,8 +27,8 @@ namespace Modulprüfung {
     async function saveRecepies(): Promise<void> {
         let form: FormData = new FormData(document.forms[0]);
         let query: URLSearchParams = new URLSearchParams(<any>form);
-        let serverUrl: string = "https://gissose2021.herokuapp.com";
-        // let serverUrl: string = "http://localhost:8100";                //server verbinden
+        // let serverUrl: string = "https://gissose2021.herokuapp.com";
+        let serverUrl: string = "http://localhost:8100";                //server verbinden
         serverUrl += "/safeRecepie",
         serverUrl = serverUrl + "?" + query.toString;
         let response: Response = await fetch(serverUrl);  //auf url warten
@@ -57,7 +57,7 @@ namespace Modulprüfung {
 
     // }
 
-
+*/
     let serverResponse: HTMLDivElement = <HTMLDivElement>document.getElementById("serverAntwort");
 
 
@@ -69,7 +69,7 @@ namespace Modulprüfung {
         let daten: FormData = new FormData(document.forms[0]);
         let query: URLSearchParams = new URLSearchParams(<any>daten);
         let serverUrl: string = "https://gissose2021.herokuapp.com"; //herokuapnpm p link einfügen als url variable 
-        // url = "http://localhost:8100";
+        // let serverUrl: string = "http://localhost:8100";
         serverUrl += "/getAllRecepies";
         serverUrl = serverUrl + "?" + query.toString(); //Url in String umwandeln
         let response: Response = await fetch(serverUrl);  //auf url warten
