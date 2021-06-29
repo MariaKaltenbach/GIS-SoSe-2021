@@ -9,8 +9,8 @@ namespace Modulprüfung {
         let query: URLSearchParams = new URLSearchParams(<any>form);
         let serverUrl: string = "https://gissose2021.herokuapp.com";
         // let serverUrl: string = "http://localhost:8100";                //server verbinden
-        serverUrl += "/safeRegistration";
-        serverUrl = serverUrl + "?" + query.toString;
+        serverUrl += "/safeRegistration" + "?" + query.toString(); 
+
         let response: Response = await fetch(serverUrl);  //auf url warten
         let responseText: string = await response.text(); //json okject erstellen
         console.log(responseText);
@@ -19,7 +19,7 @@ namespace Modulprüfung {
     }
    
    
-/*
+
 
     let safeRecepie: HTMLButtonElement = <HTMLButtonElement>document.getElementById("veröffentlichen"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
     safeRecepie.addEventListener("click", saveRecepies);                           //eventlistener für Registration
@@ -27,13 +27,13 @@ namespace Modulprüfung {
     async function saveRecepies(): Promise<void> {
         let form: FormData = new FormData(document.forms[0]);
         let query: URLSearchParams = new URLSearchParams(<any>form);
-        // let serverUrl: string = "https://gissose2021.herokuapp.com";
-        let serverUrl: string = "http://localhost:8100";                //server verbinden
-        serverUrl += "/safeRecepie",
-        serverUrl = serverUrl + "?" + query.toString;
+        let serverUrl: string = "https://gissose2021.herokuapp.com";
+        // let serverUrl: string = "http://localhost:8100";                //server verbinden
+        serverUrl += "/safeRecepie" + "?" + query.toString;
         let response: Response = await fetch(serverUrl);  //auf url warten
         let responseText: string = await response.text(); //json okject erstellen
         console.log(responseText);
+        console.log("Rezept wurde erstellt!");
 
     }
 
@@ -57,7 +57,7 @@ namespace Modulprüfung {
 
     // }
 
-*/
+
     let serverResponse: HTMLDivElement = <HTMLDivElement>document.getElementById("serverAntwort");
 
 
