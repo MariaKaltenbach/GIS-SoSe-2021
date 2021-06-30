@@ -8,11 +8,11 @@ export namespace Modulprüfung {
     // let databaseUrl: string = "mongodb://localhost:27017";
 
     interface User {
-        password: string;
-        benutzername: string;
         email: string;
+        benutzername: string;
+        password: string;
     } //Interface für user angelegt
-    
+
     interface Recepie {
         zutat1: string;
         zutat2: string;
@@ -52,9 +52,9 @@ export namespace Modulprüfung {
 
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-            
-            let eingabe: User = {email: url.query.email + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };            
-            let inputRezept: Recepie = {zutat10: url.query.Zutat + "", zutat9: url.query.Zutat + "", zutat8: url.query.Zutat + "",  zutat7: url.query.Zutat + "",  zutat6: url.query.Zutat + "", zutat5: url.query.Zutat + "",  zutat4: url.query.Zutat + "",  zutat3: url.query.Zutat + "",  zutat2: url.query.Zutat + "", zutat1: url.query.Zutat + "", zubereitung: url.query.Zubereitung + "" };
+
+            let eingabe: User = { email: url.query.email + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
+            let inputRezept: Recepie = { zutat10: url.query.Zutat + "", zutat9: url.query.Zutat + "", zutat8: url.query.Zutat + "", zutat7: url.query.Zutat + "", zutat6: url.query.Zutat + "", zutat5: url.query.Zutat + "", zutat4: url.query.Zutat + "", zutat3: url.query.Zutat + "", zutat2: url.query.Zutat + "", zutat1: url.query.Zutat + "", zubereitung: url.query.Zubereitung + "" };
 
             if (url.pathname == "/safeRegistration") {
                 let daten: string = await safeRegistration(databaseUrl, eingabe); //wartet bis die function die die daen speichert fertig ist
@@ -70,7 +70,7 @@ export namespace Modulprüfung {
                 console.log(response);
                 _response.write(JSON.stringify(response)); //wenn Daten abgeschickt sind und in DB speichern
             }
-        
+
         }
 
         _response.end();                                                    //anfrage wird beendet
@@ -78,20 +78,20 @@ export namespace Modulprüfung {
 
     //Beispielserver code aus der Praktikumsaufgabe 3.1 (FELIX: Kurs "GIS (für MIB und OMB)") ENDE
 
-    
+
     async function safeRegistration(_url: string, _user: User): Promise<string> {
-      
+
         await mongoClient.connect();
 
         let infos: Mongo.Collection = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
-        infos.insertOne (_user); //eingegebene Daten in DB speichern
+        infos.insertOne(_user); //eingegebene Daten in DB speichern
         let serverResponse: string = "Daten wurden gespeichert";
         return serverResponse;
     }
 
 
     async function safeRecepie(_url: string, _rezept: Recepie): Promise<string> {
-      
+
 
         await mongoClient.connect();
         let orders: Mongo.Collection = mongoClient.db("Test").collection("Students");
@@ -103,17 +103,17 @@ export namespace Modulprüfung {
 
 
 
-    async function getAllRecepies(_url: string): Promise <Recepie[]> { //bekommt Interface Array zurück
-       
+    async function getAllRecepies(_url: string): Promise<Recepie[]> { //bekommt Interface Array zurück
+
         await mongoClient.connect();
-    
+
         let infos: Mongo.Collection = mongoClient.db("Test").collection("Students"); //eigene neue Collection aufrufen
-        let cursor: Mongo.Cursor = infos.find (); //Suche der gesamten DB aber spezielle ist auch möglich mit .find({name: "..."})
+        let cursor: Mongo.Cursor = infos.find(); //Suche der gesamten DB aber spezielle ist auch möglich mit .find({name: "..."})
         let ergebnis: Recepie[] = await cursor.toArray(); //auslesen der kompletten DB
         return ergebnis;
-    
+
     }
-    
+
 
 
 }
