@@ -26,9 +26,37 @@ button {
 }
 
 @media only screen and (min-width: 601px) and (max-width: 1023px) {
-    body {
-        background-repeat: no-repeat;
-        background-color: grey;
+    .ÜberschriftLogin {
+        color: white;
+        margin-left: -23px;
+        margin-top: 400px;
+        font-size: 18px;
+    }
+    form,
+    p {
+        font-size: 21px;
+        margin-left: 100px;
+        margin-top: 80px;
+        color: white;
+    }
+    .loginFormular {
+        margin-left: 215px;
+        margin-top: -380px;
+    }
+    .registartionFormular {
+        margin-left: -20px;
+    }
+    button {
+        font-size: 20px;
+        width: 150px;
+        margin-left: 25px;
+    }
+    input {
+        font-size: 20px;
+        height: 30px;
+    }
+    p {
+        font-size: 21px;
     }
 }
 

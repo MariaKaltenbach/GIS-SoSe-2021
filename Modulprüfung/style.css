@@ -41,3 +41,61 @@ body {
 .rezeptErstellen {
     margin-left: 150px;
 }
+
+@media only screen and (min-width: 601px) and (max-width: 1023px) {
+    button {
+        width: 150px;
+        height: 30px;
+        text-align: center;
+    }
+    .zubereitungsSchritte {
+        width: 600px;
+        height: 400px;
+        margin-left: 80px;
+    }
+    .rezeptErstellen {
+        margin-left: 80px;
+    }
+    input {
+        margin-left: 200px;
+        width: 200px;
+        font-size: 20px;
+    }
+    #veröffentlichen {
+        margin-left: 320px;
+        height: 30px;
+        width: 150px;
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    h2 {
+        font-size: 14px;
+    }
+    .Navigation a {
+        font-size: 11px;
+        padding: 8px 8px;
+    }
+    .Navigation {
+        position: static;
+    }
+    .zubereitungsSchritte {
+        width: 270px;
+        height: 200px;
+        margin-left: 15px;
+    }
+    .rezeptErstellen {
+        margin-left: 80px;
+    }
+    input {
+        width: 120px;
+        font-size: 11px;
+    }
+    #veröffentlichen {
+        margin-left: 95px;
+        height: 20px;
+        width: 100px;
+        font-size: 11px;
+    }
+}
