@@ -17,27 +17,6 @@ var Modulprüfung;
     let server = Http.createServer(); //server wird erstellt
     server.addListener("request", handleRequest); //eventListener wird erstellt um die Function handleRequest bei einer Anfrage an den server aufzurufen
     server.listen(port);
-    async function safeRegistration(_url, _user) {
-        await mongoClient.connect();
-        let infos = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
-        infos.insertOne(_user); //eingegebene Daten in DB speichern
-        let serverResponse = "Daten wurden gespeichert";
-        return serverResponse;
-    }
-    async function safeRecepie(_url, _rezept) {
-        await mongoClient.connect();
-        let orders = mongoClient.db("Test2").collection("Rezepte");
-        orders.insertOne(_rezept);
-        let response = "Rezept wurde erfolgreich erstellt!";
-        return response;
-    }
-    async function getAllRecepies(_url) {
-        await mongoClient.connect();
-        let infos = mongoClient.db("Test2").collection("Rezepte"); //eigene neue Collection aufrufen
-        let cursor = infos.find(); //Suche der gesamten DB aber spezielle ist auch möglich mit .find({name: "..."})
-        let ergebnis = await cursor.toArray(); //auslesen der kompletten DB
-        return ergebnis;
-    }
     async function handleRequest(_request, _response) {
         console.log("Anfrage genehmigt!");
         _response.setHeader("content-type", "text/html; charset=utf-8"); //header wird festgelegt
@@ -64,5 +43,26 @@ var Modulprüfung;
         _response.end(); //anfrage wird beendet
     }
     //Beispielserver code aus der Praktikumsaufgabe 3.1 (FELIX: Kurs "GIS (für MIB und OMB)") ENDE
+    async function safeRegistration(_url, _user) {
+        await mongoClient.connect();
+        let infos = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
+        infos.insertOne(_user); //eingegebene Daten in DB speichern
+        let serverResponse = "Daten wurden gespeichert";
+        return serverResponse;
+    }
+    async function safeRecepie(_url, _rezept) {
+        await mongoClient.connect();
+        let orders = mongoClient.db("Test2").collection("Rezepte");
+        orders.insertOne(_rezept);
+        let response = "Rezept wurde erfolgreich erstellt!";
+        return response;
+    }
+    async function getAllRecepies(_url) {
+        await mongoClient.connect();
+        let infos = mongoClient.db("Test2").collection("Rezepte"); //eigene neue Collection aufrufen
+        let cursor = infos.find(); //Suche der gesamten DB aber spezielle ist auch möglich mit .find({name: "..."})
+        let ergebnis = await cursor.toArray(); //auslesen der kompletten DB
+        return ergebnis;
+    }
 })(Modulprüfung = exports.Modulprüfung || (exports.Modulprüfung = {}));
 //# sourceMappingURL=server.js.map

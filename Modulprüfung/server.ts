@@ -43,7 +43,42 @@ export namespace Modulprüfung {
 
 
 
-   
+
+
+    async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
+        console.log("Anfrage genehmigt!");
+        _response.setHeader("content-type", "text/html; charset=utf-8");    //header wird festgelegt
+        _response.setHeader("Access-Control-Allow-Origin", "*");            //header wird festgelegt
+
+        if (_request.url) {
+            let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
+            
+            let eingabe: User = {email: url.query.email + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };            
+            let inputRezept: Recepie = {zutat10: url.query.Zutat + "", zutat9: url.query.Zutat + "", zutat8: url.query.Zutat + "",  zutat7: url.query.Zutat + "",  zutat6: url.query.Zutat + "", zutat5: url.query.Zutat + "",  zutat4: url.query.Zutat + "",  zutat3: url.query.Zutat + "",  zutat2: url.query.Zutat + "", zutat1: url.query.Zutat + "", zubereitung: url.query.Zubereitung + "" };
+
+            if (url.pathname == "/safeRegistration") {
+                let daten: string = await safeRegistration(databaseUrl, eingabe); //wartet bis die function die die daen speichert fertig ist
+                _response.write(daten);
+            }
+            else if (url.pathname == "/safeRecepie") {
+                let daten: string = await safeRecepie(databaseUrl, inputRezept); //wartet bis die function die die daen speichert fertig ist
+                _response.write(daten);
+                console.log("Rezept gespeichert!");
+            }
+            else if (url.pathname == "/getAllRecepies") {
+                let response: Recepie[] = await getAllRecepies(databaseUrl);
+                console.log(response);
+                _response.write(JSON.stringify(response)); //wenn Daten abgeschickt sind und in DB speichern
+            }
+        
+        }
+
+        _response.end();                                                    //anfrage wird beendet
+    }
+
+    //Beispielserver code aus der Praktikumsaufgabe 3.1 (FELIX: Kurs "GIS (für MIB und OMB)") ENDE
+
+    
     async function safeRegistration(_url: string, _user: User): Promise<string> {
       
         await mongoClient.connect();
@@ -80,38 +115,5 @@ export namespace Modulprüfung {
     }
     
 
-
-
-    async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
-        console.log("Anfrage genehmigt!");
-        _response.setHeader("content-type", "text/html; charset=utf-8");    //header wird festgelegt
-        _response.setHeader("Access-Control-Allow-Origin", "*");            //header wird festgelegt
-
-        if (_request.url) {
-            let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-            
-            let eingabe: User = { email: url.query.email + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };            
-            let inputRezept: Recepie = {zutat10: url.query.Zutat + "", zutat9: url.query.Zutat + "", zutat8: url.query.Zutat + "",  zutat7: url.query.Zutat + "",  zutat6: url.query.Zutat + "", zutat5: url.query.Zutat + "",  zutat4: url.query.Zutat + "",  zutat3: url.query.Zutat + "",  zutat2: url.query.Zutat + "", zutat1: url.query.Zutat + "", zubereitung: url.query.Zubereitung + "" };
-
-            if (url.pathname == "/safeRegistration") {
-                let daten: string = await safeRegistration(databaseUrl, eingabe); //wartet bis die function die die daen speichert fertig ist
-                _response.write(daten);
-            }
-            else if (url.pathname == "/safeRecepie") {
-                let daten: string = await safeRecepie(databaseUrl, inputRezept); //wartet bis die function die die daen speichert fertig ist
-                _response.write(daten);
-                console.log("Rezept gespeichert!");
-            }
-            else if (url.pathname == "/getAllRecepies") {
-                let response: Recepie[] = await getAllRecepies(databaseUrl);
-                console.log(response);
-                _response.write(JSON.stringify(response)); //wenn Daten abgeschickt sind und in DB speichern
-            }
-        
-        }
-
-        _response.end();                                                    //anfrage wird beendet
-    }
-    //Beispielserver code aus der Praktikumsaufgabe 3.1 (FELIX: Kurs "GIS (für MIB und OMB)") ENDE
 
 }
