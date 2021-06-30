@@ -23,7 +23,7 @@ var Modulprüfung;
         _response.setHeader("Access-Control-Allow-Origin", "*"); //header wird festgelegt
         if (_request.url) {
             let url = Url.parse(_request.url, true);
-            let eingabe = { email: url.query.email + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
+            let eingabe = { password: url.query.password + "", benutzername: url.query.benutzername + "", email: url.query.email + "" };
             let inputRezept = { zutat10: url.query.Zutat + "", zutat9: url.query.Zutat + "", zutat8: url.query.Zutat + "", zutat7: url.query.Zutat + "", zutat6: url.query.Zutat + "", zutat5: url.query.Zutat + "", zutat4: url.query.Zutat + "", zutat3: url.query.Zutat + "", zutat2: url.query.Zutat + "", zutat1: url.query.Zutat + "", zubereitung: url.query.Zubereitung + "" };
             if (url.pathname == "/safeRegistration") {
                 let daten = await safeRegistration(databaseUrl, eingabe); //wartet bis die function die die daen speichert fertig ist
@@ -52,10 +52,10 @@ var Modulprüfung;
     }
     async function safeRecepie(_url, _rezept) {
         await mongoClient.connect();
-        let orders = mongoClient.db("Test").collection("Students");
-        orders.insertOne(_rezept);
-        let response = "Rezept wurde erfolgreich erstellt!";
-        return response;
+        let infos = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
+        infos.insertOne(_rezept); //eingegebene Daten in DB speichern
+        let serverResponse = "Rezept wurde erfolgreich erstellt!";
+        return serverResponse;
     }
     async function getAllRecepies(_url) {
         await mongoClient.connect();

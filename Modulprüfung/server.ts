@@ -53,7 +53,7 @@ export namespace Modulprüfung {
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
 
-            let eingabe: User = { email: url.query.email + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
+            let eingabe: User = { password: url.query.password + "", benutzername: url.query.benutzername + "", email: url.query.email + "" };
             let inputRezept: Recepie = { zutat10: url.query.Zutat + "", zutat9: url.query.Zutat + "", zutat8: url.query.Zutat + "", zutat7: url.query.Zutat + "", zutat6: url.query.Zutat + "", zutat5: url.query.Zutat + "", zutat4: url.query.Zutat + "", zutat3: url.query.Zutat + "", zutat2: url.query.Zutat + "", zutat1: url.query.Zutat + "", zubereitung: url.query.Zubereitung + "" };
 
             if (url.pathname == "/safeRegistration") {
@@ -92,12 +92,13 @@ export namespace Modulprüfung {
 
     async function safeRecepie(_url: string, _rezept: Recepie): Promise<string> {
 
-
         await mongoClient.connect();
-        let orders: Mongo.Collection = mongoClient.db("Test").collection("Students");
-        orders.insertOne(_rezept);
-        let response: string = "Rezept wurde erfolgreich erstellt!";
-        return response;
+
+        let infos: Mongo.Collection = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
+        infos.insertOne(_rezept); //eingegebene Daten in DB speichern
+      
+        let serverResponse: string = "Rezept wurde erfolgreich erstellt!";
+        return serverResponse;
     }
 
 
