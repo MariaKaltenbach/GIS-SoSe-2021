@@ -13,8 +13,8 @@ var Aufgabe3_4;
     let server = Http.createServer();
     server.addListener("request", handleRequest);
     server.listen(port);
-    let databaseUrl = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"; //mondoDB String um mit db zu connecten 
-    // let databaseUrl: string = "mongodb://localhost:27017";
+    // let databaseUrl: string = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"; //mondoDB String um mit db zu connecten 
+    let databaseUrl = "mongodb://localhost:27017";
     let options = { useNewUrlParser: true, useUnifiedTopology: true };
     let mongoClient = new Mongo.MongoClient(databaseUrl, options); //mongo client angelegt
     let result; //ergenbis in User interface form ausgeben lassen

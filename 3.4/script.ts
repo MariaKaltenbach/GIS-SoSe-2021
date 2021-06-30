@@ -8,9 +8,9 @@ namespace Aufgabe3_4 {
     async function saveData(): Promise<void> {
         let daten: FormData = new FormData(document.forms[0]);
         query = new URLSearchParams(<any>daten);
-        url = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
-        //  url = "http://localhost:8100";
-        url += "/safeData" + "?" + query.toString(); 
+        // url = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
+        url = "http://localhost:8100";
+        url += "/safeData" + "?" + query.toString();
         let response: Response = await fetch(url);  //auf url warten
         let responseText: string = await response.text(); //json okject erstellen
         console.log(responseText);
@@ -23,8 +23,8 @@ namespace Aufgabe3_4 {
     async function getData(): Promise<void> {
         let daten: FormData = new FormData(document.forms[0]);
         query = new URLSearchParams(<any>daten);
-        url = "https://gissose2021.herokuapp.com"; //herokuapnpm p link einfügen als url variable 
-        // url = "http://localhost:8100";
+        // url = "https://gissose2021.herokuapp.com"; //herokuapnpm p link einfügen als url variable 
+        url = "http://localhost:8100";
         url += "/getData";
         url = url + "?" + query.toString(); //Url in String umwandeln
         let response: Response = await fetch(url);  //auf url warten
@@ -32,7 +32,7 @@ namespace Aufgabe3_4 {
         serverResponse.innerHTML = responseText;
 
     }
-    
+
 
     let pullData: HTMLButtonElement = <HTMLButtonElement>document.getElementById("getData");
     pullData.addEventListener("click", getData);
