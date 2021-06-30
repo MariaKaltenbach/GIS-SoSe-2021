@@ -52,14 +52,14 @@ var Modulprüfung;
     }
     async function safeRecepie(_url, _rezept) {
         await mongoClient.connect();
-        let orders = mongoClient.db("Test2").collection("Rezepte");
+        let orders = mongoClient.db("Test").collection("Students");
         orders.insertOne(_rezept);
         let response = "Rezept wurde erfolgreich erstellt!";
         return response;
     }
     async function getAllRecepies(_url) {
         await mongoClient.connect();
-        let infos = mongoClient.db("Test2").collection("Rezepte"); //eigene neue Collection aufrufen
+        let infos = mongoClient.db("Test").collection("Students"); //eigene neue Collection aufrufen
         let cursor = infos.find(); //Suche der gesamten DB aber spezielle ist auch möglich mit .find({name: "..."})
         let ergebnis = await cursor.toArray(); //auslesen der kompletten DB
         return ergebnis;
