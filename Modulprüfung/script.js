@@ -13,8 +13,8 @@ var Modulprüfung;
     async function safeRegistration() {
         let form = new FormData(document.forms[0]);
         let query = new URLSearchParams(form);
-        // let serverUrl: string = "https://gissose2021.herokuapp.com";
-        let serverUrl = "http://localhost:8100"; //server verbinden
+        let serverUrl = "https://gissose2021.herokuapp.com";
+        // let serverUrl: string = "http://localhost:8100";                //server verbinden
         serverUrl += "/safeRegistration";
         serverUrl = serverUrl + "?" + query.toString();
         let response = await fetch(serverUrl); //auf url warten
@@ -25,8 +25,8 @@ var Modulprüfung;
     async function saveRecepies() {
         let form = new FormData(document.forms[0]);
         let query = new URLSearchParams(form);
-        // let serverUrl: RequestInfo = "https://gissose2021.herokuapp.com";
-        let serverUrl = "http://localhost:8100"; //server verbinden
+        let serverUrl = "https://gissose2021.herokuapp.com";
+        // let serverUrl: string = "http://localhost:8100";                //server verbinden
         serverUrl += "/safeRecepie";
         serverUrl = serverUrl + "?" + query.toString;
         let response = await fetch(serverUrl); //auf url warten
@@ -38,8 +38,8 @@ var Modulprüfung;
     async function userLogin() {
         let form = new FormData(document.forms[0]);
         let query = new URLSearchParams(form);
-        // let serverUrl: RequestInfo = "https://gissose2021.herokuapp.com";
-        let serverUrl = "http://localhost:8100"; //server verbinden
+        let serverUrl = "https://gissose2021.herokuapp.com";
+        // let serverUrl: string = "http://localhost:8100";                //server verbinden
         let existUser = await fetch(serverUrl);
         let antwort = await existUser.text();
         serverUrl += "/login" + query.toString;
@@ -54,8 +54,8 @@ var Modulprüfung;
     // //////////////////////////////////////////////
     async function getRecepies() {
         let daten = new FormData(document.forms[0]);
-        // let serverUrl: string = "https://gissose2021.herokuapp.com"; //herokuapnpm p link einfügen als url variable 
-        let serverUrl = "http://localhost:8100";
+        let serverUrl = "https://gissose2021.herokuapp.com"; //herokuapnpm p link einfügen als url variable 
+        // let serverUrl: string = "http://localhost:8100";
         serverUrl += "/getAllRecepies";
         let query = new URLSearchParams(daten);
         serverUrl = serverUrl + "?" + query.toString(); //Url in String umwandeln
