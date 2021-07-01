@@ -40,7 +40,7 @@ export namespace Modulprüfung {
     let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
     let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(databaseUrl, options); //mongo client angelegt
 
-    let result: User[]; //ergenbis in User interface form ausgeben lassen
+    let result: Recepie[]; //ergenbis in User interface form ausgeben lassen
 
 
 
@@ -55,7 +55,7 @@ export namespace Modulprüfung {
 
 
 
-    async function getRecepies(_url: string): Promise<User[]> {
+    async function getRecepies(_url: string): Promise<Recepie[]> {
 
         await mongoClient.connect(); //wartet bis man mit mongoclient verbunden ist 
 
@@ -93,7 +93,7 @@ export namespace Modulprüfung {
                 _response.write(daten);
             }
             else if (url.pathname == "/getRecepies") {
-                let antwort: User[] = await getRecepies(databaseUrl); //wartet bis die function die die daten bekommt fertig ist
+                let antwort: Recepie[] = await getRecepies(databaseUrl); //wartet bis die function die die daten bekommt fertig ist
                 // console.log(antwort);
                 _response.write(JSON.stringify(antwort));
             }
