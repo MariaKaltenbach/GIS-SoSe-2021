@@ -35,8 +35,8 @@ export namespace Modulprüfung {
         zutat10: string;
         zubereitung: string;
     }
-    // let databaseUrl: string = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"; //mondoDB String um mit db zu connecten 
-    let databaseUrl: string = "mongodb://localhost:27017";
+    let databaseUrl: string = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"; //mondoDB String um mit db zu connecten 
+    // let databaseUrl: string = "mongodb://localhost:27017";
     let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
     let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(databaseUrl, options); //mongo client angelegt
 
@@ -59,7 +59,7 @@ export namespace Modulprüfung {
 
         await mongoClient.connect(); //wartet bis man mit mongoclient verbunden ist 
 
-        let infos: Mongo.Collection = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
+        let infos: Mongo.Collection = mongoClient.db("Prüfung").collection("Rezepte"); //meine collection wird aufgerufen
         let cursor: Mongo.Cursor = infos.find(); //datenbvank wird durchsucht 
         result = await cursor.toArray(); //datenbank wird ausgelesen
         return result;          //daten werden zurück gegeben
@@ -70,7 +70,7 @@ export namespace Modulprüfung {
 
         await mongoClient.connect();        //warten bis die verbindung mit der datenbank besteht 
 
-        let infos: Mongo.Collection = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
+        let infos: Mongo.Collection = mongoClient.db("Prüfung").collection("Rezepte"); //meine collection wird aufgerufen
         infos.insertOne(_eingabe); //eingegebene Daten in DB speichern
         let serverResponse: string = "Rezept wurden gespeichert";        //server antwort sobald die Dtaen erfolgreich gespeichert wurden 
         return serverResponse;
@@ -97,7 +97,7 @@ export namespace Modulprüfung {
                 // console.log(antwort);
                 _response.write(JSON.stringify(antwort));
             }
-            else if (url.pathname == "/recepies") {
+            else if (url.pathname == "/safeRecepie") {
                 let data: string = await saveRecepie(databaseUrl, auswerten);
                 _response.write(data);
             }
