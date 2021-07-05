@@ -18,6 +18,8 @@ var Modulprüfung;
     // let databaseUrl: string = "mongodb://localhost:27017";
     let options = { useNewUrlParser: true, useUnifiedTopology: true };
     let mongoClient = new Mongo.MongoClient(databaseUrl, options); //mongo client angelegt
+    // let rezepte: Mongo.Collection;
+    let Students;
     let result; //ergenbis in User interface form ausgeben lassen
     async function saveUser(_url, _eingabe) {
         await mongoClient.connect(); //warten bis die verbindung mit der datenbank besteht 
@@ -28,14 +30,14 @@ var Modulprüfung;
     }
     async function getRecepies(_url) {
         await mongoClient.connect(); //wartet bis man mit mongoclient verbunden ist 
-        let infos = mongoClient.db("Prüfung").collection("Rezepte"); //meine collection wird aufgerufen
+        let infos = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
         let cursor = infos.find(); //datenbvank wird durchsucht 
         result = await cursor.toArray(); //datenbank wird ausgelesen
         return result; //daten werden zurück gegeben
     }
     async function saveRecepie(_url, _eingabe) {
         await mongoClient.connect(); //warten bis die verbindung mit der datenbank besteht 
-        let infos = mongoClient.db("Prüfung").collection("Rezepte"); //meine collection wird aufgerufen
+        let infos = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
         infos.insertOne(_eingabe); //eingegebene Daten in DB speichern
         let serverResponse = "Rezept wurden gespeichert"; //server antwort sobald die Dtaen erfolgreich gespeichert wurden 
         return serverResponse;
@@ -47,23 +49,36 @@ var Modulprüfung;
         _response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
         //Beispielserver code aus der Praktikumsaufgabe 3.1 (FELIX: Kurs "GIS (für MIB und OMB)") ENDE
+        let url = Url.parse(_request.url, true);
+        let auswertung = { email: url.query.email + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
+        let auswerten = { zutat10: url.query.Zutat + "", zutat9: url.query.Zutat + "", zutat8: url.query.Zutat + "", zutat7: url.query.Zutat + "", zutat6: url.query.Zutat + "", zutat5: url.query.Zutat + "", zutat4: url.query.Zutat + "", zutat3: url.query.Zutat + "", zutat2: url.query.Zutat + "", zutat1: url.query.Zutat + "", zubereitung: url.query.Zubereitung + "" };
         if (_request.url) {
-            let url = Url.parse(_request.url, true);
-            let auswertung = { email: url.query.email + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
-            let auswerten = { zutat10: url.query.Zutat + "", zutat9: url.query.Zutat + "", zutat8: url.query.Zutat + "", zutat7: url.query.Zutat + "", zutat6: url.query.Zutat + "", zutat5: url.query.Zutat + "", zutat4: url.query.Zutat + "", zutat3: url.query.Zutat + "", zutat2: url.query.Zutat + "", zutat1: url.query.Zutat + "", zubereitung: url.query.Zubereitung + "" };
             if (url.pathname == "/registration") {
                 let daten = await saveUser(databaseUrl, auswertung); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);
             }
-            else if (url.pathname == "/getRecepies") {
+            if (url.pathname == "/login") {
+                let findUser = await Students.findOne({ "benutzername": url.query.Students.toString(), "password": url.query.Students.toString });
+                let loginAntwort = { message: undefined, error: undefined };
+                if (findUser != undefined)
+                    loginAntwort.message = "Du wirst eingeloggt";
+                else
+                    loginAntwort.error = "Benutzername oder passwort stimmt nicht";
+                _response.write(JSON.stringify(loginAntwort));
+            }
+            if (url.pathname == "/getRecepie") {
                 let antwort = await getRecepies(databaseUrl); //wartet bis die function die die daten bekommt fertig ist
-                // console.log(antwort);
+                console.log(antwort);
                 _response.write(JSON.stringify(antwort));
             }
-            else if (url.pathname == "/safeRecepie") {
+            if (url.pathname == "/safeRecepies") {
                 let data = await saveRecepie(databaseUrl, auswerten);
                 _response.write(data);
             }
+            // if (url.pathname == "/deleteRecepie") {
+            //     rezepte.deleteOne({"Rezept:": new Mongo.ObjectID(url.query._id.toString())});
+            //     console.log("Rezept wurde gelöscht!");
+            // }
         }
         _response.end();
     }
