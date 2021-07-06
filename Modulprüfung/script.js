@@ -25,23 +25,25 @@ var Modulprüfung;
         transferData();
         serverUrl += "/registration" + "?" + query.toString(); //zu string umwandeln 
         let response = await fetch(serverUrl); //auf url warten      //antwort wartet auf die Server url 
-        let responseText = await response.text(); //json okject erstellen
+        let responseText = await response.text(); //json objekt erstellen
         console.log(responseText);
     }
     async function login() {
         transferData();
         serverUrl += "/login" + "?" + query.toString(); //zu string umwandeln 
         let response = await fetch(serverUrl); //auf url warten      //antwort wartet auf die Server url 
-        let responseText = await response.text(); //json okject erstellen
+        let responseText = await response.text(); //json object erstellen
         console.log(responseText);
         let loginAntwort = JSON.parse(responseText);
-        if (loginAntwort.error != undefined)
+        if (loginAntwort.error != undefined) {
             serverResponse.innerHTML = loginAntwort.error;
-        if (loginAntwort.massage != undefined) {
-            window.open("../alleRezepte.html");
-            serverResponse.innerHTML = loginAntwort.massage;
+            alert("Benutzer wurde noch nicht Registriert!");
         }
-        //#endregion asynchrone Funktionen
+        else if (loginAntwort.message != undefined) {
+            window.open("../alleRezepte.html");
+            serverResponse.innerHTML = loginAntwort.message;
+        }
     }
 })(Modulprüfung || (Modulprüfung = {}));
+//#endregion asynchrone Funktionen
 //# sourceMappingURL=script.js.map

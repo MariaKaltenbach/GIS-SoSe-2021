@@ -10,7 +10,7 @@ namespace Modulprüfung {
     //#region Interface 
     interface Login {
 
-        massage: string;
+        message: string;
         error: string;
     }
     //#endregion Interface
@@ -39,7 +39,7 @@ namespace Modulprüfung {
         transferData();
         serverUrl += "/registration" + "?" + query.toString();          //zu string umwandeln 
         let response: Response = await fetch(serverUrl);  //auf url warten      //antwort wartet auf die Server url 
-        let responseText: string = await response.text(); //json okject erstellen
+        let responseText: string = await response.text(); //json objekt erstellen
         console.log(responseText);
     }
 
@@ -47,18 +47,21 @@ namespace Modulprüfung {
         transferData();
         serverUrl += "/login" + "?" + query.toString();          //zu string umwandeln 
         let response: Response = await fetch(serverUrl);  //auf url warten      //antwort wartet auf die Server url 
-        let responseText: string = await response.text(); //json okject erstellen
+        let responseText: string = await response.text(); //json object erstellen
         console.log(responseText);
         let loginAntwort: Login = JSON.parse(responseText);
 
-        if (loginAntwort.error != undefined) serverResponse.innerHTML = loginAntwort.error;
-        if (loginAntwort.massage != undefined) {
+        if (loginAntwort.error != undefined) {
+            serverResponse.innerHTML = loginAntwort.error;
+            alert("Benutzer wurde noch nicht Registriert!");
+        }
+        else if (loginAntwort.message != undefined) {
             window.open("../alleRezepte.html");
-            serverResponse.innerHTML = loginAntwort.massage;
+            serverResponse.innerHTML = loginAntwort.message;
 
 
         }
+    }}
         //#endregion asynchrone Funktionen
 
-    }
-}
+    

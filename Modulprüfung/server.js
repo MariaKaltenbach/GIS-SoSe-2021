@@ -26,7 +26,7 @@ var Modulprüfung;
         let option = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(databaseUrl, option); //mongo client angelegt
         // let rezepte: Mongo.Collection;
-        let students;
+        let Students;
         //#endregion Variablen
         let result; //ergenbis in User interface form ausgeben lassen
         //#region asynchrone Funktionen 
@@ -39,7 +39,7 @@ var Modulprüfung;
         }
         async function getRecepie(_url) {
             await mongoClient.connect(); //wartet bis man mit mongoclient verbunden ist 
-            let infos = mongoClient.db("Test").collection("Rezepte"); //meine collection wird aufgerufen
+            let infos = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
             let cursor = infos.find(); //datenbvank wird durchsucht 
             result = await cursor.toArray(); //datenbank wird ausgelesen
             return result; //daten werden zurück gegeben
@@ -64,7 +64,7 @@ var Modulprüfung;
                 _response.write(daten);
             }
             if (url.pathname == "/login") {
-                let findUser = await students.findOne({ "benutzername": url.query.Students.toString(), "password": url.query.Students.toString });
+                let findUser = await Students.findOne({ "benutzername": url.query.Students.toString(), "password": url.query.Students.toString });
                 let loginAntwort = { message: undefined, error: undefined }; //variable loginANtwort erstellt, damit nur message oder error ausgegebn werden kann 
                 if (findUser != undefined)
                     loginAntwort.message = "Du wirst eingeloggt";

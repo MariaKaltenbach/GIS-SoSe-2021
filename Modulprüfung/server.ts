@@ -60,7 +60,7 @@ export namespace Modulprüfung {
         let option: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(databaseUrl, option); //mongo client angelegt
         // let rezepte: Mongo.Collection;
-        let students: Mongo.Collection;
+        let Students: Mongo.Collection;
         //#endregion Variablen
 
 
@@ -83,7 +83,7 @@ export namespace Modulprüfung {
 
             await mongoClient.connect(); //wartet bis man mit mongoclient verbunden ist 
 
-            let infos: Mongo.Collection = mongoClient.db("Test").collection("Rezepte"); //meine collection wird aufgerufen
+            let infos: Mongo.Collection = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
             let cursor: Mongo.Cursor = infos.find(); //datenbvank wird durchsucht 
             result = await cursor.toArray(); //datenbank wird ausgelesen
             return result;          //daten werden zurück gegeben
@@ -117,7 +117,7 @@ export namespace Modulprüfung {
             }
             if (url.pathname == "/login") {
 
-                let findUser: User = await students.findOne({ "benutzername": url.query.Students.toString(), "password": url.query.Students.toString });
+                let findUser: User = await Students.findOne({ "benutzername": url.query.Students.toString(), "password": url.query.Students.toString });
                 let loginAntwort: Login = { message: undefined, error: undefined };     //variable loginANtwort erstellt, damit nur message oder error ausgegebn werden kann 
                 if (findUser != undefined) loginAntwort.message = "Du wirst eingeloggt";
                 else loginAntwort.error = "Benutzername oder passwort stimmt nicht";
