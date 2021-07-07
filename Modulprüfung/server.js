@@ -21,8 +21,8 @@ var Modulprüfung;
         _response.setHeader("Access-Control-Allow-Origin", "*");
         //#endregion Interface
         //#rehgion Variablen (varibalen für Mongo angelegt)
-        let databaseUrl = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"; //mondoDB String um mit db zu connecten 
-        // let databaseUrl: string = "mongodb://localhost:27017";
+        // let databaseUrl: string = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"; //mondoDB String um mit db zu connecten 
+        let databaseUrl = "mongodb://localhost:27017";
         let option = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(databaseUrl, option); //mongo client angelegt
         // let rezepte: Mongo.Collection;
@@ -55,7 +55,7 @@ var Modulprüfung;
         //#region Variablen 
         let url = Url.parse(_request.url, true);
         let auswertung = { email: url.query.email + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
-        let auswerten = { zutat10: url.query.Zutat + "", zutat9: url.query.Zutat + "", zutat8: url.query.Zutat + "", zutat7: url.query.Zutat + "", zutat6: url.query.Zutat + "", zutat5: url.query.Zutat + "", zutat4: url.query.Zutat + "", zutat3: url.query.Zutat + "", zutat2: url.query.Zutat + "", zutat1: url.query.Zutat + "", zubereitung: url.query.Zubereitung + "" };
+        let auswerten = { rezeptname: url.query.rezeptname + "", zutat1: url.query.Zutat + "", zutat2: url.query.Zutat + "", zutat3: url.query.Zutat + "", zutat4: url.query.Zutat + "", zutat5: url.query.Zutat + "", zutat6: url.query.Zutat + "", zutat7: url.query.Zutat + "", zutat8: url.query.Zutat + "", zutat9: url.query.Zutat + "", zutat10: url.query.Zutat + "", zubereitungshinweis: url.query.Zubereitung + "" };
         //#endregion Variablen
         //#region if-Abfragen (prüft welchen pfad der User nimmt um den richtigen code auszuführen)
         if (_request.url) {
@@ -63,7 +63,7 @@ var Modulprüfung;
                 let daten = await saveUser(databaseUrl, auswertung); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);
             }
-            if (url.pathname == "/login") {
+            else if (url.pathname == "/login") {
                 let findUser = await Students.findOne({ "benutzername": url.query.Students.toString(), "password": url.query.Students.toString });
                 let loginAntwort = { message: undefined, error: undefined }; //variable loginANtwort erstellt, damit nur message oder error ausgegebn werden kann 
                 if (findUser != undefined)
@@ -72,12 +72,12 @@ var Modulprüfung;
                     loginAntwort.error = "Benutzername oder passwort stimmt nicht";
                 _response.write(JSON.stringify(loginAntwort));
             }
-            if (url.pathname == "/getRecepie") {
+            else if (url.pathname == "/getRecepie") {
                 let antwort = await getRecepie(databaseUrl); //wartet bis die function die die daten bekommt fertig ist
                 console.log(antwort);
                 _response.write(JSON.stringify(antwort));
             }
-            if (url.pathname == "/safeRecepies") {
+            else if (url.pathname == "/safeRecepies") {
                 let data = await saveRecepie(databaseUrl, auswerten);
                 _response.write(data);
             }

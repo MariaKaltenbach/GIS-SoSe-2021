@@ -7,8 +7,8 @@ var Modulprüfung;
     function transferData() {
         let daten = new FormData(document.forms[0]);
         query = new URLSearchParams(daten);
-        serverUrl = "https://gissose2021.herokuapp.com"; //herokuapnpm p link einfügen als url variable 
-        // serverUrl = "http://localhost:8100";
+        // serverUrl = "https://gissose2021.herokuapp.com"; //herokuapnpm p link einfügen als url variable 
+        serverUrl = "http://localhost:8100";
     }
     window.onload = async function getRecepie() {
         transferData();
