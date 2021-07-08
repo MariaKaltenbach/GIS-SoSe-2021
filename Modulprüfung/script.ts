@@ -7,20 +7,13 @@ namespace Modulprüfung {
     // let serverResponse: HTMLDivElement = <HTMLDivElement>document.getElementById("serverAntwort"); //Ausgabe feld im HTMl (Div) verlinkt über die ID:"serverAntwort"
     //#endregion Varibalen
 
-    //#region Interface 
-    interface Login {
-
-        message: string;
-        error: string;
-    }
-    //#endregion Interface
 
     //#region Daten übertragen (funktion mit FormData, query und der server Url damit man in den folgenden Funktionen nicht die ganze zeit den sleben code hat)
     function transferData(): void {
         let daten: FormData = new FormData(document.forms[0]);  //Formdata um Formular auswerten zu köennen
         query = new URLSearchParams(<any>daten);                //
-        // serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
-        serverUrl = "http://localhost:8100";
+        serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
+        // serverUrl = "http://localhost:8100";
     }
     //#endregion Daten Übertragen 
 

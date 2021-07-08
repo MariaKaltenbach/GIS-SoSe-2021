@@ -4,13 +4,14 @@ var Modulprüfung;
     //#region Variablen 
     let serverUrl; //server Url  variable globak angelegt (code verdopplung vermeiden)
     let query; // ''
-    //#endregion Interface
+    // let serverResponse: HTMLDivElement = <HTMLDivElement>document.getElementById("serverAntwort"); //Ausgabe feld im HTMl (Div) verlinkt über die ID:"serverAntwort"
+    //#endregion Varibalen
     //#region Daten übertragen (funktion mit FormData, query und der server Url damit man in den folgenden Funktionen nicht die ganze zeit den sleben code hat)
     function transferData() {
         let daten = new FormData(document.forms[0]); //Formdata um Formular auswerten zu köennen
         query = new URLSearchParams(daten); //
-        // serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
-        serverUrl = "http://localhost:8100";
+        serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
+        // serverUrl = "http://localhost:8100";
     }
     //#endregion Daten Übertragen 
     //#region Eventlistener (durch button im HTML werden diese Funktionen aufgereufen)

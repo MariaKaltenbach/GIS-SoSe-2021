@@ -9,8 +9,8 @@ namespace Modulprüfung {
     function transferData(): void {
         let daten: FormData = new FormData(document.forms[0]);
         query = new URLSearchParams(<any>daten);
-        // serverUrl = "https://gissose2021.herokuapp.com"; //herokuapnpm p link einfügen als url variable 
-        serverUrl = "http://localhost:8100";
+        serverUrl = "https://gissose2021.herokuapp.com"; //herokuapnpm p link einfügen als url variable 
+        // serverUrl = "http://localhost:8100";
     }
     window.onload = async function getRecepie(): Promise<void> {           //window.onload -> damit die rezepte direkt bei betreten der seite angezeigt werden 
         transferData();
