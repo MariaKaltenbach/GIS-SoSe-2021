@@ -4,7 +4,6 @@ var Modulprüfung;
     //#region Variablen 
     let serverUrl; //server Url  variable globak angelegt (code verdopplung vermeiden)
     let query; // ''
-    let serverResponse = document.getElementById("serverAntwort"); //Ausgabe feld im HTMl (Div) verlinkt über die ID:"serverAntwort"
     //#endregion Interface
     //#region Daten übertragen (funktion mit FormData, query und der server Url damit man in den folgenden Funktionen nicht die ganze zeit den sleben code hat)
     function transferData() {
@@ -30,18 +29,15 @@ var Modulprüfung;
     }
     async function login() {
         transferData();
-        serverUrl += "/login" + "?" + query.toString(); //zu string umwandeln 
+        serverUrl += "/userLogin" + "?" + query.toString(); //zu string umwandeln 
         let response = await fetch(serverUrl); //auf url warten      //antwort wartet auf die Server url 
         let responseText = await response.text(); //json object erstellen
         console.log(responseText);
-        let loginAntwort = JSON.parse(responseText);
-        if (loginAntwort.error != undefined) {
-            serverResponse.innerHTML = loginAntwort.error;
+        if (responseText == "true") {
             alert("Benutzer wurde noch nicht Registriert!");
         }
-        else if (loginAntwort.message != undefined) {
-            window.open("../alleRezepte.html");
-            serverResponse.innerHTML = loginAntwort.message;
+        else {
+            window.open("../Modulprüfung/alleRezepte.html");
         }
     }
 })(Modulprüfung || (Modulprüfung = {}));

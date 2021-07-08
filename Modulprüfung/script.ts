@@ -4,7 +4,7 @@ namespace Modulprüfung {
     //#region Variablen 
     let serverUrl: string;                  //server Url  variable globak angelegt (code verdopplung vermeiden)
     let query: URLSearchParams;             // ''
-    let serverResponse: HTMLDivElement = <HTMLDivElement>document.getElementById("serverAntwort"); //Ausgabe feld im HTMl (Div) verlinkt über die ID:"serverAntwort"
+    // let serverResponse: HTMLDivElement = <HTMLDivElement>document.getElementById("serverAntwort"); //Ausgabe feld im HTMl (Div) verlinkt über die ID:"serverAntwort"
     //#endregion Varibalen
 
     //#region Interface 
@@ -41,23 +41,21 @@ namespace Modulprüfung {
         let response: Response = await fetch(serverUrl);  //auf url warten      //antwort wartet auf die Server url 
         let responseText: string = await response.text(); //json objekt erstellen
         console.log(responseText);
+        
     }
 
     async function login(): Promise<void> {
         transferData();
-        serverUrl += "/login" + "?" + query.toString();          //zu string umwandeln 
+        serverUrl += "/userLogin" + "?" + query.toString();          //zu string umwandeln 
         let response: Response = await fetch(serverUrl);  //auf url warten      //antwort wartet auf die Server url 
         let responseText: string = await response.text(); //json object erstellen
         console.log(responseText);
-        let loginAntwort: Login = JSON.parse(responseText);
 
-        if (loginAntwort.error != undefined) {
-            serverResponse.innerHTML = loginAntwort.error;
+        if (responseText == "true") {
             alert("Benutzer wurde noch nicht Registriert!");
         }
-        else if (loginAntwort.message != undefined) {
-            window.open("../alleRezepte.html");
-            serverResponse.innerHTML = loginAntwort.message;
+        else {
+            window.open("../Modulprüfung/alleRezepte.html");
 
 
         }

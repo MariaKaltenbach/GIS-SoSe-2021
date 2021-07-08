@@ -38,6 +38,8 @@ var Modulprüfung;
             return serverResponse;
         }
         async function getRecepie(_url) {
+            let option = { useNewUrlParser: true, useUnifiedTopology: true };
+            let mongoClient = new Mongo.MongoClient(databaseUrl, option); //mongo client angelegt
             await mongoClient.connect(); //wartet bis man mit mongoclient verbunden ist 
             let infos = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
             let cursor = infos.find(); //datenbvank wird durchsucht 
@@ -63,21 +65,21 @@ var Modulprüfung;
                 let daten = await saveUser(databaseUrl, auswertung); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);
             }
-            else if (url.pathname == "/login") {
+            else if (url.pathname == "/userLogin") {
                 let findUser = await Students.findOne({ "benutzername": url.query.Students.toString(), "password": url.query.Students.toString });
-                let loginAntwort = { message: undefined, error: undefined }; //variable loginANtwort erstellt, damit nur message oder error ausgegebn werden kann 
-                if (findUser != undefined)
-                    loginAntwort.message = "Du wirst eingeloggt";
-                else
-                    loginAntwort.error = "Benutzername oder passwort stimmt nicht";
-                _response.write(JSON.stringify(loginAntwort));
+                if (findUser != undefined) {
+                    alert("User wird eingeloggt");
+                }
+                else {
+                    alert("User kann nicht eingeloggt werden");
+                }
             }
             else if (url.pathname == "/getRecepie") {
                 let antwort = await getRecepie(databaseUrl); //wartet bis die function die die daten bekommt fertig ist
                 console.log(antwort);
                 _response.write(JSON.stringify(antwort));
             }
-            else if (url.pathname == "/safeRecepies") {
+            else if (url.pathname == "/safeRecepie") {
                 let data = await saveRecepie(databaseUrl, auswerten);
                 _response.write(data);
             }

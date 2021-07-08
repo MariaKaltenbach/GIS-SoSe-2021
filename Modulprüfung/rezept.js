@@ -12,7 +12,7 @@ var Modulprüfung;
     }
     window.onload = async function getRecepie() {
         transferData();
-        serverUrl += "/getRecepies";
+        serverUrl += "/getRecepie";
         serverUrl = serverUrl + "?" + query.toString(); //Url in String umwandeln
         let response = await fetch(serverUrl); //auf url warten
         let responseText = await response.text(); //json okject erstellen
@@ -21,7 +21,7 @@ var Modulprüfung;
     async function saveRecepie() {
         transferData();
         //server verbinden
-        serverUrl += "/safeRecepies" + "?" + query.toString;
+        serverUrl += "/safeRecepie" + "?" + query.toString;
         let response = await fetch(serverUrl); //auf url warten
         let responseText = await response.text(); //json okject erstellen
         console.log(responseText);

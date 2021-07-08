@@ -81,7 +81,8 @@ export namespace Modulprüfung {
 
 
         async function getRecepie(_url: string): Promise<Recepie[]> {
-
+            let option: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
+            let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(databaseUrl, option); //mongo client angelegt
             await mongoClient.connect(); //wartet bis man mit mongoclient verbunden ist 
 
             let infos: Mongo.Collection = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
@@ -116,13 +117,13 @@ export namespace Modulprüfung {
                 let daten: string = await saveUser(databaseUrl, auswertung); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);
             }
-            else if (url.pathname == "/login") {
+            else if (url.pathname == "/userLogin") {
 
                 let findUser: User = await Students.findOne({ "benutzername": url.query.Students.toString(), "password": url.query.Students.toString });
-                let loginAntwort: Login = { message: undefined, error: undefined };     //variable loginANtwort erstellt, damit nur message oder error ausgegebn werden kann 
-                if (findUser != undefined) loginAntwort.message = "Du wirst eingeloggt";
-                else loginAntwort.error = "Benutzername oder passwort stimmt nicht";
-                _response.write(JSON.stringify(loginAntwort));
+                if (findUser != undefined) { 
+                    alert("User wird eingeloggt"); }
+                else { 
+                    alert("User kann nicht eingeloggt werden"); }
 
             }
             else if (url.pathname == "/getRecepie") {
@@ -130,7 +131,7 @@ export namespace Modulprüfung {
                 console.log(antwort);
                 _response.write(JSON.stringify(antwort));
             }
-            else if (url.pathname == "/safeRecepies") {
+            else if (url.pathname == "/safeRecepie") {
                 let data: string = await saveRecepie(databaseUrl, auswerten);
                 _response.write(data);
             }
