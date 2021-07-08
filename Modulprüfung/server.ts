@@ -81,7 +81,7 @@ export namespace Modulprüfung {
             let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(databaseUrl, option); //mongo client angelegt
             await mongoClient.connect(); //wartet bis man mit mongoclient verbunden ist 
 
-            let infos: Mongo.Collection = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
+            let infos: Mongo.Collection = mongoClient.db("Test").collection("Rezepte"); //meine collection wird aufgerufen
             let cursor: Mongo.Cursor = infos.find(); //datenbvank wird durchsucht 
             result = await cursor.toArray(); //datenbank wird ausgelesen
             return result;          //daten werden zurück gegeben

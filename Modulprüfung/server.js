@@ -41,7 +41,7 @@ var Modulprüfung;
             let option = { useNewUrlParser: true, useUnifiedTopology: true };
             let mongoClient = new Mongo.MongoClient(databaseUrl, option); //mongo client angelegt
             await mongoClient.connect(); //wartet bis man mit mongoclient verbunden ist 
-            let infos = mongoClient.db("Test").collection("Students"); //meine collection wird aufgerufen
+            let infos = mongoClient.db("Test").collection("Rezepte"); //meine collection wird aufgerufen
             let cursor = infos.find(); //datenbvank wird durchsucht 
             result = await cursor.toArray(); //datenbank wird ausgelesen
             return result; //daten werden zurück gegeben
