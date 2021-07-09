@@ -17,8 +17,8 @@ var Modulprüfung;
     //#region Eventlistener (durch button im HTML werden diese Funktionen aufgereufen)
     let saveRegistartion = document.getElementById("registration"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
     saveRegistartion.addEventListener("click", registration); //eventlistener wir aktiviert   //eventlistener für Registration
-    // let compareLogin: HTMLButtonElement = <HTMLButtonElement>document.getElementById("login");       //variable für eventlistener angelegt und mit id mit html button verknüpft   
-    // compareLogin.addEventListener("click", login);  //eventlistener wir aktiviert   //eventlistener für Registration
+    let compareLogin = document.getElementById("login"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
+    compareLogin.addEventListener("click", login); //eventlistener wir aktiviert   //eventlistener für Registration
     //#endregion
     //#region asynchrone Funktionen 
     async function registration() {
@@ -27,14 +27,21 @@ var Modulprüfung;
         let response = await fetch(serverUrl); //auf url warten      //antwort wartet auf die Server url 
         let responseText = await response.text(); //json objekt erstellen
         console.log(responseText);
+        alert("Sie haben sich erfolgreich registriert, melden Sie sich un an!");
     }
-    //     async function login(): Promise<void> {
-    //         transferData();
-    //         serverUrl += "/userLogin" + "?" + query.toString();          //zu string umwandeln 
-    //         let response: Response = await fetch(serverUrl);  //auf url warten      //antwort wartet auf die Server url 
-    //         let responseText: string = await response.text(); //json object erstellen
-    //         console.log(responseText);
-    //     }
+    async function login() {
+        transferData();
+        serverUrl += "/userLogin" + "?" + query.toString(); //zu string umwandeln 
+        let response = await fetch(serverUrl); //auf url warten      //antwort wartet auf die Server url 
+        let responseText = await response.text(); //json object erstellen
+        console.log(responseText);
+        if (responseText != "") {
+            window.open("../Modulprufung/alleRezepte.html");
+        }
+        else {
+            alert("Benutzername oder Passwort falsch!");
+        }
+    }
 })(Modulprüfung || (Modulprüfung = {}));
 //#endregion asynchrone Funktionen
 //# sourceMappingURL=script.js.map

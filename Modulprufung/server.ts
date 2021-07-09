@@ -57,7 +57,8 @@ export namespace Modulprüfung {
         let option: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(databaseUrl, option); //mongo client angelegt
         // let rezepte: Mongo.Collection;
-        // let Students: Mongo.Collection;
+        let Students: Mongo.Collection;
+        let student: User;
         //#endregion Variablen
 
 
@@ -75,13 +76,22 @@ export namespace Modulprüfung {
         }
 
 
+        async function login(_benutzername: User, _password: User): Promise<boolean> {
+
+            student = await Students.findOne({ _id: _benutzername });
+
+            if (student == null) {
+                return false;
+            }
+            return true;
+        }
 
 
         async function getRecepie(_url: string): Promise<Recepie[]> {
 
             await mongoClient.connect(); //wartet bis man mit mongoclient verbunden ist 
 
-        
+
             let infos: Mongo.Collection = mongoClient.db("Test").collection("Rezepte"); //meine collection wird aufgerufen
             let cursor: Mongo.Cursor = infos.find(); //datenbvank wird durchsucht 
             result = await cursor.toArray(); //datenbank wird ausgelesen
@@ -119,6 +129,7 @@ export namespace Modulprüfung {
 
         //#region Variablen 
         let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
+        let query: any;
         let auswertung: User = { email: url.query.email + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
         let auswerten: Recepie = { rezeptname: url.query.rezeptname + "", zutat1: url.query.Zutat + "", zutat2: url.query.Zutat + "", zutat3: url.query.Zutat + "", zutat4: url.query.Zutat + "", zutat5: url.query.Zutat + "", zutat6: url.query.Zutat + "", zutat7: url.query.Zutat + "", zutat8: url.query.Zutat + "", zutat9: url.query.Zutat + "", zutat10: url.query.Zutat + "", zubereitungshinweis: url.query.Zubereitung + "" };
         //#endregion Variablen
@@ -130,42 +141,36 @@ export namespace Modulprüfung {
                 let daten: string = await saveUser(databaseUrl, auswertung); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);
             }
-            // else if (url.pathname == "/userLogin") {
+            else if (url.pathname == "/userLogin") {
 
-            //     let findUser: User = await Students.findOne({ "benutzername": url.query.students.toString(), "password": url.query.tudents.toString()});
-            //     if (findUser != undefined) {
-            //         alert("User wird eingeloggt");
-            //     }
-            //     else {
-            //         alert("User kann nicht eingeloggt werden");
-            //     }
+                await login(query.benutzername, query.password);
+            }
 
-            // }
-            else if (url.pathname == "/getRecepie") {
-                let antwort: Recepie[] = await getRecepie(databaseUrl,  ); //wartet bis die function die die daten bekommt fertig ist
-                console.log(antwort);
-                _response.write(JSON.stringify(antwort));
-            }
-            else if (url.pathname == "/getFave") {
-                let fav: Recepie[] = await getFavorite(databaseUrl);
-                console.log(fav);
-                _response.write(JSON.stringify(fav));
-            }
-            else if (url.pathname == "/safeRecepie") {
-                let data: string = await saveRecepie(databaseUrl, auswerten);
-                _response.write(data);
-            }
-            // else if (url.pathname == "/deleteRecepie") {
-            //     deleteRecepie();
-            //     console.log("Rezept wurde gelöscht!");
-            // }
         }
+        else if (url.pathname == "/getRecepie") {
+            let antwort: Recepie[] = await getRecepie(databaseUrl); //wartet bis die function die die daten bekommt fertig ist
+            console.log(antwort);
+            _response.write(JSON.stringify(antwort));
+        }
+        else if (url.pathname == "/getFave") {
+            let fav: Recepie[] = await getFavorite(databaseUrl);
+            console.log(fav);
+            _response.write(JSON.stringify(fav));
+        }
+        else if (url.pathname == "/safeRecepie") {
+            let data: string = await saveRecepie(databaseUrl, auswerten);
+            _response.write(data);
+        }
+        // else if (url.pathname == "/deleteRecepie") {
+        //     deleteRecepie();
+        //     console.log("Rezept wurde gelöscht!");
+        // }
+
         //#endregion if-Abfragen
 
 
         _response.end(); //beendet die anfrage 
 
+
     }
-
-
 }
