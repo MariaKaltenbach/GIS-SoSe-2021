@@ -21,12 +21,12 @@ var Modulprüfung;
         _response.setHeader("Access-Control-Allow-Origin", "*");
         //#endregion Interface
         //#rehgion Variablen (varibalen für Mongo angelegt)
-        let databaseUrl = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"; //mondoDB String um mit db zu connecten 
-        // let databaseUrl: string = "mongodb://localhost:27017";
+        // let databaseUrl: string = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"; //mondoDB String um mit db zu connecten 
+        let databaseUrl = "mongodb://localhost:27017";
         let option = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(databaseUrl, option); //mongo client angelegt
         // let rezepte: Mongo.Collection;
-        let Students;
+        // let Students: Mongo.Collection;
         //#endregion Variablen
         let result; //ergenbis in User interface form ausgeben lassen
         //#region asynchrone Funktionen 
@@ -38,8 +38,6 @@ var Modulprüfung;
             return serverResponse;
         }
         async function getRecepie(_url) {
-            let option = { useNewUrlParser: true, useUnifiedTopology: true };
-            let mongoClient = new Mongo.MongoClient(databaseUrl, option); //mongo client angelegt
             await mongoClient.connect(); //wartet bis man mit mongoclient verbunden ist 
             let infos = mongoClient.db("Test").collection("Rezepte"); //meine collection wird aufgerufen
             let cursor = infos.find(); //datenbvank wird durchsucht 
@@ -53,9 +51,16 @@ var Modulprüfung;
             let serverResponse = "Rezept wurden gespeichert"; //server antwort sobald die Dtaen erfolgreich gespeichert wurden 
             return serverResponse;
         }
-        async function deleteRecepie() {
-            await mongoClient.db("Test").collection("Rezepte").deleteOne({ title: "rezeptname" });
+        async function getFavorite(_url) {
+            await mongoClient.connect(); //warten bis die verbindung mit der datenbank besteht 
+            let infos = mongoClient.db("Test").collection("Favoriten"); //meine collection wird aufgerufen
+            let cursor = infos.find(); //datenbvank wird durchsucht 
+            result = await cursor.toArray(); //datenbank wird ausgelesen
+            return result; //daten werden zurück gegeben
         }
+        // async function deleteRecepie(): Promise<void> {
+        //     await mongoClient.db("Test").collection("Rezepte").deleteOne({title: "rezeptname"});
+        // }
         //#endregion asynchrone Funktionen
         //#region Variablen 
         let url = Url.parse(_request.url, true);
@@ -68,28 +73,33 @@ var Modulprüfung;
                 let daten = await saveUser(databaseUrl, auswertung); //wartet bis die function die die daen speichert fertig ist
                 _response.write(daten);
             }
-            else if (url.pathname == "/userLogin") {
-                let findUser = await Students.findOne({ "benutzername": url.query.Students.toString(), "password": url.query.Students.toString });
-                if (findUser != undefined) {
-                    alert("User wird eingeloggt");
-                }
-                else {
-                    alert("User kann nicht eingeloggt werden");
-                }
-            }
+            // else if (url.pathname == "/userLogin") {
+            //     let findUser: User = await Students.findOne({ "benutzername": url.query.students.toString(), "password": url.query.tudents.toString()});
+            //     if (findUser != undefined) {
+            //         alert("User wird eingeloggt");
+            //     }
+            //     else {
+            //         alert("User kann nicht eingeloggt werden");
+            //     }
+            // }
             else if (url.pathname == "/getRecepie") {
                 let antwort = await getRecepie(databaseUrl); //wartet bis die function die die daten bekommt fertig ist
                 console.log(antwort);
                 _response.write(JSON.stringify(antwort));
             }
+            else if (url.pathname == "/getFave") {
+                let fav = await getFavorite(databaseUrl);
+                console.log(fav);
+                _response.write(JSON.stringify(fav));
+            }
             else if (url.pathname == "/safeRecepie") {
                 let data = await saveRecepie(databaseUrl, auswerten);
                 _response.write(data);
             }
-            else if (url.pathname == "/deleteRecepie") {
-                deleteRecepie();
-                console.log("Rezept wurde gelöscht!");
-            }
+            // else if (url.pathname == "/deleteRecepie") {
+            //     deleteRecepie();
+            //     console.log("Rezept wurde gelöscht!");
+            // }
         }
         //#endregion if-Abfragen
         _response.end(); //beendet die anfrage 

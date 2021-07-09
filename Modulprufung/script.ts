@@ -13,8 +13,8 @@ namespace Modulprüfung {
     function transferData(): void {
         let daten: FormData = new FormData(document.forms[0]);  //Formdata um Formular auswerten zu köennen
         query = new URLSearchParams(<any>daten);                //
-        serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
-        // serverUrl = "http://localhost:8100";
+        // serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
+        serverUrl = "http://localhost:8100";
     }
     //#endregion Daten Übertragen 
 
@@ -23,8 +23,8 @@ namespace Modulprüfung {
     saveRegistartion.addEventListener("click", registration);  //eventlistener wir aktiviert   //eventlistener für Registration
 
 
-    let compareLogin: HTMLButtonElement = <HTMLButtonElement>document.getElementById("login");       //variable für eventlistener angelegt und mit id mit html button verknüpft   
-    compareLogin.addEventListener("click", login);  //eventlistener wir aktiviert   //eventlistener für Registration
+    // let compareLogin: HTMLButtonElement = <HTMLButtonElement>document.getElementById("login");       //variable für eventlistener angelegt und mit id mit html button verknüpft   
+    // compareLogin.addEventListener("click", login);  //eventlistener wir aktiviert   //eventlistener für Registration
     //#endregion
 
     //#region asynchrone Funktionen 
@@ -40,22 +40,15 @@ namespace Modulprüfung {
 
 
 
-    async function login(): Promise<void> {
-        transferData();
-        serverUrl += "/userLogin" + "?" + query.toString();          //zu string umwandeln 
-        let response: Response = await fetch(serverUrl);  //auf url warten      //antwort wartet auf die Server url 
-        let responseText: string = await response.text(); //json object erstellen
-        console.log(responseText);
-
-        if (responseText == "false") {
-            alert("Benutzer wurde noch nicht Registriert!");
-        }
-        else {
-            window.open("../Modulprüfung/alleRezepte.html");
+//     async function login(): Promise<void> {
+//         transferData();
+//         serverUrl += "/userLogin" + "?" + query.toString();          //zu string umwandeln 
+//         let response: Response = await fetch(serverUrl);  //auf url warten      //antwort wartet auf die Server url 
+//         let responseText: string = await response.text(); //json object erstellen
+//         console.log(responseText);
 
 
-        }
-    }
+//     }
 }
         //#endregion asynchrone Funktionen
 

@@ -8,8 +8,8 @@ namespace Modulprüfung {
     function transferData(): void {
         let daten: FormData = new FormData(document.forms[0]);
         query = new URLSearchParams(<any>daten);
-        serverUrl = "https://gissose2021.herokuapp.com"; //herokuapnpm p link einfügen als url variable 
-        // serverUrl = "http://localhost:8100";
+        // serverUrl = "https://gissose2021.herokuapp.com"; //herokuapnpm p link einfügen als url variable 
+        serverUrl = "http://localhost:8100";
     }
     window.onload = async function getRecepie(): Promise<void> {           //window.onload -> damit die rezepte direkt bei betreten der seite angezeigt werden 
         transferData();
@@ -19,12 +19,7 @@ namespace Modulprüfung {
         let responseText: string = await response.text(); //json okject erstellen
 
         serverResponse.innerHTML = responseText;
-        // let rezeptName: HTMLHeadingElement = document.createElement("h2");
-        // let zutaten: HTMLHeadingElement = document.createElement("ul");
-        // let Zubereitung: HTMLHeadingElement = document.createElement("p");
-
        
-
         //Die server antwort soll innerhalb dem HTML ausgegeben werden 
 
     };
@@ -38,22 +33,25 @@ namespace Modulprüfung {
         let responseText: string = await response.text(); //json okject erstellen
         console.log(responseText);
         console.log("Rezept wurde erstellt!");
-       
+
 
     }
+
+
 
     let safeRecepie: HTMLButtonElement = <HTMLButtonElement>document.getElementById("veröffentlichen"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
     safeRecepie.addEventListener("click", saveRecepie);                           //eventlistener für Registration
 
-
-    let deleteRecepie: HTMLButtonElement = <HTMLButtonElement>document.getElementById("rezeptLöschen");
-    deleteRecepie.addEventListener("click", recepieDelete);
-
-    async function recepieDelete(): Promise<void> {
-
     
-        transferData();
-        serverUrl += "/deleteRecepie" + "?" + query.toString;
 
-    }
+    // let deleteRecepie: HTMLButtonElement = <HTMLButtonElement>document.getElementById("rezeptLöschen");
+    // deleteRecepie.addEventListener("click", recepieDelete);
+
+    // async function recepieDelete(): Promise<void> {
+
+
+    //     transferData();
+    //     serverUrl += "/deleteRecepie" + "?" + query.toString;
+
+    // }
 }
