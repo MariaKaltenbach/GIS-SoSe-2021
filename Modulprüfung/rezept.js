@@ -25,7 +25,7 @@ var Modulprüfung;
     async function saveRecepie() {
         transferData();
         //server verbinden
-        serverUrl += "/safeRecepie" + "?" + query.toString;
+        serverUrl += "/safeRecepie" + "?" + query.toString();
         let response = await fetch(serverUrl); //auf url warten
         let responseText = await response.text(); //json okject erstellen
         console.log(responseText);

@@ -33,7 +33,7 @@ namespace Modulprüfung {
     async function saveRecepie(): Promise<void> {
         transferData();
         //server verbinden
-        serverUrl += "/safeRecepie" + "?" + query.toString;
+        serverUrl += "/safeRecepie" + "?" + query.toString();
         let response: Response = await fetch(serverUrl);  //auf url warten
         let responseText: string = await response.text(); //json okject erstellen
         console.log(responseText);
@@ -51,6 +51,7 @@ namespace Modulprüfung {
 
     async function recepieDelete(): Promise<void> {
 
+    
         transferData();
         serverUrl += "/deleteRecepie" + "?" + query.toString;
 
