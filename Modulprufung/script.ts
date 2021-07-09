@@ -22,10 +22,18 @@ namespace Modulprüfung {
     let saveRegistartion: HTMLButtonElement = <HTMLButtonElement>document.getElementById("registration");       //variable für eventlistener angelegt und mit id mit html button verknüpft   
     saveRegistartion.addEventListener("click", registration);  //eventlistener wir aktiviert   //eventlistener für Registration
 
+    let loginOut: HTMLButtonElement = <HTMLButtonElement>document.getElementById("logout");       //variable für eventlistener angelegt und mit id mit html button verknüpft   
+    loginOut.addEventListener("click", logout);  //eventlistener wir aktiviert   //eventlistener für Registration
 
     let compareLogin: HTMLButtonElement = <HTMLButtonElement>document.getElementById("login");       //variable für eventlistener angelegt und mit id mit html button verknüpft   
     compareLogin.addEventListener("click", login);  //eventlistener wir aktiviert   //eventlistener für Registration
     //#endregion
+
+    
+    function logout(): void {
+
+        localStorage.clear();
+    }
 
     //#region asynchrone Funktionen 
 
@@ -35,7 +43,7 @@ namespace Modulprüfung {
         let response: Response = await fetch(serverUrl);  //auf url warten      //antwort wartet auf die Server url 
         let responseText: string = await response.text(); //json objekt erstellen
         console.log(responseText);
-        alert("Sie haben sich erfolgreich registriert, melden Sie sich un an!")
+        alert("Sie haben sich erfolgreich registriert, melden Sie sich un an!");
 
     }
 
@@ -49,13 +57,16 @@ namespace Modulprüfung {
         console.log(responseText);
         if (responseText != "") {
 
+            localStorage.setItem("Benutzer", responseText);
             window.open("../Modulprufung/alleRezepte.html");
+
         }
 
         else {
             alert("Benutzername oder Passwort falsch!");
         }
 
+    
     }
 }
         //#endregion asynchrone Funktionen

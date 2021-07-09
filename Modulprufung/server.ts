@@ -80,7 +80,7 @@ export namespace Modulprüfung {
 
             student = await Students.findOne({ _id: _benutzername });
 
-            if (student == null) {
+            if (student == null ) {
                 return false;
             }
             return true;

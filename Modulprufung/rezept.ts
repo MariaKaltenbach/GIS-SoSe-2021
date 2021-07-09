@@ -18,8 +18,10 @@ namespace Modulprüfung {
         let response: Response = await fetch(serverUrl);  //auf url warten
         let responseText: string = await response.text(); //json okject erstellen
 
+        
+        localStorage.getItem(responseText);
         serverResponse.innerHTML = responseText;
-       
+        
         //Die server antwort soll innerhalb dem HTML ausgegeben werden 
 
     };
@@ -33,6 +35,7 @@ namespace Modulprüfung {
         let responseText: string = await response.text(); //json okject erstellen
         console.log(responseText);
         console.log("Rezept wurde erstellt!");
+        localStorage.setItem("Rezept", responseText );
 
 
     }

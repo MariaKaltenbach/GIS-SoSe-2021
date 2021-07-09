@@ -16,6 +16,7 @@ var Modulprüfung;
         serverUrl = serverUrl + "?" + query.toString(); //Url in String umwandeln
         let response = await fetch(serverUrl); //auf url warten
         let responseText = await response.text(); //json okject erstellen
+        localStorage.getItem(responseText);
         serverResponse.innerHTML = responseText;
         //Die server antwort soll innerhalb dem HTML ausgegeben werden 
     };
@@ -27,6 +28,7 @@ var Modulprüfung;
         let responseText = await response.text(); //json okject erstellen
         console.log(responseText);
         console.log("Rezept wurde erstellt!");
+        localStorage.setItem("Rezept", responseText);
     }
     let safeRecepie = document.getElementById("veröffentlichen"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
     safeRecepie.addEventListener("click", saveRecepie); //eventlistener für Registration
