@@ -10,8 +10,8 @@ var Modulprüfung;
     function transferData() {
         let daten = new FormData(document.forms[0]); //Formdata um Formular auswerten zu köennen
         query = new URLSearchParams(daten); //
-        serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
-        // serverUrl = "http://localhost:8100";
+        // serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
+        serverUrl = "http://localhost:8100";
     }
     //#endregion Daten Übertragen 
     //#region Eventlistener (durch button im HTML werden diese Funktionen aufgereufen)
@@ -34,7 +34,7 @@ var Modulprüfung;
         let response = await fetch(serverUrl); //auf url warten      //antwort wartet auf die Server url 
         let responseText = await response.text(); //json object erstellen
         console.log(responseText);
-        if (responseText == "true") {
+        if (responseText == "false") {
             alert("Benutzer wurde noch nicht Registriert!");
         }
         else {

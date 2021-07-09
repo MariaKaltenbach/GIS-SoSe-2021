@@ -8,12 +8,13 @@ namespace Modulprüfung {
     //#endregion Varibalen
 
 
+
     //#region Daten übertragen (funktion mit FormData, query und der server Url damit man in den folgenden Funktionen nicht die ganze zeit den sleben code hat)
     function transferData(): void {
         let daten: FormData = new FormData(document.forms[0]);  //Formdata um Formular auswerten zu köennen
         query = new URLSearchParams(<any>daten);                //
-        serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
-        // serverUrl = "http://localhost:8100";
+        // serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
+        serverUrl = "http://localhost:8100";
     }
     //#endregion Daten Übertragen 
 
@@ -34,8 +35,10 @@ namespace Modulprüfung {
         let response: Response = await fetch(serverUrl);  //auf url warten      //antwort wartet auf die Server url 
         let responseText: string = await response.text(); //json objekt erstellen
         console.log(responseText);
-        
+
     }
+
+
 
     async function login(): Promise<void> {
         transferData();
@@ -44,7 +47,7 @@ namespace Modulprüfung {
         let responseText: string = await response.text(); //json object erstellen
         console.log(responseText);
 
-        if (responseText == "true") {
+        if (responseText == "false") {
             alert("Benutzer wurde noch nicht Registriert!");
         }
         else {
@@ -52,7 +55,7 @@ namespace Modulprüfung {
 
 
         }
-    }}
+    }
+}
         //#endregion asynchrone Funktionen
 
-    

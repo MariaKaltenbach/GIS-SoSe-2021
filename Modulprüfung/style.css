@@ -5,8 +5,7 @@ body {
 
 .Navigation {
     overflow: hidden;
-    position: sticky;
-    top: 0;
+    top: 0px;
 }
 
 .Navigation a {
@@ -46,13 +45,14 @@ input {
     text-align: center;
 }
 
-.rezeptFormatierung {
-    display: flex;
-}
-
 .rezeptNameInput {
     width: 300px;
     margin-left: -65px;
+}
+
+.ausgabe {
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 @media only screen and (min-width: 601px) and (max-width: 1023px) {

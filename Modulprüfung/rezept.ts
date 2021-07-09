@@ -2,15 +2,20 @@ namespace Modulprüfung {
 
     let serverResponse: HTMLDivElement = <HTMLDivElement>document.getElementById("serverAntwort"); //Ausgabe feld im HTMl (Div) verlinkt über die ID:"serverAntwort"
 
+    // interface Rezept {
+    //     rezeptName: string;
+    //     zutat: string;
+    //     zubereitung: string;
 
+    // }
     let serverUrl: string;                  //server Url  variable globak angelegt (code verdopplung vermeiden)
     let query: URLSearchParams;             // ''
 
     function transferData(): void {
         let daten: FormData = new FormData(document.forms[0]);
         query = new URLSearchParams(<any>daten);
-        serverUrl = "https://gissose2021.herokuapp.com"; //herokuapnpm p link einfügen als url variable 
-        // serverUrl = "http://localhost:8100";
+        // serverUrl = "https://gissose2021.herokuapp.com"; //herokuapnpm p link einfügen als url variable 
+        serverUrl = "http://localhost:8100";
     }
     window.onload = async function getRecepie(): Promise<void> {           //window.onload -> damit die rezepte direkt bei betreten der seite angezeigt werden 
         transferData();
@@ -19,7 +24,9 @@ namespace Modulprüfung {
         let response: Response = await fetch(serverUrl);  //auf url warten
         let responseText: string = await response.text(); //json okject erstellen
 
-        serverResponse.innerHTML = responseText;            //Die server antwort soll innerhalb dem HTML ausgegeben werden 
+        serverResponse.innerHTML = responseText;
+        
+        //Die server antwort soll innerhalb dem HTML ausgegeben werden 
 
     };
 
@@ -38,12 +45,16 @@ namespace Modulprüfung {
     let safeRecepie: HTMLButtonElement = <HTMLButtonElement>document.getElementById("veröffentlichen"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
     safeRecepie.addEventListener("click", saveRecepie);                           //eventlistener für Registration
 
-    // async function deleteRecepie(): Promise<void> {
+    // window.onload = function rezeptAusgabe(_response: Rezept): void {
 
-    //     // let serverUrl: RequestInfo = "https://gissose2021.herokuapp.com";
-    //     serverUrl = "http://localhost:8100";
-    //     serverUrl += "/deleteRecepie" + "_id";
+    //     let name: HTMLElement = document.createElement("h2");
+    //     name.appendChild(document.createTextNode(_response.rezeptName));
 
-    // }
+    //     let zutaten: HTMLParagraphElement = document.createElement("p");
+    //     zutaten .appendChild(document.createTextNode(_response.zutat));
+
+    //     let zubereitungen: HTMLParagraphElement = document.createElement("p");
+    //     zubereitungen.appendChild(document.createTextNode(_response.zubereitung));
+    // };
 
 }
