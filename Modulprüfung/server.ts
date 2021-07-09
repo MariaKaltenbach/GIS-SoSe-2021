@@ -33,7 +33,7 @@ export namespace Modulprüfung {
             email: string;
         }
 
-        
+
         interface Recepie {
             rezeptname: string;
             zutat1: string;
@@ -52,8 +52,8 @@ export namespace Modulprüfung {
         //#endregion Interface
 
         //#rehgion Variablen (varibalen für Mongo angelegt)
-        // let databaseUrl: string = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"; //mondoDB String um mit db zu connecten 
-        let databaseUrl: string = "mongodb://localhost:27017";
+        let databaseUrl: string = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"; //mondoDB String um mit db zu connecten 
+        // let databaseUrl: string = "mongodb://localhost:27017";
         let option: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(databaseUrl, option); //mongo client angelegt
         // let rezepte: Mongo.Collection;
@@ -98,6 +98,12 @@ export namespace Modulprüfung {
             return serverResponse;
         }
 
+
+        async function deleteRecepie(): Promise<void> {
+
+            await mongoClient.db("Test").collection("Rezepte").deleteOne({title: "rezeptname"});
+
+        }
         //#endregion asynchrone Funktionen
 
         //#region Variablen 
@@ -116,10 +122,12 @@ export namespace Modulprüfung {
             else if (url.pathname == "/userLogin") {
 
                 let findUser: User = await Students.findOne({ "benutzername": url.query.Students.toString(), "password": url.query.Students.toString });
-                if (findUser != undefined) { 
-                    alert("User wird eingeloggt"); }
-                else { 
-                    alert("User kann nicht eingeloggt werden"); }
+                if (findUser != undefined) {
+                    alert("User wird eingeloggt");
+                }
+                else {
+                    alert("User kann nicht eingeloggt werden");
+                }
 
             }
             else if (url.pathname == "/getRecepie") {
@@ -131,10 +139,10 @@ export namespace Modulprüfung {
                 let data: string = await saveRecepie(databaseUrl, auswerten);
                 _response.write(data);
             }
-            // if (url.pathname == "/deleteRecepie") {
-            //     rezepte.deleteOne({"Rezept:": new Mongo.ObjectID(url.query._id.toString())});
-            //     console.log("Rezept wurde gelöscht!");
-            // }
+            else if (url.pathname == "/deleteRecepie") {
+                deleteRecepie();
+                console.log("Rezept wurde gelöscht!");
+            }
         }
         //#endregion if-Abfragen
 

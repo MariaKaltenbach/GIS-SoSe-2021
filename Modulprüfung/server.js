@@ -21,8 +21,8 @@ var Modulprüfung;
         _response.setHeader("Access-Control-Allow-Origin", "*");
         //#endregion Interface
         //#rehgion Variablen (varibalen für Mongo angelegt)
-        // let databaseUrl: string = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"; //mondoDB String um mit db zu connecten 
-        let databaseUrl = "mongodb://localhost:27017";
+        let databaseUrl = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"; //mondoDB String um mit db zu connecten 
+        // let databaseUrl: string = "mongodb://localhost:27017";
         let option = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(databaseUrl, option); //mongo client angelegt
         // let rezepte: Mongo.Collection;
@@ -52,6 +52,9 @@ var Modulprüfung;
             infos.insertOne(_eingabe); //eingegebene Daten in DB speichern
             let serverResponse = "Rezept wurden gespeichert"; //server antwort sobald die Dtaen erfolgreich gespeichert wurden 
             return serverResponse;
+        }
+        async function deleteRecepie() {
+            await mongoClient.db("Test").collection("Rezepte").deleteOne({ title: "rezeptname" });
         }
         //#endregion asynchrone Funktionen
         //#region Variablen 
@@ -83,10 +86,10 @@ var Modulprüfung;
                 let data = await saveRecepie(databaseUrl, auswerten);
                 _response.write(data);
             }
-            // if (url.pathname == "/deleteRecepie") {
-            //     rezepte.deleteOne({"Rezept:": new Mongo.ObjectID(url.query._id.toString())});
-            //     console.log("Rezept wurde gelöscht!");
-            // }
+            else if (url.pathname == "/deleteRecepie") {
+                deleteRecepie();
+                console.log("Rezept wurde gelöscht!");
+            }
         }
         //#endregion if-Abfragen
         _response.end(); //beendet die anfrage 

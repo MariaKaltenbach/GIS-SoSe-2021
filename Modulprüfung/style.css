@@ -55,6 +55,13 @@ input {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.ausgabe ul {
+    columns: 5 12em;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
 @media only screen and (min-width: 601px) and (max-width: 1023px) {
     button {
         width: 150px;
