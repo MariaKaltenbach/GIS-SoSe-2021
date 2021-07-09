@@ -22,18 +22,18 @@ namespace Modulprüfung {
     let saveRegistartion: HTMLButtonElement = <HTMLButtonElement>document.getElementById("registration");       //variable für eventlistener angelegt und mit id mit html button verknüpft   
     saveRegistartion.addEventListener("click", registration);  //eventlistener wir aktiviert   //eventlistener für Registration
 
-    let loginOut: HTMLButtonElement = <HTMLButtonElement>document.getElementById("logout");       //variable für eventlistener angelegt und mit id mit html button verknüpft   
-    loginOut.addEventListener("click", logout);  //eventlistener wir aktiviert   //eventlistener für Registration
+    // let loginOut: HTMLButtonElement = <HTMLButtonElement>document.getElementById("logout");       //variable für eventlistener angelegt und mit id mit html button verknüpft   
+    // loginOut.addEventListener("click", logout);  //eventlistener wir aktiviert   //eventlistener für Registration
 
     let compareLogin: HTMLButtonElement = <HTMLButtonElement>document.getElementById("login");       //variable für eventlistener angelegt und mit id mit html button verknüpft   
     compareLogin.addEventListener("click", login);  //eventlistener wir aktiviert   //eventlistener für Registration
     //#endregion
 
     
-    function logout(): void {
+    // function logout(): void {
 
-        localStorage.clear();
-    }
+    //     localStorage.clear();
+    // }
 
     //#region asynchrone Funktionen 
 
@@ -57,7 +57,6 @@ namespace Modulprüfung {
         console.log(responseText);
         if (responseText != "") {
 
-            localStorage.setItem("Benutzer", responseText);
             window.open("../Modulprufung/alleRezepte.html");
 
         }

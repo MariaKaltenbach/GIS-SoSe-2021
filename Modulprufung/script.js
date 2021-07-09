@@ -17,14 +17,14 @@ var Modulprüfung;
     //#region Eventlistener (durch button im HTML werden diese Funktionen aufgereufen)
     let saveRegistartion = document.getElementById("registration"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
     saveRegistartion.addEventListener("click", registration); //eventlistener wir aktiviert   //eventlistener für Registration
-    let loginOut = document.getElementById("logout"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
-    loginOut.addEventListener("click", logout); //eventlistener wir aktiviert   //eventlistener für Registration
+    // let loginOut: HTMLButtonElement = <HTMLButtonElement>document.getElementById("logout");       //variable für eventlistener angelegt und mit id mit html button verknüpft   
+    // loginOut.addEventListener("click", logout);  //eventlistener wir aktiviert   //eventlistener für Registration
     let compareLogin = document.getElementById("login"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
     compareLogin.addEventListener("click", login); //eventlistener wir aktiviert   //eventlistener für Registration
     //#endregion
-    function logout() {
-        localStorage.clear();
-    }
+    // function logout(): void {
+    //     localStorage.clear();
+    // }
     //#region asynchrone Funktionen 
     async function registration() {
         transferData();
@@ -41,7 +41,6 @@ var Modulprüfung;
         let responseText = await response.text(); //json object erstellen
         console.log(responseText);
         if (responseText != "") {
-            localStorage.setItem("Benutzer", responseText);
             window.open("../Modulprufung/alleRezepte.html");
         }
         else {
