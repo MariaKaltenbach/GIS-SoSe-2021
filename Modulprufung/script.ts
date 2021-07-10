@@ -2,49 +2,50 @@
 namespace Modulprüfung {
 
     //#region Variablen 
-    let serverUrl: string;                  //server Url  variable globak angelegt (code verdopplung vermeiden)
+
+    let serverUrl: string;                  //server Url variable global angelegt (code verdopplung vermeiden)
     let query: URLSearchParams;             // ''
-    // let serverResponse: HTMLDivElement = <HTMLDivElement>document.getElementById("serverAntwort"); //Ausgabe feld im HTMl (Div) verlinkt über die ID:"serverAntwort"
+
     //#endregion Varibalen
 
 
 
-    //#region Daten übertragen (funktion mit FormData, query und der server Url damit man in den folgenden Funktionen nicht die ganze zeit den sleben code hat)
+    //#region Daten übertragen (funktion mit FormData, query und der server Url damit man in den folgenden Funktionen nicht die ganze zeit den selben code hat)
+
     function transferData(): void {
-        let daten: FormData = new FormData(document.forms[0]);  //Formdata um Formular auswerten zu köennen
-        query = new URLSearchParams(<any>daten);                //
+        let daten: FormData = new FormData(document.forms[0]);  //Formdata um Formular auswerten zu können
+        query = new URLSearchParams(<any>daten);                //hilft uns beim arbeiten mit der url 
         serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
         // serverUrl = "http://localhost:8100";
 
     }
+
     //#endregion Daten Übertragen 
 
-    //#region Eventlistener (durch button im HTML werden diese Funktionen aufgereufen)
+
+
+    //#region Eventlistener (durch button im HTML werden diese Funktionen aufgerufen)
+
     let saveRegistartion: HTMLButtonElement = <HTMLButtonElement>document.getElementById("registration");       //variable für eventlistener angelegt und mit id mit html button verknüpft   
     saveRegistartion.addEventListener("click", registration);  //eventlistener wir aktiviert   //eventlistener für Registration
 
-    // let loginOut: HTMLButtonElement = <HTMLButtonElement>document.getElementById("logout");       //variable für eventlistener angelegt und mit id mit html button verknüpft   
-    // loginOut.addEventListener("click", logout);  //eventlistener wir aktiviert   //eventlistener für Registration
 
     let compareLogin: HTMLButtonElement = <HTMLButtonElement>document.getElementById("userLogin");       //variable für eventlistener angelegt und mit id mit html button verknüpft   
-    compareLogin.addEventListener("click", login);  //eventlistener wir aktiviert   //eventlistener für Registration
-    //#endregion
+    compareLogin.addEventListener("click", login);  //eventlistener wir aktiviert   //eventlistener für Login
+    
+    //#endregion Eventlistener
 
 
-    // function logout(): void {
-
-    //     localStorage.clear();
-    // }
 
     //#region asynchrone Funktionen 
 
     async function registration(): Promise<void> {
-        transferData();
+        transferData();                                             //benötigte Daten aufrufen
         serverUrl += "/registration" + "?" + query.toString();          //zu string umwandeln 
-        let response: Response = await fetch(serverUrl);  //auf url warten      //antwort wartet auf die Server url 
-        let responseText: string = await response.text(); //json objekt erstellen
+        let response: Response = await fetch(serverUrl);  //auf url warten      //mit fetch wird eine anfrage gestellt und es wird ein Promise zurück gegeben
+        let responseText: string = await response.text(); //antwort des servers wird angelegt und wartet auf das Promise und speichert es in einen text
         console.log(responseText);
-        alert("Sie haben sich erfolgreich registriert, melden Sie sich un an!");
+        alert("Sie wurden erfolgreich Registriert, melden Sie sich nun an!");
 
     }
 
@@ -52,19 +53,18 @@ namespace Modulprüfung {
 
     async function login(): Promise<void> {
         transferData();
-        serverUrl += "/userLogin" + "?" + query.toString();          //zu string umwandeln 
-        let response: Response = await fetch(serverUrl);  //auf url warten      //antwort wartet auf die Server url 
-        let responseText: string = await response.text(); //json object erstellen
+        serverUrl += "/userLogin" + "?" + query.toString();          
+        let response: Response = await fetch(serverUrl);     
+        let responseText: string = await response.text(); 
         console.log(responseText);
-        if (responseText == "true") {
-            let benutzername: string = (<HTMLInputElement><unknown>document.getElementById("benutzername")).value;
-            localStorage.setItem(benutzername, "username");
-            window.open("../Modulprufung/alleRezepte.html");
+        if (responseText == "true") {           //wenn die Server antwort stimmt 
+           
+            window.open("../Modulprufung/alleRezepte.html");    //soll die Startseite geöffnet werden/user wird eingeloggt
 
         }
 
         else {
-            alert("Benutzername oder Passwort falsch!");
+            alert("Benutzername oder Passwort falsch!");        //wenn die antwort falsch ist wird ein alert angezeigt
         }
 
 
