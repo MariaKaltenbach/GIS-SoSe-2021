@@ -15,7 +15,7 @@ var Modulprüfung;
         serverUrl += "/getRecepie";
         serverUrl = serverUrl + "?" + query.toString(); //Url in String umwandeln
         let response = await fetch(serverUrl); //auf url warten
-        let responseText = await response.text(); //json okject erstellen
+        let responseText = await response.text(); //json okject erstellet
         serverResponse.innerHTML = responseText;
         //Die server antwort soll innerhalb dem HTML ausgegeben werden 
     };

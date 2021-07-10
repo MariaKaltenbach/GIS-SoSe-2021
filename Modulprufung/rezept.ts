@@ -16,9 +16,7 @@ namespace Modulprüfung {
         serverUrl += "/getRecepie";
         serverUrl = serverUrl + "?" + query.toString(); //Url in String umwandeln
         let response: Response = await fetch(serverUrl);  //auf url warten
-        let responseText: string = await response.text(); //json okject erstellen
-
-        
+        let responseText: string = await response.text(); //json okject erstellet
         serverResponse.innerHTML = responseText;
 
         

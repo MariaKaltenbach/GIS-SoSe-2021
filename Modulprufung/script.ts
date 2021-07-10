@@ -15,6 +15,7 @@ namespace Modulprüfung {
         query = new URLSearchParams(<any>daten);                //
         serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
         // serverUrl = "http://localhost:8100";
+        
     }
     //#endregion Daten Übertragen 
 

@@ -85,27 +85,27 @@ var Modulprüfung;
             else if (url.pathname == "/userLogin") {
                 await login(query.benutzername, query.password);
             }
+            else if (url.pathname == "/getRecepie") {
+                let antwort = await getRecepie(databaseUrl); //wartet bis die function die die daten bekommt fertig ist
+                console.log(antwort);
+                _response.write(JSON.stringify(antwort));
+            }
+            else if (url.pathname == "/getFave") {
+                let fav = await getFavorite(databaseUrl);
+                console.log(fav);
+                _response.write(JSON.stringify(fav));
+            }
+            else if (url.pathname == "/safeRecepie") {
+                let data = await saveRecepie(databaseUrl, auswerten);
+                _response.write(data);
+            }
+            // else if (url.pathname == "/deleteRecepie") {
+            //     deleteRecepie();
+            //     console.log("Rezept wurde gelöscht!");
+            // }
+            //#endregion if-Abfragen
+            _response.end(); //beendet die anfrage 
         }
-        else if (url.pathname == "/getRecepie") {
-            let antwort = await getRecepie(databaseUrl); //wartet bis die function die die daten bekommt fertig ist
-            console.log(antwort);
-            _response.write(JSON.stringify(antwort));
-        }
-        else if (url.pathname == "/getFave") {
-            let fav = await getFavorite(databaseUrl);
-            console.log(fav);
-            _response.write(JSON.stringify(fav));
-        }
-        else if (url.pathname == "/safeRecepie") {
-            let data = await saveRecepie(databaseUrl, auswerten);
-            _response.write(data);
-        }
-        // else if (url.pathname == "/deleteRecepie") {
-        //     deleteRecepie();
-        //     console.log("Rezept wurde gelöscht!");
-        // }
-        //#endregion if-Abfragen
-        _response.end(); //beendet die anfrage 
     }
 })(Modulprüfung = exports.Modulprüfung || (exports.Modulprüfung = {}));
 //# sourceMappingURL=server.js.map

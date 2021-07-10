@@ -80,7 +80,7 @@ export namespace Modulprüfung {
 
             student = await Students.findOne({ _id: _benutzername });
 
-            if (student == null ) {
+            if (student == null) {
                 return false;
             }
             return true;
@@ -146,31 +146,32 @@ export namespace Modulprüfung {
                 await login(query.benutzername, query.password);
             }
 
+
+            else if (url.pathname == "/getRecepie") {
+                let antwort: Recepie[] = await getRecepie(databaseUrl); //wartet bis die function die die daten bekommt fertig ist
+                console.log(antwort);
+                _response.write(JSON.stringify(antwort));
+            }
+            else if (url.pathname == "/getFave") {
+                let fav: Recepie[] = await getFavorite(databaseUrl);
+                console.log(fav);
+                _response.write(JSON.stringify(fav));
+            }
+            else if (url.pathname == "/safeRecepie") {
+                let data: string = await saveRecepie(databaseUrl, auswerten);
+                _response.write(data);
+            }
+            // else if (url.pathname == "/deleteRecepie") {
+            //     deleteRecepie();
+            //     console.log("Rezept wurde gelöscht!");
+            // }
+
+            //#endregion if-Abfragen
+
+
+            _response.end(); //beendet die anfrage 
+
+
         }
-        else if (url.pathname == "/getRecepie") {
-            let antwort: Recepie[] = await getRecepie(databaseUrl); //wartet bis die function die die daten bekommt fertig ist
-            console.log(antwort);
-            _response.write(JSON.stringify(antwort));
-        }
-        else if (url.pathname == "/getFave") {
-            let fav: Recepie[] = await getFavorite(databaseUrl);
-            console.log(fav);
-            _response.write(JSON.stringify(fav));
-        }
-        else if (url.pathname == "/safeRecepie") {
-            let data: string = await saveRecepie(databaseUrl, auswerten);
-            _response.write(data);
-        }
-        // else if (url.pathname == "/deleteRecepie") {
-        //     deleteRecepie();
-        //     console.log("Rezept wurde gelöscht!");
-        // }
-
-        //#endregion if-Abfragen
-
-
-        _response.end(); //beendet die anfrage 
-
-
     }
-}
+        }
