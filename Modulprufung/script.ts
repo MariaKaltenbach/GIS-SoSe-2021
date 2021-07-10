@@ -15,7 +15,7 @@ namespace Modulprüfung {
         query = new URLSearchParams(<any>daten);                //
         serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
         // serverUrl = "http://localhost:8100";
-        
+
     }
     //#endregion Daten Übertragen 
 
@@ -26,11 +26,11 @@ namespace Modulprüfung {
     // let loginOut: HTMLButtonElement = <HTMLButtonElement>document.getElementById("logout");       //variable für eventlistener angelegt und mit id mit html button verknüpft   
     // loginOut.addEventListener("click", logout);  //eventlistener wir aktiviert   //eventlistener für Registration
 
-    let compareLogin: HTMLButtonElement = <HTMLButtonElement>document.getElementById("login");       //variable für eventlistener angelegt und mit id mit html button verknüpft   
+    let compareLogin: HTMLButtonElement = <HTMLButtonElement>document.getElementById("userLogin");       //variable für eventlistener angelegt und mit id mit html button verknüpft   
     compareLogin.addEventListener("click", login);  //eventlistener wir aktiviert   //eventlistener für Registration
     //#endregion
 
-    
+
     // function logout(): void {
 
     //     localStorage.clear();
@@ -56,8 +56,9 @@ namespace Modulprüfung {
         let response: Response = await fetch(serverUrl);  //auf url warten      //antwort wartet auf die Server url 
         let responseText: string = await response.text(); //json object erstellen
         console.log(responseText);
-        if (responseText != "") {
-
+        if (responseText == "true") {
+            let benutzername: string = (<HTMLInputElement><unknown>document.getElementById("benutzername")).value;
+            localStorage.setItem(benutzername, "username");
             window.open("../Modulprufung/alleRezepte.html");
 
         }
@@ -66,7 +67,7 @@ namespace Modulprüfung {
             alert("Benutzername oder Passwort falsch!");
         }
 
-    
+
     }
 }
         //#endregion asynchrone Funktionen

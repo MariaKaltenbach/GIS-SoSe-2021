@@ -19,7 +19,7 @@ var Modulprüfung;
     saveRegistartion.addEventListener("click", registration); //eventlistener wir aktiviert   //eventlistener für Registration
     // let loginOut: HTMLButtonElement = <HTMLButtonElement>document.getElementById("logout");       //variable für eventlistener angelegt und mit id mit html button verknüpft   
     // loginOut.addEventListener("click", logout);  //eventlistener wir aktiviert   //eventlistener für Registration
-    let compareLogin = document.getElementById("login"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
+    let compareLogin = document.getElementById("userLogin"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
     compareLogin.addEventListener("click", login); //eventlistener wir aktiviert   //eventlistener für Registration
     //#endregion
     // function logout(): void {
@@ -40,7 +40,9 @@ var Modulprüfung;
         let response = await fetch(serverUrl); //auf url warten      //antwort wartet auf die Server url 
         let responseText = await response.text(); //json object erstellen
         console.log(responseText);
-        if (responseText != "") {
+        if (responseText == "true") {
+            let benutzername = document.getElementById("benutzername").value;
+            localStorage.setItem(benutzername, "username");
             window.open("../Modulprufung/alleRezepte.html");
         }
         else {

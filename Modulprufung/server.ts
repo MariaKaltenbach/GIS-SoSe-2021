@@ -57,8 +57,7 @@ export namespace Modulprüfung {
         let option: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(databaseUrl, option); //mongo client angelegt
         // let rezepte: Mongo.Collection;
-        let Students: Mongo.Collection;
-        let student: User;
+        let students: Mongo.Collection;
         //#endregion Variablen
 
 
@@ -76,15 +75,6 @@ export namespace Modulprüfung {
         }
 
 
-        async function login(_benutzername: User, _password: User): Promise<boolean> {
-
-            student = await Students.findOne({ _id: _benutzername });
-
-            if (student == null) {
-                return false;
-            }
-            return true;
-        }
 
 
         async function getRecepie(_url: string): Promise<Recepie[]> {
@@ -129,7 +119,6 @@ export namespace Modulprüfung {
 
         //#region Variablen 
         let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-        let query: any;
         let auswertung: User = { email: url.query.email + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
         let auswerten: Recepie = { rezeptname: url.query.rezeptname + "", zutat1: url.query.Zutat + "", zutat2: url.query.Zutat + "", zutat3: url.query.Zutat + "", zutat4: url.query.Zutat + "", zutat5: url.query.Zutat + "", zutat6: url.query.Zutat + "", zutat7: url.query.Zutat + "", zutat8: url.query.Zutat + "", zutat9: url.query.Zutat + "", zutat10: url.query.Zutat + "", zubereitungshinweis: url.query.Zubereitung + "" };
         //#endregion Variablen
@@ -143,7 +132,8 @@ export namespace Modulprüfung {
             }
             else if (url.pathname == "/userLogin") {
 
-                await login(query.benutzername, query.password);
+                
+                await students.findOne({"username": url.query.username, "password": url.query.password});
             }
 
 
