@@ -13,8 +13,8 @@ namespace Modulprüfung {
     //#region Daten übertragen (funktion mit FormData, query und der server Url damit man in den folgenden Funktionen nicht die ganze zeit den selben code hat)
 
     function transferData(): void {
-        let daten: FormData = new FormData(document.forms[0]);  //Formdata um Formular auswerten zu können
-        query = new URLSearchParams(<any>daten);                //hilft uns beim arbeiten mit der url 
+        let data: FormData = new FormData(document.forms[0]);  //Formdata um Formular auswerten zu können
+        query = new URLSearchParams(<any>data);                //hilft uns beim arbeiten mit der url 
         serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
         // serverUrl = "http://localhost:8100";
 
@@ -26,8 +26,8 @@ namespace Modulprüfung {
 
     //#region Eventlistener (durch button im HTML werden diese Funktionen aufgerufen)
 
-    let saveRegistartion: HTMLButtonElement = <HTMLButtonElement>document.getElementById("registration");       //variable für eventlistener angelegt und mit id mit html button verknüpft   
-    saveRegistartion.addEventListener("click", registration);  //eventlistener wir aktiviert   //eventlistener für Registration
+    let saveRegister: HTMLButtonElement = <HTMLButtonElement>document.getElementById("registration");       //variable für eventlistener angelegt und mit id mit html button verknüpft   
+    saveRegister.addEventListener("click", registration);  //eventlistener wir aktiviert   //eventlistener für Registration
 
 
     let compareLogin: HTMLButtonElement = <HTMLButtonElement>document.getElementById("userLogin");       //variable für eventlistener angelegt und mit id mit html button verknüpft   

@@ -15,8 +15,8 @@ namespace Modulprüfung {
     //#region Daten übertragen (funktion mit FormData, query und der server Url damit man in den folgenden Funktionen nicht die ganze zeit den selben code hat)
 
     function transferData(): void {
-        let daten: FormData = new FormData(document.forms[0]);
-        query = new URLSearchParams(<any>daten);
+        let data: FormData = new FormData(document.forms[0]);
+        query = new URLSearchParams(<any>data);
         serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
         // serverUrl = "http://localhost:8100";
     }

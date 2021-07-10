@@ -61,7 +61,7 @@ export namespace Modulprüfung {
         // let databaseUrl: string = "mongodb://localhost:27017";
         let option: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(databaseUrl, option); //mongo client angelegt
-        let students: Mongo.Collection;
+        let student: Mongo.Collection;
 
         //#endregion Variablen
 
@@ -123,8 +123,8 @@ export namespace Modulprüfung {
         //#region Variablen 
 
         let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-        let auswertung: User = { email: url.query.email + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
-        let auswerten: Recepie = { rezeptname: url.query.rezeptname + "", zutat1: url.query.Zutat + "", zutat2: url.query.Zutat + "", zutat3: url.query.Zutat + "", zutat4: url.query.Zutat + "", zutat5: url.query.Zutat + "", zutat6: url.query.Zutat + "", zutat7: url.query.Zutat + "", zutat8: url.query.Zutat + "", zutat9: url.query.Zutat + "", zutat10: url.query.Zutat + "", zubereitungshinweis: url.query.Zubereitung + "" };
+        let evaluationUser: User = { email: url.query.email + "", benutzername: url.query.benutzername + "", password: url.query.password + "" };
+        let evaluationRecepie: Recepie = { rezeptname: url.query.rezeptname + "", zutat1: url.query.Zutat + "", zutat2: url.query.Zutat + "", zutat3: url.query.Zutat + "", zutat4: url.query.Zutat + "", zutat5: url.query.Zutat + "", zutat6: url.query.Zutat + "", zutat7: url.query.Zutat + "", zutat8: url.query.Zutat + "", zutat9: url.query.Zutat + "", zutat10: url.query.Zutat + "", zubereitungshinweis: url.query.Zubereitung + "" };
 
         //#endregion Variablen
 
@@ -134,29 +134,27 @@ export namespace Modulprüfung {
         if (_request.url) {
 
             if (url.pathname == "/registration") {
-                let daten: string = await saveUser(databaseUrl, auswertung); //wartet bis die function die die Daten speichert fertig ist
-                _response.write(daten); 
+                let userWait: string = await saveUser(databaseUrl, evaluationUser); //wartet bis die function die die Daten speichert fertig ist
+                _response.write(userWait); 
             }
             else if (url.pathname == "/userLogin") {
 
                 
-                await students.findOne({"username": url.query.username, "password": url.query.password});   //wartet bis die daten aus der datenbank gefunden wurden 
+                await student.findOne({"username": url.query.username, "password": url.query.password});   //wartet bis die daten aus der datenbank gefunden wurden 
             }
 
 
             else if (url.pathname == "/getRecepie") {
-                let antwort: Recepie[] = await getRecepie(databaseUrl); //wartet bis die function die die daten bekommt fertig ist
-                console.log(antwort);
-                _response.write(JSON.stringify(antwort));  //die antwort wird in einen JSON string umgewandelt
+                let recepieWait: Recepie[] = await getRecepie(databaseUrl); //wartet bis die function die die daten bekommt fertig ist
+                _response.write(JSON.stringify(recepieWait));  //die antwort wird in einen JSON string umgewandelt
             }
             else if (url.pathname == "/getFave") {
-                let fav: Recepie[] = await getFavorite(databaseUrl);        //wartet bis die function die die daten bekommt fertig ist
-                console.log(fav);
-                _response.write(JSON.stringify(fav));
+                let favWait: Recepie[] = await getFavorite(databaseUrl);        //wartet bis die function die die daten bekommt fertig ist
+                _response.write(JSON.stringify(favWait));
             }
             else if (url.pathname == "/safeRecepie") {
-                let data: string = await saveRecepie(databaseUrl, auswerten);   //wartet bis die function die die daten abgespeichert hat
-                _response.write(data);
+                let saveRecepieWait: string = await saveRecepie(databaseUrl, evaluationRecepie);   //wartet bis die function die die daten abgespeichert hat
+                _response.write(saveRecepieWait);
             }
            
 

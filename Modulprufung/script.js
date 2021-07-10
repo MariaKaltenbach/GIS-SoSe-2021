@@ -7,15 +7,15 @@ var Modulprüfung;
     //#endregion Varibalen
     //#region Daten übertragen (funktion mit FormData, query und der server Url damit man in den folgenden Funktionen nicht die ganze zeit den selben code hat)
     function transferData() {
-        let daten = new FormData(document.forms[0]); //Formdata um Formular auswerten zu können
-        query = new URLSearchParams(daten); //hilft uns beim arbeiten mit der url 
+        let data = new FormData(document.forms[0]); //Formdata um Formular auswerten zu können
+        query = new URLSearchParams(data); //hilft uns beim arbeiten mit der url 
         serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
         // serverUrl = "http://localhost:8100";
     }
     //#endregion Daten Übertragen 
     //#region Eventlistener (durch button im HTML werden diese Funktionen aufgerufen)
-    let saveRegistartion = document.getElementById("registration"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
-    saveRegistartion.addEventListener("click", registration); //eventlistener wir aktiviert   //eventlistener für Registration
+    let saveRegister = document.getElementById("registration"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
+    saveRegister.addEventListener("click", registration); //eventlistener wir aktiviert   //eventlistener für Registration
     let compareLogin = document.getElementById("userLogin"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
     compareLogin.addEventListener("click", login); //eventlistener wir aktiviert   //eventlistener für Login
     //#endregion Eventlistener

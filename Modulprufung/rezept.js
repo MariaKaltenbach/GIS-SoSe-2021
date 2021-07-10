@@ -8,8 +8,8 @@ var Modulprüfung;
     //#endregion variablen 
     //#region Daten übertragen (funktion mit FormData, query und der server Url damit man in den folgenden Funktionen nicht die ganze zeit den selben code hat)
     function transferData() {
-        let daten = new FormData(document.forms[0]);
-        query = new URLSearchParams(daten);
+        let data = new FormData(document.forms[0]);
+        query = new URLSearchParams(data);
         serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
         // serverUrl = "http://localhost:8100";
     }
