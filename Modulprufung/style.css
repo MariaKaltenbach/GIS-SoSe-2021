@@ -83,6 +83,11 @@ input {
 #rezeptBearbeiten {
     margin-left: 750px;
     margin-top: 20px;
+    font-size: 16px;
+}
+
+#rezeptLöschen {
+    font-size: 16px;
 }
 
 #favButton {
@@ -99,7 +104,7 @@ input {
     .zubereitungsSchritte {
         width: 600px;
         height: 400px;
-        margin-left: 80px;
+        margin-left: 0px;
     }
     .rezeptErstellen {
         margin-left: 80px;
@@ -110,10 +115,10 @@ input {
         font-size: 20px;
     }
     #veröffentlichen {
-        margin-left: 320px;
-        height: 30px;
+        margin-left: 300px;
+        height: 25px;
         width: 150px;
-        font-size: 20px;
+        font-size: 18px;
     }
     .rezeptNameInput {
         margin-left: 150px;
@@ -133,6 +138,16 @@ input {
     .headingAlleRezepze {
         margin-left: 140px;
     }
+    #rezeptBearbeiten {
+        margin-left: 235px;
+        margin-top: 10px;
+        margin-bottom: 30px;
+        font-size: 16px;
+    }
+    #favButton {
+        margin-left: 280px;
+        margin-top: 40px;
+    }
 }
 
 @media only screen and (max-width: 600px) {
@@ -149,7 +164,7 @@ input {
     .zubereitungsSchritte {
         width: 270px;
         height: 200px;
-        margin-left: 15px;
+        margin-left: -70px;
     }
     .rezeptErstellen {
         margin-left: 80px;
@@ -184,5 +199,20 @@ input {
     .headingAlleRezepze {
         margin-left: 15px;
         margin-top: 30px;
+    }
+    #rezeptBearbeiten,
+    #rezeptLöschen {
+        margin-left: 95px;
+        margin-bottom: 20px;
+        font-size: 11px;
+    }
+    #rezeptLöschen {
+        margin-left: 100px;
+        margin-bottom: 30px;
+    }
+    #favButton {
+        margin-left: 90px;
+        margin-top: 20px;
+        font-size: 11px;
     }
 }
