@@ -34,7 +34,7 @@ body {
 }
 
 #veröffentlichen {
-    margin-left: 220px;
+    margin-left: 250px;
 }
 
 .rezeptErstellen {
@@ -55,8 +55,38 @@ input {
     font-family: Arial, Helvetica, sans-serif;
     width: 900px;
     text-align: center;
-    margin-left: 80px;
+    margin-left: 120px;
     line-height: 35px;
+}
+
+.überschriftRezeptErstellen {
+    width: 500px;
+    text-align: center;
+    margin-left: 40px;
+}
+
+#meineRezepte {
+    margin-left: 600px;
+    width: 100px;
+}
+
+.headingÜberschrift {
+    margin-left: 470px;
+}
+
+.headingAlleRezepze {
+    margin-left: 320px;
+    margin-top: 60px;
+}
+
+#rezeptBearbeiten {
+    margin-left: 750px;
+    margin-top: 20px;
+}
+
+#favButton {
+    margin-left: 500px;
+    margin-top: 30px;
 }
 
 @media only screen and (min-width: 601px) and (max-width: 1023px) {
@@ -92,6 +122,15 @@ input {
         width: 550px;
         margin-left: 75px;
         line-height: 30px;
+    }
+    .überschriftRezeptErstellen {
+        margin-left: 130px;
+    }
+    .headingÜberschrift {
+        margin-left: 270px;
+    }
+    .headingAlleRezepze {
+        margin-left: 140px;
     }
 }
 
@@ -133,5 +172,16 @@ input {
         width: 290px;
         margin-left: 0px;
         line-height: 25px;
+    }
+    .überschriftRezeptErstellen {
+        margin-left: 30px;
+        width: 250px;
+    }
+    .headingÜberschrift {
+        margin-left: 100px;
+    }
+    .headingAlleRezepze {
+        margin-left: 15px;
+        margin-top: 30px;
     }
 }

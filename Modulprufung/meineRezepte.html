@@ -20,13 +20,15 @@
     </div>
 
 
-    <h2>Erstelle ein Rezept und Teile dies mit deinen Freunden!</h2>
-    <form>
+    <h2 class="überschriftRezeptErstellen">Erstelle ein Rezept und Teile dies mit deinen Freunden!</h2>
 
-        <div class="rezeptErstellen">
+    <button id="rezeptBearbeiten" type="button">Rezept bearbeiten</button>
+    <button id="rezeptLöschen" type="button">Rezept Löschen</button>
 
+    <div class="rezeptErstellen">
+        <form>
             <input type="text" class="rezeptNameInput" name="rezeptname" placeholder="Name des Rezeptes"> <br><br>
-            <input type="text" class="sdfghj" name="Zutat1" placeholder="1. Zutat"><br><br>
+            <input type="text" name="Zutat1" placeholder="1. Zutat"><br><br>
 
             <input type="text" name="Zutat2" placeholder="2. Zutat"><br><br>
 
@@ -45,21 +47,25 @@
             <input type="text" name="Zutat9" placeholder="9. Zutat"><br><br>
 
             <input type="text" name="Zutat10" placeholder="10. Zutat"><br><br>
-        </div>
 
-        <input type="text" class="zubereitungsSchritte" name="Zubereitung" placeholder="Beschreibe hier die Zubereitsungsschritte!">
-        <br><br>
+    </div>
+    <input type="text" class="zubereitungsSchritte" name="Zubereitung" placeholder="Beschreibe hier die Zubereitsungsschritte!">
     </form>
+    <br><br>
+    </div>
+
     <button id="veröffentlichen" type="button">Veröffentlichen</button>
     <br>
     <br>
+    <br>
+    <br>
 
+    <h2 class="headingÜberschrift">Meine Rezepte</h2>
 
-    <h2>Hier kannst du deine bereit veröffentlichten Rezepte bearbeiten oder Löschen:</h2>
 
     <div id="serverAntwort"></div>
 
-    <button id="rezeptLöschen" type="button">Rezept Löschen</button>
+
 
 
 
