@@ -58,6 +58,9 @@ var Modulprüfung;
             result = await cursor.toArray(); //datenbank wird ausgelesen
             return result; //daten werden zurück gegeben
         }
+        // async function likesRecepie(_url: string, _eingabe: Recepie): Promise<void> {
+        //     let favorisieren: any = await mongoClient.db("Test").collection("Favoriten").insertOne({"rezeptname": result});
+        // }
         //#endregion asynchrone Funktionen
         //#region Variablen 
         let url = Url.parse(_request.url, true);
@@ -85,6 +88,10 @@ var Modulprüfung;
                 let saveRecepieWait = await saveRecepie(databaseUrl, evaluationRecepie); //wartet bis die function die die daten abgespeichert hat
                 _response.write(saveRecepieWait);
             }
+            // else if (url.pathname == "/safeFave") {
+            //     let waitFav: Recepie[] = await likesRecepie(databaseUrl, evaluationRecepie);
+            //     _response.write(waitFav);
+            // }
             //#endregion if-Abfragen
             _response.end(); //beendet die anfrage 
         }

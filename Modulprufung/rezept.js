@@ -2,7 +2,7 @@
 var Modulprüfung;
 (function (Modulprüfung) {
     //#region variablen (für server)
-    let serverResponse = document.getElementById("serverAntwort"); //Ausgabe feld im HTMl (Div) verlinkt über die ID:"serverAntwort"
+    let serverResponse = document.getElementById("antwortServer"); //Ausgabe feld im HTMl (Div) verlinkt über die ID:"serverAntwort"
     let serverUrl; //server Url  variable globak angelegt (code verdopplung vermeiden)
     let query;
     //#endregion variablen 
@@ -17,6 +17,12 @@ var Modulprüfung;
     //#region Eventlistener (durch button im HTML werden diese Funktionen aufgerufen)
     let safeRecepie = document.getElementById("veröffentlichen"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
     safeRecepie.addEventListener("click", saveRecepie); //eventlistener für die Rezept veröffentlichung
+    let faveRecepie = document.getElementById("favButton"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
+    faveRecepie.addEventListener("click", saveFavorite);
+    // let deleteRecepie: HTMLButtonElement = <HTMLButtonElement>document.getElementById("rezeptLöschen");  
+    // deleteRecepie.addEventListener("click", delteRecepie);
+    // let editRecepie: HTMLButtonElement = <HTMLButtonElement>document.getElementById("rezeptBearbeiten");    
+    // editRecepie.addEventListener("click", editRecepie);
     //#endregion Eventlistener 
     //#region window.onload (function die direkt angesprochen wird wenn man die website betritt)
     window.onload = async function getRecepie() {
@@ -36,6 +42,13 @@ var Modulprüfung;
         let responseText = await response.text();
         console.log(responseText);
         console.log("Rezept wurde erstellt!");
+    }
+    async function saveFavorite() {
+        transferData();
+        serverUrl += "/safeFave" + "?" + query.toString();
+        let response = await fetch(serverUrl);
+        let responseText = await response.text();
+        console.log(responseText);
     }
     //#endregion asynchrone Funktionen 
 })(Modulprüfung || (Modulprüfung = {}));

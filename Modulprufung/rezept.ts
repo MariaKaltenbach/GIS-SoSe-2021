@@ -2,16 +2,16 @@ namespace Modulprüfung {
 
     //#region variablen (für server)
 
-    let serverResponse: HTMLDivElement = <HTMLDivElement>document.getElementById("serverAntwort"); //Ausgabe feld im HTMl (Div) verlinkt über die ID:"serverAntwort"
+    let serverResponse: HTMLDivElement = <HTMLDivElement>document.getElementById("antwortServer"); //Ausgabe feld im HTMl (Div) verlinkt über die ID:"serverAntwort"
 
     let serverUrl: string;                  //server Url  variable globak angelegt (code verdopplung vermeiden)
-    let query: URLSearchParams; 
+    let query: URLSearchParams;
 
     //#endregion variablen 
 
 
 
-    
+
     //#region Daten übertragen (funktion mit FormData, query und der server Url damit man in den folgenden Funktionen nicht die ganze zeit den selben code hat)
 
     function transferData(): void {
@@ -24,13 +24,20 @@ namespace Modulprüfung {
     //#endregion Daten Übertragen 
 
 
-    
+
     //#region Eventlistener (durch button im HTML werden diese Funktionen aufgerufen)
 
     let safeRecepie: HTMLButtonElement = <HTMLButtonElement>document.getElementById("veröffentlichen"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
     safeRecepie.addEventListener("click", saveRecepie);                     //eventlistener für die Rezept veröffentlichung
 
+    let faveRecepie: HTMLButtonElement = <HTMLButtonElement>document.getElementById("favButton"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
+    faveRecepie.addEventListener("click", saveFavorite);
 
+    // let deleteRecepie: HTMLButtonElement = <HTMLButtonElement>document.getElementById("rezeptLöschen");  
+    // deleteRecepie.addEventListener("click", delteRecepie);
+
+    // let editRecepie: HTMLButtonElement = <HTMLButtonElement>document.getElementById("rezeptBearbeiten");    
+    // editRecepie.addEventListener("click", editRecepie);
 
     //#endregion Eventlistener 
 
@@ -64,6 +71,13 @@ namespace Modulprüfung {
 
     }
 
+    async function saveFavorite(): Promise<void> {
+        transferData();
+        serverUrl += "/safeFave" + "?" + query.toString();
+        let response: Response = await fetch(serverUrl);
+        let responseText: string = await response.text();
+        console.log(responseText);
+    }
     //#endregion asynchrone Funktionen 
 }
 

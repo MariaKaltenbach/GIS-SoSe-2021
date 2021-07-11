@@ -117,6 +117,12 @@ export namespace Modulprüfung {
 
         }
 
+        // async function likesRecepie(_url: string, _eingabe: Recepie): Promise<void> {
+
+        //     let favorisieren: any = await mongoClient.db("Test").collection("Favoriten").insertOne({"rezeptname": result});
+
+
+        // }
       
         //#endregion asynchrone Funktionen
 
@@ -157,6 +163,11 @@ export namespace Modulprüfung {
                 let saveRecepieWait: string = await saveRecepie(databaseUrl, evaluationRecepie);   //wartet bis die function die die daten abgespeichert hat
                 _response.write(saveRecepieWait);
             }
+            // else if (url.pathname == "/safeFave") {
+            //     let waitFav: Recepie[] = await likesRecepie(databaseUrl, evaluationRecepie);
+            //     _response.write(waitFav);
+
+            // }
            
 
             //#endregion if-Abfragen
