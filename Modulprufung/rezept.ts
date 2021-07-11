@@ -17,13 +17,22 @@ namespace Modulprüfung {
     function transferData(): void {
         let data: FormData = new FormData(document.forms[0]);
         query = new URLSearchParams(<any>data);
-        serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
-        // serverUrl = "http://localhost:8100";
+        // serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
+        serverUrl = "http://localhost:8100";
     }
 
     //#endregion Daten Übertragen 
 
 
+    
+    //#region Eventlistener (durch button im HTML werden diese Funktionen aufgerufen)
+
+    let safeRecepie: HTMLButtonElement = <HTMLButtonElement>document.getElementById("veröffentlichen"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
+    safeRecepie.addEventListener("click", saveRecepie);                     //eventlistener für die Rezept veröffentlichung
+
+
+
+    //#endregion Eventlistener 
 
 
     //#region window.onload (function die direkt angesprochen wird wenn man die website betritt)
@@ -56,17 +65,6 @@ namespace Modulprüfung {
     }
 
     //#endregion asynchrone Funktionen 
-
-
-
-    //#region Eventlistener (durch button im HTML werden diese Funktionen aufgerufen)
-
-    let safeRecepie: HTMLButtonElement = <HTMLButtonElement>document.getElementById("veröffentlichen"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
-    safeRecepie.addEventListener("click", saveRecepie);                           //eventlistener für die Rezept veröffentlichung
-
-    //#endregion Eventlistener 
-
-
-
-
 }
+
+

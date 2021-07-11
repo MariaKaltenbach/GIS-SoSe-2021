@@ -5,22 +5,24 @@ import * as Mongo from "mongodb";
 export namespace Modulprüfung {
 
     //#region Beispielserver code aus der Praktikumsaufgabe 3.1 (FELIX: Kurs "GIS (für MIB und OMB)") 
+    //https://felix.hs-furtwangen.de/auth/RepositoryEntry/4015784382/CourseNode/103149246622861 
 
     console.log("Starting server");
     let port: number = Number(process.env.PORT);
     if (!port)
-        port = 8100;
+        port = 8100;    //Port wird mit dem Wert 8100 initialisiert
 
-    let server: Http.Server = Http.createServer();
-    server.addListener("request", handleRequest);
-    server.listen(port);
+    let server: Http.Server = Http.createServer();  //Server wird erstellt
+    server.addListener("request", handleRequest);   //Dem Server wird ein Listener angehängt, der die Funktion handleRequest aufruft
+    server.listen(port);    //Der Server hört auf den port
 
 
     async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
-        console.log("Anfrage genemigt!");
-        console.log(_request.url);
-        _response.setHeader("content-type", "text/html; charset=utf-8");
-        _response.setHeader("Access-Control-Allow-Origin", "*");
+        console.log("Anfrage genemigt!");           //wird im terminal ausgegeben
+        console.log(_request.url);                  //Die URL vom Request wird ausgegeben
+        _response.setHeader("content-type", "text/html; charset=utf-8");        //Die Eigenschaften des Headers werden festgelegt mit setHeader
+        _response.setHeader("Access-Control-Allow-Origin", "*");      //Zugangsberechtigung wird festgelegt, wer hat Zugriff?
+        _response.write(_request.url); //Die Url vom Request wird in die Response geschrieben
 
         //#endregion Beispielserver code aus der Praktikumsaufgabe 3.1 (FELIX: Kurs "GIS (für MIB und OMB)") 
 
@@ -57,8 +59,8 @@ export namespace Modulprüfung {
 
         //#region Variablen (varibalen für Mongo angelegt)
 
-        let databaseUrl: string = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"; //mondoDB String um mit db zu connecten 
-        // let databaseUrl: string = "mongodb://localhost:27017";
+        // let databaseUrl: string = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"; //mondoDB String um mit db zu connecten 
+        let databaseUrl: string = "mongodb://localhost:27017";
         let option: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(databaseUrl, option); //mongo client angelegt
         let student: Mongo.Collection;

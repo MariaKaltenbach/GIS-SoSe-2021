@@ -83,11 +83,6 @@ input {
 #rezeptBearbeiten {
     margin-left: 750px;
     margin-top: 20px;
-    font-size: 16px;
-}
-
-#rezeptLöschen {
-    font-size: 16px;
 }
 
 #favButton {
@@ -95,12 +90,46 @@ input {
     margin-top: 30px;
 }
 
+[type=button] {
+    font-size: 16px;
+    box-shadow: 0 .2em .4em gray;
+    cursor: pointer;
+}
+
+
+/*Animierter Button von w3schools*/
+
+
+/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_buttons_animate1*/
+
+#veröffentlichen span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+#veröffentlichen span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    right: -20px;
+    transition: 0.9s;
+}
+
+#veröffentlichen:hover span {
+    padding-right: 20px;
+}
+
+#veröffentlichen:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+
+/*Animierter Button von w3schools*/
+
 @media only screen and (min-width: 601px) and (max-width: 1023px) {
-    button {
-        width: 150px;
-        height: 30px;
-        text-align: center;
-    }
     .zubereitungsSchritte {
         width: 600px;
         height: 400px;

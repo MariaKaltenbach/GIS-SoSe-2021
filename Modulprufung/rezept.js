@@ -10,10 +10,14 @@ var Modulprüfung;
     function transferData() {
         let data = new FormData(document.forms[0]);
         query = new URLSearchParams(data);
-        serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
-        // serverUrl = "http://localhost:8100";
+        // serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
+        serverUrl = "http://localhost:8100";
     }
     //#endregion Daten Übertragen 
+    //#region Eventlistener (durch button im HTML werden diese Funktionen aufgerufen)
+    let safeRecepie = document.getElementById("veröffentlichen"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
+    safeRecepie.addEventListener("click", saveRecepie); //eventlistener für die Rezept veröffentlichung
+    //#endregion Eventlistener 
     //#region window.onload (function die direkt angesprochen wird wenn man die website betritt)
     window.onload = async function getRecepie() {
         transferData();
@@ -34,9 +38,5 @@ var Modulprüfung;
         console.log("Rezept wurde erstellt!");
     }
     //#endregion asynchrone Funktionen 
-    //#region Eventlistener (durch button im HTML werden diese Funktionen aufgerufen)
-    let safeRecepie = document.getElementById("veröffentlichen"); //variable für eventlistener angelegt und mit id mit html button verknüpft   
-    safeRecepie.addEventListener("click", saveRecepie); //eventlistener für die Rezept veröffentlichung
-    //#endregion Eventlistener 
 })(Modulprüfung || (Modulprüfung = {}));
 //# sourceMappingURL=rezept.js.map
