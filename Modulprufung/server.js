@@ -20,7 +20,6 @@ var Modulprüfung;
         console.log(_request.url); //Die URL vom Request wird ausgegeben
         _response.setHeader("content-type", "text/html; charset=utf-8"); //Die Eigenschaften des Headers werden festgelegt mit setHeader
         _response.setHeader("Access-Control-Allow-Origin", "*"); //Zugangsberechtigung wird festgelegt, wer hat Zugriff?
-        _response.write(_request.url); //Die Url vom Request wird in die Response geschrieben
         //#endregion Interface
         //#region Variablen (varibalen für Mongo angelegt)
         let databaseUrl = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"; //mondoDB String um mit db zu connecten 

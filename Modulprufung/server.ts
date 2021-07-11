@@ -22,7 +22,6 @@ export namespace Modulprüfung {
         console.log(_request.url);                  //Die URL vom Request wird ausgegeben
         _response.setHeader("content-type", "text/html; charset=utf-8");        //Die Eigenschaften des Headers werden festgelegt mit setHeader
         _response.setHeader("Access-Control-Allow-Origin", "*");      //Zugangsberechtigung wird festgelegt, wer hat Zugriff?
-        _response.write(_request.url); //Die Url vom Request wird in die Response geschrieben
 
         //#endregion Beispielserver code aus der Praktikumsaufgabe 3.1 (FELIX: Kurs "GIS (für MIB und OMB)") 
 
