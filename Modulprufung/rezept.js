@@ -10,8 +10,8 @@ var Modulprüfung;
     function transferData() {
         let data = new FormData(document.forms[0]);
         query = new URLSearchParams(data);
-        // serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
-        serverUrl = "http://localhost:8100";
+        serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
+        // serverUrl = "http://localhost:8100";
     }
     //#endregion Daten Übertragen 
     //#region Eventlistener (durch button im HTML werden diese Funktionen aufgerufen)

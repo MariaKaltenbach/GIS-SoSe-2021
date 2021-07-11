@@ -15,8 +15,8 @@ namespace Modulprüfung {
     function transferData(): void {
         let data: FormData = new FormData(document.forms[0]);  //Formdata um Formular auswerten zu können
         query = new URLSearchParams(<any>data);               
-        // serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
-        serverUrl = "http://localhost:8100";
+        serverUrl = "https://gissose2021.herokuapp.com"; //herokuapp link einfügen als url variable 
+        // serverUrl = "http://localhost:8100";
 
     }
 

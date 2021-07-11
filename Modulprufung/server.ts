@@ -59,8 +59,8 @@ export namespace Modulprüfung {
 
         //#region Variablen (varibalen für Mongo angelegt)
 
-        // let databaseUrl: string = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"; //mondoDB String um mit db zu connecten 
-        let databaseUrl: string = "mongodb://localhost:27017";
+        let databaseUrl: string = "mongodb+srv://UserTest:usertest123@mariakltb.sfhfn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"; //mondoDB String um mit db zu connecten 
+        // let databaseUrl: string = "mongodb://localhost:27017";
         let option: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(databaseUrl, option); //mongo client angelegt
         let student: Mongo.Collection;
